@@ -51,13 +51,20 @@ Projekt aukce:
     EndPointy:
       endpointy jsem se snažil dělat na míru komponentám, ale je docela pravděpodobné, že se na frontend posílají data navíc
 
-    Nedoděláno: 
+    doděláno: 
       není ošetřeno přihazování, na moment psaní této dokumentace jde přihodit i negativní číslo, to mělo být řešeno tak, že v configu přidám vlastnostmi
       minBid a maxBid, podle kterých budu pak na backendu kontrolovat jestli je příhoz validní (je potřeba dát nějak uživateli vědět, že zadal nevhodný příhoz,
-      což na frontendu není)
+      což na frontendu není) - toto je již hotovo
+    nedodelano:
+      - je potřeba udělat UI pro přiřazení práv uživatelům (vlastnost IsAdmin)
+          - je potřeba dodělat anonymní přihazování 
+          - je potřeba dodělat csv import a csv preview do plně funkčního stavu
+      - pravomoci admin je mozne nastavit manualne v databazi, ale neni to nijak osetreno, takze pokud chcete mit admina, tak si ho nastavte v databazi
+    
 
   FrontEnd:
     Frontend je v podstatě skoro celý popsaný wireframem, jediné page, které se tam neobjevují jsou csv import a csv preview pages
+    - scss je delane tak , aby se daly menit hlavní barvy, fonty a velikosti písma
 
 - Použité knihovny na backendu: Bcrypt, yaml.net
 - Použité knihovny na frontendu: papaparser

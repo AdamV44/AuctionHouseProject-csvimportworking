@@ -1,0 +1,234 @@
+# Dokumentace AuctionHouse projektu
+
+## Přehled projektu
+**AuctionHouse** je webová aplikace pro online aukce implementovaná v tech stacku:
+- **Frontend:** Angular (standalone komponenty)
+- **Backend:** ASP.NET Core
+- **Databáze:** Vlastní souborová databáze (JSON)
+
+---
+
+## 🗂️ Struktura projektu
+
+
+AuctionHouseProject-csvimportworking/ 
+├── Database/ # Souborová databáze 
+│  ├── config.yml # Konfigurace databáze 
+│  ├── Auctions/ # JSON soubory s aukcemi 
+│  ├── AuctionItems/ # JSON soubory s předměty 
+│  ├── AuctionItemsPictures/ # Obrázky předmětů 
+│  ├── Bids/ # JSON soubory s příhozy 
+│  ├── Users/ # JSON soubory s uživateli 
+│ 
+├── ItemGroups/ # JSON soubory s kategoriemi 
+│ └── RegisterAttempts/ # JSON soubory s registračními pokusy 
+├── EvidenAuctionHouseAPI/ # ASP.NET Core backend 
+├── EvidenAuctionHouse/ # Angular frontend
+├── dbLoader/ # DataHandler projekt 
+└── yamlHandler/ # YAML parser
+
+---
+
+## 🗃️ Databázový systém
+
+### Architektura
+- **Vlastní souborová databáze** založená na JSON souborech
+- Každá "tabulka" je reprezentována složkou s JSON soubory
+- **AuctionHouseDatabase** objekt spravuje všechny datasety
+- Globální zámek pro thread-safety
+
+### Konfigurace (config.yml)
+```yaml
+Database:
+  Users:
+    assets: "Users"           # Cesta k JSON souborům
+    properties: [...]         # Popis struktury (informativní)
+  Auctions:
+    assets: "Auctions"
+    properties: [...]
+---
+Datasety
+Users - uživatelé systému
+Auctions - aukce
+AuctionItems - předměty v aukcích
+Bids - příhozy
+ItemGroups - kategorie předmětů
+RegisterAttempts - pokusy o registraci
+Správa dat
+IOHandler - načítání/ukládání JSON souborů
+Automatické ukládání při každé změně
+Thread-safe operace s globálním zámkem
+Obrázky ukládány samostatně ve FileService
+🔐 Autorizace a bezpečnost
+Token systém
+TokensService generuje JWT tokeny
+Token obsahuje: UserId, IsAdmin
+Uložení v LocalStorage (frontend)
+Automatické odesílání přes HTTP interceptor
+Zabezpečení endpointů
+[SecuredUser] - pouze přihlášení uživatelé
+[SecuredAdmin] - pouze administrátoři
+Registrace uživatelů
+Uživatel vyplní registrační formulář
+Systém pošle ověřovací email
+Kliknutí na odkaz vytvoří účet
+RegistrationService + RegistrationController
+🎯 Funkcionality
+✅ Implementované funkce
+✅ Registrace a přihlašování uživatelů
+✅ Vytváření aukcí s předměty
+✅ Systém příhozů s validací
+✅ Upload obrázků předmětů
+✅ Email konfirmace
+✅ Admin/User role systém
+✅ Responsive design
+✅ Anonymní aukce (nově implementováno)
+🔄 Částečně implementované
+🔄 CSV import/export (UI hotovo, funkčnost částečná)
+🔄 CSV preview (základní implementace)
+❌ Chybějící funkce
+❌ UI pro správu uživatelských práv
+❌ Kompletní CSV import funkcionalita
+❌ anonymními prihazovani
+📱 Frontend (Angular)
+src/app/
+├── pages/                      # Stránky aplikace
+│   ├── item-creation-page/     # Vytváření předmětů
+│   ├── user-information-page/  # Profil uživatele
+│   ├── password-change-page/   # Změna hesla
+│   ├── email-confirmation-page/# Email ověření
+│   ├── csv-import-page/        # CSV import
+│   └── csv-preview-page/       # CSV náhled
+├── components/                 # Znovupoužitelné komponenty
+├── services/                   # Angular služby
+└── models/                     # TypeScript modely
+Struktura komponent
+Klíčové služby
+AuthenticationService - přihlašování
+AuctionService - správa aukcí
+FileService - upload souborů
+BidsService - správa příhozů
+Styling
+SCSS s CSS custom properties
+Responsive design (mobile-first)
+Jednotný design systém napříč aplikací
+🛠️ Backend (ASP.NET Core)
+Kontrolery
+AuctionsController - správa aukcí
+UsersController - správa uživatelů
+BidsController - správa příhozů
+AuctionItemsController - správa předmětů
+RegistrationController - registrace
+DbManagerController - správa databáze
+Hlavní služby
+TokensService - JWT tokeny
+FileService - správa souborů
+RegistrationService - registrace uživatelů
+AuctionHouseDatabase - databázový kontext
+🔧 Konfigurace a setup
+Potřebné nastavení
+Cesty v Program.cs:
+var configPath = "path/to/config.yml";
+var databasePath = "path/to/Database/";
+
+SMTP konfigurace v config.yml
+
+Admin práva - manuálně v JSON souborech
+
+Závislosti
+Backend:
+
+Bcrypt.Net (hashování hesel)
+YamlDotNet (YAML parsing)
+Frontend:
+
+PapaParse (CSV parsing)
+Angular Material (UI komponenty)
+🆕 Nové funkce - Anonymní aukce
+Implementace
+IsAnonymous vlastnost v Auction modelu
+Checkbox při vytváření aukce
+Podmíněné zobrazování podle uživatelských práv
+Chování systému
+Běžní uživatelé: Vidí pouze částky, "Anonymní uživatel"
+Administrátoři: Vidí všechny informace včetně jmen
+Databáze: Ukládá všechny informace, anonymita je pouze prezentační
+📝 Poznámky pro vývojáře
+Důležité upozornění
+Neupravujte JSON soubory ručně - může narušit integritu dat
+ItemGroups - plánované pro ruční úpravy
+Admin práva - zatím pouze manuální nastavení v databázi
+Thread Safety
+Všechny datasety sdílí globální zámek
+Zamezuje konfliktům při concurrent přístupu
+Možná over-engineering, ale bezpečné
+Rozšiřitelnost
+Modulární architektura umožňuje snadné přidávání funkcí
+Standalone Angular komponenty - moderní přístup
+Vlastní databáze - plná kontrola nad daty
+🚀 Spuštění projektu
+Backend
+cd EvidenAuctionHouseAPI
+dotnet run
+Frontend
+cd EvidenAuctionHouse
+npm install
+ng serve
+Databáze
+Automaticky inicializována při prvním spuštění
+JSON soubory se vytvoří podle config.yml
+📊 Technické detaily
+Validace příhozů
+minBid a maxBid konfigurace v config.yml
+Backend kontroluje validitu příhozů
+Frontend zobrazuje chybové zprávy
+Správa obrázků
+FileService spravuje upload a ukládání
+Obrázky uloženy mimo JSON databázi
+Podpora pro různé formáty (jpg, png, gif)
+Email systém
+SMTP konfigurace v config.yml
+Automatické ověřovací emaily
+Template systém pro různé typy emailů
+🔍 Debugging a troubleshooting
+Časté problémy
+Chyba při načítání databáze - zkontrolujte cesty v config.yml
+Email se neposílá - ověřte SMTP nastavení
+Obrázky se nenačítají - zkontrolujte FileService konfiguraci
+Logy
+Backend loguje do console
+Frontend logy v browser dev tools
+JSON soubory obsahují timestamp posledních změn
+🎨 Design systém
+CSS Custom Properties
+:root {
+  --primary-color: #2563eb;
+  --primary-light: #3b82f6;
+  --secondary-color: #64748b;
+  --surface: #f8fafc;
+  --card-background: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+}
+Komponenty styling
+Jednotný border-radius systém
+Konzistentní shadow system
+Responsive typography s clamp()
+Mobile-first media queries
+📈 Budoucí rozšíření
+Plánované funkce
+Kompletní CSV import/export systém
+UI pro správu uživatelských práv
+Real-time notifikace při příhozech
+Pokročilé filtry a vyhledávání
+Statistiky a reporty pro administrátory
+Možná vylepšení
+Migrace na SQL databázi pro větší výkon
+WebSocket pro real-time updates
+Mobile aplikace
+API dokumentace s Swagger
+Autor: Adam Vítek
+Datum: 30.5.2025
+Verze: 1.1 s anonymními aukcemi
+Školní rok: 2024/2025
+Škola: Smíchovská střední průmyslová škola a gymnázium
