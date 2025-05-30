@@ -1,0 +1,26 @@
+<!-- Hlavní tlačítko -->
+<button class="btn btn-primary" (click)="showPopup()">
+  <i class="fas fa-gavel"></i>
+  Přihodit
+</button>
+
+<!-- Dialog 1: Zadání PŘÍHOZU -->
+<app-price-input-dialog
+  [isVisible]="showPriceInputDialog"
+  [title]="'Zadejte výši příhozu'"
+  [currentPrice]="itemPrice"
+  [minimumBid]="minimumBid"
+  (result)="onPriceInputResult($event)">
+</app-price-input-dialog>
+
+<!-- Dialog 2: Potvrzení s detaily -->
+<app-confirmation-dialog
+  [isVisible]="showConfirmationDialog"
+  [title]="'Potvrzení příhozu'"
+  [message]="confirmationMessage"
+  [confirmText]="'Přihodit +' + selectedBidAmount + ' Kč'"
+  [cancelText]="'Zrušit'"
+  [confirmButtonClass]="'btn-success'"
+  [iconType]="'question'"
+  (result)="onConfirmationResult($event)">
+</app-confirmation-dialog>

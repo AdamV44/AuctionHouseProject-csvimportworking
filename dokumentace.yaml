@@ -1,0 +1,71 @@
+tech stack:
+  frontend = angular (novější angular na standalone komponentách)
+  backend = asp.net
+
+Projekt aukce:
+  Databáze:
+    - vlastní souborová databáze
+    - strukturu databáze popisuje config.yaml
+    - config.yaml
+      - config.yaml má být soubor, který má popisovat strukturu databáze(každý node v Database má reprezentovat pole objektů s uvedenými vlastnostmi), 
+      což i dělá, ovšem samotná databáze před ani za běhu není závislá na vlastnostech uvedených, jediné důležité políčka v database nodu jsou assets.
+      políčka assets definují kde v database složce se má nacházet soubor json (zdroj dat (list jednotlivých objektů))
+      dalé je také důležité nešahat na STMPConfig, při případné úpravě by bylo potřeba změnit objekty ve složce yamlParsingObjects, tak, aby byla schopná 
+      knihovna yaml.net deserializovat yaml
+      - shrnutí: všechna pole v jednotlivých "tabulkách" v yaml.config jsou v podstatě okrasné, jsou tam, aby se člověk mohl podívat a mít jasno jak vypadá databáze
+          jediná důležitá jsou assets a celý smtpConfig, získávání dat z configu dělá yamlreader
+    - pro setup databáze je potřeba mít zadat cesty configu a cestu kde má být databáze (pro zatím jsou ve třídě program v api projektu)
+    - samotnou databázi reprezentuje objekt AuctionHouseDatabase, tento objekt obsahuje datasety.
+    - každý dataset má v jádře list objektů (např. Users, bids, auctionitems...) 
+    - jednotlivé datasety potřebují typ (ten specifikuje co se v něm bude ukládat) a cestu k zdrojovému souboru (assets, získáváný pomocí yamlreaderu)
+    - při vytvoření instance AuctionHouseDatabase se vytvoří jednotlivé datasety, které se naplní daty (každý dataset si načte data v konstruktoru)
+    - dataset má po celou dobu běhu api načtená data v listu, který upravuje a při každé úpravě ukládá data do zdrojového souboru
+    - Poznámka: celý dataset je docela brutálně ozámkován a upřímně si nejsem jistý jestli to vůbec je potřeba
+                Myšlenka byla taková, že asp.net umí zpracovávat požadavky na více vláknech, kvůli čemuž by mohlo dojít k změně dat -> zápisu dat ve stejný moment
+    - poněkud zvláštní vlastnost sedící mezi datasety je RegisterAttemptsFilePath, která by normálně byla dataset, ale jelikož potvrzování a vytváření pokusů
+    - o registraci je tak málo, tak bylo přijmuto rozhodnutí data načítat vždycky když je potřeba potvrdit nebo vytvořit pokus o registraci
+    - (k tomu slouží registrationService)
+    - načítání/ukládání dat ze/do souborů provádí IOHandler
+    - všechny datasety mají jeden globální zámek, důvodů již zmíněných (teoreticky by se někdo mohl pokusit upravit 2 závislé tabulky zároveň --> data by nesouhlasila)
+    - integrita dat by neměla být problém při používání endpointů (pokud možno, data ručně neupravujte)
+    - jediná data, která pravděpodobně budete upravovat jsou: 
+        vlastnost IsAdmin u uživatelů (není UI pro přidělení práv)
+        itemGroups (byla plánovaná jako ručně upravitelná)
+          - kvůli tomu, že itemgroups jsou zamýšlená na ručné upravení, ale data se načtou do databáze jen jednou a to právě při vytvoření instance AuctionHouseDatabase
+            bylo potřeba vytvořit vynucené znovunačtení dat (metoda reloadContext v auctionHouseDatabase)
+          - existuje právě pro toto endpoint v dbManager kontrolleru
+    - co se týče obrázků pro jednotlivé auctionItemy, ty se ukládají do zvlášť složky, která "není" součástí databáze (objektu)
+      o obrázky se stará FileService
+    - Poznámka: umístění (resp jméno) složky jsem nacpal do AuctionItems kontroleru, bylo to tam dočasně když jsem řešil obrázky a zapomněl jsem to vložit 
+        někam do configu a následně získávat cestu pomocí yaml readeru (dá se předělat, ale pokud nestojíte o jiné umístění nebo název, tak to bude stejně
+        v složce s databází, takže to je vlastně jedno)
+  Backend: 
+    Autorizace: 
+      pro autorizaci slouží TokensService, která generuje tokeny (v tokenu je uložena vlastnost uživatele IsAdmin a Id Usera, teoreticky by stačilo
+      mít uložené jenom id, ale takto to usnadňuje práci v atributech (možná k tomu byl další důvod na který jsem zapomněl, měnit na vlastní nebezpečí :) ))
+      Uživateli při přihlášení je vrácen token, který je uložen v LocalStorage, tento token se zasílá pomocí interceptoru v hlavičce každého requestu
+      endpointy jsou chráněné atributy SecuredUser -> povolí přístup jen ověřenému uživateli nebo adminovi, SecuredAdmin -> Povolí přístup jen Ověřenému adminovi
+      
+      Ověřování emailu probíhá zasláním odkazu na get request na email, po kliknutí na tento odkaz se ověří email a uživatel se vytvoří
+      (registrationService a registrationController)
+    EndPointy:
+      endpointy jsem se snažil dělat na míru komponentám, ale je docela pravděpodobné, že se na frontend posílají data navíc
+
+    Nedoděláno: 
+      není ošetřeno přihazování, na moment psaní této dokumentace jde přihodit i negativní číslo, to mělo být řešeno tak, že v configu přidám vlastnostmi
+      minBid a maxBid, podle kterých budu pak na backendu kontrolovat jestli je příhoz validní (je potřeba dát nějak uživateli vědět, že zadal nevhodný příhoz,
+      což na frontendu není)
+
+  FrontEnd:
+    Frontend je v podstatě skoro celý popsaný wireframem, jediné page, které se tam neobjevují jsou csv import a csv preview pages
+
+- Použité knihovny na backendu: Bcrypt, yaml.net
+- Použité knihovny na frontendu: papaparser
+- Doufám, že jsem zmínil všechno, ale pokud na mě budou nějaké otázky
+- nevím jestli se toto dá nazvat úplně dokumentací, spíš jde o popis ne nutně na první pohled jasných věcí a některých rozhodnutí
+
+
+# Stepanov Oleksandr
+# 23.5.2025
+
+     

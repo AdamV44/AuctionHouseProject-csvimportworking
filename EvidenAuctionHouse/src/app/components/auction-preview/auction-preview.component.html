@@ -1,0 +1,19 @@
+<div class="preview-container" [routerLink]="['/auctions', this.auction.id]">
+    <p>{{ auction.name }}</p>
+    <p>Od {{ auction.startDate | date:'dd.MM.yyyy HH:mm'}}</p>
+    <p>Do {{ auction.endDate | date:'dd.MM.yyyy HH:mm'}}</p>
+    <div *ngIf="this.authService.authenticatedUser.isAdmin" class="button-row" (click)="$event.stopPropagation()">
+        <button class="btns" (click)="this.onEditClicked()">Upravit</button>
+        <button class="btns" (click)="this.onDeleteClicked()">Smazat</button>
+    </div>
+</div>
+
+<!-- Delete Auction Dialog -->
+<app-delete-auction-dialog
+  [isVisible]="showDeleteDialog"
+  [auctionName]="auction.name"
+  [auctionId]="auction.id"
+  [auctionStartDate]="auction.startDate"
+  [auctionEndDate]="auction.endDate"
+  (result)="onDeleteResult($event)">
+</app-delete-auction-dialog>

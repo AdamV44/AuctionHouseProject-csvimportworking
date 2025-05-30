@@ -1,0 +1,300 @@
+:host {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
+  padding: 0;
+}
+
+// === FIXED BUTTONS STYLING ===
+.fixed-btn {
+  position: fixed;
+  right: 2rem;
+  width: 12rem;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  z-index: 1000;
+  
+  // Create Item button (top: 20vh)
+  &[style*="top: 20vh"] {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--text-white);
+    
+    .fas.fa-plus {
+      font-size: 1rem;
+      margin-right: 0.25rem;
+    }
+    
+    &:hover {
+      background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+      transform: translateY(-2px) translateX(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  
+  // Delete Items button (top: 30vh) 
+  &[style*="top: 30vh"] {
+    background: linear-gradient(135deg, var(--error), #dc2626);
+    color: var(--text-white);
+    
+    .fas.fa-trash-alt {
+      font-size: 1rem;
+      margin-right: 0.25rem;
+    }
+    
+    &:hover {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      transform: translateY(-2px) translateX(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  
+  // CSV Import button (top: 40vh)
+  &[style*="top: 40vh"] {
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+    color: var(--text-white);
+    
+    .fas.fa-file-csv {
+      font-size: 1rem;
+      margin-right: 0.25rem;
+    }
+    
+    &:hover {
+      background: linear-gradient(135deg, var(--secondary-hover), var(--secondary-color));
+      transform: translateY(-2px) translateX(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  
+  &:active {
+    transform: translateY(-1px) translateX(-2px);
+  }
+}
+
+// === LOADING CONTAINER ===
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 2rem;
+  
+  .loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    
+    .fas.fa-spinner {
+      font-size: 2rem;
+      color: var(--primary-color);
+      animation: spin 1s linear infinite;
+    }
+    
+    p {
+      color: var(--text-secondary);
+      font-size: var(--font-size-lg);
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+}
+
+// === AUTH REQUIRED SECTION ===
+.auth-required {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 2rem;
+  
+  .auth-message {
+    text-align: center;
+    background: var(--card-background);
+    border-radius: var(--radius-xl);
+    padding: 3rem 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    max-width: 500px;
+    
+    .fas.fa-lock {
+      font-size: 3rem;
+      color: var(--warning);
+      margin-bottom: 1.5rem;
+    }
+    
+    h3 {
+      color: var(--text-primary);
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+    }
+    
+    p {
+      color: var(--text-secondary);
+      font-size: var(--font-size-lg);
+      margin: 0 0 2rem 0;
+      line-height: 1.5;
+    }
+    
+    .btn.btn-primary {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      color: var(--text-white);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: var(--radius-lg);
+      font-weight: 600;
+      font-size: var(--font-size-lg);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      
+      .fas.fa-sign-in-alt {
+        font-size: 1rem;
+      }
+      
+      &:hover {
+        background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+      
+      &:active {
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
+// === RESPONSIVE DESIGN ===
+@media (max-width: 768px) {
+  .fixed-btn {
+    right: 1.5rem;
+    width: 10rem;
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-xs);
+    
+    .fas {
+      font-size: 0.875rem;
+    }
+  }
+  
+  .auth-required {
+    padding: 1rem;
+    
+    .auth-message {
+      padding: 2rem 1.5rem;
+      
+      .fas.fa-lock {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      h3 {
+        font-size: var(--font-size-xl);
+      }
+      
+      p {
+        font-size: var(--font-size-base);
+      }
+    }
+  }
+  
+  .loading-container {
+    padding: 1rem;
+    
+    .loading-spinner {
+      .fas.fa-spinner {
+        font-size: 1.5rem;
+      }
+      
+      p {
+        font-size: var(--font-size-base);
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .fixed-btn {
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    
+    // Skryje text, zobrazí jen ikonu
+    font-size: 0;
+    overflow: hidden;
+    
+    .fas {
+      font-size: 1.125rem;
+      margin: 0;
+    }
+    
+    &:hover {
+      transform: translateY(-2px) scale(1.1);
+    }
+  }
+  
+  .auth-required {
+    .auth-message {
+      padding: 1.5rem 1rem;
+      
+      .fas.fa-lock {
+        font-size: 2rem;
+      }
+      
+      h3 {
+        font-size: var(--font-size-lg);
+      }
+      
+      p {
+        font-size: var(--font-size-sm);
+        margin-bottom: 1.5rem;
+      }
+      
+      .btn.btn-primary {
+        padding: 0.875rem 1.5rem;
+        font-size: var(--font-size-base);
+      }
+    }
+  }
+}
+
+// === ANIMATIONS ===
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// === APP-ITEMS-LIST CONTAINER STYLING ===
+:host ::ng-deep app-items-list {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
+}

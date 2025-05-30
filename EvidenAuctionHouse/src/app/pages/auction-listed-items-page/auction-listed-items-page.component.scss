@@ -1,0 +1,701 @@
+:host {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
+  padding: 2rem 0;
+}
+
+// Header - MINIMALISTICKÝ DESIGN s bílým textem
+.header {
+  text-align: center;
+  margin: 2rem auto 3rem;
+  max-width: 800px;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, 
+    var(--primary-color) 0%, 
+    var(--primary-light) 100%);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  
+  // Jemný animovaný overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255,255,255,0.1), 
+      transparent);
+    transition: left 0.8s ease;
+    z-index: 1;
+  }
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+      
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  strong {
+    position: relative;
+    z-index: 2;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    display: block;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    letter-spacing: -0.01em;
+    
+    &::before {
+      content: '🏛️';
+      display: block;
+      font-size: 0.7em;
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 1px;
+    }
+  }
+}
+
+// Responsive design pro header
+@media (max-width: 768px) {
+  .header {
+    margin: 1rem auto 2rem;
+    padding: 2rem 1.5rem;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    strong {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      
+      &::before {
+        font-size: 0.6em;
+        margin-bottom: 0.3rem;
+      }
+      
+      &::after {
+        width: 40px;
+        bottom: -6px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1.5rem 1rem;
+    margin: 0.5rem auto 1.5rem;
+    
+    strong {
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      
+      &::after {
+        width: 30px;
+        height: 1.5px;
+        bottom: -5px;
+      }
+    }
+  }
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// === ITEMS GRID ===
+.items-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.item-card {
+  background: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+  }
+  
+  &.expanded {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary-color);
+    background: linear-gradient(135deg, var(--card-background), rgba(37, 99, 235, 0.02));
+    z-index: 5;
+    
+    .item-content {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .item-content {
+    margin-bottom: 1rem;
+    
+    h3 {
+      margin: 0 0 0.5rem 0;
+      color: var(--text-primary);
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+    }
+    
+    p {
+      margin: 0.25rem 0;
+      color: var(--text-secondary);
+      font-size: var(--font-size-sm);
+      
+      &:last-child {
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+    }
+  }
+  
+  .item-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    
+    .bid-btn {
+      background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+      color: var(--text-white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      
+      &::before {
+        content: '🔨';
+        font-size: 1.1rem;
+      }
+      
+      &:hover {
+        background: linear-gradient(135deg, var(--secondary-hover), var(--secondary-color));
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
+      }
+    }
+  }
+}
+
+// === EXPANDABLE BID SECTION ===
+.expanded-bid-section {
+  border-top: 2px dashed var(--secondary-color);
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(37, 99, 235, 0.02));
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  position: relative;
+  
+  .bid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    
+    h4 {
+      margin: 0;
+      color: var(--secondary-color);
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+    }
+    
+    .close-expanded {
+      background: var(--error);
+      color: var(--text-white);
+      border: none;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: var(--font-size-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background: var(--error-hover);
+        transform: scale(1.1);
+      }
+    }
+  }
+  
+  .current-price-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    
+    .price-label {
+      font-size: var(--font-size-base);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    
+    .price-value {
+      font-size: var(--font-size-xl);
+      font-weight: 800;
+      color: var(--primary-color);
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+  
+  .price-input-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    
+    // Stylování PriceInputComponent
+    :host ::ng-deep app-price-input {
+      .btn {
+        background: linear-gradient(135deg, var(--accent), var(--accent-hover)) !important;
+        color: var(--text-white) !important;
+        border: none !important;
+        border-radius: var(--radius-lg) !important;
+        font-size: var(--font-size-xl) !important;
+        width: 4rem !important;
+        height: 4rem !important;
+        font-weight: 700 !important;
+        box-shadow: var(--shadow-md) !important;
+        transition: all 0.3s ease !important;
+        
+        &:hover {
+          transform: translateY(-2px) scale(1.05) !important;
+          box-shadow: var(--shadow-lg) !important;
+        }
+      }
+      
+      .popup-overlay {
+        z-index: 9999 !important;
+      }
+      
+      .popup-modal {
+        background: var(--card-background) !important;
+        border-radius: var(--radius-xl) !important;
+        padding: 2rem !important;
+        box-shadow: var(--shadow-2xl) !important;
+        border: 1px solid var(--border-color) !important;
+        
+        input {
+          width: 100% !important;
+          padding: 1rem !important;
+          border: 2px solid var(--border-color) !important;
+          border-radius: var(--radius-md) !important;
+          font-size: var(--font-size-lg) !important;
+          text-align: center !important;
+          margin-bottom: 1rem !important;
+          
+          &:focus {
+            border-color: var(--secondary-color) !important;
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// === MODAL BACKUP ===
+.price-input-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .price-input-modal {
+    background: var(--card-background);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-2xl);
+    border: 1px solid var(--border-color);
+    
+    .price-input-modal-overlay.active & {
+      transform: scale(1);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: var(--font-size-xl);
+      cursor: pointer;
+      color: var(--text-muted);
+      
+      &:hover {
+        color: var(--text-primary);
+      }
+    }
+    
+    .modal-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      
+      h3 {
+        color: var(--text-primary);
+        margin: 0 0 0.5rem 0;
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+      }
+      
+      .item-name {
+        color: var(--text-secondary);
+        font-size: var(--font-size-base);
+        margin: 0;
+      }
+    }
+    
+    .modal-price-info {
+      margin-bottom: 2rem;
+      
+      .current-price-display {
+        text-align: center;
+        padding: 1rem;
+        background: var(--surface);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-color);
+        
+        .label {
+          font-size: var(--font-size-sm);
+          color: var(--text-secondary);
+          margin-bottom: 0.5rem;
+        }
+        
+        .price-amount {
+          font-size: var(--font-size-2xl);
+          font-weight: 800;
+          color: var(--primary-color);
+        }
+      }
+    }
+    
+    .modal-price-input {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+// Prázdná aukce
+.empty-auction {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--card-background);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  margin: 2rem auto;
+  max-width: 500px;
+  
+  &::before {
+    content: '📦';
+    display: block;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+  
+  p {
+    font-size: var(--font-size-xl);
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .back-to-auctions-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--text-white);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+    }
+  }
+}
+
+// Loading state podle #auction-list-page pattern
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  
+  .loading-spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+    margin: 0;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// === RESPONSIVE DESIGN ===
+@media (max-width: 768px) {
+  :host {
+    padding: 1rem 0;
+  }
+  
+  .header {
+    margin: 1rem auto 2rem;
+    padding: 2rem 1.5rem;
+    transform: none;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    strong {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      
+      &::before {
+        font-size: 0.6em;
+        margin-bottom: 0.3rem;
+      }
+    }
+  }
+  
+  .content-container {
+    padding: 0 1rem;
+  }
+  
+  .items-grid {
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .expanded-bid-section {
+    padding: 1rem;
+    
+    .current-price-info {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1.5rem 1rem;
+    margin: 0.5rem auto 1.5rem;
+    
+    strong {
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      
+      &::after {
+        width: 30px;
+        height: 1.5px;
+        bottom: -5px;
+      }
+    }
+  }
+  
+  .item-card {
+    padding: 1rem;
+    
+    &.expanded {
+      transform: none;
+    }
+  }
+  
+  .expanded-bid-section {
+    .bid-header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
+}
+
+// === NG-CONTAINER LAYOUT NA 1FR ===
+:host ::ng-deep ng-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+// === SKRYTÍ TLAČÍTEK PŘIHODIT POUZE NA TÉTO STRÁNCE ===
+:host ::ng-deep app-listed-item-preview-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  
+  // Skrytí všech tlačítek pro přihazování
+  app-listed-item-preview {
+    .item-actions,
+    .bid-btn,
+    .price-input-btn,
+    button[class*="bid"],
+    button[class*="price"],
+    app-price-input {
+      display: none !important;
+    }
+    
+    // Skrytí všech elementů obsahujících "přihodit" v textu
+    button:contains("přihodit"),
+    button:contains("Přihodit"),
+    button:contains("bid"),
+    button:contains("Bid") {
+      display: none !important;
+    }
+    
+    // Skrytí všech price input komponent
+    *[class*="price-input"],
+    *[class*="bid-input"] {
+      display: none !important;
+    }
+  }
+}
+
+// Fallback pro různé možné selektory tlačítek
+:host ::ng-deep {
+  // Skrytí všech tlačítek obsahujících price/bid/přihodit
+  button[class*="price"],
+  button[class*="bid"],
+  .price-btn,
+  .bid-btn,
+  .auction-bid-btn,
+  .item-bid-btn {
+    display: none !important;
+  }
+  
+  // Skrytí podle textového obsahu
+  button:has-text("přihodit"),
+  button:has-text("Přihodit"),
+  button:has-text("bid"),
+  button:has-text("Bid") {
+    display: none !important;
+  }
+  
+  // Skrytí PriceInput komponent
+  app-price-input,
+  .price-input-component,
+  .price-input-wrapper,
+  .bid-component {
+    display: none !important;
+  }
+}
+
+// === ALTERNATIVNÍ ŘEŠENÍ - SKRYTÍ PODLE STRUKTURY HTML ===
+:host ::ng-deep app-listed-item-preview {
+  // Skrytí posledního tlačítka v každém preview (obvykle bid tlačítko)
+  .item-actions button:last-child,
+  .actions-row button:last-child,
+  .preview-actions button:last-child {
+    display: none !important;
+  }
+  
+  // Skrytí všech formulářových elementů pro bidding
+  form[class*="bid"],
+  form[class*="price"],
+  .bid-form,
+  .price-form {
+    display: none !important;
+  }
+  
+  // Skrytí emoji 🔨 tlačítek (podle main.js pattern)
+  button::before {
+    content: none !important;
+  }
+  
+  button[class*="emoji"]::before,
+  button:has(::before) {
+    display: none !important;
+  }
+}
+
+// ... zbytek existujícího kódu zůstává nezměněn ...

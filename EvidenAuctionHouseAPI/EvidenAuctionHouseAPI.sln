@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvidenAuctionHouseAPI", "EvidenAuctionHouseAPI.csproj", "{B68E12CF-62C3-4352-AE50-A907EDC57D63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHandler", "..\dbLoader\DataHandler.csproj", "{B795ABD6-8454-DDDE-3F5A-6317042D95B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B68E12CF-62C3-4352-AE50-A907EDC57D63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B68E12CF-62C3-4352-AE50-A907EDC57D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B68E12CF-62C3-4352-AE50-A907EDC57D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B68E12CF-62C3-4352-AE50-A907EDC57D63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B795ABD6-8454-DDDE-3F5A-6317042D95B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B795ABD6-8454-DDDE-3F5A-6317042D95B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B795ABD6-8454-DDDE-3F5A-6317042D95B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B795ABD6-8454-DDDE-3F5A-6317042D95B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28618202-6B00-4229-A77C-3F7EDFC7DA75}
+	EndGlobalSection
+EndGlobal

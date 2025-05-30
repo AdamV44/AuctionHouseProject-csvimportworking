@@ -1,0 +1,13 @@
+<div *ngIf="this.loaded">
+
+    <app-auction-table [auctionPreviews]="auctionPreviewsOnPage"></app-auction-table>
+
+    <button 
+        *ngIf="this.authService.authenticatedUser?.isAdmin" 
+        class="create-auction-btn" 
+        [routerLink]="['/create-auction']">
+        <i class="fas fa-plus btn-icon"></i>
+        Vytvořit aukci
+    </button>
+
+</div>

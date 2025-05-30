@@ -1,0 +1,45 @@
+<div class="csv-preview-container">
+  <h2>Náhled CSV dat</h2>
+  <div *ngIf="data.length; else noData">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <!-- Základní sloupce - name a StartingPrice -->
+            <th *ngFor="let key of keys">{{ key }}</th>
+            <!-- Dodatečné parametry -->
+            <th *ngFor="let key of additionalKeys">{{ key }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of data">
+            <!-- Základní data z row objektu -->
+            <td *ngFor="let key of keys">{{ row[key] }}</td>
+            <!-- Dodatečné parametry z additionalParams -->
+            <td *ngFor="let key of additionalKeys">
+              {{ row.additionalParams?.get ? row.additionalParams.get(key) : row.additionalParams?.[key] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="submit-btn" (click)="onSubmit()">Odeslat do databáze</button>
+  </div>
+  <ng-template #noData>
+    <p>Žádná data k zobrazení.</p>
+  </ng-template>
+</div>
+
+<script>
+  // Z parseCSV metody v #main.js:
+  const item = {
+    name: Name,                    // základní vlastnost
+    StartingPrice: Number(StartingPrice), // základní vlastnost  
+    groupId: "1",                 // systémová vlastnost
+    additionalParams: {           // dodatečné parametry
+      "Material": "Bronze",
+      "Period": "Roman",
+      // ... další custom parametry
+    }
+  };
+</script>

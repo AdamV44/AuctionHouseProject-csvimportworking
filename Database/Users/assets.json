@@ -1,0 +1,30 @@
+[
+  {
+    "Id": "9d3cd1f2-fbc2-45da-afc8-5f45959ab9de",
+    "Name": "pepa",
+    "PasswordHash": "$2a$11$OqtHm7QENPMsnNJfSCWGNuIEtdZW8mQ5y/frC364ZhGXP8mZwdA36",
+    "Email": "werziwerzi113@gmail.com",
+    "isAdmin": true
+  },
+  {
+    "Id": "b16bff12-6a47-40b2-96c6-cbe3d1f6227f",
+    "Name": "hahahha",
+    "PasswordHash": "$2a$11$ioPKRizK5vAymy4EakYKm.0TS53g/FwHVDRFToxCbU3aRUIq8k6Je",
+    "Email": "todice8945@daxiake.com",
+    "isAdmin": false
+  },
+  {
+    "Id": "cb7afa83-ec77-4d7a-87a2-74cfbb27f79c",
+    "Name": "Adam Vitek",
+    "PasswordHash": "$2a$11$DWZq1SnJSQHAhdUAFiE9red06nUHIXJfxiRdvcafpmDltNIR0HdmO",
+    "Email": "xadamvitek@email.cz",
+    "isAdmin": true
+  },
+  {
+    "Id": "aa3069b4-a9ba-4162-b2ef-bd927e7c7aa1",
+    "Name": "Adam Vitek2",
+    "PasswordHash": "$2a$11$4PfL0wDK7MI/n3XZsU/bNevVQZW75C4HKRfW4w3y7MXElkia4s5s6",
+    "Email": "vitek.ad.2023@ssps.cz",
+    "isAdmin": false
+  }
+]

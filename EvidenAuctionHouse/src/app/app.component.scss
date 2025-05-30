@@ -1,0 +1,127 @@
+.navbar {
+  background-color: var(--card-background);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: 0.5rem 1.5rem; // Menší padding
+  
+  .navbar-collapse {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    
+    img {
+      height: 2.5rem; // Menší logo
+      width: auto;
+    }
+  }
+  
+  .nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; // Menší mezera
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: row; // Vynutí horizontální layout
+  }
+  
+  .nav-item {
+    display: flex;
+  }
+  
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem; // Menší padding
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--font-size-sm); // Menší font
+    
+    i {
+      font-size: 1em;
+    }
+    
+    &:hover, &.active {
+      color: var(--primary-color);
+      background-color: rgb(37 99 235 / 0.1);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+  }
+  
+  .user-link {
+    background-color: var(--surface);
+    border: 1px solid var(--border-color);
+    
+    &:hover, &.active {
+      background-color: var(--primary-color);
+      color: var(--text-white);
+      border-color: var(--primary-color);
+    }
+  }
+}
+
+// Responsive navbar
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+    
+    .navbar-collapse {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .nav-center {
+      order: 2;
+      width: 100%;
+    }
+    
+    .navbar-nav {
+      flex-direction: row; // Zůstává horizontální i na mobilu
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
+    }
+    
+    .user-link {
+      order: 3;
+    }
+    
+    .navbar-brand {
+      order: 1;
+      
+      img {
+        height: 2rem; // Ještě menší na mobilu
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    .navbar-nav {
+      gap: 0.75rem; // Menší mezera na malých obrazovkách
+    }
+    
+    .nav-link {
+      padding: 0.375rem 0.75rem;
+      font-size: var(--font-size-xs);
+    }
+  }
+}

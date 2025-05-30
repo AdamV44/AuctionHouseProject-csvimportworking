@@ -1,0 +1,21 @@
+<div class="csv-import-container" *ngIf="this.loaded">
+  <h1>CSV Import</h1>
+  <div class="type-row">
+    <label for="itemType" class="type-label">Typ položky:</label>
+    <select id="itemType" [(ngModel)]="this.selectedGroup" class="type-select">
+      <option *ngFor="let group of groups">{{ group.name }}</option>
+    </select>
+  </div>
+  <div
+    class="dropbox"
+    (drop)="onDrop($event)"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    [class.active]="isDragOver"
+  >
+    <span class="dropbox-text">
+      Přetáhněte CSV soubor sem<br>nebo <label for="fileInput" class="file-label">vyberte soubor</label>
+    </span>
+    <input id="fileInput" type="file" accept=".csv" (change)="onFileSelected($event)" hidden>
+  </div>
+</div>

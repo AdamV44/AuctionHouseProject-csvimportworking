@@ -1,0 +1,13 @@
+.form-container {
+    display: flex;
+    flex-direction: column; /* Položky se skládají pod sebe */
+    justify-content: center; /* Svislé zarovnání na střed */
+    align-items: center; /* Horizontální zarovnání na střed */
+    gap: 40px; /* Mezera mezi položkami */
+}
+
+.boxes {
+    text-align: center; /* Zarovnání textu na střed */
+    border-radius: 15px; /* Zaoblení rohů */
+    width: 45vh;
+}

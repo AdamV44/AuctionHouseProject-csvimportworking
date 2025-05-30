@@ -1,0 +1,71 @@
+$email-landing-page-container-padding: 40px;
+$email-landing-page-container-max-width: 500px;
+$email-landing-page-container-margin: 40px auto;
+$email-landing-page-container-border-radius: 8px;
+$email-landing-page-container-background-color: white;
+$email-landing-page-container-color: #333;
+$email-landing-page-container-font-family: 'Arial', sans-serif;
+$email-landing-page-container-box-shadow: none;
+$email-landing-page-container-gap: 20px;
+
+$primary: #f57c00;
+$primary-dark: darken($primary, 10%);
+$white: #fff;
+$radius: 8px;
+$max-width: 400px;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: $white;
+
+  .email-landing-page-container {
+    width: 100%;
+    max-width: $max-width;
+    padding: 2rem;
+    background: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: $radius;
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: $primary;
+      margin-bottom: 1rem;
+    }
+
+    p {
+        margin-top: 5%;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      color: #333;
+      text-align: center;
+    }
+
+    a, .btn-link {
+      display: inline-block;
+      width: 100%;
+      padding: 0.75rem;
+      background: $primary;
+      color: $white;
+      border: none;
+      border-radius: $radius;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.2s ease;
+
+      &:hover, &:focus {
+        background: $primary-dark;
+        outline: none;
+      }
+    }
+  }
+}

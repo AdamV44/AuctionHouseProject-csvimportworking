@@ -1,0 +1,7 @@
+<div class="email-confirmation-container">
+<h1>Ověření e-mailu</h1>
+<p>Ověřovací odkaz byl odeslán na vaši e-mailovou adresu.</p>
+<button type="submit" (click)="this.onConfirm()" >Pokračovat</button>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+</div>

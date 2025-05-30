@@ -1,0 +1,56 @@
+Database:
+  AuctionItems:
+    - Id
+    - Name
+    - Pictures:
+    - StartingPrice
+    - GroupId
+    - AuctionId
+    - AdditionalParamsValues:
+    - Assets: \AuctionItems\assets.json
+  Users:
+    - Id
+    - Name
+    - Email
+    - PasswordHash
+    - isAdmin
+    - Assets: \Users\assets.json
+  Auctions: 
+    - Id
+    - Name
+    - StartDate
+    - EndDate
+    - Assets: \Auctions\assets.json
+  Bids:
+    - Id
+    - AuctionItemId
+    - UserId
+    - AmountAdded
+    - Date
+    - Assets: \Bids\assets.json
+  ItemGroups:
+    - Id
+    - Name
+    - AdditionalParamsKeys:
+    - Assets: \ItemGroups\assets.json
+  RegisterAttempts:
+    - Id
+    - Name
+    - Email
+    - PasswordHash
+    - Token
+    - Assets: \RegisterAttempts\assets.json
+BidLimits:
+  minBid: 0
+  maxBid: 2000
+SMTPConfig:
+  User: itsupport@evidencz.com
+  Password: itsupportITSUPPORT123
+  Server: email.active24.com
+  Port: 587
+ImagePaths:
+  AuctionItemImages: "~/images/auction-items/"
+  UserAvatars: "~/images/users/"
+  CategoryImages: "~/images/categories/"
+  DefaultImage: "~/images/default/no-image.jpg"
+

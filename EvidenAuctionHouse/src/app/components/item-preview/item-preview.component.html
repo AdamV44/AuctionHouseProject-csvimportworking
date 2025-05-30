@@ -1,0 +1,6 @@
+<div class="preview-container">
+    <div>{{ this.utility.formatString(item.name) }}</div>
+    <div *ngIf="!this.item.auctionId">Nevystaveno</div>
+    <div *ngIf="this.item.auctionId">Vystaveno v aukci</div>
+    
+</div>

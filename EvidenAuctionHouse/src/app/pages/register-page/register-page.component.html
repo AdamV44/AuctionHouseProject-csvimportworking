@@ -1,0 +1,11 @@
+<div class="registration-container">
+  <h1>REGISTRACE</h1>
+  <input type="name" placeholder="Jméno a příjmení" [(ngModel)]="name">
+  <input type="email" placeholder="Email" [(ngModel)]="email">
+  <input type="password" placeholder="Password" [(ngModel)]="password">
+  <input type="password" placeholder="Password" [(ngModel)]="confPassword">
+  <button (click)="onRegister()">Registrace</button>
+  <p class="loginLink">
+    Jste už přihlášeni? <a [routerLink]="['/']">Přihlásit se</a>
+  </p>
+</div>

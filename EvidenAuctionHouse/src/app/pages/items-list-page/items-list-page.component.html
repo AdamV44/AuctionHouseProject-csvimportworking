@@ -1,0 +1,56 @@
+<!-- Přesně podle #main.js fungující verze -->
+<div *ngIf="this.loaded && this.authService.authenticatedUser">
+  <app-items-list 
+    [items]="this.itemsOnPage" 
+    (selectedItemsEmitter)="getSelected($event)">
+  </app-items-list>
+
+  <!-- Admin tlačítka - PŘESNĚ PODLE MAIN.JS -->
+  <button 
+    *ngIf="this.authService.authenticatedUser.isAdmin" 
+    class="fixed-btn" 
+    style="top: 20vh;" 
+    (click)="this.router.navigate(['/create-item'])">
+    <i class="fas fa-plus"></i>
+    vytvořit položku
+  </button>
+  
+  <button 
+    *ngIf="this.authService.authenticatedUser.isAdmin"
+    class="fixed-btn" 
+    style="top: 30vh;" 
+    (click)="onDelete()">
+    <i class="fas fa-trash-alt"></i>
+    Smazat položky
+  </button>
+  
+  <button
+    *ngIf="this.authService.authenticatedUser.isAdmin"
+    class="fixed-btn" 
+    style="top: 40vh;" 
+    (click)="onCSV()">
+    <i class="fas fa-file-csv"></i>
+    CSV import
+  </button>
+</div>
+
+<!-- Loading state -->
+<div *ngIf="!this.loaded" class="loading-container">
+  <div class="loading-spinner">
+    <i class="fas fa-spinner fa-spin"></i>
+    <p>Načítání položek...</p>
+  </div>
+</div>
+
+<!-- Not authenticated -->
+<div *ngIf="this.loaded && !this.authService.authenticatedUser" class="auth-required">
+  <div class="auth-message">
+    <i class="fas fa-lock"></i>
+    <h3>Přihlášení vyžadováno</h3>
+    <p>Pro zobrazení položek se musíte přihlásit.</p>
+    <button class="btn btn-primary" (click)="router.navigate(['/login'])">
+      <i class="fas fa-sign-in-alt"></i>
+      Přihlásit se
+    </button>
+  </div>
+</div>

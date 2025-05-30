@@ -1,0 +1,34 @@
+<div class="detail-container" *ngIf="this.loaded">
+  <!-- Textové informace vlevo -->
+  <div class="info-container">
+    <div class="header"><strong>{{ this.item?.name }}</strong></div>
+    <div class="info-row">Počáteční cena: {{ this.item?.startingPrice }} Kč</div>
+    <div class="info-row">Momentální cena: {{ this.itemPrice }} Kč</div>
+    <div class="info-row">Nejvyšší příhoz: {{ this.highestBidderName }}</div>
+    <div class="params-grid">
+      <div *ngFor="let entry of item?.additionalParams | keyvalue" class="info-row">
+        <strong>{{ entry.key }}:</strong> {{ entry.value }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Carousel s obrázky vpravo -->
+  <div class="carousel-box">
+    <ng-container>
+      <div class="carousel-img-wrapper">
+        <img [src]="this.imgsUrls[currentImageIndex]" class="carousel-img" alt="Obrázky nenalezeny" />
+        <button class="carousel-arrow left" (click)="nextImage()">&lt;</button>
+        <button class="carousel-arrow right" (click)="nextImage()">&gt;</button>
+      </div>
+      <div class="carousel-indicator">
+        {{ currentImageIndex + 1 }}/{{ imgsUrls.length }}
+      </div>
+      <app-price-input 
+        *ngIf="this.item.auctionId" 
+        class="price-input" 
+        [auctionItemId]="this.item.id" 
+        [itemPrice]="this.itemPrice"></app-price-input>
+    </ng-container>
+    
+  </div>
+</div>

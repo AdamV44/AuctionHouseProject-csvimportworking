@@ -1,0 +1,806 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\auctionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\auctionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\bidscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\bidscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\dbmanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\dbmanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\itemgroupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\itemgroupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\models\\passwordchangedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:models\\passwordchangedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\services\\registrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:services\\registrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\services\\tokensservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:services\\tokensservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\models\\credentials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:models\\credentials.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\models\\auctioncreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:models\\auctioncreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\auctionitemspicturescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\auctionitemspicturescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\services\\fileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:services\\fileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\datasetlock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\collections\\dataset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\iohandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\auctionhousedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\yamlreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\yamlparsingobjects\\root.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\registerattempt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\models\\registrationinformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:models\\registrationinformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\auctionitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\auctionitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\models\\bidcreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:models\\bidcreationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\models\\authenticateduserinformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:models\\authenticateduserinformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\models\\authenticationresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:models\\authenticationresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\auctionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\yamlparsingobjects\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\attributes\\secureduserattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:attributes\\secureduserattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\attributes\\securedadminattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:attributes\\securedadminattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\yamlparsingobjects\\smtpconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\bid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\itemgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B795ABD6-8454-DDDE-3F5A-6317042D95B8}|..\\dbLoader\\DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\iidentifyable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\evidenauctionhouseapi\\evidenauctionhouseapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B68E12CF-62C3-4352-AE50-A907EDC57D63}|EvidenAuctionHouseAPI.csproj|solutionrelative:evidenauctionhouseapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Bid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\AuctionItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YamlReader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\ItemGroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PasswordChangeDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\PasswordChangeDTO.cs",
+              "RelativeDocumentMoniker": "Models\\PasswordChangeDTO.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\PasswordChangeDTO.cs",
+              "RelativeToolTip": "Models\\PasswordChangeDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T17:34:31.399Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RegistrationService.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Services\\RegistrationService.cs",
+              "RelativeDocumentMoniker": "Services\\RegistrationService.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Services\\RegistrationService.cs",
+              "RelativeToolTip": "Services\\RegistrationService.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC8AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T16:13:37.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ItemGroupsController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\ItemGroupsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ItemGroupsController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\ItemGroupsController.cs",
+              "RelativeToolTip": "Controllers\\ItemGroupsController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T13:53:51.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DbManagerController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\DbManagerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DbManagerController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\DbManagerController.cs",
+              "RelativeToolTip": "Controllers\\DbManagerController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T11:33:38.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BidsController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\BidsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BidsController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\BidsController.cs",
+              "RelativeToolTip": "Controllers\\BidsController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAACoAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T13:40:12.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "Controllers\\AuthenticationController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA6wB0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T10:46:29.45Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuctionsController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\AuctionsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuctionsController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\AuctionsController.cs",
+              "RelativeToolTip": "Controllers\\AuctionsController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAlwD4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T13:49:05.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TokensService.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Services\\TokensService.cs",
+              "RelativeDocumentMoniker": "Services\\TokensService.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Services\\TokensService.cs",
+              "RelativeToolTip": "Services\\TokensService.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAACYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T10:59:45.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Services\\EmailService.cs",
+              "RelativeToolTip": "Services\\EmailService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAApwBsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T16:00:22.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Credentials.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\Credentials.cs",
+              "RelativeDocumentMoniker": "Models\\Credentials.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\Credentials.cs",
+              "RelativeToolTip": "Models\\Credentials.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T09:21:37.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuctionCreationDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\AuctionCreationDTO.cs",
+              "RelativeDocumentMoniker": "Models\\AuctionCreationDTO.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\AuctionCreationDTO.cs",
+              "RelativeToolTip": "Models\\AuctionCreationDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T10:47:38.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuctionItemsPicturesController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\AuctionItemsPicturesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuctionItemsPicturesController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\AuctionItemsPicturesController.cs",
+              "RelativeToolTip": "Controllers\\AuctionItemsPicturesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T13:52:24.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FileService.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Services\\FileService.cs",
+              "RelativeDocumentMoniker": "Services\\FileService.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Services\\FileService.cs",
+              "RelativeToolTip": "Services\\FileService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T14:15:37.49Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DataSetLock.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\DataSetLock.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\DataSetLock.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\DataSetLock.cs",
+              "RelativeToolTip": "..\\dbLoader\\DataSetLock.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T13:22:34.123Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DataSet.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Collections\\DataSet.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\Collections\\DataSet.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Collections\\DataSet.cs",
+              "RelativeToolTip": "..\\dbLoader\\Collections\\DataSet.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T08:19:31.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IOHandler.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\IOHandler.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\IOHandler.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\IOHandler.cs",
+              "RelativeToolTip": "..\\dbLoader\\IOHandler.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAAAsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T08:58:03.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AuctionHouseDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\AuctionHouseDatabase.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\AuctionHouseDatabase.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\AuctionHouseDatabase.cs",
+              "RelativeToolTip": "..\\dbLoader\\AuctionHouseDatabase.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAowC0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T13:33:29.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAADcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T13:55:10.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Program.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\Program.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Program.cs",
+              "RelativeToolTip": "..\\dbLoader\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T13:33:20.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "YamlReader.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlReader.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\YamlReader.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlReader.cs",
+              "RelativeToolTip": "..\\dbLoader\\YamlReader.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAACQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T13:33:16.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Root.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\Root.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\YamlParsingObjects\\Root.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\Root.cs",
+              "RelativeToolTip": "..\\dbLoader\\YamlParsingObjects\\Root.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T08:06:10.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "RegisterAttempt.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\RegisterAttempt.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\Models\\RegisterAttempt.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\RegisterAttempt.cs",
+              "RelativeToolTip": "..\\dbLoader\\Models\\RegisterAttempt.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T15:21:04.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "RegistrationController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\RegistrationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RegistrationController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\RegistrationController.cs",
+              "RelativeToolTip": "Controllers\\RegistrationController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAiwCMAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T16:11:33.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "RegistrationInformation.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\RegistrationInformation.cs",
+              "RelativeDocumentMoniker": "Models\\RegistrationInformation.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\RegistrationInformation.cs",
+              "RelativeToolTip": "Models\\RegistrationInformation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T11:17:18.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AuctionItemsController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\AuctionItemsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuctionItemsController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\AuctionItemsController.cs",
+              "RelativeToolTip": "Controllers\\AuctionItemsController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T14:05:49.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AuthenticatedUserInformation.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\AuthenticatedUserInformation.cs",
+              "RelativeDocumentMoniker": "Models\\AuthenticatedUserInformation.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\AuthenticatedUserInformation.cs",
+              "RelativeToolTip": "Models\\AuthenticatedUserInformation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T07:51:39.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AuthenticationResult.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\AuthenticationResult.cs",
+              "RelativeDocumentMoniker": "Models\\AuthenticationResult.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\AuthenticationResult.cs",
+              "RelativeToolTip": "Models\\AuthenticationResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T09:24:49.229Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "BidCreationDTO.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\BidCreationDTO.cs",
+              "RelativeDocumentMoniker": "Models\\BidCreationDTO.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Models\\BidCreationDTO.cs",
+              "RelativeToolTip": "Models\\BidCreationDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-23T11:40:22.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AuctionItem.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\AuctionItem.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\Models\\AuctionItem.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\AuctionItem.cs",
+              "RelativeToolTip": "..\\dbLoader\\Models\\AuctionItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T13:41:44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Auction.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\Auction.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\Models\\Auction.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\Auction.cs",
+              "RelativeToolTip": "..\\dbLoader\\Models\\Auction.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvxgAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T13:41:47.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Database.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\Database.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\YamlParsingObjects\\Database.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\Database.cs",
+              "RelativeToolTip": "..\\dbLoader\\YamlParsingObjects\\Database.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T08:06:14.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAADoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T09:48:56.919Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "SecuredUserAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Attributes\\SecuredUserAttribute.cs",
+              "RelativeDocumentMoniker": "Attributes\\SecuredUserAttribute.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Attributes\\SecuredUserAttribute.cs",
+              "RelativeToolTip": "Attributes\\SecuredUserAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T09:39:03.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\User.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\User.cs",
+              "RelativeToolTip": "..\\dbLoader\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:05:03.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "SecuredAdminAttribute.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Attributes\\SecuredAdminAttribute.cs",
+              "RelativeDocumentMoniker": "Attributes\\SecuredAdminAttribute.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Attributes\\SecuredAdminAttribute.cs",
+              "RelativeToolTip": "Attributes\\SecuredAdminAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T09:50:03.432Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "SMTPConfig.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\SMTPConfig.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\YamlParsingObjects\\SMTPConfig.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\SMTPConfig.cs",
+              "RelativeToolTip": "..\\dbLoader\\YamlParsingObjects\\SMTPConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-22T15:51:06.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T11:32:46.791Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Bid.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\Bid.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\Models\\Bid.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\Bid.cs",
+              "RelativeToolTip": "..\\dbLoader\\Models\\Bid.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBIAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T13:41:41.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ItemGroup.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\ItemGroup.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\Models\\ItemGroup.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\ItemGroup.cs",
+              "RelativeToolTip": "..\\dbLoader\\Models\\ItemGroup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T12:08:06.326Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "IIdentifyable.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\IIdentifyable.cs",
+              "RelativeDocumentMoniker": "..\\dbLoader\\Models\\IIdentifyable.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\IIdentifyable.cs",
+              "RelativeToolTip": "..\\dbLoader\\Models\\IIdentifyable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T09:09:31.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "EvidenAuctionHouseAPI.csproj",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\EvidenAuctionHouseAPI.csproj",
+              "RelativeDocumentMoniker": "EvidenAuctionHouseAPI.csproj",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\EvidenAuctionHouseAPI\\EvidenAuctionHouseAPI.csproj",
+              "RelativeToolTip": "EvidenAuctionHouseAPI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-19T13:28:08.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAHkIAAAAAAAAAAAMwI0IAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-05-19T13:28:56.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "AuctionItem.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\AuctionItem.cs",
+              "RelativeDocumentMoniker": "..\\yamlHandler\\YmlNodes\\AuctionItem.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\AuctionItem.cs",
+              "RelativeToolTip": "..\\yamlHandler\\YmlNodes\\AuctionItem.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T14:56:51.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Database.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Database.cs",
+              "RelativeDocumentMoniker": "..\\yamlHandler\\YmlNodes\\Database.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Database.cs",
+              "RelativeToolTip": "..\\yamlHandler\\YmlNodes\\Database.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T14:56:34.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "YamlReader.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YamlReader.cs",
+              "RelativeDocumentMoniker": "..\\yamlHandler\\YamlReader.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YamlReader.cs",
+              "RelativeToolTip": "..\\yamlHandler\\YamlReader.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T14:25:43.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "ItemGroup.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\ItemGroup.cs",
+              "RelativeDocumentMoniker": "..\\yamlHandler\\ItemGroup.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\ItemGroup.cs",
+              "RelativeToolTip": "..\\yamlHandler\\ItemGroup.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T14:25:41.761Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Config.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Config.cs",
+              "RelativeDocumentMoniker": "..\\yamlHandler\\YmlNodes\\Config.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Config.cs",
+              "RelativeToolTip": "..\\yamlHandler\\YmlNodes\\Config.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T14:57:28.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\User.cs",
+              "RelativeDocumentMoniker": "..\\yamlHandler\\YmlNodes\\User.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\User.cs",
+              "RelativeToolTip": "..\\yamlHandler\\YmlNodes\\User.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:30:51.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\Program.cs",
+              "RelativeDocumentMoniker": "..\\yamlHandler\\Program.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\Program.cs",
+              "RelativeToolTip": "..\\yamlHandler\\Program.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T14:25:12.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Auction.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Auction.cs",
+              "RelativeDocumentMoniker": "..\\yamlHandler\\YmlNodes\\Auction.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Auction.cs",
+              "RelativeToolTip": "..\\yamlHandler\\YmlNodes\\Auction.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:31:05.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Bid.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Bid.cs",
+              "RelativeDocumentMoniker": "..\\yamlHandler\\YmlNodes\\Bid.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\yamlHandler\\YmlNodes\\Bid.cs",
+              "RelativeToolTip": "..\\yamlHandler\\YmlNodes\\Bid.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T15:31:23.303Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+<div 
+  *ngIf="isVisible" 
+  class="price-input-overlay"
+  (click)="onOverlayClick($event)"
+  (keydown)="onKeyDown($event)"
+  tabindex="0">
+  
+  <div class="price-input-dialog">
+    <div class="dialog-header">
+      <div class="header-content">
+        <div class="dialog-icon icon-money">
+          <i class="fas fa-money-bill-wave"></i>
+        </div>
+        <h3 class="dialog-title">{{ title }}</h3>
+      </div>
+      <button class="close-btn" (click)="onCancel()" aria-label="Zavřít">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="dialog-body">
+      <div class="price-info">
+        <div class="current-price">
+          <span class="label">Aktuální cena:</span>
+          <span class="value">{{ currentPrice }} Kč</span>
+        </div>
+        <div class="minimum-bid" *ngIf="minimumBid > 0">
+          <span class="label">Minimální příhoz:</span>
+          <span class="value">{{ minimumBid }} Kč</span>
+        </div>
+        <!-- Přidej preview nové ceny -->
+        <div class="new-price-preview" *ngIf="inputValue > 0">
+          <span class="label">Nová celková cena:</span>
+          <span class="value new-total">{{ currentPrice + inputValue }} Kč</span>
+        </div>
+      </div>
+
+      <div class="input-section">
+        <label for="priceInput" class="input-label">
+          Váš příhoz: <!-- Změň label pro jasnost -->
+        </label>
+        <div class="input-group">
+          <span class="input-prefix">+</span> <!-- Přidej + symbol -->
+          <input 
+            id="priceInput"
+            type="number" 
+            class="form-control"
+            [(ngModel)]="inputValue"
+            [min]="minimumBid"
+            placeholder="Zadejte příhoz"
+            autofocus>
+          <span class="input-suffix">Kč</span>
+        </div>
+        
+        <div *ngIf="errorMessage" class="error-message">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-footer">
+      <button 
+        class="btn btn-secondary cancel-btn" 
+        (click)="onCancel()"
+        type="button">
+        <i class="fas fa-times"></i>
+        Zrušit
+      </button>
+      
+      <button 
+        class="btn btn-primary confirm-btn"
+        (click)="onConfirm()"
+        type="button"
+        [disabled]="!inputValue || inputValue <= 0">
+        <i class="fas fa-arrow-right"></i>
+        Pokračovat
+      </button>
+    </div>
+  </div>
+</div>

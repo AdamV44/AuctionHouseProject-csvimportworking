@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "",
+    "Name": "pepa",
+    "Email": "werziwerzi113@gmail.com",
+    "PasswordHash": "$2a$11$OqtHm7QENPMsnNJfSCWGNuIEtdZW8mQ5y/frC364ZhGXP8mZwdA36",
+    "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NDc5OTgyOTh9.XWoKkOVkZBGGdOJwzHNri5ETyrNlN3Z9v8zxoTJ96lo",
+    "TimeStamp": "2025-05-27T09:17:00.3212699+02:00"
+  },
+  {
+    "Id": "",
+    "Name": "hahahha",
+    "Email": "todice8945@daxiake.com",
+    "PasswordHash": "$2a$11$ioPKRizK5vAymy4EakYKm.0TS53g/FwHVDRFToxCbU3aRUIq8k6Je",
+    "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NDgwMTQ3NjB9.Xgv8VvbqwfUyTbcMJGmA8xk9FLZsrpy_9g8rwboAXhg",
+    "TimeStamp": "2025-05-27T09:17:00.3226234+02:00"
+  },
+  {
+    "Id": "1dc5ff9a-f41a-47ab-949d-ed6b8c9190c0",
+    "Name": "asd",
+    "Email": "asd",
+    "PasswordHash": "$2a$11$PDG5LCjmM.8SzQGSyEygeecfNUSKYmdDwZ5zmp07fZqaMwSxP9sGu",
+    "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NDgzMzExMjB9.A9OrIb6B5eUCAoor3YRARyvWNbOY2_uLI5FHifeL3HE",
+    "TimeStamp": "2025-05-27T09:17:00.3226419+02:00"
+  },
+  {
+    "Id": "e76f9bc3-228c-426c-bb32-84c444c013d1",
+    "Name": "Adam Vitek",
+    "Email": "xadamvitek@email.cz",
+    "PasswordHash": "$2a$11$5Nz4CL7c73kAV4tNm8yebeKf40nHUy55ZwRo9635Jn0ARka2IB0vy",
+    "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NDgzMzI4ODl9.o7qdlDmT8y4yCH1RtvlZcMIMNf0PbEQ1mV75elMdkBk",
+    "TimeStamp": "2025-05-27T09:46:29.497711+02:00"
+  },
+  {
+    "Id": "26190aaf-7a93-4cb2-8a33-eecaabda499f",
+    "Name": "Adam Vitek2",
+    "Email": "vitek.ad.2023@ssps.cz",
+    "PasswordHash": "$2a$11$4PfL0wDK7MI/n3XZsU/bNevVQZW75C4HKRfW4w3y7MXElkia4s5s6",
+    "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NDg0MTY1MTh9.ibq9N0gIhgrD-ChKi-ZRhmkEkIJuqpe898N4I9OOmM0",
+    "TimeStamp": "2025-05-28T09:00:18.6421518+02:00"
+  }
+]

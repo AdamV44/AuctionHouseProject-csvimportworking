@@ -1,0 +1,27 @@
+<div *ngIf="this.loaded" class="form-container">
+    <p>Create item</p>
+    <input type="text" [(ngModel)]="this.itemName" placeholder="item name" class="boxes">
+    <input type="text" [(ngModel)]="this.startingPrice" placeholder="starting price" class="boxes">
+    <select class="boxes" [(ngModel)]="selectedGroup" (change)="onSelectionChange($event)" [ngModel]="selectedGroup.name">
+        <option *ngFor="let group of groups">{{ group.name }}</option>
+    </select>
+
+    <input 
+        type="text" 
+        *ngFor="let param of selectedGroup.additionalParamsKeys"
+        placeholder="{{ param }}" 
+        class="boxes"
+        [(ngModel)]="paramValues[param]">
+
+    <div 
+        class="drag-drop-area" 
+        (dragover)="onDragOver($event)" 
+        (dragleave)="onDragLeave($event)" 
+        (drop)="onDrop($event)">
+        <p>Item pictures</p>
+    </div>
+    <p *ngFor="let file of loadedFiles" style="font-size: small;">{{ file.name }}</p>
+    
+
+    <app-confirmation style="margin-bottom: 20px;" (result)="onConfirmation($event)"></app-confirmation>
+</div>

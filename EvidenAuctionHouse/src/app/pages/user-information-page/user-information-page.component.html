@@ -1,0 +1,13 @@
+<div class="settings-container">
+  <h2>Nastavení uživatele</h2>
+  <div class="user-info">
+    <div><span class="label">Jméno:</span> {{ user.name }}</div>
+    <div><span class="label">Email:</span> {{ user.email }}</div>
+  </div>
+  <div class="button-row">
+    <button (click)="logout()">Odhlásit se</button>
+    <button [routerLink]="['/user-password-change']">
+      Změna hesla
+    </button>
+  </div>
+</div>

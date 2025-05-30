@@ -1,0 +1,30 @@
+<div *ngIf="this.item && this.loaded" class="item-container" style="cursor: pointer;" [routerLink]="['/items', item.id]">
+    
+    <!-- SEKCE NÁZVU A INFO -->
+    <div class="item-info">
+        <p class="item-name">{{ this.stringHelper.formatString(this.item.name) }}</p>
+        <p class="item-details">Startovní cena: {{ this.item.startingPrice }} Kč</p>
+    </div>
+    
+    <!-- SEKCE PŘÍHOZU -->
+    <div class="bid-info">
+        <div class="max-bid">
+            <span class="amount">{{ this.itemPrice }}</span>
+            <span class="currency">Kč</span>
+        </div>
+        <p class="bidder-name" [class.no-bid]="!this.highestBidderName || this.highestBidderName === 'Nikdo'">
+            {{ this.highestBidderName || 'Zatím žádné příhozy' }}
+        </p>
+    </div>
+    
+    <!-- SEKCE TLAČÍTKA -->
+    <div class="bid-action" (click)="$event.stopPropagation()">
+        <app-price-input
+            [auctionItemId]="this.item.id"
+            [itemPrice]="this.itemPrice"
+            [startingPrice]="this.item.startingPrice"
+            (result)="onBidResult($event)"
+        ></app-price-input>
+    </div>
+    
+</div>

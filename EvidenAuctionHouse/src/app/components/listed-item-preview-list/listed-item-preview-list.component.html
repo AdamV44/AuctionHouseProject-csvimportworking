@@ -1,0 +1,9 @@
+<div class="grid-container" *ngIf="this.listedItems.length > 0">
+  <app-listed-item-preview 
+      *ngFor="let listedItem of listedItems" 
+      [item]="listedItem"
+      >
+  </app-listed-item-preview>
+</div>
+
+<div *ngIf="this.listedItems.length == 0">Prázdná aukce</div>

@@ -1,0 +1,56 @@
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\bin\Debug\net8.0\DataHandler.exe
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\bin\Debug\net8.0\DataHandler.deps.json
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\bin\Debug\net8.0\DataHandler.runtimeconfig.json
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\bin\Debug\net8.0\DataHandler.dll
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\bin\Debug\net8.0\DataHandler.pdb
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\bin\Debug\net8.0\YamlDotNet.dll
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHandler.csproj.AssemblyReference.cache
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHandler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHandler.AssemblyInfoInputs.cache
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHandler.AssemblyInfo.cs
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHandler.csproj.CoreCompileInputs.cache
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHand.4CAFDB4D.Up2Date
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHandler.dll
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\refint\DataHandler.dll
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHandler.pdb
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHandler.genruntimeconfig.cache
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\ref\DataHandler.dll
+C:\Users\sasas\OneDrive\Plocha\projekt_praxe\dbLoader\obj\Debug\net8.0\DataHandler.sourcelink.json
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\bin\Debug\net8.0\DataHandler.exe
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\bin\Debug\net8.0\DataHandler.deps.json
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\bin\Debug\net8.0\DataHandler.runtimeconfig.json
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\bin\Debug\net8.0\DataHandler.dll
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\bin\Debug\net8.0\DataHandler.pdb
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\bin\Debug\net8.0\Newtonsoft.Json.dll
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\bin\Debug\net8.0\YamlDotNet.dll
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHandler.csproj.AssemblyReference.cache
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHandler.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHandler.AssemblyInfoInputs.cache
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHandler.AssemblyInfo.cs
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHandler.csproj.CoreCompileInputs.cache
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHandler.sourcelink.json
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHand.4CAFDB4D.Up2Date
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHandler.dll
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\refint\DataHandler.dll
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHandler.pdb
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\DataHandler.genruntimeconfig.cache
+c:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject\dbLoader\obj\Debug\net8.0\ref\DataHandler.dll
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\bin\Debug\net8.0\DataHandler.exe
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\bin\Debug\net8.0\DataHandler.deps.json
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\bin\Debug\net8.0\DataHandler.runtimeconfig.json
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\bin\Debug\net8.0\DataHandler.dll
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\bin\Debug\net8.0\DataHandler.pdb
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\bin\Debug\net8.0\YamlDotNet.dll
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\DataHandler.csproj.AssemblyReference.cache
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\DataHandler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\DataHandler.AssemblyInfoInputs.cache
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\DataHandler.AssemblyInfo.cs
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\DataHandler.csproj.CoreCompileInputs.cache
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\DataHand.4CAFDB4D.Up2Date
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\DataHandler.dll
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\refint\DataHandler.dll
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\DataHandler.pdb
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\DataHandler.genruntimeconfig.cache
+C:\Users\Ondra\OneDrive - Smíchovská střední průmyslová škola a gymnázium\PVA\pp\Casino_SK1\Casino_SK1\AuctionHouseProject-csvimportworking\dbLoader\obj\Debug\net8.0\ref\DataHandler.dll

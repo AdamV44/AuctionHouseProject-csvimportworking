@@ -1,0 +1,13 @@
+
+
+<div *ngIf="this.loaded" class="popup-overlay">
+  <div class="popup-modal">
+    <p 
+        style="text-align: center;"
+        *ngIf="!this.selectableItems || this.selectableItems.length == 0">Žádné věci k vybrání (vše je buď prodané, nebo již vystavené)</p>
+    <div class="items-list-scroll">
+      <app-items-list [selectedItemsInput]="this.selectedItems" [items]="this.selectableItems" (selectedItemsEmitter)="getSelected($event)"></app-items-list>
+    </div>
+    <app-confirmation (result)="onConfirmation($event)" style="align-self: center;"></app-confirmation>
+  </div>
+</div>

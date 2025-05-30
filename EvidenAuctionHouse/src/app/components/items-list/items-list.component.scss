@@ -1,0 +1,23 @@
+.table-container {
+  display: grid;
+  
+  grid-template-columns: 80vh 80vh;;
+  margin-left: 5vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  gap: 3vh;
+}
+
+/* Zvětšení checkboxu */
+input[type="checkbox"] {
+    width: 4vh;
+    height: 4vh;
+    accent-color: #ffa500; // volitelné, změní barvu zaškrtnutí v podporovaných prohlížečích
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    gap: 2vh; // mezera mezi checkboxem a itemem
+}
+

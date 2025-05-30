@@ -1,0 +1,191 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:models\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\auctionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:models\\auctionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\bid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:models\\bid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\auctionhousedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:auctionhousedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\yamlparsingobjects\\itemgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:yamlparsingobjects\\itemgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\yamlparsingobjects\\root.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:yamlparsingobjects\\root.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\yamlreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:yamlreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\yamlparsingobjects\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:yamlparsingobjects\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|c:\\users\\sasas\\onedrive\\plocha\\projekt_praxe\\dbloader\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2C2FC3B-1E24-4F19-9D8B-46DDA237AE21}|DataHandler.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Database.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\Database.cs",
+              "RelativeDocumentMoniker": "YamlParsingObjects\\Database.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\Database.cs",
+              "RelativeToolTip": "YamlParsingObjects\\Database.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T07:14:21.995Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T07:09:43.702Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T08:12:19.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Bid.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\Bid.cs",
+              "RelativeDocumentMoniker": "Models\\Bid.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\Bid.cs",
+              "RelativeToolTip": "Models\\Bid.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAABgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T07:40:20.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuctionItem.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\AuctionItem.cs",
+              "RelativeDocumentMoniker": "Models\\AuctionItem.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\AuctionItem.cs",
+              "RelativeToolTip": "Models\\AuctionItem.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T07:32:32.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuctionHouseDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\AuctionHouseDatabase.cs",
+              "RelativeDocumentMoniker": "AuctionHouseDatabase.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\AuctionHouseDatabase.cs",
+              "RelativeToolTip": "AuctionHouseDatabase.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAEwEYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T07:33:35.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Auction.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\Auction.cs",
+              "RelativeDocumentMoniker": "Models\\Auction.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\Models\\Auction.cs",
+              "RelativeToolTip": "Models\\Auction.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T07:38:16.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "YamlReader.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlReader.cs",
+              "RelativeDocumentMoniker": "YamlReader.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlReader.cs",
+              "RelativeToolTip": "YamlReader.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAEgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T07:17:10.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Root.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\Root.cs",
+              "RelativeDocumentMoniker": "YamlParsingObjects\\Root.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\Root.cs",
+              "RelativeToolTip": "YamlParsingObjects\\Root.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T07:21:25.463Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ItemGroup.cs",
+              "DocumentMoniker": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\ItemGroup.cs",
+              "RelativeDocumentMoniker": "YamlParsingObjects\\ItemGroup.cs",
+              "ToolTip": "C:\\Users\\sasas\\OneDrive\\Plocha\\projekt_praxe\\dbLoader\\YamlParsingObjects\\ItemGroup.cs",
+              "RelativeToolTip": "YamlParsingObjects\\ItemGroup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-15T07:22:10.04Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

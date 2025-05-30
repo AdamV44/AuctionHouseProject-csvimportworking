@@ -1,0 +1,331 @@
+[
+  {
+    "Id": "ab8b8b6a-7341-45c7-98b8-989ef5b0ba0e",
+    "Name": "nabytek",
+    "PicturesPaths": [],
+    "ItemGroupId": "2",
+    "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
+    "StartingPrice": 2000,
+    "barva": "barva",
+    "styl": "styl",
+    "velikost": "velikost",
+    "typ": "typ"
+  },
+  {
+    "Id": "7634c64f-1e95-4ab4-a0f6-1ddd9bfffd13",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "b096be43-6633-4719-bddc-c2c9f6c6b567",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "4bb6c443-fc1e-401e-89c8-eabe9a7e938e",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "fcad134d-5c51-43c6-9883-d16d03a54ca5",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "57656fd0-0a61-4666-a6a6-33250923fd3f",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "73b9997a-f3c3-46ba-8f24-b83570547cf6",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "14e820c4-41d0-4d2f-9f7f-ec71ea3f048e",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "1a99e9cd-a2f7-4443-a433-1aed860cdd3e",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "73b9997a-f3c3-46ba-8f24-b83570547cf6",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "48bf9953-8152-47c0-be74-691c00f2e28f",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "aee9b237-2a34-48dc-afec-241d0031b099",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "3d00273b-d7f0-4d05-983a-adfa4e55ab52",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "178d34bc-b07a-41cd-9161-96e2a3e78362",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "a0da4b0d-fe7a-42e3-835e-4c28415fe1fa",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "f7f1a4d6-bb1f-4050-863d-b8d5a0c0025b",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "7eaf8616-da10-4de1-8a15-c8d2aacd006a",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "c4940833-1534-48da-aabe-c4035d50064b",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "5a88738e-8ef2-4973-bb4e-049eb07cde39",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "f6eded6d-d956-47be-b13f-dcf74fc8893f",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "3f00c4aa-f27e-4715-bf0f-1ef549e41866",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "b210e149-44ec-4bbe-bd05-9f7b5a612dad",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "3025751b-798e-472d-a5b1-ca68fb2a3453",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "a2002c1c-7f99-43d1-a015-877b0e4e04da",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "ae03435e-f233-446c-ada5-725f00ecb647",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "8f4c1ab3-ce5f-46d1-a21a-439dc4388465",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "0b3b86e5-1072-444f-9946-5966fcf82bab",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "941e887e-c1ef-4759-a355-a11b5949deea",
+    "Name": "notas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "cpucko",
+    "ram": "ramka",
+    "disk": "disk"
+  },
+  {
+    "Id": "65732bc5-8f58-4dc4-8791-6df181568099",
+    "Name": "fdsfgdas",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 20000,
+    "cpu": "asfds",
+    "ram": "fdsafdsaf",
+    "disk": "afdasfd"
+  },
+  {
+    "Id": "5d475fc4-6e48-481e-aed6-9f7ad06d0113",
+    "Name": "novy notas",
+    "PicturesPaths": [
+      "AuctionItemsPictures\\5d475fc4-6e48-481e-aed6-9f7ad06d0113\\novy_notas.jpg"
+    ],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 100,
+    "cpu": "i5",
+    "ram": "5gb",
+    "disk": "300gb"
+  },
+  {
+    "Id": "8defeef0-a3e0-49b3-8542-c40b356d5924",
+    "Name": "Dell XPS 13 Plus",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "",
+    "StartingPrice": 38990,
+    "additionalParams": "{\"CPU\":\"Intel Core i7-1360P\",\"RAM\":\"16 GB\",\"Disk\":\"1 TB SSD\",\"GPU\":\"Intel Iris Xe\"}"
+  },
+  {
+    "Id": "5df2a255-8de8-430b-a697-7a97ccc375b0",
+    "Name": "Apple MacBook Air M2",
+    "PicturesPaths": [],
+    "ItemGroupId": "1",
+    "AuctionId": "1925b639-505b-4f73-8402-c3e8d0a8129e",
+    "StartingPrice": 32990,
+    "additionalParams": "{\"CPU\":\"Apple M2\",\"RAM\":\"8 GB\",\"Disk\":\"512 GB SSD\",\"GPU\":\"Apple GPU\"}"
+  }
+]
