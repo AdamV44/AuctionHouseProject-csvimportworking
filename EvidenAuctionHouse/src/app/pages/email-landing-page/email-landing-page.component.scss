@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $email-landing-page-container-padding: 40px;
 $email-landing-page-container-max-width: 500px;
 $email-landing-page-container-margin: 40px auto;
@@ -9,7 +11,7 @@ $email-landing-page-container-box-shadow: none;
 $email-landing-page-container-gap: 20px;
 
 $primary: #f57c00;
-$primary-dark: darken($primary, 10%);
+$primary-dark: color.adjust($primary, $lightness: -10%);
 $white: #fff;
 $radius: 8px;
 $max-width: 400px;

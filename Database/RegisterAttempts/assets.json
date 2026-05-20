@@ -24,14 +24,6 @@
     "TimeStamp": "2025-05-27T09:17:00.3226419+02:00"
   },
   {
-    "Id": "e76f9bc3-228c-426c-bb32-84c444c013d1",
-    "Name": "Adam Vitek",
-    "Email": "xadamvitek@email.cz",
-    "PasswordHash": "$2a$11$5Nz4CL7c73kAV4tNm8yebeKf40nHUy55ZwRo9635Jn0ARka2IB0vy",
-    "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NDgzMzI4ODl9.o7qdlDmT8y4yCH1RtvlZcMIMNf0PbEQ1mV75elMdkBk",
-    "TimeStamp": "2025-05-27T09:46:29.497711+02:00"
-  },
-  {
     "Id": "26190aaf-7a93-4cb2-8a33-eecaabda499f",
     "Name": "Adam Vitek2",
     "Email": "vitek.ad.2023@ssps.cz",

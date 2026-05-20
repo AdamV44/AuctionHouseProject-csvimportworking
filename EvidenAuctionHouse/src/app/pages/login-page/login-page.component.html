@@ -3,7 +3,13 @@
   <input type="email" placeholder="Email" [(ngModel)]="email">
   <input type="password" placeholder="Password" [(ngModel)]="password">
   <button (click)="onLogin()">Login</button>
+
+  <p *ngIf="loginError" class="error-message">{{ loginErrorMessage }}</p> 
+
   <p class="register">
     Nejste ještě přihlášeni? <a [routerLink]="['/registration']">Registrovat se</a>
   </p>
 </div>
+
+
+

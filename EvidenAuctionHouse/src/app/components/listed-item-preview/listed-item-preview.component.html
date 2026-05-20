@@ -23,7 +23,7 @@
             [auctionItemId]="this.item.id"
             [itemPrice]="this.itemPrice"
             [startingPrice]="this.item.startingPrice"
-            (result)="onBidResult($event)"
+            (bidSuccess)="onBidSuccess()"
         ></app-price-input>
     </div>
     

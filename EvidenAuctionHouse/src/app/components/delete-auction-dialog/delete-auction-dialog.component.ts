@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ConfirmationDialogComponent, ConfirmationResult } from '../confirmation-dialog/confirmation-dialog.component';
 
 export interface DeleteAuctionResult {
@@ -10,7 +10,7 @@ export interface DeleteAuctionResult {
 @Component({
   selector: 'app-delete-auction-dialog',
   standalone: true,
-  imports: [CommonModule, ConfirmationDialogComponent],
+  imports: [CommonModule, ConfirmationDialogComponent, DatePipe],
   template: `
     <!-- Preview Dialog -->
     <div 
@@ -76,51 +76,47 @@ export interface DeleteAuctionResult {
 
     <!-- Final Confirmation Dialog -->
     <app-confirmation-dialog
-        [isVisible]="showConfirmation"
+        #confirmation
         [title]="'Potvrzení smazání aukce'"
         [message]="confirmationMessage"
         [confirmText]="'Ano, smazat definitívně'"
         [cancelText]="'Ne, zrušit'"
         [confirmButtonClass]="'btn-danger'"
         [iconType]="'danger'"
-        (result)="onConfirmationResult($event)">
+        (confirmed)="onConfirmationResult($event)">
     </app-confirmation-dialog>
   `,
   styleUrls: ['../delete-item-dialog/delete-item-dialog.component.scss'] // Použije stejné styly
 })
 export class DeleteAuctionDialogComponent {
   @Input() isVisible: boolean = false;
-  @Input() auctionName: string = '';
-  @Input() auctionId: string = '';
-  @Input() auctionStartDate: string = '';
-  @Input() auctionEndDate: string = '';
+  @Input() auctionId: string;
+  @Input() auctionName: string;
+  @Input() auctionStartDate: Date;
+  @Input() auctionEndDate: Date;
 
   @Output() result = new EventEmitter<DeleteAuctionResult>();
 
-  showConfirmation: boolean = false;
+  @ViewChild('confirmation') confirmationDialog: ConfirmationDialogComponent;
 
-  onConfirm(): void {
-    this.showConfirmation = true;
-  }
+  showConfirmation: boolean = false;
+  confirmationMessage: string = '';
 
   onCancel(): void {
-    this.result.emit({ action: 'cancel' });
-    this.close();
-  }
-
-  onConfirmationResult(result: ConfirmationResult): void {
-    this.showConfirmation = false;
-    if (result === ConfirmationResult.CONFIRM) {
-      this.result.emit({ action: 'confirm', auctionId: this.auctionId });
-      this.close();
-    }
-  }
-
-  private close(): void {
     this.isVisible = false;
+    this.result.emit({ action: 'cancel' });
   }
 
-  get confirmationMessage(): string {
-    return `Opravdu chcete smazat aukci "${this.auctionName}"? Tato akce je nevratná a smaže všechny související příhozy.`;
+  onConfirm(): void {
+    this.confirmationMessage = `Opravdu chcete trvale smazat aukci "${this.auctionName}"? Tato akce je nevratná.`;
+    this.confirmationDialog.show();
+  }
+
+  onConfirmationResult(confirmed: boolean): void {
+    if (confirmed) {
+      this.isVisible = false;
+      this.result.emit({ action: 'confirm', auctionId: this.auctionId });
+    }
+    this.confirmationDialog.hide();
   }
 }

@@ -1,4 +1,5 @@
-﻿using EvidenAuctionHouseAPI.Services;
+﻿using dbLoader;
+using EvidenAuctionHouseAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -15,10 +16,24 @@ namespace EvidenAuctionHouseAPI.Attributes
         {
             TokensService service = new TokensService();
 
-            ControllerBase controller = context.Controller as ControllerBase;
-            string header = controller.Request.Headers["Authorization"];
+            if (context.Controller is not ControllerBase controller)
+            {
+                context.Result = new UnauthorizedObjectResult(new { message = "Unauthorized to use admin tools" });
+                return;
+            }
 
-            if (!service.VerifyAdmin(header))
+            string? header = controller.Request.Headers["Authorization"].FirstOrDefault();
+            if (string.IsNullOrWhiteSpace(header))
+            {
+                context.Result = controller.Unauthorized(new { message = "Unauthorized to use admin tools" });
+                return;
+            }
+
+            string userId = service.GetUserId(header);
+            var db = context.HttpContext.RequestServices.GetService(typeof(AuctionHouseDatabase)) as AuctionHouseDatabase;
+            var user = db?.Users.Find(user => user.Id == userId);
+
+            if (user == null || !user.isAdmin)
             {
                 context.Result = controller.Unauthorized(new { message = "Unauthorized to use admin tools" });
             }

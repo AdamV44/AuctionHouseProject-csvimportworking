@@ -7,7 +7,7 @@ import { ItemDetailPageComponent } from './pages/item-detail-page/item-detail-pa
 import { AuctionCreationPageComponent } from './pages/auction-creation-page/auction-creation-page.component';
 import { DummyPageComponent } from './pages/dummy-page/dummy-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { AuthGuard } from './auth.guard';
+import { AdminGuard, AuthGuard } from './auth.guard';
 import { UserInformationPageComponent } from './pages/user-information-page/user-information-page.component';
 import { PasswordChangePageComponent } from './pages/password-change-page/password-change-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
@@ -20,16 +20,16 @@ export const routes: Routes = [
     { path: 'registration', component: RegisterPageComponent },
     { path: 'email-landing', component: EmailLandingPageComponent },
     { path: 'email-confirmation', component: EmailConfirmationPageComponent },
-    { path: 'csv-import', component: CsvImportPageComponent, canActivate: [AuthGuard] },
-    { path: 'csv-preview', component: CsvPreviewPageComponent, canActivate: [AuthGuard] },
+    { path: 'csv-import', component: CsvImportPageComponent, canActivate: [AdminGuard] },
+    { path: 'csv-preview', component: CsvPreviewPageComponent, canActivate: [AdminGuard] },
     { path: 'auctions', component: AuctionListPageComponent, canActivate: [AuthGuard] },
-    { path: 'create-item', component: ItemCreationPageComponent, canActivate: [AuthGuard] },
+    { path: 'create-item', component: ItemCreationPageComponent, canActivate: [AdminGuard] },
     { path: 'items', component: ItemsListPageComponent, canActivate: [AuthGuard] },
     { path: 'auctions/:id', component: AuctionListedItemsPageComponent, canActivate: [AuthGuard] },
     { path: 'items/:id', component: ItemDetailPageComponent, canActivate: [AuthGuard] },
-    { path: 'create-auction', component:  AuctionCreationPageComponent, canActivate: [AuthGuard] },
-    { path: 'create-auction/:id', component:  AuctionCreationPageComponent, canActivate: [AuthGuard] },
-    { path: 'reload-dummy', component: DummyPageComponent, canActivate: [AuthGuard] },
+    { path: 'create-auction', component:  AuctionCreationPageComponent, canActivate: [AdminGuard] },
+    { path: 'create-auction/:id', component:  AuctionCreationPageComponent, canActivate: [AdminGuard] },
+    { path: 'reload-dummy', component: DummyPageComponent, canActivate: [AdminGuard] },
     { path: 'user', component: UserInformationPageComponent, canActivate: [AuthGuard] },
     { path: 'user-password-change', component: PasswordChangePageComponent, canActivate: [AuthGuard] },
 

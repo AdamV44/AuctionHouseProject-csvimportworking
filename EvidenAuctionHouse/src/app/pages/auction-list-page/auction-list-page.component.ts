@@ -28,7 +28,7 @@ export class AuctionListPageComponent {
   
 
   public reload() {
-    if (this.authService.authenticatedUser.isAdmin) {
+    if (this.authService.isAdmin()) {
         this.auctionsService.getAuctions().subscribe(data => {
         this.auctionPreviewsOnPage = data;
         this.loaded = true;

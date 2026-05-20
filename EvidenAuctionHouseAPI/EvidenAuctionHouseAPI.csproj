@@ -4,10 +4,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" /> <!-- Update versions here -->
     <PackageReference Include="JWT" Version="11.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
@@ -16,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\dbLoader\DataHandler.csproj" />
-    <ProjectReference Include="..\dbLoader\dbLoader.csproj" />
   </ItemGroup>
 
 </Project>

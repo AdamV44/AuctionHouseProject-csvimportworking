@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../models/user';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, BehaviorSubject } from 'rxjs';
 import { AuthenticationResult } from '../../models/authenticationResult';
 import { Credentials } from '../../models/credentials';
 import { HttpClient } from '@angular/common/http';
@@ -14,6 +14,8 @@ import { AuthenticatedUserInformation } from '../../models/authenticatedUserInfo
 })
 export class AuthenticationService {
 
+  private userSubject = new BehaviorSubject<User | null>(this.getUser());
+  public user$ = this.userSubject.asObservable();
 
   get authenticatedUser(): AuthenticatedUserInformation {
     return this.getUser() as AuthenticatedUserInformation;
@@ -24,8 +26,9 @@ export class AuthenticationService {
   public login(credentials: Credentials): Observable<AuthenticationResult> {
     return this.http.post<AuthenticationResult>(settings.apiRoute + '/Authentication/login', credentials).pipe(
       tap(result => {
-        this.setToken(result.token)
-        this.setUser(result.user)
+        this.setToken(result.token);
+        this.setUser(result.user);
+        this.userSubject.next(result.user);
       })
     );
   }
@@ -36,10 +39,16 @@ export class AuthenticationService {
 
   public logout(): void {
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    this.userSubject.next(null);
   }
 
   public isAuthenticated(): boolean {
     return !!this.getToken() && !!this.getUser();
+  }
+
+  public isAdmin(): boolean {
+    return this.getUser()?.isAdmin === true;
   }
 
 
@@ -55,6 +64,11 @@ export class AuthenticationService {
     sessionStorage.setItem('user', JSON.stringify(user));
   
   }
+  public updateUser(user: AuthenticatedUserInformation): void {
+    this.setUser(user);
+    this.userSubject.next(user);
+  }
+
   public getUser(): User | null {
     const userString = sessionStorage.getItem('user');
     return userString ? JSON.parse(userString) as User : null;

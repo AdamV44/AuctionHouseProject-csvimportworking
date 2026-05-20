@@ -19,4 +19,11 @@ export class UtilityService {
   });
   }
 
+  public dateToInput(date: Date): string {
+    if (!date) {
+      return '';
+    }
+    const pad = (num: number) => (num < 10 ? '0' + num : num);
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+  }
 }

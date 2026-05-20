@@ -1,464 +1,194 @@
-:host {
-  min-height: 100vh;
-  background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
-  padding: 2rem;
-  display: block;
-}
+@use 'sass:color';
+@use '../../variables' as v;
 
-// === MAIN CONTAINER ===
-.detail-container {
+.item-detail-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  align-items: start;
-  padding: 2rem 0;
-  
+  gap: 2rem;
+  align-items: flex-start;
+
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
-    gap: 3rem;
   }
-}
 
-// === INFO SECTION ===
-.info-container {
-  width: 100%;
-  background: var(--card-background);
-  border-radius: var(--radius-xl);
-  padding: 3rem;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-color);
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(255,255,255,0.1), 
-      transparent);
-    transition: left 0.8s ease;
-    z-index: 1;
+  .item-card {
+    background: v.$white;
+    border-radius: v.$border-radius-lg;
+    box-shadow: v.$box-shadow;
+    padding: 1.5rem;
   }
-  
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-xl);
-      
-    &::before {
-      left: 100%;
-    }
-  }
-}
 
-// === HEADER ===
-.header {
-  text-align: center;
-  margin: 0 0 3rem 0;
-  padding: 2rem 0;
-  background: linear-gradient(135deg, 
-    var(--primary-color) 0%, 
-    var(--primary-light) 100%);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  color: #ffffff;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-      transparent, 
-      rgba(255,255,255,0.1), 
-      transparent);
-    transition: left 0.8s ease;
-    z-index: 1;
+  .item-image-section {
+    position: sticky;
+    top: 2rem;
   }
-  
-  &:hover::before {
-    left: 100%;
-  }
-  
-  strong {
-    position: relative;
-    z-index: 2;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: #ffffff;
-    display: block;
-    line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    
-    &::before {
-      content: '🏺';
-      display: block;
-      font-size: 0.7em;
-      margin-bottom: 0.5rem;
-      opacity: 0.9;
-    }
-  }
-}
 
-// === INFO ROWS ===
-.info-row {
-  margin: 0 0 1.5rem 0;
-  padding: 1rem 1.5rem;
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  border-left: 4px solid var(--secondary-color);
-  font-size: var(--font-size-lg);
-  color: var(--text-secondary);
-  transition: all 0.3s ease;
-  position: relative;
-  
-  &:hover {
-    transform: translateX(0.5rem);
-    box-shadow: var(--shadow-md);
-    border-left-color: var(--primary-color);
+  .item-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
-  
-  // Počáteční cena
-  &:nth-child(2) {
-    border-left-color: var(--info);
-    
-    &::before {
-      content: '💰';
-      margin-right: 0.5rem;
-    }
-  }
-  
-  // Momentální cena
-  &:nth-child(3) {
-    border-left-color: var(--success);
-    font-weight: 700;
-    color: var(--success);
-    
-    &::before {
-      content: '🔥';
-      margin-right: 0.5rem;
-    }
-  }
-  
-  // Nejvyšší příhoz
-  &:nth-child(4) {
-    border-left-color: var(--warning);
-    
-    &::before {
-      content: '👑';
-      margin-right: 0.5rem;
-    }
-  }
-}
 
-// === PARAMS GRID ===
-.params-grid {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 2px dashed var(--border-color);
-  
-  .info-row {
-    background: linear-gradient(135deg, var(--surface), rgba(37, 99, 235, 0.02));
-    border-left-color: var(--accent);
-    font-size: var(--font-size-base);
-    padding: 0.75rem 1rem;
-    margin-bottom: 1rem;
-    
-    strong {
-      color: var(--primary-color);
+  .item-header {
+    h1 {
+      font-size: 2.5rem;
       font-weight: 700;
-      display: inline-block;
-      min-width: 120px;
+      color: v.$primary-blue;
+      margin: 0;
     }
-    
-    &::before {
-      content: '📋';
-      margin-right: 0.5rem;
+  }
+
+  .item-description {
+    p {
+      font-size: 1.1rem;
+      color: v.$gray-700;
+      line-height: 1.6;
     }
+  }
+
+  .item-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+
+    .detail-item {
+      background: v.$gray-100;
+      padding: 1rem;
+      border-radius: v.$border-radius;
+
+      .label {
+        font-weight: 600;
+        color: v.$gray-600;
+        margin-bottom: 0.25rem;
+        display: block;
+      }
+
+      .value {
+        font-size: 1.1rem;
+        color: v.$gray-800;
+      }
+    }
+  }
+
+  .item-actions {
+    margin-top: 1rem;
   }
 }
 
-// === CAROUSEL SECTION ===
-.carousel-box {
-  background: var(--card-background);
-  border-radius: var(--radius-xl);
-  padding: 3rem;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  min-height: 600px;
-  
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-xl);
-  }
+// --- Carousel ---
+.carousel-container {
+  background: v.$white;
+  border-radius: v.$border-radius-lg;
+  box-shadow: v.$box-shadow;
+  padding: 1.5rem;
+  position: sticky;
+  top: 2rem;
 }
 
 .carousel-img-wrapper {
   position: relative;
   width: 100%;
-  max-width: 500px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface);
-  border-radius: var(--radius-lg);
+  aspect-ratio: 4 / 3;
+  border-radius: v.$border-radius;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  margin-bottom: 1.5rem;
-  
-  &:hover .carousel-arrow {
-    opacity: 1;
-    transform: translateY(-50%) scale(1.1);
-  }
-}
-
-.carousel-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: scale(1.02);
-  }
+  margin-bottom: 1rem;
 }
 
 .carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
+  background: rgba(v.$black, 0.5);
+  color: v.$white;
   border: none;
-  width: 3rem;
-  height: 3rem;
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
   font-size: 1.5rem;
-  font-weight: 700;
   cursor: pointer;
-  z-index: 3;
+  transition: background 0.3s;
   opacity: 0;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
+
   &:hover {
-    background: var(--primary-color);
-    transform: translateY(-50%) scale(1.2);
-    box-shadow: var(--shadow-lg);
+    background: rgba(v.$black, 0.8);
   }
-  
+
   &.left {
-    left: 1rem;
+    left: 10px;
   }
-  
+
   &.right {
-    right: 1rem;
+    right: 10px;
   }
+}
+
+.carousel-img-wrapper:hover .carousel-arrow {
+  opacity: 1;
 }
 
 .carousel-indicator {
   text-align: center;
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  color: var(--text-secondary);
-  padding: 0.75rem 1.5rem;
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  margin-bottom: 1.5rem;
-  
-  &::before {
-    content: '📸 ';
-    margin-right: 0.5rem;
-  }
+  color: v.$gray-600;
+  font-weight: 500;
 }
 
-// === PRICE INPUT STYLING ===
-.price-input {
-  width: 100%;
+// --- Info Container ---
+.info-container {
   display: flex;
-  justify-content: center;
-  
-  :host ::ng-deep app-price-input {
-    .btn {
-      background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light)) !important;
-      color: var(--text-white) !important;
-      border: none !important;
-      border-radius: var(--radius-xl) !important;
-      font-size: var(--font-size-xl) !important;
-      padding: 1rem 2rem !important;
-      font-weight: 700 !important;
-      box-shadow: var(--shadow-lg) !important;
-      transition: all 0.3s ease !important;
-      min-width: 250px !important;
-      
-      &::before {
-        content: '🔨 ';
-        margin-right: 0.5rem;
-      }
-      
-      &:hover {
-        transform: translateY(-3px) scale(1.05) !important;
-        box-shadow: var(--shadow-xl) !important;
-      }
-    }
-    
-    .popup-overlay {
-      z-index: 9999 !important;
-      background: rgba(0, 0, 0, 0.8) !important;
-    }
-    
-    .popup-modal {
-      background: var(--card-background) !important;
-      border-radius: var(--radius-2xl) !important;
-      padding: 3rem !important;
-      box-shadow: var(--shadow-2xl) !important;
-      border: 2px solid var(--primary-color) !important;
-      max-width: 600px !important;
-      width: 90% !important;
-      
-      h3 {
-        color: var(--text-primary) !important;
-        text-align: center !important;
-        margin-bottom: 2rem !important;
-        font-size: var(--font-size-2xl) !important;
-        font-weight: 800 !important;
-        
-        &::before {
-          content: '🔨 ';
-        }
-      }
-      
-      input {
-        width: 100% !important;
-        padding: 1.5rem !important;
-        border: 3px solid var(--border-color) !important;
-        border-radius: var(--radius-lg) !important;
-        font-size: var(--font-size-xl) !important;
-        text-align: center !important;
-        margin-bottom: 2rem !important;
-        background: var(--surface) !important;
-        color: var(--text-primary) !important;
-        font-weight: 700 !important;
-        
-        &:focus {
-          border-color: var(--secondary-color) !important;
-          outline: none !important;
-          box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.2) !important;
-        }
-      }
-      
-      .submit-btn {
-        background: linear-gradient(135deg, var(--success), var(--success-light)) !important;
-        color: var(--text-white) !important;
-        border: none !important;
-        padding: 1.5rem 3rem !important;
-        border-radius: var(--radius-xl) !important;
-        font-weight: 800 !important;
-        font-size: var(--font-size-lg) !important;
-        cursor: pointer !important;
-        transition: all 0.3s ease !important;
-        width: 100% !important;
-        
-        &:hover:not(:disabled) {
-          transform: translateY(-2px) !important;
-          box-shadow: var(--shadow-xl) !important;
-        }
-      }
-    }
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-section {
+  background: v.$white;
+  border-radius: v.$border-radius-lg;
+  box-shadow: v.$box-shadow;
+  padding: 1.5rem;
+
+  h3 {
+    font-size: 1.5rem;
+    color: v.$primary-blue;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid v.$accent-teal;
+    padding-bottom: 0.5rem;
   }
 }
 
-// === RESPONSIVE DESIGN ===
-@media (max-width: 1024px) {
-  .detail-container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid v.$gray-200;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .label {
+    font-weight: 600;
+    color: v.$gray-600;
+  }
+
+  .value {
+    font-size: 1.1rem;
+    color: v.$gray-800;
+    font-weight: 500;
   }
 }
 
-@media (max-width: 768px) {
-  :host {
-    padding: 1rem;
-  }
-  
-  .detail-container {
-    gap: 2rem;
-  }
-  
-  .info-container,
-  .carousel-box {
-    padding: 2rem;
-  }
-  
-  .header strong {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    
-    &::before {
-      font-size: 0.6em;
-      margin-bottom: 0.3rem;
-    }
-  }
-  
-  .carousel-img-wrapper {
-    height: 300px;
-  }
-  
-  .carousel-arrow {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.2rem;
-    
-    &.left {
-      left: 0.5rem;
-    }
-    
-    &.right {
-      right: 0.5rem;
-    }
-  }
+.action-section {
+  background: v.$white;
+  border-radius: v.$border-radius-lg;
+  box-shadow: v.$box-shadow;
+  padding: 1.5rem;
 }
 
-@media (max-width: 480px) {
-  .info-container,
-  .carousel-box {
-    padding: 1.5rem;
-  }
-  
-  .header {
-    padding: 1.5rem 1rem;
-    margin: 0 0 2rem 0;
-    
-    strong {
-      font-size: clamp(1.3rem, 3.5vw, 2rem);
-    }
-  }
-  
-  .info-row {
-    padding: 0.75rem 1rem;
-    font-size: var(--font-size-base);
-  }
-  
-  .carousel-img-wrapper {
-    height: 250px;
+// --- Price Input Component Deep Styling ---
+:host ::ng-deep app-price-input {
+  .price-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 }

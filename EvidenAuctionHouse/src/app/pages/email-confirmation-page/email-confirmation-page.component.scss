@@ -1,5 +1,7 @@
+@use "sass:color";
+
 $primary: #f57c00;
-$primary-dark: darken($primary, 10%);
+$primary-dark: color.adjust($primary, $lightness: -10%);
 $white: #fff;
 $gray-border: #ccc;
 $radius: 4px;

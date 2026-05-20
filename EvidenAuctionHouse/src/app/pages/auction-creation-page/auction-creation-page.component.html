@@ -1,19 +1,21 @@
-<div  class="form-container">
-    <p>Create auction</p>
-    <input type="text" [(ngModel)]="this.name" placeholder="Auction name" class="boxes">
-    <input type="datetime-local" [(ngModel)]="this.startDateString" placeholder="Start date" class="boxes">
-    <input type="datetime-local" [(ngModel)]="this.endDateString" placeholder="End date" class="boxes">
-    <button class="boxes" (click)="this.onAddItemsClick()">Přidat položky</button>
+<div class="form-container">
+  <p>Create auction</p>
+  <input type="text" [(ngModel)]="name" placeholder="Auction name" class="boxes">
+  <input type="datetime-local" [(ngModel)]="startDateString" placeholder="Start date" class="boxes">
+  <input type="datetime-local" [(ngModel)]="endDateString" placeholder="End date" class="boxes">
+  <button class="boxes" (click)="onAddItemsClick()">Přidat položky</button>
 
-    <app-auction-add-items 
-    *ngIf="this.auctionItemspopupVisible" 
-    (close)="onAddedItems($event)"
-    [auctionId]="this.auctionId"
-    >
-    </app-auction-add-items>
-    <p *ngIf="this.selectedItemIds && this.selectedItemIds.length > 0">
-        Vybráno {{ this.selectedItemIds.length }} položek
-    </p>
+  <app-auction-add-items
+  *ngIf="auctionItemspopupVisible"
+  (itemsSelected)="onAddedItems($event)"
+  [auctionId]="auctionId">
+</app-auction-add-items>
 
-    <app-confirmation (result)="this.onConfirmation($event)" ></app-confirmation>
+  <p *ngIf="selectedItemIds && selectedItemIds.length > 0">
+    Vybráno {{ selectedItemIds.length }} položek
+  </p>
+
+  <button class="boxes" (click)="promptCreateAuction()">Vytvořit aukci</button>
+
+  <app-confirmation-dialog #confirmation (confirmed)="onConfirmation($event)"></app-confirmation-dialog>
 </div>

@@ -1,20 +1,36 @@
 .preview-container {
-    font-size: 3vh;
-    justify-content: center;
-    align-items: center;
-    border: solid;
-    border-radius: 3vh;
-    width: 70vh;
-    height: 10vh;
-    display: flex;
-    gap: 5vh
+  width: 100%;
+  min-height: 4.5rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  background: var(--card-background);
+  box-shadow: var(--shadow-sm);
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  min-width: 0;
+
+  > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
 }
 
 
 .btn {
-    background-color: orange;
-    border: solid;
-    border-radius: 2vh;
-    font-size: 3vh;
+  background-color: orange;
+  border: solid;
+  border-radius: var(--radius-md);
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
 
+}
+
+@media (max-width: 560px) {
+  .preview-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

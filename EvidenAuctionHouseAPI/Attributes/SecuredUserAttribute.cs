@@ -14,8 +14,18 @@ namespace EvidenAuctionHouseAPI.Attributes
         {
             TokensService service = new TokensService();
 
-            ControllerBase controller = context.Controller as ControllerBase;
-            string header = controller.Request.Headers["Authorization"];
+            if (context.Controller is not ControllerBase controller)
+            {
+                context.Result = new UnauthorizedObjectResult(new { message = "Unauthorized" });
+                return;
+            }
+
+            string? header = controller.Request.Headers["Authorization"].FirstOrDefault();
+            if (string.IsNullOrWhiteSpace(header))
+            {
+                context.Result = controller.Unauthorized(new { message = "Unauthorized" });
+                return;
+            }
 
             if (!service.VerifyUser(header))
             {

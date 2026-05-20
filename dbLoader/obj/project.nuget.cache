@@ -1,15 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "vMx+/MszMO4=",
+  "dgSpecHash": "bMsjwszGmJc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\dbLoader\\DataHandler.csproj",
+  "projectFilePath": "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/dbLoader/DataHandler.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Ondra\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\Ondra\\.nuget\\packages\\yamldotnet\\16.3.0\\yamldotnet.16.3.0.nupkg.sha512",
-    "C:\\Users\\Ondra\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.16\\microsoft.netcore.app.ref.8.0.16.nupkg.sha512",
-    "C:\\Users\\Ondra\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.16\\microsoft.windowsdesktop.app.ref.8.0.16.nupkg.sha512",
-    "C:\\Users\\Ondra\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.16\\microsoft.aspnetcore.app.ref.8.0.16.nupkg.sha512",
-    "C:\\Users\\Ondra\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.16\\microsoft.netcore.app.host.win-x64.8.0.16.nupkg.sha512"
+    "/Users/adamvitek/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/Users/adamvitek/.nuget/packages/yamldotnet/13.7.1/yamldotnet.13.7.1.nupkg.sha512"
   ],
   "logs": []
 }

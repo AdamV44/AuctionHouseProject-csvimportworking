@@ -5,6 +5,9 @@
   <input type="password" placeholder="Password" [(ngModel)]="password">
   <input type="password" placeholder="Password" [(ngModel)]="confPassword">
   <button (click)="onRegister()">Registrace</button>
+
+  <p *ngIf="registerError" class="error-message">{{ registerErrorMessage }}</p>
+
   <p class="loginLink">
     Jste už přihlášeni? <a [routerLink]="['/']">Přihlásit se</a>
   </p>

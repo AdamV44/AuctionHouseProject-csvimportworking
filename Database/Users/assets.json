@@ -14,17 +14,17 @@
     "isAdmin": false
   },
   {
-    "Id": "cb7afa83-ec77-4d7a-87a2-74cfbb27f79c",
-    "Name": "Adam Vitek",
-    "PasswordHash": "$2a$11$DWZq1SnJSQHAhdUAFiE9red06nUHIXJfxiRdvcafpmDltNIR0HdmO",
-    "Email": "xadamvitek@email.cz",
-    "isAdmin": true
-  },
-  {
     "Id": "aa3069b4-a9ba-4162-b2ef-bd927e7c7aa1",
     "Name": "Adam Vitek2",
     "PasswordHash": "$2a$11$4PfL0wDK7MI/n3XZsU/bNevVQZW75C4HKRfW4w3y7MXElkia4s5s6",
     "Email": "vitek.ad.2023@ssps.cz",
-    "isAdmin": false
+    "isAdmin": true
+  },
+  {
+    "Id": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "Name": "Adam Vítek",
+    "PasswordHash": "$2a$11$tt/zYcSGsae0fOBFPDVJj.pXvv/BgOrYxkpdT98S1BMBeL6qt/L1G",
+    "Email": "xadamvitek@email.cz",
+    "isAdmin": true
   }
 ]

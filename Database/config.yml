@@ -44,9 +44,9 @@ BidLimits:
   minBid: 0
   maxBid: 2000
 SMTPConfig:
-  User: itsupport@evidencz.com
-  Password: itsupportITSUPPORT123
-  Server: email.active24.com
+  User: alisha.cummings@ethereal.email
+  Password: gKhkwBGskRkc2hVAr7
+  Server: smtp.ethereal.email
   Port: 587
 ImagePaths:
   AuctionItemImages: "~/images/auction-items/"

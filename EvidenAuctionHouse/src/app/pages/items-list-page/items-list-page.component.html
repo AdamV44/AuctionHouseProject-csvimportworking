@@ -1,37 +1,26 @@
 <!-- Přesně podle #main.js fungující verze -->
-<div *ngIf="this.loaded && this.authService.authenticatedUser">
+<div *ngIf="this.loaded && this.authService.authenticatedUser" class="items-page">
   <app-items-list 
     [items]="this.itemsOnPage" 
     (selectedItemsEmitter)="getSelected($event)">
   </app-items-list>
 
-  <!-- Admin tlačítka - PŘESNĚ PODLE MAIN.JS -->
-  <button 
-    *ngIf="this.authService.authenticatedUser.isAdmin" 
-    class="fixed-btn" 
-    style="top: 20vh;" 
-    (click)="this.router.navigate(['/create-item'])">
-    <i class="fas fa-plus"></i>
-    vytvořit položku
-  </button>
-  
-  <button 
-    *ngIf="this.authService.authenticatedUser.isAdmin"
-    class="fixed-btn" 
-    style="top: 30vh;" 
-    (click)="onDelete()">
-    <i class="fas fa-trash-alt"></i>
-    Smazat položky
-  </button>
-  
-  <button
-    *ngIf="this.authService.authenticatedUser.isAdmin"
-    class="fixed-btn" 
-    style="top: 40vh;" 
-    (click)="onCSV()">
-    <i class="fas fa-file-csv"></i>
-    CSV import
-  </button>
+  <div class="admin-actions" *ngIf="this.authService.isAdmin()">
+    <button class="fixed-btn create-action" (click)="this.router.navigate(['/create-item'])">
+      <i class="fas fa-plus"></i>
+      vytvořit položku
+    </button>
+    
+    <button class="fixed-btn delete-action" (click)="onDelete()">
+      <i class="fas fa-trash-alt"></i>
+      Smazat položky
+    </button>
+    
+    <button class="fixed-btn csv-action" (click)="onCSV()">
+      <i class="fas fa-file-csv"></i>
+      CSV import
+    </button>
+  </div>
 </div>
 
 <!-- Loading state -->

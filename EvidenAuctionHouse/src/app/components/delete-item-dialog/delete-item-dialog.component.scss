@@ -1,4 +1,4 @@
-.delete-item-overlay {
+.delete-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,6 +10,8 @@
   justify-content: center;
   z-index: 1000;
   animation: fadeIn 0.2s ease-out;
+  padding: 1rem;
+  overflow-y: auto;
 }
 
 .delete-dialog {
@@ -17,7 +19,7 @@
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   max-width: 28rem;
-  width: 90%;
+  width: min(100%, 28rem);
   max-height: 90vh;
   overflow-y: auto;
   animation: slideIn 0.3s ease-out;

@@ -15,12 +15,12 @@
 
 <!-- Dialog 2: Potvrzení s detaily -->
 <app-confirmation-dialog
-  [isVisible]="showConfirmationDialog"
+  #confirmationDialog
   [title]="'Potvrzení příhozu'"
   [message]="confirmationMessage"
   [confirmText]="'Přihodit +' + selectedBidAmount + ' Kč'"
   [cancelText]="'Zrušit'"
   [confirmButtonClass]="'btn-success'"
   [iconType]="'question'"
-  (result)="onConfirmationResult($event)">
+  (confirmed)="onConfirmationResult($event)">
 </app-confirmation-dialog>

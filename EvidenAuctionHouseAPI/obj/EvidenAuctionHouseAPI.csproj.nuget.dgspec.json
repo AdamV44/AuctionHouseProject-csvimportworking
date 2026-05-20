@@ -1,35 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\EvidenAuctionHouseAPI\\EvidenAuctionHouseAPI.csproj": {}
+    "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/EvidenAuctionHouseAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\dbLoader\\DataHandler.csproj": {
+    "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/dbLoader/DataHandler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\dbLoader\\DataHandler.csproj",
+        "projectUniqueName": "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/dbLoader/DataHandler.csproj",
         "projectName": "DataHandler",
-        "projectPath": "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\dbLoader\\DataHandler.csproj",
-        "packagesPath": "C:\\Users\\Ondra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\dbLoader\\obj\\",
+        "projectPath": "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/dbLoader/DataHandler.csproj",
+        "packagesPath": "/Users/adamvitek/.nuget/packages/",
+        "outputPath": "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/dbLoader/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ondra\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/adamvitek/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
+            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {}
           }
@@ -44,10 +39,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "Newtonsoft.Json": {
@@ -56,7 +52,7 @@
             },
             "YamlDotNet": {
               "target": "Package",
-              "version": "[16.3.0, )"
+              "version": "[13.7.1, )"
             }
           },
           "imports": [
@@ -70,63 +66,40 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\EvidenAuctionHouseAPI\\EvidenAuctionHouseAPI.csproj": {
+    "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/EvidenAuctionHouseAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\EvidenAuctionHouseAPI\\EvidenAuctionHouseAPI.csproj",
+        "projectUniqueName": "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/EvidenAuctionHouseAPI.csproj",
         "projectName": "EvidenAuctionHouseAPI",
-        "projectPath": "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\EvidenAuctionHouseAPI\\EvidenAuctionHouseAPI.csproj",
-        "packagesPath": "C:\\Users\\Ondra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\EvidenAuctionHouseAPI\\obj\\",
+        "projectPath": "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/EvidenAuctionHouseAPI.csproj",
+        "packagesPath": "/Users/adamvitek/.nuget/packages/",
+        "outputPath": "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ondra\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/adamvitek/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
+            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\dbLoader\\DataHandler.csproj": {
-                "projectPath": "C:\\Users\\Ondra\\OneDrive - Smíchovská střední průmyslová škola a gymnázium\\PVA\\pp\\Casino_SK1\\Casino_SK1\\AuctionHouseProject-csvimportworking\\dbLoader\\DataHandler.csproj"
+              "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/dbLoader/DataHandler.csproj": {
+                "projectPath": "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/dbLoader/DataHandler.csproj"
               }
             }
           }
@@ -141,10 +114,11 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "BCrypt.Net-Next": {
@@ -179,24 +153,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.16, 8.0.16]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -205,7 +161,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

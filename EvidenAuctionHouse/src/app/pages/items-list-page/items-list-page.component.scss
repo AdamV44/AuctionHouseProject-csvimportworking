@@ -5,11 +5,28 @@
   padding: 0;
 }
 
+.items-page {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.admin-actions {
+  position: sticky;
+  bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem;
+  z-index: 20;
+  pointer-events: none;
+}
+
 // === FIXED BUTTONS STYLING ===
 .fixed-btn {
-  position: fixed;
-  right: 2rem;
-  width: 12rem;
+  width: min(100%, 12rem);
   padding: 0.875rem 1.5rem;
   border: none;
   border-radius: var(--radius-lg);
@@ -23,10 +40,9 @@
   align-items: center;
   justify-content: flex-start;
   gap: 0.5rem;
-  z-index: 1000;
+  pointer-events: auto;
   
-  // Create Item button (top: 20vh)
-  &[style*="top: 20vh"] {
+  &.create-action {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     color: var(--text-white);
     
@@ -42,8 +58,7 @@
     }
   }
   
-  // Delete Items button (top: 30vh) 
-  &[style*="top: 30vh"] {
+  &.delete-action {
     background: linear-gradient(135deg, var(--error), #dc2626);
     color: var(--text-white);
     
@@ -59,8 +74,7 @@
     }
   }
   
-  // CSV Import button (top: 40vh)
-  &[style*="top: 40vh"] {
+  &.csv-action {
     background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
     color: var(--text-white);
     
@@ -181,9 +195,16 @@
 
 // === RESPONSIVE DESIGN ===
 @media (max-width: 768px) {
+  .items-page {
+    padding: 0.75rem;
+  }
+
+  .admin-actions {
+    justify-content: center;
+  }
+
   .fixed-btn {
-    right: 1.5rem;
-    width: 10rem;
+    width: auto;
     padding: 0.75rem 1rem;
     font-size: var(--font-size-xs);
     
@@ -230,7 +251,6 @@
 
 @media (max-width: 480px) {
   .fixed-btn {
-    right: 1rem;
     width: 3rem;
     height: 3rem;
     padding: 0;

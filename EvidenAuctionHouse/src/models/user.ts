@@ -2,10 +2,10 @@ export class User {
     id: string;
     name: string;
     email: string;
-    password: string;
+    password?: string; // Made optional
     isAdmin: boolean;
     
-    constructor(id: string, name: string, email: string, password: string, isAdmin: boolean = false) {
+    constructor(id: string, name: string, email: string, isAdmin: boolean = false, password?: string) {
         this.id = id;
         this.name = name;
         this.email = email;

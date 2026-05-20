@@ -1,13 +1,21 @@
-<div class="settings-container">
-  <h2>Nastavení uživatele</h2>
-  <div class="user-info">
-    <div><span class="label">Jméno:</span> {{ user.name }}</div>
-    <div><span class="label">Email:</span> {{ user.email }}</div>
-  </div>
-  <div class="button-row">
-    <button (click)="logout()">Odhlásit se</button>
-    <button [routerLink]="['/user-password-change']">
-      Změna hesla
-    </button>
+<div class="page-container">
+  <h1 class="page-title">Váš účet</h1>
+
+  <div class="user-card" *ngIf="user">
+    <div class="user-card-header">
+      <i class="fas fa-user-circle"></i>
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.email }}</p>
+    </div>
+    <div class="user-card-body">
+      <a routerLink="/user-password-change" class="modern-btn">
+        <i class="fas fa-key"></i>
+        Změnit heslo
+      </a>
+      <button (click)="logout()" class="modern-btn danger">
+        <i class="fas fa-sign-out-alt"></i>
+        Odhlásit se
+      </button>
+    </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgIf, NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 
 export enum ConfirmationResult {
   CONFIRM = 'confirm',
@@ -14,8 +14,6 @@ export enum ConfirmationResult {
   styleUrls: ['./confirmation-dialog.component.scss']
 })
 export class ConfirmationDialogComponent {
-  // Komponenta se zobrazí pouze když isVisible = true
-  @Input() isVisible: boolean = false;
   @Input() title: string = 'Potvrzení akce';
   @Input() message: string = 'Opravdu chcete provést tuto akci?';
   @Input() confirmText: string = 'Potvrdit';
@@ -24,42 +22,32 @@ export class ConfirmationDialogComponent {
   @Input() showIcon: boolean = true;
   @Input() iconType: 'warning' | 'question' | 'danger' = 'warning';
 
-  @Output() result = new EventEmitter<ConfirmationResult>();
+  @Output() confirmed = new EventEmitter<boolean>();
 
-  onCancel(): void {
-    console.log('ConfirmationDialog: User clicked CANCEL');
-    this.result.emit(ConfirmationResult.CANCEL); // Pošle "cancel"
-    this.close(); // Skryje dialog
+  public isVisible: boolean = false;
+
+  show() {
+    this.isVisible = true;
   }
 
-  onConfirm(): void {
-    console.log('ConfirmationDialog: User clicked CONFIRM');
-    this.result.emit(ConfirmationResult.CONFIRM); // Pošle "confirm" 
-    this.close(); // Skryje dialog
-  }
-
-  private close(): void {
-    console.log('ConfirmationDialog: Closing dialog');
+  hide() {
     this.isVisible = false;
   }
 
-  // Zavřít při kliknutí na overlay
+  onCancel(): void {
+    this.hide();
+    this.confirmed.emit(false);
+  }
+
+  onConfirm(): void {
+    this.hide();
+    this.confirmed.emit(true);
+  }
+
   onOverlayClick(event: MouseEvent): void {
-    if (event.target === event.currentTarget) {
-      // Kliknutí na pozadí (ne na dialog)
+    // Check if the click is on the overlay itself, not the dialog content
+    if ((event.target as HTMLElement).classList.contains('confirmation-overlay')) {
       this.onCancel();
     }
-  }
-
-  // Zavřít při stisknutí Escape
-  onKeyDown(event: KeyboardEvent): void {
-    if (event.key === 'Escape') {
-      this.onCancel();
-    }
-  }
-
-  // Použití:
-  showDialog() {
-    this.isVisible = true; // Dialog se zobrazí
   }
 }

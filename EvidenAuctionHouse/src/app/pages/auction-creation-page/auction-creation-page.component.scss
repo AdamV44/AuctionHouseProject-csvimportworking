@@ -1,13 +1,131 @@
-.form-container {
+@use 'sass:color';
+@use '../../variables' as v;
+
+.auction-creation-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: v.$white;
+  border-radius: v.$border-radius-xl;
+  box-shadow: v.$box-shadow-lg;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: v.$primary-blue;
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
     display: flex;
-    flex-direction: column; /* Položky se skládají pod sebe */
-    justify-content: center; /* Svislé zarovnání na střed */
-    align-items: center; /* Horizontální zarovnání na střed */
-    gap: 40px; /* Mezera mezi položkami */
+    flex-direction: column;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: v.$dark-gray;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid v.$gray-300;
+      border-radius: v.$border-radius;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: v.$accent-teal;
+        box-shadow: 0 0 0 3px rgba(v.$accent-teal, 0.2);
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+
+    .modern-btn {
+      padding: 0.9rem 1.5rem;
+      border: none;
+      border-radius: v.$border-radius;
+      background: linear-gradient(135deg, v.$primary-blue, color.adjust(v.$primary-blue, $lightness: -10%));
+      color: v.$white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: v.$box-shadow-lg;
+      }
+    }
+  }
+
+  .selected-items {
+    margin-top: 2rem;
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: v.$dark-gray;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem;
+        background-color: color.adjust(v.$accent-teal, $lightness: 45%);
+        color: color.adjust(v.$accent-teal, $lightness: -15%);
+        border-radius: v.$border-radius;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+
+        button {
+          background: none;
+          border: none;
+          color: v.$danger;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: color.adjust(v.$danger, $lightness: -10%);
+          }
+        }
+      }
+    }
+  }
 }
 
-.boxes {
-    text-align: center; /* Zarovnání textu na střed */
-    border-radius: 15px; /* Zaoblení rohů */
-    width: 45vh;
+// Deep style for the item selection dialog
+:host ::ng-deep app-auction-add-items {
+  .popup-overlay {
+    backdrop-filter: blur(5px);
+  }
+  .popup-container {
+    border-radius: v.$border-radius-xl;
+    box-shadow: v.$box-shadow-lg;
+  }
+  .popup-header {
+    background: v.$primary-blue;
+    h2 {
+      color: v.$white;
+    }
+  }
+  .popup-footer button {
+    @extend .modern-btn; // Re-use button styles
+  }
 }

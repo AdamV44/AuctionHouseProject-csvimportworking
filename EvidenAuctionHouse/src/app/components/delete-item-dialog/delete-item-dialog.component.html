@@ -68,20 +68,3 @@
     [confirmButtonClass]="'btn-danger'"
     [iconType]="'danger'"
     (result)="onConfirmationResult($event)"></app-confirmation-dialog>
-
-<!-- JEDNODUCHÁ VERZE PRO DEBUG -->
-<div *ngIf="isVisible">
-    <div>
-        <h3>{{ confirmationTitle }}</h3>
-        <p>Opravdu smazat: {{ itemName }}?</p>
-        <p>ID: {{ itemId }}</p>
-        
-        <button (click)="onConfirm()">
-            ANO, SMAZAT
-        </button>
-        
-        <button (click)="onCancel()">
-            ZRUŠIT
-        </button>
-    </div>
-</div>

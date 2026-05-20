@@ -4,14 +4,14 @@ import { OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsService } from '../../services/items.service';
 import { forkJoin, of, switchMap } from 'rxjs';
-import { KeyValuePipe, NgFor, NgIf } from '@angular/common';
+import { CommonModule, CurrencyPipe, KeyValuePipe, NgFor, NgIf } from '@angular/common';
 import { PriceInputComponent } from '../../components/price-input/price-input.component';
 import { BidsService } from '../../services/bids.service';
 import { UserService } from '../../services/user.service';
 import { FileService } from '../../services/file.service';
 @Component({
   selector: 'app-item-detail-page',
-  imports: [NgFor, KeyValuePipe, NgIf, PriceInputComponent],
+  imports: [NgFor, KeyValuePipe, NgIf, PriceInputComponent, CurrencyPipe, CommonModule],
   templateUrl: './item-detail-page.component.html',
   styleUrl: './item-detail-page.component.scss'
 })

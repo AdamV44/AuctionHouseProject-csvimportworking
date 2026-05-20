@@ -20,6 +20,8 @@ export class PasswordChangePageComponent {
   confPassword: string = '';
 
   changePasswordError: boolean = false;
+  errorMessage: string = '';
+  changePasswordSuccess: boolean = false;
 
   constructor(
     private userService: UserService, 
@@ -28,10 +30,21 @@ export class PasswordChangePageComponent {
   ) {}
 
   onChangePassword() {
+    this.changePasswordError = false;
+    this.changePasswordSuccess = false;
+    this.errorMessage = '';
+
     if (this.newPassword !== this.confPassword) {
       this.changePasswordError = true;
+      this.errorMessage = 'Nová hesla se neshodují.';
       return;
     }
+    if (!this.oldPassword || !this.newPassword) {
+      this.changePasswordError = true;
+      this.errorMessage = 'Všechna pole jsou povinná.';
+      return;
+    }
+
     const user: User = this.authService.getUser() as User;
     let info: ChangePasswordDTO = new ChangePasswordDTO();
 
@@ -39,18 +52,21 @@ export class PasswordChangePageComponent {
     info.oldPassword = this.oldPassword,
     info.newPassword = this.newPassword
   
-    this.userService.changePassword(info).pipe(catchError(err => {
-      console.error(err);
-      this.changePasswordError = true;
-      return [];
-    })).subscribe(result => {
-      if (result == null) {
+    this.userService.changePassword(info).subscribe({
+      next: (result) => {
+        if (result == null) {
+          this.changePasswordError = true;
+          this.errorMessage = 'Změna hesla se nezdařila. Zkontrolujte své aktuální heslo.';
+          return;
+        }
+        this.changePasswordSuccess = true;
+        setTimeout(() => this.router.navigate(['/user-info']), 2000);
+      },
+      error: (err) => {
+        console.error(err);
         this.changePasswordError = true;
-        return;
+        this.errorMessage = 'Došlo k chybě na serveru. Zkuste to prosím později.';
       }
-      console.log(result);
-      this.router.navigate(['/user'])
-      
-    })
+    });
   }
 }

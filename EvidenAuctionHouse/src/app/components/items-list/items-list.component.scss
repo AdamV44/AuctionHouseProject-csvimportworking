@@ -1,23 +1,40 @@
 .table-container {
   display: grid;
-  
-  grid-template-columns: 80vh 80vh;;
-  margin-left: 5vh;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-  gap: 3vh;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  width: min(100%, 76rem);
+  margin: 2rem auto;
+  padding: 0 1rem;
+  gap: 1rem;
 }
 
 /* Zvětšení checkboxu */
 input[type="checkbox"] {
-    width: 4vh;
-    height: 4vh;
-    accent-color: #ffa500; // volitelné, změní barvu zaškrtnutí v podporovaných prohlížečích
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  accent-color: #ffa500;
 }
 
 .item-row {
-    display: flex;
-    align-items: center;
-    gap: 2vh; // mezera mezi checkboxem a itemem
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  min-width: 0;
 }
 
+app-item-preview {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 480px) {
+  .table-container {
+    margin: 1rem auto;
+    padding: 0 0.75rem;
+  }
+
+  .item-row {
+    gap: 0.5rem;
+  }
+}

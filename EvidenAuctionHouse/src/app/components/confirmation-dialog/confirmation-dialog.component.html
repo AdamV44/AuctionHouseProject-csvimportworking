@@ -1,48 +1,29 @@
 <div 
   *ngIf="isVisible" 
   class="confirmation-overlay"
-  (click)="onOverlayClick($event)"
-  (keydown)="onKeyDown($event)"
-  tabindex="0">
+  (click)="onOverlayClick($event)">
   
-  <div class="confirmation-dialog">
+  <div class="confirmation-dialog" (click)="$event.stopPropagation()">
+    
     <div class="dialog-header">
-      <div class="header-content">
-        <div *ngIf="showIcon" class="dialog-icon" [ngClass]="'icon-' + iconType">
-          <i [ngClass]="{
-            'fas fa-exclamation-triangle': iconType === 'warning',
-            'fas fa-question-circle': iconType === 'question',
-            'fas fa-exclamation-circle': iconType === 'danger'
-          }"></i>
-        </div>
-        <h3 class="dialog-title">{{ title }}</h3>
-      </div>
+      <h3 class="dialog-title">{{ title }}</h3>
       <button class="close-btn" (click)="onCancel()" aria-label="Zavřít">
         <i class="fas fa-times"></i>
       </button>
     </div>
 
     <div class="dialog-body">
-      <p class="dialog-message">{{ message }}</p>
+      <p>{{ message }}</p>
     </div>
 
     <div class="dialog-footer">
-      <button 
-        class="btn btn-secondary cancel-btn" 
-        (click)="onCancel()"
-        type="button">
-        <i class="fas fa-times"></i>
+      <button class="btn cancel-btn" (click)="onCancel()">
         {{ cancelText }}
       </button>
-      
-      <button 
-        class="btn confirm-btn" 
-        [ngClass]="confirmButtonClass"
-        (click)="onConfirm()"
-        type="button">
-        <i class="fas fa-check"></i>
+      <button class="btn confirm-btn" [ngClass]="confirmButtonClass" (click)="onConfirm()">
         {{ confirmText }}
       </button>
     </div>
+
   </div>
 </div>

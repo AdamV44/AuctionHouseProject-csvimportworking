@@ -65,8 +65,8 @@ export class ListedItemPreviewComponent implements OnInit {
   }
 
   // Nová metoda pro zpracování výsledku příhozu
-  onBidResult(bidAmount: number): void {
-    console.log(`Příhoz ${bidAmount} byl úspěšně uložen pro položku ${this.item.id}`);
+  onBidSuccess(): void {
+    console.log(`Příhoz byl úspěšně uložen pro položku ${this.item.id}, obnovuji data...`);
     
     // Po úspěšném příhozu obnovit data komponenty
     this.refresh();

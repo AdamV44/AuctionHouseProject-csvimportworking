@@ -1,5 +1,4 @@
-import { NgIf } from '@angular/common';
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UtilityService } from '../../services/utility.service';
 import { BidsService } from '../../services/bids.service';
@@ -10,7 +9,8 @@ import { PriceInputDialogComponent, PriceInputResult } from '../price-input-dial
 
 @Component({
   selector: 'app-price-input',
-  imports: [NgIf, ConfirmationDialogComponent, PriceInputDialogComponent, FormsModule],
+  standalone: true,
+  imports: [ConfirmationDialogComponent, PriceInputDialogComponent, FormsModule],
   templateUrl: './price-input.component.html',
   styleUrl: './price-input.component.scss'
 })
@@ -24,14 +24,17 @@ export class PriceInputComponent {
   @Input() auctionItemId: string
   @Input() itemPrice: number
   @Input() startingPrice: number
+  @Input() minimumBid: number = 1;
 
-  @Output() result = new EventEmitter<number>();
+  @Output() bidSuccess = new EventEmitter<void>();
+
+  @ViewChild('confirmationDialog') confirmationDialog: ConfirmationDialogComponent;
 
   // Stavy pro oba dialogy
-  showPriceInputDialog: boolean = false;  // ✅ Pro první dialog
-  showConfirmationDialog: boolean = false; // ✅ Pro druhý dialog
+  showPriceInputDialog: boolean = false;
   
   selectedBidAmount: number = 0;
+  confirmationMessage: string = '';
 
   // Krok 1: Zobraz dialog pro zadání ceny
   public showPopup() {
@@ -55,34 +58,31 @@ export class PriceInputComponent {
     if (result.action === 'confirm' && result.value) {
       // Uložíme zadanou částku a zobrazíme konfirmační dialog
       this.selectedBidAmount = result.value;
-      console.log('Proceeding to confirmation with amount:', this.selectedBidAmount);
-      this.showConfirmationDialog = true;
+      this.confirmationMessage = `Opravdu chcete přihodit ${this.selectedBidAmount} Kč? Nová cena bude ${this.itemPrice + this.selectedBidAmount} Kč.`;
+      this.confirmationDialog.show();
     }
     // Pokud cancel, nic se neděje
   }
 
   // Krok 3: Zpracuj výsledek potvrzení
-  onConfirmationResult(result: ConfirmationResult) {
-    console.log('Confirmation result:', result);
-    this.showConfirmationDialog = false;
-    
-    if (result === ConfirmationResult.CONFIRM) {
-      console.log('User confirmed - proceeding with bid...');
+  onConfirmationResult(confirmed: boolean) {
+    if (confirmed) {
       this.processBid();
     } else {
-      console.log('User cancelled bid');
       // Reset hodnot
       this.selectedBidAmount = 0;
     }
+    this.confirmationDialog.hide();
   }
 
   // Krok 4: Proveď bid
   private processBid(): void {
+    const newTotalPrice = this.itemPrice + this.selectedBidAmount;
     console.log('Processing bid with values:', {
       auctionItemId: this.auctionItemId,
-      bidAmount: this.selectedBidAmount, // Pouze příhoz
+      bidAmount: this.selectedBidAmount,
       currentPrice: this.itemPrice,
-      newTotalPrice: this.newTotalPrice
+      newTotalPrice: newTotalPrice
     });
 
     // Backend očekává příhoz, ne celkovou cenu
@@ -101,43 +101,30 @@ export class PriceInputComponent {
             Object.keys(error.error.errors).forEach(key => {
               errorMessage += `${key}: ${error.error.errors[key].join(', ')}\n`;
             });
-          } else if (error.error) {
-            errorMessage += error.error;
           } else {
-            errorMessage += 'Neplatný příhoz';
+            errorMessage += error.error.message || 'Neznámá chyba.';
           }
-          
           alert(errorMessage);
+
         } else {
-          alert('Nastala chyba při přihazování. Zkuste to znovu.');
+          alert('Došlo k neočekávané chybě. Zkuste to prosím znovu.');
         }
-        return of(null);
+        
+        return of(null); // Vrací null, aby se přerušil řetězec
       })
     )
-    .subscribe(result => {
-      if (result) {
-        console.log('Bid successful:', result);
-        this.result.emit(this.selectedBidAmount);
-        this.utility.reloadPage();
+    .subscribe(response => {
+      if (response) {
+        console.log('Bid successful:', response);
+        alert('Příhoz byl úspěšně zaznamenán!');
+        this.bidSuccess.emit(); // Emituje událost
       }
+      // Reset hodnot
+      this.selectedBidAmount = 0;
     });
   }
 
-  get minimumBid(): number {
-    // Minimální příhoz (ne celková cena!)
-    return 50; // Např. minimální příhoz 50 Kč
-  }
-
   get newTotalPrice(): number {
-    // Vypočítej novou celkovou cenu
     return this.itemPrice + this.selectedBidAmount;
-  }
-
-  get confirmationMessage(): string {
-    return `Opravdu chcete přihodit ${this.selectedBidAmount} Kč?
-
-Aktuální cena: ${this.itemPrice} Kč
-Váš příhoz: +${this.selectedBidAmount} Kč
-Nová celková cena: ${this.newTotalPrice} Kč`;
   }
 }

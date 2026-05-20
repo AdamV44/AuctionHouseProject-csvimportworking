@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-preview',
+  standalone: true,
   imports: [NgIf],
   templateUrl: './item-preview.component.html',
   styleUrl: './item-preview.component.scss'

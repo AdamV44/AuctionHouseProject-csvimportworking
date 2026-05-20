@@ -2,11 +2,11 @@ import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-email-confirmation-page',
-  imports: [FormsModule, RouterLink, NgIf],
+  imports: [FormsModule, NgIf],
   templateUrl: './email-confirmation-page.component.html',
   styleUrl: './email-confirmation-page.component.scss'
 })

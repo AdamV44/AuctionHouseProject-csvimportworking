@@ -10,9 +10,9 @@ import { AuctionsService } from '../../services/auctions.service';
 
 @Component({
   selector: 'app-auction-add-items',
+  standalone: true,
   templateUrl: './auction-add-items.component.html',
   styleUrl: './auction-add-items.component.scss',
-  standalone: true,
   imports: [ItemsListComponent, ItemsListComponent, ConfirmationComponent, NgIf]
 })
 export class AuctionAddItemsComponent {
@@ -22,7 +22,7 @@ export class AuctionAddItemsComponent {
   @Input()
   auctionId: string
   
-  @Output() close = new EventEmitter<AuctionItem[]>();
+  @Output() itemsSelected = new EventEmitter<AuctionItem[]>();
 
 
   selectableItems: AuctionItem[] = []
@@ -65,11 +65,10 @@ export class AuctionAddItemsComponent {
 
   onConfirmation(result: confirmationResult) {
   if (result == confirmationResult.OK) {
-
-    this.close.emit(this.selectedItems);
+    this.itemsSelected.emit(this.selectedItems);
   }
-  else if(result == confirmationResult.Cancel) {
-    this.close.emit([]);
+  else if (result == confirmationResult.Cancel) {
+    this.itemsSelected.emit([]);
   }
 }
 

@@ -1,6 +1,6 @@
 .grid-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); // tři stejně široké sloupce
-    gap: 2vh; // mezery mezi položkami
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  gap: 1rem;
 }

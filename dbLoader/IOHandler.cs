@@ -14,6 +14,7 @@ namespace DataHandler
 
         public static List<T> LoadFromFile<T>(string filePath) where T : IIdentifyable
         {
+            filePath = filePath.Replace('\\', Path.DirectorySeparatorChar);
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
@@ -32,6 +33,7 @@ namespace DataHandler
 
         public static void SaveDataToFile<T>(DataSet<T> items, string filePath) where T : class, IIdentifyable
         {
+            filePath = filePath.Replace('\\', Path.DirectorySeparatorChar);
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,
@@ -44,6 +46,7 @@ namespace DataHandler
         }
         public static void SaveDataToFile<T>(List<T> items, string filePath) where T : class, IIdentifyable
         {
+            filePath = filePath.Replace('\\', Path.DirectorySeparatorChar);
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,

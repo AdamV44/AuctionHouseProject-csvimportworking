@@ -2,7 +2,7 @@
     <p>{{ auction.name }}</p>
     <p>Od {{ auction.startDate | date:'dd.MM.yyyy HH:mm'}}</p>
     <p>Do {{ auction.endDate | date:'dd.MM.yyyy HH:mm'}}</p>
-    <div *ngIf="this.authService.authenticatedUser.isAdmin" class="button-row" (click)="$event.stopPropagation()">
+    <div *ngIf="this.authService.isAdmin()" class="button-row" (click)="$event.stopPropagation()">
         <button class="btns" (click)="this.onEditClicked()">Upravit</button>
         <button class="btns" (click)="this.onDeleteClicked()">Smazat</button>
     </div>

@@ -264,5 +264,19 @@
     "UserId": "cb7afa83-ec77-4d7a-87a2-74cfbb27f79c",
     "AmountAdded": 400,
     "CreatedAt": "2025-05-29T21:36:18.6758952+02:00"
+  },
+  {
+    "Id": "fdb844f3-3cc3-4b8f-a1d6-f54bc8ccabc3",
+    "AuctionItemId": "57656fd0-0a61-4666-a6a6-33250923fd3f",
+    "UserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "AmountAdded": 50,
+    "CreatedAt": "2026-05-19T09:54:10.070655+02:00"
+  },
+  {
+    "Id": "2f89a9cd-1e11-40e6-8381-9dfefa785283",
+    "AuctionItemId": "57656fd0-0a61-4666-a6a6-33250923fd3f",
+    "UserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "AmountAdded": 500,
+    "CreatedAt": "2026-05-19T10:05:51.967436+02:00"
   }
 ]

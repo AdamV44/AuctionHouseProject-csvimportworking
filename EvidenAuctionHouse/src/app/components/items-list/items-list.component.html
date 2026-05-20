@@ -1,6 +1,6 @@
 <div class="table-container">
   <div *ngFor="let item of displayItems" class="item-row">
-    <input *ngIf="this.authenticationService.authenticatedUser.isAdmin" type="checkbox" [checked]="selectedItems.includes(item)" (change)="onItemSelect(item)">
+    <input *ngIf="this.authenticationService.isAdmin()" type="checkbox" [checked]="selectedItems.includes(item)" (change)="onItemSelect(item)">
     <app-item-preview [item]="item" [routerLink]="['/items', item.id]"></app-item-preview>    
   </div>
 </div>
