@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { ItemsService } from '../../services/items.service';
 import { ItemsListComponent } from '../../components/items-list/items-list.component';
 import { AuctionItem } from '../../../models/auctionItem';
+// search removed for now
 
 @Component({
   selector: 'app-items-list-page',
@@ -17,6 +18,7 @@ export class ItemsListPageComponent implements OnInit {
   loaded: boolean = false;
   itemsOnPage: AuctionItem[] = [];
   selectedItems: AuctionItem[] = [];
+  // search removed for now
 
   constructor(
     public authService: AuthenticationService,
@@ -25,13 +27,13 @@ export class ItemsListPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadItems();
+  this.loadItems();
   }
 
   private loadItems(): void {
     this.itemsService.getItems().subscribe({
       next: (items: AuctionItem[]) => {
-        this.itemsOnPage = items;
+  this.itemsOnPage = items;
         this.loaded = true;
       },
       error: (error: any) => {
@@ -66,7 +68,6 @@ export class ItemsListPageComponent implements OnInit {
       });
     }
   }
-
   onCSV(): void {
     this.router.navigate(['/csv-import']);
   }

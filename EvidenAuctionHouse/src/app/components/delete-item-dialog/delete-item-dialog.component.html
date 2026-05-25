@@ -60,11 +60,11 @@
 
 <!-- Final Confirmation Dialog -->
 <app-confirmation-dialog
-    [isVisible]="showConfirmation"
+    [attr.data-is-visible]="showConfirmation ? 'true' : null"
     [title]="confirmationTitle"
     [message]="confirmationMessage"
     [confirmText]="'Ano, smazat definitívně'"
     [cancelText]="'Ne, zrušit'"
     [confirmButtonClass]="'btn-danger'"
     [iconType]="'danger'"
-    (result)="onConfirmationResult($event)"></app-confirmation-dialog>
+    (result)="onConfirmationResult($any($event))"></app-confirmation-dialog>

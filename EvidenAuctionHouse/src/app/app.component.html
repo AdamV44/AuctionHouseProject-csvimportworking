@@ -1,16 +1,22 @@
-<div class="header-container">
-  <div class="logo-container">
-    <a routerLink="/">
-      <img src="https://assets-global.website-files.com/659672b663c389735562a2fc/6597d1339182d3113c410743_Atos-logo-2024-W.png" alt="Atos Logo">
-    </a>
+<div class="header">
+  <!-- Logo and Text -->
+  <div class="header-left">
+    <img src="/atos-logo-blue-2023.svg" alt="Atos Logo" class="logo">
   </div>
+
+  <!-- Navigation Links -->
   <div class="nav-links">
     <a routerLink="/auctions" routerLinkActive="active-link">Aukce</a>
-    <a *ngIf="isAdmin" routerLink="/item-creation" routerLinkActive="active-link">Vytvořit předmět</a>
+    <a *ngIf="isAdmin" routerLink="/items" routerLinkActive="active-link">Seznam předmětů </a>
+    <a *ngIf="isAdmin" routerLink="/create-item" routerLinkActive="active-link">Vytvořit předmět</a>
+    <a *ngIf="isAdmin" routerLink="/create-auction" routerLinkActive="active-link">Vytvořit akci</a>
     <a *ngIf="isAdmin" routerLink="/csv-import" routerLinkActive="active-link">CSV Import</a>
+    <a *ngIf="isAdmin" routerLink="/reports" routerLinkActive="active-link">Reporty</a>
   </div>
+
+  <!-- User Menu -->
   <div class="user-menu">
-    <a routerLink="/user-info" class="user-info-link">
+    <a routerLink="/user" class="user-info-link">
       <i class="fas fa-user-circle"></i>
       <span>{{ userName }}</span>
     </a>

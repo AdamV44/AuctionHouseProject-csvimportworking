@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CsvDataService } from '../../services/csvData.service';
-import { AuctionItem } from '../../../models/auctionItem';
 import * as Papa from 'papaparse';
 import { FormsModule } from '@angular/forms';
-import { GroupsService } from '../../services/groups.service';
-import { AuctionItemGroup } from '../../../models/auctionItemGroup';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
@@ -16,21 +13,11 @@ import { NgFor, NgIf } from '@angular/common';
 })
 export class CsvImportPageComponent {
   isDragOver = false;
-  groups: AuctionItemGroup[] = [];
-  selectedGroup: AuctionItemGroup;
-  loaded: boolean = false;
 
   constructor(
     private router: Router, 
-    private csvDataService: CsvDataService,
-    private groupsService: GroupsService
-  ) {
-    this.groupsService.getGroups().subscribe(groups => {
-      this.groups = groups;
-      this.selectedGroup = groups[0];
-      this.loaded = true;
-    });
-  }
+    private csvDataService: CsvDataService
+  ) {}
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
@@ -65,10 +52,6 @@ export class CsvImportPageComponent {
   }
 
   parseCSV(csvData: string) {
-
-
-    console.log(this.selectedGroup);
-    
     const result = Papa.parse(csvData, {
       header: true,
       skipEmptyLines: true
@@ -78,33 +61,28 @@ export class CsvImportPageComponent {
 
     for (const row of result.data as any[]) {
       try {
-        // Vezmi všechny klíče kromě Name a StartingPrice jako additionalParams
+        // extract Name and StartingPrice, keep everything else as additionalParams
         const { Name, StartingPrice, ...rest } = row;
-        const additionalParams: Record<string, string> = {};
+        const additionalParamsObj: Record<string, string> = {};
         for (const [key, value] of Object.entries(rest)) {
           if (value && String(value).trim() !== '') {
-            additionalParams[key] = String(value);
+            additionalParamsObj[key] = String(value);
           }
         }
 
-        // Pokud máš vlastní třídu AuctionItem, uprav konstruktor podle potřeby
         const item = {
           name: Name,
-          StartingPrice: Number(StartingPrice),
-          groupId: "1",
-          additionalParams
+          startingPrice: Number(StartingPrice),
+          additionalParameters: Object.keys(additionalParamsObj).length ? JSON.stringify(additionalParamsObj) : ''
         };
-        console.log("itemok takym jest", item);
-        
 
         items.push(item);
       } catch (e) {
-        console.error('Chyba při parsování řádku:', row, e);
+        console.error('Error parsing row:', row, e);
       }
     }
 
     this.csvDataService.setData(items);
     this.router.navigate(['/csv-preview']);
   }
-
 }

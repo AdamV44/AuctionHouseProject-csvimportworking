@@ -3,10 +3,13 @@
 
 :host {
   display: block;
+}
+
+.confirmation-overlay {
   position: fixed;
   inset: 0;
   background: rgba(v.$black, 0.6);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,88 +19,102 @@
 
 .confirmation-dialog {
   background: v.$white;
-  border-radius: v.$border-radius-xl;
-  box-shadow: v.$box-shadow-lg;
+  border-radius: 27px;
+  border: 2px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 36px rgba(2,6,23,0.08);
   width: 100%;
-  max-width: 450px;
-  animation: slideIn 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  max-width: 520px;
+  animation: slideIn 0.32s cubic-bezier(0.25, 1, 0.5, 1);
   display: flex;
   flex-direction: column;
 
   .dialog-content {
     background: v.$white;
-    padding: 2rem;
-    border-radius: v.$border-radius-lg;
-    box-shadow: v.$box-shadow-lg;
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
+    padding: 0; /* header/body/footer handle padding */
+    width: 100%;
+    text-align: left;
+  }
+  /* Title/header */
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
   }
 
   .dialog-title {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: v.$dark-gray;
-    margin-bottom: 1rem;
+    margin: 0;
   }
 
-  .dialog-message {
-    font-size: 1rem;
+  .close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    color: v.$dark-gray;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  /* Body */
+  .dialog-body {
+    padding: 1.5rem;
     color: v.$gray-600;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
-  .dialog-actions {
+  /* Footer / actions */
+  .dialog-footer {
     display: flex;
     justify-content: flex-end;
-    gap: 1rem;
-    padding: 1.5rem;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
     background-color: v.$gray-100;
     border-top: 1px solid v.$gray-200;
-    border-radius: 0 0 v.$border-radius-xl v.$border-radius-xl;
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: v.$border-radius;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(v.$primary-blue, 0.4);
-      }
-    }
-
-    .btn-confirm {
-      background-color: v.$primary-blue;
-      color: v.$white;
-
-      &:hover {
-        background-color: color.adjust(v.$primary-blue, $lightness: -10%);
-      }
-    }
-
-    .btn-danger {
-      background-color: v.$danger;
-      color: v.$white;
-
-      &:hover {
-        background-color: color.adjust(v.$danger, $lightness: -10%);
-      }
-    }
-
-    .btn-cancel {
-      background-color: v.$gray-300;
-      color: v.$dark-gray;
-
-      &:hover {
-        background-color: color.adjust(v.$gray-300, $lightness: -10%);
-      }
-    }
   }
+
+  .btn {
+    padding: 0.6rem 1.1rem;
+    border: none;
+    border-radius: v.$border-radius;
+    font-size: 0.98rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.14s ease, box-shadow 0.18s ease, background-color 0.2s ease;
+    min-width: 120px;
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(v.$primary-blue, 0.12);
+  }
+
+  .btn-confirm {
+    background-color: v.$primary-blue;
+    color: v.$white;
+  }
+
+  .btn-confirm:hover { background-color: color.adjust(v.$primary-blue, $lightness: -8%); }
+
+  .btn-cancel {
+    background-color: v.$gray-300;
+    color: v.$dark-gray;
+  }
+
+  .btn-cancel:hover { background-color: color.adjust(v.$gray-300, $lightness: -6%); }
+  
+  /* Danger variant: used when callers pass confirmButtonClass='btn-danger' */
+  .btn-danger {
+    background-color: v.$danger;
+    color: v.$white;
+    border-color: color.adjust(v.$danger, $lightness: -6%);
+  }
+
+  .btn-danger:hover { background-color: color.adjust(v.$danger, $lightness: -8%); }
 }
 
 

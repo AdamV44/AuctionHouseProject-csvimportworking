@@ -1,0 +1,32 @@
+[
+  {
+    "Id": "c62e82c0-0e06-48c2-8f89-fe8f560fbbb4",
+    "AuctionItemId": "ab8b8b6a-7341-45c7-98b8-989ef5b0ba0e",
+    "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
+    "Name": "nabytek",
+    "FinalPrice": 2900,
+    "WinnerUserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "WinnerFullName": "Adam Vítek",
+    "WinnerEmail": "xadamvitek@email.cz"
+  },
+  {
+    "Id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+    "AuctionItemId": "item-id-101",
+    "AuctionId": "2d097c0f-4c7b-459c-a244-3713a914310c",
+    "Name": "Fotoaparát Canon",
+    "FinalPrice": 8000,
+    "WinnerUserId": "user-101",
+    "WinnerFullName": "Jan Novák",
+    "WinnerEmail": "jan.novak@email.cz"
+  },
+  {
+    "Id": "bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+    "AuctionItemId": "item-id-102",
+    "AuctionId": "2d097c0f-4c7b-459c-a244-3713a914310c",
+    "Name": "Objektiv 50mm",
+    "FinalPrice": 4500,
+    "WinnerUserId": "user-102",
+    "WinnerFullName": "Petr Svoboda",
+    "WinnerEmail": "petr.svoboda@email.cz"  
+  }
+]

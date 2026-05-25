@@ -76,4 +76,24 @@ export class ListedItemPreviewComponent implements OnInit {
     event.stopPropagation();
     // zde proveď akci pro price input, např. otevři popup
   }
+
+  // Photo support methods
+  hasPhoto(): boolean {
+    return this.item && this.item.picturesPaths && this.item.picturesPaths.length > 0;
+  }
+
+  getPhotoUrl(): string {
+    if (this.hasPhoto()) {
+      return this.item.picturesPaths[0];
+    }
+    return '';
+  }
+
+  // Get first letter of bidder name
+  getBidderInitial(): string {
+    if (!this.highestBidderName || this.highestBidderName === 'Žádný příhoz' || this.highestBidderName === 'Zatím žádné příhozy') {
+      return '';
+    }
+    return this.highestBidderName.charAt(0).toUpperCase();
+  }
 }

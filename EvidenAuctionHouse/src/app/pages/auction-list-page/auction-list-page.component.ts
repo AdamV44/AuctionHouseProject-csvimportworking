@@ -29,10 +29,11 @@ export class AuctionListPageComponent {
 
   public reload() {
     if (this.authService.isAdmin()) {
-        this.auctionsService.getAuctions().subscribe(data => {
-        this.auctionPreviewsOnPage = data;
-        this.loaded = true;
-      })
+        // Admin should see only active auctions here; finished auctions are in reports
+        this.auctionsService.getActiveAuctions().subscribe(data => {
+          this.auctionPreviewsOnPage = data;
+          this.loaded = true;
+        })
     }
     else {
       this.auctionsService.getActiveAuctions().subscribe(data => {

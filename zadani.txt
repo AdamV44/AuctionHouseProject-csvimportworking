@@ -1,0 +1,212 @@
+Ahoj, navrhované úpravy v textu ;)
+
+Kid regards,
+
+Zbynek Mezera
+M: +420 604 377 846
+
+
+________________________________________
+✅ Zadání odborné IT praxe – aplikace „IT Bazar / Aukce zařízení“
+1) Kontext a cíl
+Cílem je vytvořit aplikaci pro interní odprodej IT zařízení (např. Notebooky, mobily,...):
+➡️ zařízení nejsou prodávána vlastníkem (??? Kdo jiný než vlastník může prodávat zařízení?)
+➡️ odprodej organizuje IT / firma
+➡️ prodej probíhá formou otevřené aukce
+________________________________________
+2) Vazba na předchozí projekt
+Toto zadání:
+•	navazuje na aplikaci Inventory Assistant
+•	využívá:
+o	seznam zařízení
+o	atributy (asset, SN, stav)
+👉 Lze řešit jako:
+•	samostatná aplikace
+NEBO
+•	rozšíření předchozí
+________________________________________
+3) Specifika
+•	běh na interní síti
+•	jednoduchý login (-> interní keycloak / OIDC / openLDAP / AD)
+•	Docker provoz
+•	důraz na:
+o	přehlednost
+o	jednoduchost
+________________________________________
+4) Funkce aplikace
+________________________________________
+4.1 Import zařízení pro prodej
+Zdroj:
+•	Excel / inventarizační data (nechceme raději csv/json export?)
+•	(co úprava invetarizace - otagování zažízení k rpodeji -> export do aukce?)
+Zařízení obsahuje:
+•	název
+•	SN / inventární číslo
+•	popis
+•	stav (např. OK / použitý / vadný)
+•	fotografie (volitelně)
+•	minimální cena
+•	(maximální cena pro příhozy / automat?)
+________________________________________
+4.2 Vytvoření aukce
+Admin vytvoří aukci:
+•	název (např. „Aukce notebooků 05/2026“)
+•	období:
+o	Od (fixně: následující pracovní den 9:00?)
+o	Do (zajistit, aby se jednalo o všední den; popř. fixně na 15:00 pracovního dne)
+a přiřadí zařízení
+________________________________________
+4.3 Aukční mechanismus
+Každé zařízení má:
+•	(vyvolávací cenu / minimální cenu?)
+•	aktuální cenu
+•	historii příhozů
+Uživatel:
+•	se seznámí s pravidly aukce (při prvním přihlásení odsouhlasení + uložení souhlasu, poté k náhledu)
+o	změna pravidel -> nový souhlas
+o	"povinnost odebrat zboží"
+o	"příhoz je nezrušitelný" (proto jeho potvrzení viz níže)
+o	...
+•	vidí seznam zařízení
+•	může:
+o	přihazovat (bid) + potvrzení úmyslu (eliminace překliku – "opravdu chcete přihodit (a/n)?") 
+Pravidla:
+•	nový příhoz musí být vyšší než aktuální cena
+•	zobrazí se:
+o	aktuální vítěz (!!! max iniciála křestního jména – GDPR)
+o	Historie příhozů, opět anonymizovaně
+________________________________________
+4.4 Přehled zařízení
+Zobrazení:
+•	seznam zařízení
+o	Název / typ
+o	Aktuální cena
+o	Termín aukce do
+•	detail:
+o	Název / typ
+o	Detail / popis
+o	fotka
+o	aktuální cena
+o	čas do konce aukce
+o	Historie příhozů (GDPR)
+o	Aktuální vítěz (GDPR)
+________________________________________
+4.5 Ukončení aukce
+Po konci:
+•	systém určí vítěze
+•	zašle notifikaci vítězi
+o	příprava na smlouvu o odkupu / smlouva o odkupu
+o	digitální podpis
+•	zašle notifikaci administrátorovi + ?
+o	Stav:
+	prodané
+•	cena
+•	dokumentace
+•	Smlouva
+	neprodané
+•	nové zveřejnění?
+•	úprava ceny
+•	...
+________________________________________
+4.6 Správa uživatelů
+Role:
+•	Admin
+o	vytváří aukce
+o	spravuje zařízení (import)
+•	Uživatel
+o	potvrzení povinností / souhlasu s pravidly
+o	přihazování
+________________________________________
+4.7 Reporty
+Minimálně:
+•	seznam prodaných zařízení
+•	kdo vyhrál co
+•	souhrn:
+o	výnos
+o	počet zařízení
+________________________________________
+5) Refactoring aspekt (klíčová část zadání)
+Tento projekt má obsahovat:
+👉 refactoring / zlepšení řešení
+Student by měl:
+•	upravit architekturu
+•	zlepšit:
+o	strukturu kódu
+o	práci s daty
+o	UI
+Možnosti:
+•	oddělení frontend/backend
+•	lepší datový model
+•	reuse z předchozí aplikace
+________________________________________
+6) Technologie
+👉 není předepsaná (stejně jako předtím)
+Možno použít:
+•	libovolný frontend (JS / React / cokoliv)
+•	backend dle volby
+Povinné:
+•	Docker
+•	běh jako webová aplikace
+________________________________________
+7) Milníky
+✅ Týden 1
+•	seznam zařízení
+•	detail zařízení
+•	jednoduché přihazování
+•	ukládání dat
+•	Docker
+________________________________________
+✅ Týden 2
+•	aukce (od–do)
+•	vítěz aukce
+•	přehledy
+•	role
+________________________________________
+✅ Bonus
+•	fotografie zařízení
+•	filtrování / vyhledávání
+•	notifikace (např. přehozen)
+•	export výsledků
+________________________________________
+8) Výstupy
+•	Git repo
+•	docker-compose
+•	README
+•	demo data
+•	krátké demo
+________________________________________
+💡 Doporučení (praktické – důležité)
+Typické chyby:
+•	složitá logika aukce
+•	race conditions (dva příhozy najednou)
+•	UX (uživatel neví co kliknout)
+👉 doporučení:
+•	držet jednoduchá pravidla
+•	neřešit realtime (polling OK)
+•	zaměřit se na funkčnost
+ 
+ 
+Kind regards,
+ 
+Radek Šimek
+CIO
+M: +420603459131
+Doudlebská 1699/5 – 140 00 Praha 4 – Czech Republic
+atos.net
+          
+
+ 
+
+ 
+ 
+model Device {
+  id              Int      @id @default(autoincrement())
+  inventoryNumber String?
+  name            String
+  serialNumber    String   @unique
+  assignedUser    String?
+  team            String?
+  location        String?
+  createdAt       DateTime @default(now())
+  records         DeviceRecord[]
+}

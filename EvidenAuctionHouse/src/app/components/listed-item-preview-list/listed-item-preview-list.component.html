@@ -6,4 +6,6 @@
   </app-listed-item-preview>
 </div>
 
-<div *ngIf="this.listedItems.length == 0">Prázdná aukce</div>
+<div class="empty-state" *ngIf="this.listedItems.length == 0">
+  <p>Prázdná aukce</p>
+</div>

@@ -37,6 +37,9 @@ yarn-error.log
 testem.log
 /typings
 
+# Local API helper log
+/tmp/eah_api.log
+
 # System files
 .DS_Store
 Thumbs.db

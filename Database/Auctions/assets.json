@@ -1,14 +1,44 @@
 [
   {
-    "Id": "73b9997a-f3c3-46ba-8f24-b83570547cf6",
-    "Name": "sss",
-    "StartDate": "2025-05-28T11:52:00Z",
-    "EndDate": "2026-05-31T11:52:00Z"
-  },
-  {
     "Id": "bf84735a-b747-4bdd-84e6-d48f36307603",
     "Name": "nova aukce",
     "StartDate": "2025-05-28T12:11:00Z",
-    "EndDate": "2026-06-06T12:11:00Z"
+    "EndDate": "2025-06-01T09:33:00Z",
+    "IsActive": false
+  },
+  {
+    "Id": "2d097c0f-4c7b-459c-a244-3713a914310c",
+    "Name": "aukce fotka test",
+    "StartDate": "2026-05-13T09:51:00Z",
+    "EndDate": "2026-05-14T09:51:00Z",
+    "IsActive": false
+  },
+  {
+    "Id": "42869f47-6cfd-4940-901f-64cf9e951025",
+    "Name": "xx",
+    "StartDate": "2026-05-13T07:42:00Z",
+    "EndDate": "2026-05-14T07:42:00Z",
+    "IsActive": false
+  },
+  {
+    "Id": "ae2a8d74-f023-41e9-9ad6-0a192b105638",
+    "Name": "TEST AUCTION DEBUG 2",
+    "StartDate": "2026-06-02T09:00:00Z",
+    "EndDate": "2026-06-02T15:00:00Z",
+    "IsActive": true
+  },
+  {
+    "Id": "9b20b99b-cc9f-4a8b-a130-eceb961a6454",
+    "Name": "laprit ",
+    "StartDate": "2026-05-20T09:17:00Z",
+    "EndDate": "2026-05-29T09:17:00Z",
+    "IsActive": true
+  },
+  {
+    "Id": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
+    "Name": "Akce Nábytku květen 2026",
+    "StartDate": "2026-05-04T11:51:00Z",
+    "EndDate": "2026-05-28T11:51:00Z",
+    "IsActive": true
   }
 ]

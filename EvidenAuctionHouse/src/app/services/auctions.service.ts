@@ -34,6 +34,22 @@ export class AuctionsService {
     public getItemsForAuctionById(auctionId: string): Observable<AuctionItem[]> {
       return this.http.get<AuctionItem[]>(settings.apiRoute + '/Auctions/get-items/' + auctionId)
     }
+
+    public getAuctionReport(auctionId: string) {
+      return this.http.get<any>(settings.apiRoute + '/Auctions/report/' + auctionId);
+    }
+
+    public getAuctionReportWithSensitive(auctionId: string) {
+      return this.http.get<any>(settings.apiRoute + '/Auctions/report/' + auctionId + '?includeSensitive=true');
+    }
+
+    public finalizeAuction(auctionId: string) {
+      return this.http.post<any>(settings.apiRoute + '/Auctions/finalize/' + auctionId, {});
+    }
+
+    public reportExists(auctionId: string) {
+      return this.http.get<{ exists: boolean }>(settings.apiRoute + '/Auctions/report-exists/' + auctionId);
+    }
     // public getAuctions(): Observable<Auction[]> {
     //   return of(this.auctions)
     // }

@@ -278,5 +278,54 @@
     "UserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
     "AmountAdded": 500,
     "CreatedAt": "2026-05-19T10:05:51.967436+02:00"
+  },
+  {
+    "Id": "528c6401-d6b9-4a59-a48d-50514140e284",
+    "AuctionItemId": "ab8b8b6a-7341-45c7-98b8-989ef5b0ba0e",
+    "UserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "AmountAdded": 500,
+    "CreatedAt": "2026-05-22T09:24:59.820013+02:00"
+  },
+  {
+    "Id": "df7d234d-ffe9-4e06-92cd-ae2862ba95b1",
+    "AuctionItemId": "ab8b8b6a-7341-45c7-98b8-989ef5b0ba0e",
+    "UserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "AmountAdded": 200,
+    "CreatedAt": "2026-05-22T11:32:45.122646+02:00"
+  },
+  {
+    "Id": "7bf0860e-da72-4edd-859d-b3bb4b443258",
+    "AuctionItemId": "ab8b8b6a-7341-45c7-98b8-989ef5b0ba0e",
+    "UserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "AmountAdded": 200,
+    "CreatedAt": "2026-05-22T11:36:18.55678+02:00"
+  },
+  {
+    "Id": "104d412a-e7cd-4b60-8329-564b4744818c",
+    "AuctionItemId": "ab8b8b6a-7341-45c7-98b8-989ef5b0ba0e",
+    "UserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "AmountAdded": 200,
+    "CreatedAt": "2026-05-22T12:33:31.917603+02:00"
+  },
+  {
+    "Id": "8e46c560-9303-4edc-b0f8-bd2673c8ba17",
+    "AuctionItemId": "4fd5ade0-5761-4776-8af5-a28653e41f65",
+    "UserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "AmountAdded": 500,
+    "CreatedAt": "2026-05-25T10:57:44.064016+02:00"
+  },
+  {
+    "Id": "12b90a47-397c-44f0-b292-03b4edb3bef3",
+    "AuctionItemId": "4fd5ade0-5761-4776-8af5-a28653e41f65",
+    "UserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "AmountAdded": 500,
+    "CreatedAt": "2026-05-25T10:58:08.309138+02:00"
+  },
+  {
+    "Id": "88d31ed0-445f-4bc9-b722-df5b8af9fcb7",
+    "AuctionItemId": "4fd5ade0-5761-4776-8af5-a28653e41f65",
+    "UserId": "3a4d9c96-f302-427e-b162-a0358acc8008",
+    "AmountAdded": 500,
+    "CreatedAt": "2026-05-25T11:26:51.129857+02:00"
   }
 ]

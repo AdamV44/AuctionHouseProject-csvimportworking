@@ -37,6 +37,10 @@ export class BidsService {
     return this.http.get<User>(settings.apiRoute + '/Bids/get-latest-bidder/' + itemId)
   }
 
+  public getBidsForItem(itemId: string): Observable<Bid[]> {
+    return this.getBidsByItemId(itemId)
+  }
+
   // public createBid(b: Bid): void {
   //   this.bids.push(b)
   // }
@@ -104,6 +108,35 @@ export class BidsService {
     console.log('Sending bid data to backend:', bidData);
     
     return this.http.post(`${settings.apiRoute}/Bids/create`, bidData);
+  }
+
+  /**
+   * Wrapper that enforces a confirmation step before creating a bid.
+   * By default it will prompt the user with window.confirm().
+   * Pass { skipConfirmation: true } if the caller already showed a confirmation UI.
+   */
+  confirmAndCreateBid(auctionItemId: string, bidAmount: number, currentDisplayedPrice: number, options?: { skipConfirmation?: boolean, message?: string }): Observable<any> {
+    const skip = options?.skipConfirmation === true;
+    const msg = options?.message ?? `Opravdu chcete přihodit ${bidAmount} Kč? Nová cena bude ${currentDisplayedPrice + bidAmount} Kč.`;
+
+    if (skip) {
+      // Caller already confirmed in UI - forward to createBid
+      return this.createBid(auctionItemId, bidAmount, currentDisplayedPrice);
+    }
+
+    // Default UI confirmation using the browser confirm dialog.
+    // Services shouldn't normally show UI, but this simple wrapper ensures a single enforcement point
+    // for projects that may call createBid from multiple places.
+    if (typeof window !== 'undefined') {
+      const ok = window.confirm(msg);
+      if (!ok) {
+        return of(null);
+      }
+      return this.createBid(auctionItemId, bidAmount, currentDisplayedPrice);
+    }
+
+    // If no window (server-side), just proceed with creating the bid.
+    return this.createBid(auctionItemId, bidAmount, currentDisplayedPrice);
   }
 
   // Metoda pro výpočet aktuální ceny položky

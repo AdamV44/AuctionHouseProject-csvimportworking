@@ -22,7 +22,7 @@
 **/charts
 **/docker-compose*
 **/compose.y*ml
-**/Dockerfile*
+# Keep Dockerfile in build context so `docker build` can see it. (Previously excluded here.)
 **/node_modules
 **/npm-debug.log
 **/obj

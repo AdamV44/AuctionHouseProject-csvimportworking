@@ -6,8 +6,11 @@ Database:
     - StartingPrice
     - GroupId
     - AuctionId
+    - State
     - AdditionalParamsValues:
     - Assets: \AuctionItems\assets.json
+  # Allowed states for AuctionItem.state - set to 'any' to allow arbitrary values
+  AuctionItemAllowedStates: any
   Users:
     - Id
     - Name
@@ -20,7 +23,25 @@ Database:
     - Name
     - StartDate
     - EndDate
+    - IsActive
     - Assets: \Auctions\assets.json
+  Reports:
+    - Id
+    - AuctionId
+    - AuctionName
+    - SoldItemIds
+    - UnsoldItemIds
+    - TotalRevenue
+    - Assets: \Reports\assets.json
+  SoldItems:
+    - Id
+    - AuctionItemId
+    - AuctionId
+    - Name
+    - FinalPrice
+    - WinnerUserId
+    - WinnerFullName
+    - Assets: \SoldItems\assets.json
   Bids:
     - Id
     - AuctionItemId
@@ -53,4 +74,9 @@ ImagePaths:
   UserAvatars: "~/images/users/"
   CategoryImages: "~/images/categories/"
   DefaultImage: "~/images/default/no-image.jpg"
+
+AuctionControl:
+  AutoFinalizeEnabled: false
+  AutoFinalizeIntervalSeconds: 60
+  AutoFinalizeLookbackSeconds: 5
 

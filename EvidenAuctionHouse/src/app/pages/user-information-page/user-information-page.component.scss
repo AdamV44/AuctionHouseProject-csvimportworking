@@ -2,12 +2,13 @@
 @use '../../variables' as v;
 
 .user-info-container {
-  max-width: 800px;
+  max-width: 880px;
   margin: 2rem auto;
-  padding: 2.5rem;
+  padding: 2.25rem;
   background: v.$white;
-  border-radius: v.$border-radius-xl;
-  box-shadow: v.$box-shadow-lg;
+  border-radius: 27px;
+  border: 2px solid rgba(0,0,0,0.06);
+  box-shadow: 0 12px 36px rgba(2,6,23,0.08);
 
   .change-password-btn {
     width: 100%;

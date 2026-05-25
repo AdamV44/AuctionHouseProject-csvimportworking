@@ -12,12 +12,14 @@ namespace EvidenAuctionHouseAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        public UsersController(AuctionHouseDatabase db)
-        {
-            this.myDb = db; 
-        }
+        private readonly AuctionHouseDatabase myDb;
+        private readonly TokensService _tokens;
 
-        private AuctionHouseDatabase myDb;
+        public UsersController(AuctionHouseDatabase db, TokensService tokens)
+        {
+            this.myDb = db;
+            this._tokens = tokens;
+        }
 
 
         [SecuredUser]
@@ -51,9 +53,8 @@ namespace EvidenAuctionHouseAPI.Controllers
         [HttpPost("change-password")]
         public IActionResult ChangePassword(PasswordChangeDTO info)
         {
-            TokensService service = new TokensService();
             string header = this.Request.Headers["Authorization"];
-            string userId = service.GetUserId(header);
+            string userId = _tokens.GetUserId(header);
 
             User user = this.myDb.Users.Find(user => user.Id == userId);
             if (user == null)

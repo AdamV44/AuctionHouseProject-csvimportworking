@@ -30,5 +30,13 @@
     "PasswordHash": "$2a$11$4PfL0wDK7MI/n3XZsU/bNevVQZW75C4HKRfW4w3y7MXElkia4s5s6",
     "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NDg0MTY1MTh9.ibq9N0gIhgrD-ChKi-ZRhmkEkIJuqpe898N4I9OOmM0",
     "TimeStamp": "2025-05-28T09:00:18.6421518+02:00"
+  },
+  {
+    "Id": "690ef424-3d27-4473-a3ca-cbe8c05f1848",
+    "Name": "Víťa",
+    "Email": "xadamvitek@gmail.com",
+    "PasswordHash": "$2a$11$JL/xhjHpGqnfuCZOtHwzNufZcnlmEIjSYViCDEIVpKNqmu3KI4KyC",
+    "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3Nzk3MDE4MDd9._SOEf2kyZ7jeDBqk-hORTXEIFntqtzpA8e-nyO1Byx8",
+    "TimeStamp": "2026-05-25T11:21:46.999467+02:00"
   }
 ]

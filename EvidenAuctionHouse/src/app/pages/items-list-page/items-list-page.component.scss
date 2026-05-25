@@ -1,14 +1,71 @@
 :host {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
-  padding: 0;
+  background: linear-gradient(160deg, rgba(0,20,137,0.06) 0%, var(--background) 60%);
+  padding: 3.5rem 0 4.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .items-page {
-  width: min(100%, 1200px);
+  width: min(100%, 1100px);
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
+  background: linear-gradient(180deg, var(--card-background), rgba(255,255,255,0.98));
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius-xl, 28px);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.08), 0 2px 6px rgba(2,6,23,0.04);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+/* Hero header to match login style */
+.items-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.25rem 0 0.75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero-content h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.hero-sub {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+}
+
+.hero-search input {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: var(--background);
+  width: 28rem;
+  max-width: 100%;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.03) inset;
+}
+
+/* search UI removed; styles previously added have been cleaned up */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .admin-actions {
@@ -27,7 +84,7 @@
 // === FIXED BUTTONS STYLING ===
 .fixed-btn {
   width: min(100%, 12rem);
-  padding: 0.875rem 1.5rem;
+  padding: 0.75rem 1.25rem;
   border: none;
   border-radius: var(--radius-lg);
   font-weight: 600;
@@ -43,24 +100,29 @@
   pointer-events: auto;
   
   &.create-action {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-    color: var(--text-white);
-    
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    background-color: #001489;
+    border-radius: 27px;
     .fas.fa-plus {
       font-size: 1rem;
       margin-right: 0.25rem;
     }
     
     &:hover {
-      background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+      background-color: darken(#001489, 5%);
       transform: translateY(-2px) translateX(-5px);
       box-shadow: var(--shadow-lg);
+      color: white;
+
     }
   }
   
   &.delete-action {
     background: linear-gradient(135deg, var(--error), #dc2626);
-    color: var(--text-white);
+    color: white;
+    background-color: #001489;
+    border-radius: 27px;
     
     .fas.fa-trash-alt {
       font-size: 1rem;
@@ -76,22 +138,25 @@
   
   &.csv-action {
     background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
-    color: var(--text-white);
-    
+    color: white;
+    background-color: #001489;
+    border-radius: 27px;
+
     .fas.fa-file-csv {
       font-size: 1rem;
       margin-right: 0.25rem;
     }
     
     &:hover {
-      background: linear-gradient(135deg, var(--secondary-hover), var(--secondary-color));
+      color: white;
+      background-color: #001489;
       transform: translateY(-2px) translateX(-5px);
       box-shadow: var(--shadow-lg);
     }
   }
   
   &:active {
-    transform: translateY(-1px) translateX(-2px);
+  transform: translateY(-1px) translateX(-2px);
   }
 }
 
@@ -117,10 +182,10 @@
     }
     
     p {
-      color: var(--text-secondary);
-      font-size: var(--font-size-lg);
-      margin: 0;
-      font-weight: 500;
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+  margin: 0;
+  font-weight: 500;
     }
   }
 }
@@ -134,13 +199,13 @@
   padding: 2rem;
   
   .auth-message {
-    text-align: center;
-    background: var(--card-background);
-    border-radius: var(--radius-xl);
-    padding: 3rem 2rem;
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-color);
-    max-width: 500px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--card-background), rgba(255,255,255,0.98));
+  border-radius: calc(var(--radius-xl) - 4px);
+  padding: 2.5rem 2rem;
+  box-shadow: 0 14px 32px rgba(2,6,23,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+  max-width: 520px;
     
     .fas.fa-lock {
       font-size: 3rem;
@@ -196,7 +261,9 @@
 // === RESPONSIVE DESIGN ===
 @media (max-width: 768px) {
   .items-page {
-    padding: 0.75rem;
+    padding: 1rem;
+    border-radius: 20px;
+    margin: 1rem;
   }
 
   .admin-actions {
@@ -308,13 +375,13 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.25rem;
   
   @media (max-width: 768px) {
-    padding: 1rem;
+    padding: 0.75rem;
   }
   
   @media (max-width: 480px) {
-    padding: 0.5rem;
+    padding: 0.5rem 0;
   }
 }

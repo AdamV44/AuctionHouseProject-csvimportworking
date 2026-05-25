@@ -2,31 +2,27 @@
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
-  padding: 0 1rem;
+  max-width: 1400px;
+  padding: 2rem 1rem;
   
-  // Grid layout pro dvě karty vedle sebe
   display: grid;
-  grid-template-columns: 1fr 1fr; // Dvě stejně široké sloupce
-  gap: 2rem; // Mezera mezi kartami
-  align-items: stretch; // Karty budou stejně vysoké
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-items: stretch;
 }
 
 // Responsive úpravy pro auction table
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .table-container {
-    grid-template-columns: 1fr; // Na mobilech jedna karta pod druhou
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 0;
+    padding: 1.5rem 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .table-container {
     gap: 1rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    padding: 1rem 0.5rem;
   }
 }

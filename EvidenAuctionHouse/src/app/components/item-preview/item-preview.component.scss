@@ -19,6 +19,19 @@
   }
 }
 
+/* Selected parent row styles */
+:host-context(.item-row.selected) .preview-container,
+:host-context(.item-row.selected) .preview-container * {
+  color: #ffffff !important;
+}
+
+/* Ensure buttons/links inside preview are visible on dark background */
+:host-context(.item-row.selected) .btn {
+  background-color: rgba(255,255,255,0.12);
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.12);
+}
+
 
 .btn {
   background-color: orange;

@@ -18,12 +18,14 @@ namespace EvidenAuctionHouseAPI.Controllers
     {
         private readonly AuctionHouseDatabase myDb;
         private readonly IConfiguration _configuration;
+    private readonly TokensService _tokens;
 
         // Oprav konstruktor - přidej inicializaci myDb
-        public BidsController(AuctionHouseDatabase db, IConfiguration configuration)
+        public BidsController(AuctionHouseDatabase db, IConfiguration configuration, TokensService tokens)
         {
             this.myDb = db; // Toto bylo pravděpodobně chybějící!
             this._configuration = configuration;
+            this._tokens = tokens;
         }
 
         [SecuredUser]
@@ -80,10 +82,9 @@ namespace EvidenAuctionHouseAPI.Controllers
                 }
 
                 // Doplnění dalších údajů a uložení příhozu
-                TokensService tokenService = new TokensService();
                 string header = Request.Headers["Authorization"];
                 info.Bid.CreatedAt = DateTime.Now;
-                info.Bid.UserId = tokenService.GetUserId(header);
+                info.Bid.UserId = _tokens.GetUserId(header);
 
                 this.myDb.Bids.Add(info.Bid);
                 Console.WriteLine("[DEBUG] Bid created successfully");

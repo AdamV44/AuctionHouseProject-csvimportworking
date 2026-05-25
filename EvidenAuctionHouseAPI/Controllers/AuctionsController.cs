@@ -13,9 +13,12 @@ namespace EvidenAuctionHouseAPI.Controllers
     [ApiController]
     public class AuctionsController : ControllerBase
     {
-        public AuctionsController(AuctionHouseDatabase db)
+        private readonly EvidenAuctionHouseAPI.Services.AuctionFinalizationWorker finalizationWorker;
+
+        public AuctionsController(AuctionHouseDatabase db, EvidenAuctionHouseAPI.Services.AuctionFinalizationWorker finalizationWorker)
         {
             this.myDb = db;
+            this.finalizationWorker = finalizationWorker;
         }
 
         private AuctionHouseDatabase myDb;
@@ -31,7 +34,7 @@ namespace EvidenAuctionHouseAPI.Controllers
         [HttpGet("get-active")]
         public ObjectResult GetActiveAuctions()
         {
-            return Ok(this.myDb.Auctions.Where(a => a.StartDate <= DateTime.Now && a.EndDate >= DateTime.Now));
+            return Ok(this.myDb.Auctions.Where(a => a.IsActive && a.StartDate <= DateTime.Now && a.EndDate >= DateTime.Now));
         }
 
 
@@ -64,6 +67,242 @@ namespace EvidenAuctionHouseAPI.Controllers
             this.myDb.AuctionItems.SaveChanges();
             return Ok(new { message = "Auction created successfully" });
 
+        }
+
+        // DEBUG endpoint: create auction without admin auth to validate persistence
+        [HttpPost("debug/create-noauth")]
+        public IActionResult DebugCreateNoAuth(AuctionCreationDTO info)
+        {
+            try
+            {
+                Console.WriteLine("[AuctionsController] DebugCreateNoAuth called");
+                Console.WriteLine($"[AuctionsController] Incoming auction name={info?.Auction?.Name}");
+                this.myDb.Auctions.Add(info.Auction);
+                // attach items if any
+                if (info.AuctionItemsIds != null && info.AuctionItemsIds.Length > 0)
+                {
+                    foreach (var itemId in info.AuctionItemsIds)
+                    {
+                        var auctionItem = this.myDb.AuctionItems.Find(ai => ai.Id == itemId);
+                        if (auctionItem != null)
+                        {
+                            auctionItem.AuctionId = info.Auction.Id;
+                        }
+                    }
+                    this.myDb.AuctionItems.SaveChanges();
+                }
+                var count = this.myDb.Auctions.GetData().Count;
+                Console.WriteLine($"[AuctionsController] Debug added. Current count={count}. AssetsPath={this.myDb.Auctions.AssetsPath}");
+                return Ok(new { ok = true, count });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[AuctionsController] Debug error: {ex}");
+                return StatusCode(500, new { message = "debug failed", error = ex.Message });
+            }
+        }
+
+        [HttpGet("debug/list")]
+        public IActionResult DebugList()
+        {
+            try
+            {
+                var data = this.myDb.Auctions.GetData();
+                return Ok(new { count = data.Count, items = data.Take(10) });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "failed to list", error = ex.Message });
+            }
+        }
+
+        [SecuredAdmin]
+        [HttpGet("report/{auctionId}")]
+        public IActionResult GetAuctionReport(string auctionId, [FromQuery] bool includeSensitive = false)
+        {
+            try
+            {
+                // Check GDPR config: admin export of sensitive data may be disabled by config
+                bool allowAdminExport = true;
+                try { allowAdminExport = this.myDb.configReader.GetGDPRAllowAdminExport(); } catch { allowAdminExport = true; }
+                if (includeSensitive && !allowAdminExport)
+                {
+                    return StatusCode(403, new { message = "Admin exports of sensitive data are disabled by configuration" });
+                }
+                // If a report was previously generated and stored, return it
+                var stored = this.myDb.Reports.Find(r => r.AuctionId == auctionId);
+                if (stored != null)
+                {
+                    // build DTO from stored report
+                    var dto = new EvidenAuctionHouseAPI.Models.AuctionReportDTO
+                    {
+                        AuctionId = stored.AuctionId,
+                        AuctionName = stored.AuctionName,
+                        TotalRevenue = (int)stored.TotalRevenue
+                    };
+                    foreach (var sid in stored.SoldItemIds)
+                    {
+                        var sold = this.myDb.SoldItems.Find(s => s.Id == sid);
+                        if (sold != null)
+                        {
+                            // Mask or include sensitive fields depending on includeSensitive
+                            var winnerName = sold.WinnerFullName;
+                            var winnerEmail = sold.WinnerEmail;
+                            if (!includeSensitive)
+                            {
+                                // winner display: first initial only
+                                if (!string.IsNullOrEmpty(winnerName)) winnerName = winnerName.Substring(0, 1).ToUpper() + ".";
+                                winnerEmail = "";
+                            }
+                            dto.SoldItems.Add(new EvidenAuctionHouseAPI.Models.SoldItemDTO
+                            {
+                                Id = sold.AuctionItemId,
+                                Name = sold.Name,
+                                FinalPrice = (int)sold.FinalPrice,
+                                WinnerFullName = winnerName,
+                                WinnerEmail = winnerEmail
+                            });
+                        }
+                    }
+                    // include pseudonym map only when admin requested sensitive data
+                    if (includeSensitive && stored.PseudonymMap != null)
+                    {
+                        dto.PseudonymMap = new Dictionary<string, string>(stored.PseudonymMap);
+                    }
+                    foreach (var uid in stored.UnsoldItemIds)
+                    {
+                        var item = this.myDb.AuctionItems.Find(i => i.Id == uid);
+                        if (item != null)
+                        {
+                            dto.UnsoldItems.Add(new { Id = item.Id, Name = item.Name, StartingPrice = item.StartingPrice });
+                        }
+                    }
+                    return Ok(dto);
+                }
+
+                var auction = this.myDb.Auctions.Find(a => a.Id == auctionId);
+                if (auction == null) return BadRequest("Unknown auction id: " + auctionId);
+
+                var items = this.myDb.AuctionItems.Where(i => i.AuctionId == auctionId).ToList();
+                var report = new EvidenAuctionHouseAPI.Models.AuctionReportDTO
+                {
+                    AuctionId = auction.Id,
+                    AuctionName = auction.Name
+                };
+
+                var generatedReport = new DataHandler.Models.AuctionReport
+                {
+                    AuctionId = auction.Id,
+                    AuctionName = auction.Name,
+                };
+
+                foreach (var item in items)
+                {
+                    var bids = this.myDb.Bids.Where(b => b.AuctionItemId == item.Id).ToList();
+                    if (bids != null && bids.Count > 0)
+                    {
+                        var final = bids.Aggregate(item.StartingPrice, (acc, b) => acc + b.AmountAdded);
+                        var lastBid = bids.OrderByDescending(b => b.CreatedAt).First();
+                        var winner = this.myDb.Users.Find(u => u.Id == lastBid.UserId);
+                        var winnerName = winner != null ? winner.Name : "";
+                        var winnerEmail = winner != null ? winner.Email : "";
+                        if (!includeSensitive)
+                        {
+                            if (!string.IsNullOrEmpty(winnerName)) winnerName = winnerName.Substring(0,1).ToUpper() + ".";
+                            winnerEmail = "";
+                        }
+                        report.SoldItems.Add(new EvidenAuctionHouseAPI.Models.SoldItemDTO
+                        {
+                            Id = item.Id,
+                            Name = item.Name,
+                            FinalPrice = (int)final,
+                            WinnerFullName = winnerName,
+                            WinnerEmail = winnerEmail
+                        });
+
+                        // create sold item record
+                        var soldItem = new DataHandler.Models.SoldItem
+                        {
+                            AuctionItemId = item.Id,
+                            AuctionId = auctionId,
+                            Name = item.Name,
+                            FinalPrice = final,
+                            WinnerUserId = lastBid.UserId,
+                            WinnerFullName = winner != null ? winner.Name : "",
+                            WinnerEmail = winner != null ? winner.Email : ""
+                        };
+                        this.myDb.SoldItems.Add(soldItem);
+                        generatedReport.SoldItemIds.Add(soldItem.Id);
+
+                        report.TotalRevenue += (int)final;
+                    }
+                    else
+                    {
+                        report.UnsoldItems.Add(new { Id = item.Id, Name = item.Name, StartingPrice = item.StartingPrice });
+                        generatedReport.UnsoldItemIds.Add(item.Id);
+                    }
+                }
+
+                generatedReport.TotalRevenue = report.TotalRevenue;
+                // if includeSensitive was requested and allowed, include pseudonym map in DTO and persisted report
+                if (includeSensitive && generatedReport.PseudonymMap != null)
+                {
+                    report.PseudonymMap = new Dictionary<string, string>(generatedReport.PseudonymMap);
+                }
+                this.myDb.Reports.Add(generatedReport);
+
+                return Ok(report);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "failed to build report", error = ex.Message });
+            }
+        }
+
+        [SecuredAdmin]
+        [HttpPost("finalize/{auctionId}")]
+        public IActionResult FinalizeAuction(string auctionId, [FromQuery] bool dryRun = false)
+        {
+            try
+            {
+                var auction = this.myDb.Auctions.Find(a => a.Id == auctionId);
+                if (auction == null) return BadRequest("Unknown auction id: " + auctionId);
+
+                // call finalization worker to build and (optionally) persist report and sold items
+                if (!this.finalizationWorker.GenerateAndPersistReport(auctionId, out var dto, out var error, dryRun))
+                {
+                    return StatusCode(500, new { message = "failed to generate report", error });
+                }
+
+                // Optionally: mark auction as finished or remove from active list - here we keep auction records but clients should filter by EndDate
+
+                if (dryRun)
+                {
+                    return Ok(new { ok = true, message = "Dry-run: auction report generated but not stored", report = dto });
+                }
+
+                return Ok(new { ok = true, message = "Auction finalized and report stored" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "failed to finalize auction", error = ex.Message });
+            }
+        }
+
+        [SecuredAdmin]
+        [HttpGet("report-exists/{auctionId}")]
+        public IActionResult ReportExists(string auctionId)
+        {
+            try
+            {
+                var stored = this.myDb.Reports.Find(r => r.AuctionId == auctionId);
+                bool exists = stored != null;
+                return Ok(new { exists });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "failed to check report existence", error = ex.Message });
+            }
         }
 
         [SecuredAdmin]

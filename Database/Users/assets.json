@@ -26,5 +26,12 @@
     "PasswordHash": "$2a$11$tt/zYcSGsae0fOBFPDVJj.pXvv/BgOrYxkpdT98S1BMBeL6qt/L1G",
     "Email": "xadamvitek@email.cz",
     "isAdmin": true
+  },
+  {
+    "Id": "3a4d9c96-f302-427e-b162-a0358acc8008",
+    "Name": "Víťa",
+    "PasswordHash": "$2a$11$JL/xhjHpGqnfuCZOtHwzNufZcnlmEIjSYViCDEIVpKNqmu3KI4KyC",
+    "Email": "xadamvitek@gmail.com",
+    "isAdmin": false
   }
 ]

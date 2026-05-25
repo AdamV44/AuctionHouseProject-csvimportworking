@@ -12,16 +12,19 @@ namespace EvidenAuctionHouseAPI.Controllers
     public class RegistrationController : ControllerBase
     {
 
-        public RegistrationController(AuctionHouseDatabase db)
+        private readonly AuctionHouseDatabase myDb;
+        private readonly EvidenAuctionHouseAPI.Services.RegistrationService _registrationService;
+
+        public RegistrationController(AuctionHouseDatabase db, EvidenAuctionHouseAPI.Services.RegistrationService registrationService)
         {
             this.myDb = db;
+            this._registrationService = registrationService;
         }
-        private AuctionHouseDatabase myDb;
 
         [HttpPost("register-submit")]
         public IActionResult SubmitRegisterForm(RegistrationInformation info)
         {
-            RegistrationService regService = new RegistrationService(this.myDb.RegisterAttemptsFilePath);
+            var regService = _registrationService;
             var smtpConfig = this.myDb.configReader.GetSMTPConfig();
             EmailService emailService = new EmailService(smtpConfig.Server, smtpConfig.Port, smtpConfig.User, smtpConfig.Password);
             if (this.myDb.Users.Find(u => u.Email == info.Email) != null)
@@ -47,7 +50,7 @@ namespace EvidenAuctionHouseAPI.Controllers
 
         public IActionResult ConfirmEmail(string token)
         {
-            RegistrationService service = new RegistrationService(this.myDb.RegisterAttemptsFilePath);
+            var service = _registrationService;
             if (service.ConfirmEmail(token))
             {
                 this.myDb.Users.Add(service.CreateUser(service.GetAttemptFromToken(token)));

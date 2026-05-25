@@ -17,10 +17,10 @@
     </div>
 
     <div class="dialog-footer">
-      <button class="btn cancel-btn" (click)="onCancel()">
+      <button class="btn btn-cancel" (click)="onCancel()" aria-label="Cancel">
         {{ cancelText }}
       </button>
-      <button class="btn confirm-btn" [ngClass]="confirmButtonClass" (click)="onConfirm()">
+      <button class="btn btn-confirm" [ngClass]="confirmButtonClass" (click)="onConfirm()" aria-label="Confirm">
         {{ confirmText }}
       </button>
     </div>

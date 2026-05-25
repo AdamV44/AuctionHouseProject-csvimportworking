@@ -17,6 +17,17 @@ namespace EvidenAuctionHouseAPI
             var db = new AuctionHouseDatabase(configFilepath, dbPath);
 
             builder.Services.AddSingleton<AuctionHouseDatabase>(db);
+            // TokensService provides token creation/verification and reads secrets from env vars
+            builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.TokensService>();
+            // RegistrationService depends on the path to pending users file and TokensService
+            builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.RegistrationService>(sp =>
+            {
+                var tokens = sp.GetService<EvidenAuctionHouseAPI.Services.TokensService>();
+                return new EvidenAuctionHouseAPI.Services.RegistrationService(db.RegisterAttemptsFilePath, tokens!);
+            });
+            // Register finalization worker and hosted scheduler
+            builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.AuctionFinalizationWorker>();
+            builder.Services.AddHostedService<EvidenAuctionHouseAPI.Services.AuctionFinalizerScheduler>();
 
             // SETUP CORS
             builder.Services.AddCors(options =>

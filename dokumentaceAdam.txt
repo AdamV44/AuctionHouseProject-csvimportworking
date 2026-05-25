@@ -8,6 +8,23 @@
 
 ---
 
+## 🆕 Nedávné změny
+### SCSS Fixes
+- Migrace z `@import` na `@use` pro moderní správu stylů.
+- Přidání chybějících proměnných do `_variables.scss`.
+- Oprava stylů pro komponenty jako `confirmation-dialog` a `price-input`.
+
+### Angular Component Updates
+- Refaktorování `ConfirmationDialogComponent` pro použití metod `show()` a `hide()` místo `@Input`.
+- Aktualizace komponent `price-input` a `listed-item-preview` pro nový API dialogu.
+- Oprava chyb v `auction-creation-page` (např. špatné importy a volání metod).
+
+### Docker Adjustments
+- Aktualizace `docker-compose.yml` pro správné buildování a běh aplikace.
+- Přidání dummy `Dockerfile` pro `dbLoader`.
+
+---
+
 ## 🗂️ Struktura projektu
 
 
@@ -29,206 +46,402 @@ AuctionHouseProject-csvimportworking/
 
 ---
 
-## 🗃️ Databázový systém
+## 🛠️ Frontend (Angular) - Kompletní dokumentace
 
-### Architektura
-- **Vlastní souborová databáze** založená na JSON souborech
-- Každá "tabulka" je reprezentována složkou s JSON soubory
-- **AuctionHouseDatabase** objekt spravuje všechny datasety
-- Globální zámek pro thread-safety
+### Pages (Stránky)
+#### auction-creation-page
+- **Účel**: Umožňuje uživatelům vytvořit novou aukci.
+- **Klíčové funkce**: Formulář pro zadání názvu aukce, data začátku a konce, přidání předmětů.
+- **Napojení na backend**: Volá `AuctionsController` pro vytvoření aukce.
 
-### Konfigurace (config.yml)
-```yaml
-Database:
-  Users:
-    assets: "Users"           # Cesta k JSON souborům
-    properties: [...]         # Popis struktury (informativní)
-  Auctions:
-    assets: "Auctions"
-    properties: [...]
+#### auction-list-page
+- **Účel**: Zobrazuje seznam všech aukcí.
+- **Klíčové funkce**: Tabulka s přehledem aukcí, tlačítko pro vytvoření nové aukce (pouze pro administrátory).
+- **Napojení na backend**: Používá `AuctionsController` pro načtení seznamu aukcí.
+
+#### item-detail-page
+- **Účel**: Zobrazuje detailní informace o konkrétním předmětu.
+- **Klíčové funkce**: Zobrazení obrázků, aktuální ceny, a možnost přihazovat.
+- **Napojení na backend**: Používá `AuctionItemsController` a `BidsController`.
+
+#### register-page
+- **Účel**: Umožňuje uživatelům vytvořit nový účet.
+- **Klíčové funkce**: Formulář pro zadání jména, emailu a hesla.
+- **Napojení na backend**: Volá `UsersController` pro registraci uživatele.
+
+#### login-page
+- **Účel**: Umožňuje uživatelům přihlásit se do systému.
+- **Klíčové funkce**: Formulář pro zadání emailu a hesla.
+- **Napojení na backend**: Volá `UsersController` pro autentizaci uživatele.
+
+#### user-information-page
+- **Účel**: Zobrazuje informace o aktuálně přihlášeném uživateli.
+- **Klíčové funkce**: Zobrazení jména, emailu, a možnost změnit heslo.
+- **Napojení na backend**: Používá `AuthenticationService` pro získání informací o uživateli.
+
+#### password-change-page
+- **Účel**: Umožňuje uživatelům změnit heslo.
+- **Klíčové funkce**: Formulář pro zadání starého a nového hesla.
+- **Napojení na backend**: Volá `UsersController` pro změnu hesla.
+
+### Additional Pages (Stránky)
+#### csv-import-page
+- **Účel**: Umožňuje administrátorům importovat data z CSV souborů.
+- **Klíčové funkce**: Formulář pro nahrání CSV souboru, validace dat, a zobrazení náhledu.
+- **Napojení na backend**: Používá `FileService` pro nahrání souboru a `AuctionsController` pro zpracování dat.
+
+#### csv-preview-page
+- **Účel**: Zobrazuje náhled dat z CSV souboru před jejich importem.
+- **Klíčové funkce**: Tabulka s daty, možnost úprav a potvrzení importu.
+- **Napojení na backend**: Používá `AuctionsController` pro potvrzení importu.
+
+#### email-confirmation-page
+- **Účel**: Zobrazuje potvrzení odeslání emailu uživateli.
+- **Klíčové funkce**: Zobrazení zprávy o úspěšném odeslání emailu.
+- **Napojení na backend**: Používá `UsersController` pro odeslání emailu.
+
+#### dummy-page
+- **Účel**: Slouží jako šablona pro budoucí stránky.
+- **Klíčové funkce**: Obsahuje základní strukturu stránky.
+- **Napojení**: Není napojena na backend.
+
 ---
-Datasety
-Users - uživatelé systému
-Auctions - aukce
-AuctionItems - předměty v aukcích
-Bids - příhozy
-ItemGroups - kategorie předmětů
-RegisterAttempts - pokusy o registraci
-Správa dat
-IOHandler - načítání/ukládání JSON souborů
-Automatické ukládání při každé změně
-Thread-safe operace s globálním zámkem
-Obrázky ukládány samostatně ve FileService
-🔐 Autorizace a bezpečnost
-Token systém
-TokensService generuje JWT tokeny
-Token obsahuje: UserId, IsAdmin
-Uložení v LocalStorage (frontend)
-Automatické odesílání přes HTTP interceptor
-Zabezpečení endpointů
-[SecuredUser] - pouze přihlášení uživatelé
-[SecuredAdmin] - pouze administrátoři
-Registrace uživatelů
-Uživatel vyplní registrační formulář
-Systém pošle ověřovací email
-Kliknutí na odkaz vytvoří účet
-RegistrationService + RegistrationController
-🎯 Funkcionality
-✅ Implementované funkce
-✅ Registrace a přihlašování uživatelů
-✅ Vytváření aukcí s předměty
-✅ Systém příhozů s validací
-✅ Upload obrázků předmětů
-✅ Email konfirmace
-✅ Admin/User role systém
-✅ Responsive design
-✅ Anonymní aukce (nově implementováno)
-🔄 Částečně implementované
-🔄 CSV import/export (UI hotovo, funkčnost částečná)
-🔄 CSV preview (základní implementace)
-❌ Chybějící funkce
-❌ UI pro správu uživatelských práv
-❌ Kompletní CSV import funkcionalita
-❌ anonymními prihazovani
-📱 Frontend (Angular)
-src/app/
-├── pages/                      # Stránky aplikace
-│   ├── item-creation-page/     # Vytváření předmětů
-│   ├── user-information-page/  # Profil uživatele
-│   ├── password-change-page/   # Změna hesla
-│   ├── email-confirmation-page/# Email ověření
-│   ├── csv-import-page/        # CSV import
-│   └── csv-preview-page/       # CSV náhled
-├── components/                 # Znovupoužitelné komponenty
-├── services/                   # Angular služby
-└── models/                     # TypeScript modely
-Struktura komponent
-Klíčové služby
-AuthenticationService - přihlašování
-AuctionService - správa aukcí
-FileService - upload souborů
-BidsService - správa příhozů
-Styling
-SCSS s CSS custom properties
-Responsive design (mobile-first)
-Jednotný design systém napříč aplikací
-🛠️ Backend (ASP.NET Core)
-Kontrolery
-AuctionsController - správa aukcí
-UsersController - správa uživatelů
-BidsController - správa příhozů
-AuctionItemsController - správa předmětů
-RegistrationController - registrace
-DbManagerController - správa databáze
-Hlavní služby
-TokensService - JWT tokeny
-FileService - správa souborů
-RegistrationService - registrace uživatelů
-AuctionHouseDatabase - databázový kontext
-🔧 Konfigurace a setup
-Potřebné nastavení
-Cesty v Program.cs:
-var configPath = "path/to/config.yml";
-var databasePath = "path/to/Database/";
 
-SMTP konfigurace v config.yml
+### Components (Komponenty)
+#### confirmation-dialog
+- **Účel**: Zobrazuje potvrzovací dialog pro akce uživatele.
+- **Klíčové funkce**: Zobrazení zprávy, tlačítka pro potvrzení nebo zrušení.
+- **Napojení**: Používá se v `auction-creation-page` a dalších stránkách.
 
-Admin práva - manuálně v JSON souborech
+#### price-input-dialog
+- **Účel**: Umožňuje uživatelům zadat částku pro příhoz.
+- **Klíčové funkce**: Formulář pro zadání částky, tlačítko pro potvrzení.
+- **Napojení na backend**: Volá `BidsController` pro odeslání příhozu.
 
-Závislosti
-Backend:
+#### auction-add-items
+- **Účel**: Umožňuje uživatelům přidat předměty do aukce.
+- **Klíčové funkce**: Zobrazení seznamu dostupných předmětů, výběr předmětů.
+- **Napojení na backend**: Používá `AuctionItemsController` pro načtení předmětů.
 
-Bcrypt.Net (hashování hesel)
-YamlDotNet (YAML parsing)
-Frontend:
+#### items-list
+- **Účel**: Zobrazuje seznam předmětů.
+- **Klíčové funkce**: Zobrazení detailů předmětů, možnost výběru předmětů.
+- **Napojení**: Používá se v `auction-add-items`.
 
-PapaParse (CSV parsing)
-Angular Material (UI komponenty)
-🆕 Nové funkce - Anonymní aukce
-Implementace
-IsAnonymous vlastnost v Auction modelu
-Checkbox při vytváření aukce
-Podmíněné zobrazování podle uživatelských práv
-Chování systému
-Běžní uživatelé: Vidí pouze částky, "Anonymní uživatel"
-Administrátoři: Vidí všechny informace včetně jmen
-Databáze: Ukládá všechny informace, anonymita je pouze prezentační
-📝 Poznámky pro vývojáře
-Důležité upozornění
-Neupravujte JSON soubory ručně - může narušit integritu dat
-ItemGroups - plánované pro ruční úpravy
-Admin práva - zatím pouze manuální nastavení v databázi
-Thread Safety
-Všechny datasety sdílí globální zámek
-Zamezuje konfliktům při concurrent přístupu
-Možná over-engineering, ale bezpečné
-Rozšiřitelnost
-Modulární architektura umožňuje snadné přidávání funkcí
-Standalone Angular komponenty - moderní přístup
-Vlastní databáze - plná kontrola nad daty
-🚀 Spuštění projektu
-Backend
+#### item-preview
+- **Účel**: Zobrazuje náhled jednoho předmětu.
+- **Klíčové funkce**: Zobrazení názvu, popisu a obrázku předmětu.
+- **Napojení**: Používá se v `items-list`.
+
+### Additional Components (Komponenty)
+#### auction-preview
+- **Účel**: Zobrazuje náhled jedné aukce.
+- **Klíčové funkce**: Zobrazení názvu, popisu a data aukce.
+- **Napojení**: Používá se v `auction-list-page`.
+
+#### auction-table
+- **Účel**: Zobrazuje tabulku s aukcemi.
+- **Klíčové funkce**: Zobrazení seznamu aukcí s možností filtrování a řazení.
+- **Napojení**: Používá se v `auction-list-page`.
+
+#### delete-auction-dialog
+- **Účel**: Zobrazuje potvrzovací dialog pro smazání aukce.
+- **Klíčové funkce**: Potvrzení nebo zrušení akce.
+- **Napojení na backend**: Volá `AuctionsController` pro smazání aukce.
+
+#### delete-item-dialog
+- **Účel**: Zobrazuje potvrzovací dialog pro smazání předmětu.
+- **Klíčové funkce**: Potvrzení nebo zrušení akce.
+- **Napojení na backend**: Volá `AuctionItemsController` pro smazání předmětu.
+
+#### listed-item-preview
+- **Účel**: Zobrazuje náhled jednoho předmětu v seznamu.
+- **Klíčové funkce**: Zobrazení názvu, popisu a ceny předmětu.
+- **Napojení**: Používá se v `items-list-page`.
+
+#### listed-item-preview-list
+- **Účel**: Zobrazuje seznam náhledů předmětů.
+- **Klíčové funkce**: Zobrazení seznamu předmětů s možností filtrování.
+- **Napojení**: Používá se v `items-list-page`.
+
+---
+
+### Models (Modely)
+#### User
+- **Účel**: Reprezentuje uživatele systému.
+- **Pole**: `id`, `name`, `email`, `password`, `isAdmin`.
+- **Použití**: Používá se v `AuthenticationService` a na stránkách jako `user-information-page`.
+
+#### Auction
+- **Účel**: Reprezentuje aukci.
+- **Pole**: `id`, `name`, `startDate`, `endDate`.
+- **Použití**: Používá se v `auction-creation-page` a `auction-list-page`.
+
+#### AuctionItem
+- **Účel**: Reprezentuje předmět v aukci.
+- **Pole**: `id`, `name`, `description`, `auctionId`.
+- **Použití**: Používá se v `item-detail-page` a `auction-add-items`.
+
+#### Bid
+- **Účel**: Reprezentuje příhoz.
+- **Pole**: `id`, `amount`, `userId`, `auctionItemId`.
+- **Použití**: Používá se v `price-input-dialog`.
+
+### Additional Models (Modely)
+#### auctionCreateDTO
+- **Účel**: Přenáší data pro vytvoření nové aukce.
+- **Pole**: `name`, `startDate`, `endDate`.
+- **Použití**: Používá se v `auction-creation-page`.
+
+#### auctionItemGroup
+- **Účel**: Reprezentuje skupinu předmětů.
+- **Pole**: `id`, `name`, `description`.
+- **Použití**: Používá se v `itemGroups.service.ts`.
+
+### Reports & SoldItems (nově přidané)
+- `Reports` – uložené reporty vygenerované po ukončení aukce.
+  - Pole: `Id`, `AuctionId`, `AuctionName`, `SoldItemIds`, `UnsoldItemIds`, `TotalRevenue`.
+  - Uloženo v `Database/Reports/assets.json`.
+  - Slouží k rychlému načtení historických reportů bez opětovné agregace příhozů.
+
+- `SoldItems` – záznamy o prodaných předmětech po ukončení aukce.
+  - Pole: `Id`, `AuctionItemId`, `AuctionId`, `Name`, `FinalPrice`, `WinnerUserId`, `WinnerFullName`.
+  - Uloženo v `Database/SoldItems/assets.json`.
+  - Pomáhá rychle filtrovat prodané položky a vytvářet exporty.
+
+### Finalizace aukce (workflow)
+- Když aukce skončí, administrátor spustí endpoint `POST /api/Auctions/finalize/{auctionId}` (nebo je proces spouštěn automaticky podle plánovače):
+  1. Backend spočítá výsledky aukce (sestaví seznam prodaných a neprodaných položek a součtů).
+  2. Pro každou prodanou položku se vytvoří záznam v `SoldItems` (persistováno do `Database/SoldItems/assets.json`).
+  3. Vytvoří se záznam v `Reports` obsahující reference na prodané i neprodané položky a celkový výnos (persistováno do `Database/Reports/assets.json`).
+  4. Frontend bude při zobrazení reportu preferovat načtení uloženého reportu (`GET /api/Auctions/report/{auctionId}` vrací uložený report, pokud existuje), což zrychlí zobrazení a stabilizuje výsledky.
+  5. Neprodané položky zůstanou v `AuctionItems` a lze je upravovat/operovat s nimi dál (zůstanou viditelné v aukčním rozhraní).
+
+### Poznámky k implementaci
+- `Reports` a `SoldItems` jsou nové entity v konfiguračním souboru `Database/config.yml` a mají prázdné `assets.json` soubory v příslušných podsložkách.
+- Endpoint `GET /api/Auctions/report/{auctionId}` vrací uložený report, pokud existuje, jinak jej vygeneruje on-the-fly a uloží ho spolu se záznamy `SoldItems`.
+- Endpoint `POST /api/Auctions/finalize/{auctionId}` volá generování reportu a explicitně uloží report pro pozdější rychlé dotazy.
+
+
+#### authenticatedUserInformation
+- **Účel**: Obsahuje informace o autentizovaném uživateli.
+- **Pole**: `id`, `name`, `email`, `isAdmin`.
+- **Použití**: Používá se v `AuthenticationService`.
+
+#### authenticationResult
+- **Účel**: Obsahuje výsledek autentizace.
+- **Pole**: `token`, `user`.
+- **Použití**: Používá se v `AuthenticationService`.
+
+#### bidCreationDTO
+- **Účel**: Přenáší data pro vytvoření nového příhozu.
+- **Pole**: `amount`, `userId`, `auctionItemId`.
+- **Použití**: Používá se v `price-input-dialog`.
+
+#### changePasswordDTO
+- **Účel**: Přenáší data pro změnu hesla.
+- **Pole**: `oldPassword`, `newPassword`.
+- **Použití**: Používá se v `password-change-page`.
+
+#### confirmationResult
+- **Účel**: Obsahuje výsledek potvrzovací akce.
+- **Pole**: `CONFIRM`, `CANCEL`.
+- **Použití**: Používá se v `confirmation-dialog`.
+
+#### credentials
+- **Účel**: Obsahuje přihlašovací údaje uživatele.
+- **Pole**: `email`, `password`.
+- **Použití**: Používá se v `login-page`.
+
+#### image
+- **Účel**: Reprezentuje obrázek.
+- **Pole**: `id`, `url`, `altText`.
+- **Použití**: Používá se v `item-detail-page`.
+
+#### registrationInformation
+- **Účel**: Obsahuje registrační údaje uživatele.
+- **Pole**: `name`, `email`, `password`.
+- **Použití**: Používá se v `register-page`.
+
+---
+
+## 🛠️ Backend (ASP.NET Core) - Detailní dokumentace
+
+### Kontrolery
+- **AuctionsController**: Správa aukcí.
+  - **Metody**: `GetAllAuctions`, `CreateAuction`, `DeleteAuction`.
+  - **Napojení na frontend**: Používá se v `auction-creation-page`.
+
+- **AuctionItemsController**: Správa předmětů v aukcích.
+  - **Metody**: `GetItemsByAuction`, `AddItem`, `DeleteItem`.
+  - **Napojení na frontend**: Používá se v `item-detail-page`.
+
+- **BidsController**: Správa příhozů.
+  - **Metody**: `PlaceBid`, `GetBidsByItem`.
+  - **Napojení na frontend**: Používá se v `price-input`.
+
+- **UsersController**: Správa uživatelů.
+  - **Metody**: `RegisterUser`, `LoginUser`.
+  - **Napojení na frontend**: Používá se v registračních a přihlašovacích formulářích.
+
+### Additional Backend Controllers
+#### AuctionItemsPicturesController
+- **Účel**: Správa obrázků předmětů v aukcích.
+- **Metody**:
+  - `UploadPicture`: Nahrává obrázek pro konkrétní předmět.
+  - `GetPicturesByItem`: Vrací seznam obrázků pro daný předmět.
+- **Napojení na frontend**: Používá se v `item-detail-page`.
+
+#### DbManagerController
+- **Účel**: Správa databázových operací.
+- **Metody**:
+  - `BackupDatabase`: Vytváří zálohu databáze.
+  - `RestoreDatabase`: Obnovuje databázi ze zálohy.
+- **Napojení na frontend**: Používá se v administrátorském rozhraní.
+
+#### ImagesController
+- **Účel**: Správa obrázků v systému.
+- **Metody**:
+  - `UploadImage`: Nahrává obrázek.
+  - `GetImage`: Vrací obrázek podle ID.
+- **Napojení na frontend**: Používá se v `item-detail-page`.
+
+#### ItemGroupsController
+- **Účel**: Správa skupin předmětů.
+- **Metody**:
+  - `GetAllGroups`: Vrací seznam všech skupin.
+  - `CreateGroup`: Vytváří novou skupinu.
+- **Napojení na frontend**: Používá se v `items-list-page`.
+
+#### WeatherForecastController
+- **Účel**: Ukázkový kontroler pro testování.
+- **Metody**:
+  - `Get`: Vrací ukázková data o počasí.
+- **Napojení**: Není napojena na frontend.
+
+---
+
+### Služby
+- **AuctionHouseDatabase**: Kontext pro práci s JSON databází.
+  - **Funkce**: Načítá a ukládá data z JSON souborů.
+
+- **TokensService**: Generování a validace JWT tokenů.
+  - **Funkce**: Správa autentizace uživatelů.
+
+- **FileService**: Správa uploadu souborů.
+  - **Funkce**: Ukládá obrázky předmětů.
+
+### Additional Backend Services
+#### EmailService
+- **Účel**: Odesílání emailů uživatelům.
+- **Funkce**:
+  - Odesílá potvrzovací emaily při registraci.
+  - Odesílá notifikace o změnách v aukcích.
+- **Napojení na frontend**: Používá se v `RegistrationController`.
+
+#### RegistrationService
+- **Účel**: Správa registrace uživatelů.
+- **Funkce**:
+  - Validuje registrační údaje.
+  - Ukládá nové uživatele do databáze.
+- **Napojení na frontend**: Používá se v `RegistrationController`.
+
+---
+
+### Models (Modely)
+#### User
+- **Účel**: Reprezentuje uživatele systému.
+- **Pole**: `id`, `name`, `email`, `password`, `isAdmin`.
+- **Použití**: Používá se v `AuthenticationService` a na stránkách jako `user-information-page`.
+
+#### Auction
+- **Účel**: Reprezentuje aukci.
+- **Pole**: `id`, `name`, `startDate`, `endDate`.
+- **Použití**: Používá se v `auction-creation-page` a `auction-list-page`.
+
+#### AuctionItem
+- **Účel**: Reprezentuje předmět v aukci.
+- **Pole**: `id`, `name`, `description`, `auctionId`.
+- **Použití**: Používá se v `item-detail-page` a `auction-add-items`.
+
+#### Bid
+- **Účel**: Reprezentuje příhoz.
+- **Pole**: `id`, `amount`, `userId`, `auctionItemId`.
+- **Použití**: Používá se v `price-input-dialog`.
+
+### Additional Backend Models
+#### AuctionCreationDTO
+- **Účel**: Přenáší data pro vytvoření nové aukce.
+- **Pole**: `name`, `startDate`, `endDate`.
+- **Použití**: Používá se v `AuctionsController`.
+
+#### AuthenticatedUserInformation
+- **Účel**: Obsahuje informace o autentizovaném uživateli.
+- **Pole**: `id`, `name`, `email`, `isAdmin`.
+- **Použití**: Používá se v `AuthenticationController`.
+
+#### AuthenticationResult
+- **Účel**: Obsahuje výsledek autentizace.
+- **Pole**: `token`, `user`.
+- **Použití**: Používá se v `AuthenticationController`.
+
+#### BidCreationDTO
+- **Účel**: Přenáší data pro vytvoření nového příhozu.
+- **Pole**: `amount`, `userId`, `auctionItemId`.
+- **Použití**: Používá se v `BidsController`.
+
+#### Credentials
+- **Účel**: Obsahuje přihlašovací údaje uživatele.
+- **Pole**: `email`, `password`.
+- **Použití**: Používá se v `AuthenticationController`.
+
+#### PasswordChangeDTO
+- **Účel**: Přenáší data pro změnu hesla.
+- **Pole**: `oldPassword`, `newPassword`.
+
+---
+
+## Aktuální změny (rychlý přehled)
+
+- Reports persistence: Backend nyní persistuje reporty po finalizaci aukce do `Database/Reports/assets.json` a záznamy prodaných položek do `Database/SoldItems/assets.json`.
+- Finalizer service: `AuctionFinalizerService` může automaticky finalizovat aukce podle nastavení v `Database/config.yml` (node `AuctionControl`).
+- Auction.IsActive: model aukce má nové pole `IsActive` které se nastavuje na `false` při finalizaci.
+- Frontend: nová/aktualizovaná stránka `report-page` zobrazuje ukončené aukce, reporty, anonymizuje vítěze na iniciálu ve výpisech a umožňuje export CSV a finalizaci (admin).
+- Test data: Přidány ukázkové záznamy do `Database/Reports/assets.json` a `Database/SoldItems/assets.json` pro rychlé testování.
+- Start helper: přidán skript `scripts/start-api.sh` pro bezpečné spuštění API (uvolní port a spustí `dotnet run`).
+
+## Jak rychle spustit API lokálně
+
+1) Uvolnit port (pokud běží jiná instance):
+```bash
+lsof -iTCP:5110 -sTCP:LISTEN -P -n
+- **Použití**: Používá se v `UsersController`.
+```
+
+2) Spustit API pomocí helper skriptu (doporučeno):
+```bash
+chmod +x ./scripts/start-api.sh
+./scripts/start-api.sh 5110
+```
+
+3) Nebo spustit ručně a sledovat logy:
+```bash
 cd EvidenAuctionHouseAPI
-dotnet run
-Frontend
-cd EvidenAuctionHouse
-npm install
-ng serve
-Databáze
-Automaticky inicializována při prvním spuštění
-JSON soubory se vytvoří podle config.yml
-📊 Technické detaily
-Validace příhozů
-minBid a maxBid konfigurace v config.yml
-Backend kontroluje validitu příhozů
-Frontend zobrazuje chybové zprávy
-Správa obrázků
-FileService spravuje upload a ukládání
-Obrázky uloženy mimo JSON databázi
-Podpora pro různé formáty (jpg, png, gif)
-Email systém
-SMTP konfigurace v config.yml
-Automatické ověřovací emaily
-Template systém pro různé typy emailů
-🔍 Debugging a troubleshooting
-Časté problémy
-Chyba při načítání databáze - zkontrolujte cesty v config.yml
-Email se neposílá - ověřte SMTP nastavení
-Obrázky se nenačítají - zkontrolujte FileService konfiguraci
-Logy
-Backend loguje do console
-Frontend logy v browser dev tools
-JSON soubory obsahují timestamp posledních změn
-🎨 Design systém
-CSS Custom Properties
-:root {
-  --primary-color: #2563eb;
-  --primary-light: #3b82f6;
-  --secondary-color: #64748b;
-  --surface: #f8fafc;
-  --card-background: #ffffff;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-}
-Komponenty styling
-Jednotný border-radius systém
-Konzistentní shadow system
-Responsive typography s clamp()
-Mobile-first media queries
-📈 Budoucí rozšíření
-Plánované funkce
-Kompletní CSV import/export systém
-UI pro správu uživatelských práv
-Real-time notifikace při příhozech
-Pokročilé filtry a vyhledávání
-Statistiky a reporty pro administrátory
-Možná vylepšení
-Migrace na SQL databázi pro větší výkon
-WebSocket pro real-time updates
-Mobile aplikace
-API dokumentace s Swagger
-Autor: Adam Vítek
-Datum: 30.5.2025
-Verze: 1.1 s anonymními aukcemi
-Školní rok: 2024/2025
-Škola: Smíchovská střední průmyslová škola a gymnázium
+export ASPNETCORE_URLS="http://127.0.0.1:5110"
+dotnet run --urls "http://127.0.0.1:5110"
+```
+
+4) Test endpoint:
+```bash
+curl -i http://127.0.0.1:5110/api/Auctions/get
+curl -i -H "Authorization: Bearer <ADMIN_JWT>" http://127.0.0.1:5110/api/Auctions/report/<auctionId>
+```
+
+Poznámka: Admin endpointy vyžadují JWT vytvořený aplikací (secret: GGALKANE pro lokální testy).
+
+
+#### RegistrationInformation
+- **Účel**: Obsahuje registrační údaje uživatele.
+- **Pole**: `name`, `email`, `password`.
+- **Použití**: Používá se v `RegistrationController`.
+````

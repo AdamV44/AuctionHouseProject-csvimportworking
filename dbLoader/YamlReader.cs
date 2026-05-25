@@ -35,6 +35,35 @@ namespace dbLoader
             }
             return this.root.SMTPConfig;
         }
+        public AuctionControl GetAuctionControl()
+        {
+            if (this.root?.AuctionControl == null)
+            {
+                // return defaults
+                return new AuctionControl
+                {
+                    AutoFinalizeEnabled = false,
+                    AutoFinalizeIntervalSeconds = 60,
+                    AutoFinalizeLookbackSeconds = 5
+                };
+            }
+            return this.root.AuctionControl;
+        }
+
+        // Read GDPR related flags (if present in YAML). Return true by default for AllowAdminExport.
+        public bool GetGDPRAllowAdminExport()
+        {
+            try
+            {
+                var gdpr = this.root?.GDPR;
+                if (gdpr == null) return true;
+                return gdpr.AllowAdminExport;
+            }
+            catch
+            {
+                return true;
+            }
+        }
         public string GetAssetsForNode(string nodeName)
         {
 
@@ -48,6 +77,8 @@ namespace dbLoader
                 "Bids" => db.Bids,
                 "ItemGroups" => db.ItemGroups,
                 "RegisterAttempts" => db.RegisterAttempts,
+                "Reports" => db.Reports,
+                "SoldItems" => db.SoldItems,
                 _ => null
             };
 

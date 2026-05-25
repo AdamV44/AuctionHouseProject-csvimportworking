@@ -6,7 +6,7 @@ import { confirmationResult } from '../../../models/confirmationResult';
   standalone: true,
   imports: [],
   templateUrl: './confirmation.component.html',
-  styleUrl: './confirmation.component.scss'
+  styleUrls: ['./confirmation.component.scss']
 })
 export class ConfirmationComponent {
   @Output() result = new EventEmitter<confirmationResult>();

@@ -1,0 +1,16 @@
+Name,StartingPrice,groupId,additionalParams
+Ancient Vase A,100.00,1,Material=Bronze;Period=Roman;Condition=Good
+Ancient Vase B,150.50,1,Material=Clay;Period=Greek;Condition=Fair
+Renaissance Portrait,1200.00,1,Artist=Unknown;Century=16th;Framed=Yes
+Medieval Sword,350.00,1,Material=Steel;Origin=England;Length=95cm
+Vintage Watch,220.00,1,Brand=Omega;Year=1954;Working=Yes
+Porcelain Plate Set,85.00,1,Pieces=6;Origin=China;Pattern=Blue
+Oil Painting Landscape,420.00,1,Artist=K.Adams;Size=60x40cm;Signed=No
+Crystal Chandelier,980.00,1,Material=Crystal;Lights=12;Condition=Good
+Silver Coin Lot,65.00,1,Count=8;Era=19th;Grade=VF
+Antique Camera,140.00,1,Brand=Leica;Year=1938;Lens=50mm
+Handwoven Rug,275.00,1,Material=Wool;Size=200x150cm;Origin=Persia
+Bronze Statue,490.00,1,Height=35cm;Artist=Unknown;Patina=Original
+Pocket Compass,40.00,1,Material=Brass;Century=18th;Working=Yes
+Ceramic Figurine,55.50,1,Material=Ceramic;Maker=Mj;Condition=Excellent
+Signed Poster,30.00,1,Artist=Famous;Year=1990;Signed=Yes

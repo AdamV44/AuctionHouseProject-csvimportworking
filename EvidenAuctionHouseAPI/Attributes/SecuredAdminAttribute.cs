@@ -14,7 +14,12 @@ namespace EvidenAuctionHouseAPI.Attributes
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            TokensService service = new TokensService();
+            var service = context.HttpContext.RequestServices.GetService(typeof(TokensService)) as TokensService;
+            if (service == null)
+            {
+                context.Result = new UnauthorizedObjectResult(new { message = "Unauthorized to use admin tools" });
+                return;
+            }
 
             if (context.Controller is not ControllerBase controller)
             {

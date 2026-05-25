@@ -1,124 +1,121 @@
 @use 'sass:color';
 @use '../../variables' as v;
 
-.item-detail-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: flex-start;
+$primary: #001489;
+$accent: #0073E6;
+$border-color: #e5e7eb;
+$success: #10b981;
 
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-  }
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 
-  .item-card {
-    background: v.$white;
-    border-radius: v.$border-radius-lg;
-    box-shadow: v.$box-shadow;
-    padding: 1.5rem;
-  }
-
-  .item-image-section {
-    position: sticky;
-    top: 2rem;
-  }
-
-  .item-info-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .item-header {
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: v.$primary-blue;
-      margin: 0;
-    }
-  }
-
-  .item-description {
-    p {
-      font-size: 1.1rem;
-      color: v.$gray-700;
-      line-height: 1.6;
-    }
-  }
-
-  .item-details-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-
-    .detail-item {
-      background: v.$gray-100;
-      padding: 1rem;
-      border-radius: v.$border-radius;
-
-      .label {
-        font-weight: 600;
-        color: v.$gray-600;
-        margin-bottom: 0.25rem;
-        display: block;
-      }
-
-      .value {
-        font-size: 1.1rem;
-        color: v.$gray-800;
-      }
-    }
-  }
-
-  .item-actions {
-    margin-top: 1rem;
+  @media (min-width: 1024px) {
+    padding: 3rem 2rem;
   }
 }
 
-// --- Carousel ---
-.carousel-container {
-  background: v.$white;
-  border-radius: v.$border-radius-lg;
-  box-shadow: v.$box-shadow;
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+// --- Left Column ---
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// --- Carousel Card ---
+.carousel-card {
+  background: white;
+  border: 2px solid $border-color;
+  border-radius: 27px;
   padding: 1.5rem;
-  position: sticky;
-  top: 2rem;
+  box-shadow: 0 4px 12px rgba($primary, 0.08);
+
+  @media (max-width: 768px) {
+    border-radius: 20px;
+    padding: 1rem;
+  }
 }
 
 .carousel-img-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: v.$border-radius;
+  aspect-ratio: 1;
+  border-radius: 20px;
   overflow: hidden;
   margin-bottom: 1rem;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.no-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #9ca3af;
+
+  i {
+    font-size: 3rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
 }
 
 .carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(v.$black, 0.5);
-  color: v.$white;
+  background: rgba($primary, 0.7);
+  color: white;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.5rem;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
-    background: rgba(v.$black, 0.8);
+    background: rgba($primary, 0.9);
+    transform: translateY(-50%) scale(1.1);
   }
 
   &.left {
-    left: 10px;
+    left: 1rem;
   }
 
   &.right {
-    right: 10px;
+    right: 1rem;
   }
 }
 
@@ -128,8 +125,12 @@
 
 .carousel-indicator {
   text-align: center;
-  color: v.$gray-600;
-  font-weight: 500;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.5rem;
+  background: #f9fafb;
+  border-radius: 12px;
 }
 
 // --- Info Container ---
@@ -139,56 +140,401 @@
   gap: 1.5rem;
 }
 
-.info-section {
-  background: v.$white;
-  border-radius: v.$border-radius-lg;
-  box-shadow: v.$box-shadow;
-  padding: 1.5rem;
+// --- Item Name Section ---
+.item-name-section {
+  padding: 0;
+}
 
-  h3 {
-    font-size: 1.5rem;
-    color: v.$primary-blue;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid v.$accent-teal;
-    padding-bottom: 0.5rem;
+.item-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $primary;
+  margin: 0;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
   }
 }
 
-.info-row {
+.info-section {
+  background: white;
+  border: 2px solid $border-color;
+  border-radius: 27px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 12px rgba($primary, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (max-width: 768px) {
+    border-radius: 20px;
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $primary;
+    margin: 0 0 1.25rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid $accent;
+  }
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba($primary, 0.12);
+  }
+}
+
+// --- Pricing Section ---
+.pricing-section {
+  h2 {
+    color: $accent;
+  }
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.price-item {
   display: flex;
-  justify-content: space-between;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid v.$gray-200;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid $border-color;
+
+  &.current-price {
+    background: linear-gradient(135deg, rgba($accent, 0.05), rgba($primary, 0.05));
+    border-color: $accent;
+  }
+}
+
+.price-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.price-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: $primary;
+
+  &.gradient {
+    background: linear-gradient(135deg, $accent, $primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// --- Bidding Section ---
+.bidding-section {
+  h2 {
+    color: $accent;
+  }
+}
+
+.bidding-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bid-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba($accent, 0.05), rgba($primary, 0.05));
+  border-radius: 12px;
+  border: 1px solid $accent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    border-color: $accent;
+    background: linear-gradient(135deg, rgba($accent, 0.1), rgba($primary, 0.05));
+  }
+}
+
+.bid-label {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.bid-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $primary;
+  text-align: center;
+}
+
+// --- Full Width Bid History Section ---
+.bid-history-section {
+  margin-top: 3rem;
+  width: 100%;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary;
+    margin: 0 0 1.5rem 0;
+  }
+}
+
+.bid-history-container {
+  background: white;
+  border: 2px solid $border-color;
+  border-radius: 27px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba($primary, 0.08);
+
+  @media (max-width: 768px) {
+    border-radius: 20px;
+  }
+}
+
+.bid-history-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: linear-gradient(135deg, $accent, $primary);
+  padding: 1.25rem 1.75rem;
+  border-bottom: 2px solid $border-color;
+
+  @media (max-width: 768px) {
+    padding: 1rem 1.5rem;
+  }
+}
+
+.bid-history-header > div {
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+}
+
+.bid-history-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.bid-history-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid $border-color;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (max-width: 768px) {
+    padding: 1rem 1.5rem;
+  }
 
   &:last-child {
     border-bottom: none;
   }
 
-  .label {
-    font-weight: 600;
-    color: v.$gray-600;
-  }
-
-  .value {
-    font-size: 1.1rem;
-    color: v.$gray-800;
-    font-weight: 500;
+  &:hover {
+    background: #f9fafb;
   }
 }
 
+.bid-bidder-initial {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $accent;
+}
+
+.bid-bidder {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bid-amount,
+.bid-amount-value {
+  text-align: right;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $primary;
+}
+
+.bid-amount {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.no-bids {
+  padding: 3rem 1.75rem;
+  text-align: center;
+  color: #9ca3af;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+// --- Parameters Section ---
+.params-section {
+  h2 {
+    color: $primary;
+  }
+}
+
+/* Ensure long additionalParameters text doesn't overflow the card */
+.params-grid {
+  display: block;
+}
+
+.param-item {
+  background: #f8fafc;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  max-height: 8rem; /* limit visual height */
+  overflow: auto; /* allow scrolling for very long content */
+  word-break: break-word;
+  white-space: pre-wrap; /* preserve intentional line breaks */
+}
+
+.param-value {
+  display: block;
+  color: #374151;
+  font-size: 0.975rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.params-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.param-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid $border-color;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    border-color: $accent;
+    background: white;
+  }
+}
+
+.param-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.param-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $primary;
+}
+
+// --- Action Section ---
 .action-section {
-  background: v.$white;
-  border-radius: v.$border-radius-lg;
-  box-shadow: v.$box-shadow;
-  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba($accent, 0.03), rgba($primary, 0.03));
+  border: 2px solid $accent;
+  border-radius: 27px;
+  padding: 1.75rem;
+  box-shadow: 0 4px 12px rgba($accent, 0.1);
+
+  @media (max-width: 768px) {
+    border-radius: 20px;
+    padding: 1.5rem;
+  }
 }
 
-// --- Price Input Component Deep Styling ---
+// --- Loading State ---
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 1rem;
+
+  p {
+    color: #6b7280;
+    font-size: 1rem;
+  }
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid $border-color;
+  border-top-color: $accent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// --- Price Input Deep Styling ---
 :host ::ng-deep app-price-input {
   .price-input-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  input,
+  button {
+    border-radius: 12px;
+    font-weight: 600;
+  }
+
+  button {
+    background-color: $primary;
+    color: white;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background-color: color.adjust($primary, $lightness: -5%);
+      box-shadow: 0 4px 12px rgba($primary, 0.25);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
   }
 }

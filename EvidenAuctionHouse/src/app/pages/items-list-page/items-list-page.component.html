@@ -1,16 +1,30 @@
 <!-- Přesně podle #main.js fungující verze -->
 <div *ngIf="this.loaded && this.authService.authenticatedUser" class="items-page">
+  <header class="items-hero">
+    <!-- <div class="hero-content">
+      <h1>Seznam položek</h1>
+      <p class="hero-sub">Prohlížejte, vyhledávejte a spravujte položky v aukci.</p>
+
+      Visual-only search field (no binding) to match login layout look
+      <div class="hero-search">
+        <input type="search" placeholder="Hledat položky..." aria-label="Hledat položky">
+      </div>
+    </div> -->
+
+    <div class="hero-actions" *ngIf="this.authService.isAdmin()">
+      <button class="fixed-btn create-action" (click)="this.router.navigate(['/create-item'])">
+        <i class="fas fa-plus"></i>
+        vytvořit položku
+      </button>
+    </div>
+  </header>
+
   <app-items-list 
     [items]="this.itemsOnPage" 
     (selectedItemsEmitter)="getSelected($event)">
   </app-items-list>
 
   <div class="admin-actions" *ngIf="this.authService.isAdmin()">
-    <button class="fixed-btn create-action" (click)="this.router.navigate(['/create-item'])">
-      <i class="fas fa-plus"></i>
-      vytvořit položku
-    </button>
-    
     <button class="fixed-btn delete-action" (click)="onDelete()">
       <i class="fas fa-trash-alt"></i>
       Smazat položky

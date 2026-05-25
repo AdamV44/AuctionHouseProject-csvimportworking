@@ -21,6 +21,7 @@ export class ItemDetailPageComponent {
   itemPrice: number
   highestBidderName: string
   imgsUrls: string[] = []
+  bids: Array<{ bidderInitial: string; amount: number }> = []
   constructor(
     public route: ActivatedRoute,
     public itemsService: ItemsService,
@@ -44,13 +45,22 @@ export class ItemDetailPageComponent {
       item: this.itemsService.getItemById(itemId),
       price: this.itemsService.getItemPrice(itemId),
       highestBidder: this.bidsService.getLatestBidderForItem(itemId),
-      pictures: this.fileService.getItemPictures(itemId)
+      pictures: this.fileService.getItemPictures(itemId),
+      allBids: this.bidsService.getBidsForItem(itemId)
     
     }).subscribe(result => {
       this.item = this.itemsService.parseAuctionItem(result.item);
       this.itemPrice = result.price;
       this.highestBidderName = result.highestBidder ? result.highestBidder.name : "Žádný příhoz";
       this.imgsUrls = result.pictures.map(img => `data:${img.contentType};base64,${img.base64Data}`)
+      
+      // Process bids - get first letter of bidder name and amount
+      if (result.allBids && Array.isArray(result.allBids)) {
+        this.bids = result.allBids.map((bid: any) => ({
+          bidderInitial: bid.bidderName ? bid.bidderName.charAt(0).toUpperCase() : '?',
+          amount: bid.amount || 0
+        }));
+      }
       
       this.loaded = true;
 

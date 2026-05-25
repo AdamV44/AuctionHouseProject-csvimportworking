@@ -1,49 +1,85 @@
 <div class="page-container" *ngIf="loaded">
-  <h1 class="page-title">{{ item.name }}</h1>
-
   <div class="detail-grid">
-    <!-- Image Carousel on the left -->
-    <div class="carousel-container">
-      <div class="carousel-img-wrapper">
-        <img [src]="imgsUrls[currentImageIndex]" class="carousel-img" alt="Obrázek předmětu" />
-        <button class="carousel-arrow left" (click)="prevImage()">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="carousel-arrow right" (click)="nextImage()">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-      <div class="carousel-indicator">
-        {{ currentImageIndex + 1 }} / {{ imgsUrls.length }}
+    <!-- Left Column: Image -->
+    <div class="left-column">
+      <!-- Image Carousel -->
+      <div class="carousel-card">
+        <div class="carousel-img-wrapper">
+          <img 
+            *ngIf="imgsUrls.length > 0"
+            [src]="imgsUrls[currentImageIndex]" 
+            class="carousel-img" 
+            alt="Obrázek předmětu" 
+          />
+          <div *ngIf="imgsUrls.length === 0" class="no-image">
+            <i class="fas fa-image"></i>
+            <p>Žádný obrázek dostupný</p>
+          </div>
+          
+          <button 
+            *ngIf="imgsUrls.length > 1"
+            class="carousel-arrow left" 
+            (click)="prevImage()"
+            aria-label="Předchozí obrázek">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button 
+            *ngIf="imgsUrls.length > 1"
+            class="carousel-arrow right" 
+            (click)="nextImage()"
+            aria-label="Další obrázek">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+        
+        <div class="carousel-indicator" *ngIf="imgsUrls.length > 0">
+          {{ currentImageIndex + 1 }} / {{ imgsUrls.length }}
+        </div>
       </div>
     </div>
 
-    <!-- Item Information on the right -->
+    <!-- Right Column: Item Name, Additional Parameters, Pricing, and Bidding -->
     <div class="info-container">
-      <div class="info-section">
-        <h2>Základní informace</h2>
-        <div class="info-row">
-          <span class="info-label">Vyvolávací cena:</span>
-          <span class="info-value">{{ item.startingPrice | currency:'CZK':'symbol':'1.0-0' }}</span>
-        </div>
-        <div class="info-row current-price">
-          <span class="info-label">Aktuální cena:</span>
-          <span class="info-value">{{ itemPrice | currency:'CZK':'symbol':'1.0-0' }}</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Nejvyšší příhoz:</span>
-          <span class="info-value">{{ highestBidderName || 'Zatím nikdo nepřihodil' }}</span>
+      <!-- Item Name Header -->
+      <div class="item-name-section">
+        <h1 class="item-name">{{ item.name }}</h1>
+      </div>
+
+      <!-- Additional Parameters Section (single freeform string) -->
+      <div class="info-section params-section" *ngIf="item.additionalParameters">
+        <h2>Další parametry</h2>
+        <div class="params-grid">
+          <div class="param-item">
+            <span class="param-value">{{ item.additionalParameters }}</span>
+          </div>
         </div>
       </div>
 
-      <div class="info-section" *ngIf="(item.additionalParams | keyvalue).length > 0">
-        <h2>Další parametry</h2>
-        <div *ngFor="let entry of item.additionalParams | keyvalue" class="info-row">
-          <span class="info-label">{{ entry.key }}:</span>
-          <span class="info-value">{{ entry.value }}</span>
+      <div class="info-section" *ngIf="item.state">
+        <h2>Stav</h2>
+        <div class="params-grid">
+          <div class="param-item">
+            <span class="param-value">{{ item.state }}</span>
+          </div>
         </div>
       </div>
-      
+
+      <!-- Pricing Section -->
+      <div class="info-section pricing-section">
+        <h2>Cena</h2>
+        <div class="pricing-grid">
+          <div class="price-item">
+            <span class="price-label">Vyvolávací cena</span>
+            <span class="price-value">{{ item.startingPrice | currency:'CZK':'symbol':'1.0-0' }}</span>
+          </div>
+          <div class="price-item current-price">
+            <span class="price-label">Aktuální cena</span>
+            <span class="price-value gradient">{{ itemPrice | currency:'CZK':'symbol':'1.0-0' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Section for Bidding -->
       <div class="action-section" *ngIf="item.auctionId">
         <app-price-input 
           [auctionItemId]="item.id" 
@@ -52,4 +88,33 @@
       </div>
     </div>
   </div>
+
+  <!-- Full Width Bidding History Table -->
+  <div class="bid-history-section">
+    <h2>Historie příhozů</h2>
+    <div class="bid-history-container">
+      <div class="bid-history-header">
+        <div class="bid-bidder">Přihazovatel</div>
+        <div class="bid-amount">Částka</div>
+      </div>
+      <div 
+        *ngIf="bids && bids.length > 0; else noBids"
+        class="bid-history-list">
+        <div *ngFor="let bid of bids" class="bid-history-row">
+          <div class="bid-bidder-initial">{{ bid.bidderInitial }}</div>
+          <div class="bid-amount-value">{{ bid.amount | currency:'CZK':'symbol':'1.0-0' }}</div>
+        </div>
+      </div>
+      <ng-template #noBids>
+        <div class="no-bids">
+          <p>Zatím žádné příhozy</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div class="loading-container" *ngIf="!loaded">
+  <div class="loading-spinner"></div>
+  <p>Načítání detailu předmětu...</p>
 </div>

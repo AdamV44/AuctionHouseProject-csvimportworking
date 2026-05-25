@@ -1,4 +1,19 @@
-<div style="display: flex; gap: 50px;">
-    <button class="buttons" type="button" (click)="onConfirm()">Confirm</button>
-    <button class="buttons" type="button" (click)="onCancel()">Cancel</button>
+<div class="confirmation" role="group" aria-label="Confirmation actions">
+    <button
+        class="buttons confirm"
+        type="button"
+        (click)="onConfirm()"
+        aria-label="Confirm"
+    >
+        ✓ Confirm
+    </button>
+
+    <button
+        class="buttons cancel"
+        type="button"
+        (click)="onCancel()"
+        aria-label="Cancel"
+    >
+        ✕ Cancel
+    </button>
 </div>

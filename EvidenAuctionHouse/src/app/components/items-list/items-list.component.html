@@ -1,6 +1,14 @@
 <div class="table-container">
-  <div *ngFor="let item of displayItems" class="item-row">
-    <input *ngIf="this.authenticationService.isAdmin()" type="checkbox" [checked]="selectedItems.includes(item)" (change)="onItemSelect(item)">
-    <app-item-preview [item]="item" [routerLink]="['/items', item.id]"></app-item-preview>    
+  <div *ngFor="let item of displayItems" 
+       class="item-row" 
+       [class.selected]="isSelected(item)"
+       (click)="allowSelection && onRowClick($event, item)">
+    <!-- checkbox removed: selection is via row click, visualized with .selected -->
+    <ng-container *ngIf="allowSelection; else linkedPreview">
+      <app-item-preview [item]="item"></app-item-preview>
+    </ng-container>
+    <ng-template #linkedPreview>
+      <app-item-preview [item]="item" [routerLink]="['/items', item.id]"></app-item-preview>
+    </ng-template>
   </div>
 </div>

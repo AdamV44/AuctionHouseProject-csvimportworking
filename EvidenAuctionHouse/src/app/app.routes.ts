@@ -15,6 +15,7 @@ import { EmailLandingPageComponent } from './pages/email-landing-page/email-land
 import { EmailConfirmationPageComponent } from './pages/email-confirmation-page/email-confirmation-page.component';
 import { CsvImportPageComponent } from './pages/csv-import-page/csv-import-page.component';
 import { CsvPreviewPageComponent } from './pages/csv-preview-page/csv-preview-page.component';
+import { ReportPageComponent } from './pages/report-page/report-page.component';
 export const routes: Routes = [
     { path: '', component: LoginPageComponent},
     { path: 'registration', component: RegisterPageComponent },
@@ -32,5 +33,6 @@ export const routes: Routes = [
     { path: 'reload-dummy', component: DummyPageComponent, canActivate: [AdminGuard] },
     { path: 'user', component: UserInformationPageComponent, canActivate: [AuthGuard] },
     { path: 'user-password-change', component: PasswordChangePageComponent, canActivate: [AuthGuard] },
+    { path: 'reports', component: ReportPageComponent, canActivate: [AdminGuard] },
 
 ];

@@ -1,0 +1,37 @@
+[
+  {
+    "Id": "70552119-366b-456f-aba0-884909e4d976",
+    "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
+    "AuctionName": "nova aukce",
+    "SoldItemIds": [
+      "c62e82c0-0e06-48c2-8f89-fe8f560fbbb4"
+    ],
+    "UnsoldItemIds": [],
+    "TotalRevenue": 2900
+  }
+    ,
+    {
+      "Id": "11111111-2222-3333-4444-555555555555",
+      "AuctionId": "2d097c0f-4c7b-459c-a244-3713a914310c",
+      "AuctionName": "aukce fotka test",
+      "SoldItemIds": [
+        "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+        "bbbbbbbb-cccc-dddd-eeee-ffffffffffff"
+      ],
+      "UnsoldItemIds": [
+        "item-unsold-1"
+      ],
+      "TotalRevenue": 12500
+    },
+    {
+      "Id": "22222222-3333-4444-5555-666666666666",
+      "AuctionId": "42869f47-6cfd-4940-901f-64cf9e951025",
+      "AuctionName": "xx",
+      "SoldItemIds": [],
+      "UnsoldItemIds": [
+        "item-unsold-2",
+        "item-unsold-3"
+      ],
+      "TotalRevenue": 0
+    }
+]

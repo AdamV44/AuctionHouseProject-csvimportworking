@@ -1,0 +1,65 @@
+<div class="page">
+	<div class="header">
+		<h1>Reporty ukončených aukcí</h1>
+		<p class="subtitle">Seznam ukončených aukcí a jejich výsledky (prodáno / neprodáno, výnosy)</p>
+	</div>
+
+	<div *ngIf="!loaded" class="loading">Načítám aukce…</div>
+
+	<div *ngIf="loaded" class="content">
+		<aside class="list">
+			<h3>Ukončené aukce ({{ finishedAuctions.length }})</h3>
+			<ul>
+				<li *ngFor="let a of finishedAuctions" (click)="selectAuction(a)" [class.selected]="selectedAuction?.id === a.id">
+					<div class="name">{{ a.name }}</div>
+					<div class="meta">{{ a.startDate | date:'dd.MM.yyyy' }} – {{ a.endDate | date:'dd.MM.yyyy' }}</div>
+				</li>
+			</ul>
+		</aside>
+
+		<main class="report" *ngIf="selectedAuction">
+			<div class="report-header">
+				<h2>{{ selectedAuction.name }}</h2>
+				<div class="actions">
+					<label *ngIf="auth.isAdmin() && allowAdminExport" class="sensitive-toggle">
+						<input type="checkbox" (change)="onToggleSensitive($event)" [checked]="includeSensitive" />
+						Zobrazit citlivé údaje (pouze admin)
+					</label>
+					<button class="btn" (click)="exportCsv()" [disabled]="loadingReport || !!errorMessage">Export CSV</button>
+					<button *ngIf="auth.isAdmin()" class="btn btn-warning" (click)="finalize()" [disabled]="loadingReport">Finalize</button>
+					<button class="btn" (click)="selectedAuction = null">Zpět</button>
+				</div>
+			</div>
+
+			<div class="report-meta">
+				<div>Období: {{ selectedAuction.startDate | date:'dd.MM.yyyy' }} – {{ selectedAuction.endDate | date:'dd.MM.yyyy' }}</div>
+				<div class="summary">Celkem prodáno: {{ soldItems.length }} — Výnos: {{ totalRevenue | number:'1.0-2' }} Kč</div>
+			</div>
+
+			<div *ngIf="loadingReport" class="loading">Načítám report…</div>
+			<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+			<div *ngIf="!loadingReport && !errorMessage" class="items">
+				<section class="sold">
+					<h3>Prodáno ({{ soldItems.length }})</h3>
+					<ol>
+						<li *ngFor="let s of soldItems">
+							<div class="title">{{ s.Name || s.name }}</div>
+							<div class="details">Cena: {{ (s.FinalPrice || s.finalPrice) | number:'1.0-2' }} Kč — Vítěz: {{ getWinnerInitial(s.WinnerFullName || s.winnerFullName) }} <span class="email">{{ s.WinnerEmail || s.winnerEmail }}</span></div>
+						</li>
+					</ol>
+				</section>
+
+				<section class="unsold">
+					<h3>Neprodáno ({{ unsoldItems.length }})</h3>
+					<ol>
+						<li *ngFor="let u of unsoldItems">
+							<div class="title">{{ u.Name || u.name }}</div>
+							<div class="details">Počáteční cena: {{ (u.StartingPrice || u.startingPrice) | number:'1.0-2' }} Kč</div>
+						</li>
+					</ol>
+				</section>
+			</div>
+		</main>
+	</div>
+</div>

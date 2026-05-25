@@ -56,9 +56,29 @@ export class PriceInputComponent {
     this.showPriceInputDialog = false;
     
     if (result.action === 'confirm' && result.value) {
+      // Small validation: ensure the bid amount is a positive integer and not NaN
+      const parsed = Number(result.value);
+      if (!isFinite(parsed) || parsed <= 0) {
+        alert('Neplatná částka. Zadejte kladné číslo.');
+        return;
+      }
+
       // Uložíme zadanou částku a zobrazíme konfirmační dialog
-      this.selectedBidAmount = result.value;
+      this.selectedBidAmount = Math.floor(parsed);
       this.confirmationMessage = `Opravdu chcete přihodit ${this.selectedBidAmount} Kč? Nová cena bude ${this.itemPrice + this.selectedBidAmount} Kč.`;
+
+      // Defensive: ensure the confirmation dialog is available before showing
+      if (!this.confirmationDialog) {
+        console.error('Confirmation dialog reference missing');
+        // Fallback: directly process the bid after user confirmation via window.confirm
+        if (confirm(this.confirmationMessage)) {
+          this.processBid();
+        } else {
+          this.selectedBidAmount = 0;
+        }
+        return;
+      }
+
       this.confirmationDialog.show();
     }
     // Pokud cancel, nic se neděje
@@ -85,8 +105,9 @@ export class PriceInputComponent {
       newTotalPrice: newTotalPrice
     });
 
-    // Backend očekává příhoz, ne celkovou cenu
-    this.bidsService.createBid(this.auctionItemId, this.selectedBidAmount, this.itemPrice)
+  // Backend očekává příhoz, ne celkovou cenu
+  // Use the centralized wrapper but tell it we already showed a confirmation UI (skipConfirmation)
+  this.bidsService.confirmAndCreateBid(this.auctionItemId, this.selectedBidAmount, this.itemPrice, { skipConfirmation: true })
     .pipe(
       catchError(error => {
         console.error('Bid error:', error);

@@ -6,9 +6,12 @@ export const authenticationInterceptor: HttpInterceptorFn = (req, next) => {
   const token = inject(AuthenticationService).getToken()
   
 
-  const newReq = req.clone({
-    headers: req.headers.append('Authorization', 'Bearer ' + token),
-  });
+  if (token) {
+    const newReq = req.clone({
+      headers: req.headers.append('Authorization', 'Bearer ' + token),
+    });
+    return next(newReq);
+  }
 
-  return next(newReq);
+  return next(req);
 };

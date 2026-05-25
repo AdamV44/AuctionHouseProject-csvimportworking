@@ -11,11 +11,14 @@ namespace EvidenAuctionHouseAPI.Services
     public class RegistrationService
     {
 
-        public RegistrationService(string pendingUsersFilePath)
+        private readonly string pendingUsersFilePath;
+        private readonly TokensService _tokens;
+
+        public RegistrationService(string pendingUsersFilePath, TokensService tokens)
         {
             this.pendingUsersFilePath = pendingUsersFilePath;
+            this._tokens = tokens;
         }
-        private string pendingUsersFilePath;
 
 
 
@@ -40,7 +43,7 @@ namespace EvidenAuctionHouseAPI.Services
 
         public string SubmitRegistrationForm(RegistrationInformation info)
         {
-            TokensService service = new TokensService();
+            TokensService service = _tokens;
             List<RegisterAttempt> attempts = IOHandler.LoadFromFile<RegisterAttempt>(this.pendingUsersFilePath);
 
             RegisterAttempt attempt = new RegisterAttempt()
@@ -60,7 +63,7 @@ namespace EvidenAuctionHouseAPI.Services
 
         public bool ConfirmEmail(string token)
         {
-            TokensService service = new TokensService();
+            TokensService service = _tokens;
             List<RegisterAttempt> attempts = IOHandler.LoadFromFile<RegisterAttempt>(this.pendingUsersFilePath);
             RegisterAttempt attempt = attempts.Find(attempt => attempt.Token == token);
             if (attempt != null)

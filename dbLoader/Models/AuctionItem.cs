@@ -1,6 +1,7 @@
 ﻿using DataHandler.Models;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace dbLoader.Models
 {
@@ -9,12 +10,15 @@ namespace dbLoader.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public List<string> PicturesPaths { get; set; } = new List<string>();
-        public string ItemGroupId { get; set; }
         public string AuctionId { get; set; } = "";
         public int StartingPrice { get; set; }
-
-        [JsonExtensionData]
-        public Dictionary<string, JsonElement> AdditionalParams { get; set; } = new Dictionary<string, JsonElement>();
+        
+        // replaced dictionary with single string to match spec 4.1
+        [JsonProperty("additionalParameters")]
+        public string AdditionalParameters { get; set; }
+        
+    // state of the item: e.g. "new", "used", "working", "notWorking"
+    public string State { get; set; } = "new";
 
         public void PrintSelf()
         {
@@ -25,10 +29,8 @@ namespace dbLoader.Models
             {
                 Console.WriteLine($"picture: {item}");
             }
-            foreach (var item in this.AdditionalParams)
-            {
-                Console.WriteLine($"param : {item.Key} = {item.Value}");
-            }
+            Console.WriteLine($"Additional params: {this.AdditionalParameters}");
+            Console.WriteLine($"State: {this.State}");
         }
     }
 }

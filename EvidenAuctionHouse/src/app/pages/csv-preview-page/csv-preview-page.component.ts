@@ -24,15 +24,18 @@ export class CsvPreviewPageComponent {
 
     this.data = this.csvDataService.getData();
     if (this.data.length) {
-      this.keys = ['name', 'StartingPrice'];
+      // base columns we show and send
+      this.keys = ['name', 'startingPrice'];
       // Zjisti všechny klíče z additionalParams
       const allAdditional = this.data
         .map(item => {
-          if (item.additionalParams) {
-            if (typeof item.additionalParams.keys === 'function') {
-              return Array.from(item.additionalParams.keys());
-            } else {
-              return Object.keys(item.additionalParams);
+          const ap = item.additionalParameters ?? item.additionalParams;
+          if (ap) {
+            try {
+              const parsed = JSON.parse(ap);
+              return Object.keys(parsed);
+            } catch (e) {
+              return [];
             }
           }
           return [];
@@ -51,22 +54,35 @@ export class CsvPreviewPageComponent {
   onSubmit() {
     
     const parsedItems = this.data.map(item => {
-      const { additionalParams, StartingPrice, groupId, itemGroupId, ...rest } = item;
+      const { additionalParameters, additionalParams, startingPrice,  ...rest } = item;
+      // merge additionalParameters JSON string into rest as top-level fields
+      let merged = { ...rest };
+      const apString = additionalParameters ?? additionalParams ?? '';
+      if (apString) {
+        try {
+          const parsed = JSON.parse(apString);
+          merged = { ...merged, ...parsed };
+        } catch (e) {
+          // if parse fails, ignore
+        }
+      }
       return {
-        id: '0', // prázdné id
-        ...rest,
-        name: item.name,
-        startingPrice: Number(item.StartingPrice),
-        itemGroupId: groupId ?? itemGroupId ?? '',
+        id: '0', // placeholder id - server will assign
+        ...merged,
+  name: item.name,
+  startingPrice: Math.round(Number(startingPrice ?? item.StartingPrice ?? 0)),
         auctionId: '',
-        picturesPaths: undefined,
-        ...(additionalParams || {})
+        picturesPaths: [],
+        additionalParameters: apString
       };
     });
 
+    console.log('Submitting parsed items to API:', parsedItems);
     this.itemsService.createMultipleItems(parsedItems).subscribe(result => {
-      console.log(result);
+      console.log('Create multiple result:', result);
       this.router.navigate(['/items']);
+    }, err => {
+      console.error('Error creating multiple items:', err);
     });
   }
 

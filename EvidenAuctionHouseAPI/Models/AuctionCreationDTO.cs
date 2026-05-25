@@ -6,5 +6,6 @@ namespace EvidenAuctionHouseAPI.Models
     {
         public Auction Auction { get; set; }
         public string[] AuctionItemsIds { get; set; }
+        public string AdditionalParameters { get; set; }
     }
 }

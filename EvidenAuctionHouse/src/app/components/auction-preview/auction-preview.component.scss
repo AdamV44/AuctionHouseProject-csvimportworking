@@ -1,11 +1,11 @@
 .preview-container {
-  background-color: var(--card-background);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  background-color: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 27px;
+  box-shadow: 0 4px 12px rgba(0, 20, 137, 0.08);
   padding: 1.5rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   
@@ -13,10 +13,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 200px; // Minimální výška pro konzistenci
-  height: 100%; // Vyplní dostupný prostor v gridu
+  min-height: 200px;
+  height: 100%;
   
-  // Gradient overlay efekt
+  // Subtle gradient overlay efekt
   &::before {
     content: '';
     position: absolute;
@@ -24,15 +24,15 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
-    transition: left 0.5s ease;
+    background: linear-gradient(90deg, transparent, rgba(0, 115, 230, 0.05), transparent);
+    transition: left 0.6s ease;
     z-index: 1;
   }
   
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-color);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 115, 230, 0.15);
+    border-color: #0073E6;
     
     &::before {
       left: 100%;
@@ -45,17 +45,17 @@
     z-index: 2;
     
     &:first-child {
-      font-size: var(--font-size-lg);
-      font-weight: 600;
-      color: var(--text-primary);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #001489;
       margin-bottom: 1rem;
-      flex-shrink: 0; // Zabráni komprimaci názvu
+      flex-shrink: 0;
     }
     
     &:not(:first-child) {
-      color: var(--text-secondary);
-      font-size: var(--font-size-sm);
-      flex-shrink: 0; // Zabráni komprimaci dat
+      color: #6b7280;
+      font-size: 0.875rem;
+      flex-shrink: 0;
     }
   }
 }
@@ -63,12 +63,12 @@
 .button-row {
   display: flex;
   gap: 0.75rem;
-  margin-top: auto; // Posune tlačítka na spodek karty
+  margin-top: auto;
   padding-top: 1rem;
   justify-content: center;
   position: relative;
   z-index: 3;
-  flex-shrink: 0; // Zabráni komprimaci tlačítek
+  flex-shrink: 0;
   
   .btns {
     display: inline-flex;
@@ -76,18 +76,18 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.625rem 1.25rem;
-    font-size: var(--font-size-sm);
+    font-size: 0.875rem;
     font-weight: 600;
     border: none;
-    border-radius: var(--radius-md);
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
     min-height: 2.5rem;
     position: relative;
     overflow: hidden;
-    flex: 1; // Tlačítka budou stejně široká
-    max-width: 120px; // Omezí maximální šířku tlačítek
+    flex: 1;
+    max-width: 120px;
     
     // Shimmer efekt
     &::before {
@@ -107,36 +107,27 @@
     
     // Edit tlačítko - primární
     &:first-child {
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-      color: var(--text-white);
-      box-shadow: var(--shadow-sm);
-      
-      &::after {
-        content: '✏️';
-        margin-left: 0.25rem;
-      }
+      background: linear-gradient(135deg, #0073E6, #001489);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 115, 230, 0.25);
       
       &:hover:not(:disabled) {
-        background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
-        box-shadow: var(--shadow-md);
+        background: linear-gradient(135deg, #005acc, #000d66);
+        box-shadow: 0 8px 20px rgba(0, 115, 230, 0.35);
         transform: translateY(-2px) scale(1.05);
       }
     }
     
     // Delete tlačítko - nebezpečné
     &:last-child {
-      background: linear-gradient(135deg, var(--error), #dc2626);
-      color: var(--text-white);
-      
-      &::after {
-        content: '🗑️';
-        margin-left: 0.25rem;
-      }
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
       
       &:hover:not(:disabled) {
         background: linear-gradient(135deg, #dc2626, #b91c1c);
         transform: translateY(-2px) scale(1.05);
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 8px 20px rgba(220, 38, 38, 0.35);
       }
     }
     
@@ -156,7 +147,7 @@
 @media (max-width: 768px) {
   .preview-container {
     padding: 1rem;
-    min-height: 180px; // Menší minimální výška na mobilech
+    min-height: 180px;
   }
   
   .button-row {
@@ -165,13 +156,9 @@
     
     .btns {
       padding: 0.5rem 1rem;
-      font-size: var(--font-size-xs);
+      font-size: 0.8125rem;
       min-height: 2rem;
       max-width: 100px;
-      
-      &::after {
-        display: none; // Skryje emoji na mobilech
-      }
     }
   }
 }
@@ -179,6 +166,8 @@
 @media (max-width: 480px) {
   .preview-container {
     min-height: 160px;
+    padding: 1rem;
+    border-radius: 20px;
   }
   
   .button-row {

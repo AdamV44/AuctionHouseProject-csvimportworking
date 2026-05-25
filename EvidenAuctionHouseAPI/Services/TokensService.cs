@@ -9,13 +9,18 @@ namespace EvidenAuctionHouseAPI.Services
 {
     public class TokensService
     {
+        // Defaults kept for backwards-compatibility. Prefer setting the following
+        // environment variables in dev/production instead of changing source:
+        // - EVIDEN_USER_TOKEN_SECRET
+        // - EVIDEN_EMAIL_TOKEN_SECRET
+        private readonly string USERSPASSWORD;
+        private readonly string EMAILSPASSWORD;
+
         public TokensService()
         {
-            
+            USERSPASSWORD = Environment.GetEnvironmentVariable("EVIDEN_USER_TOKEN_SECRET") ?? "GGALKANE";
+            EMAILSPASSWORD = Environment.GetEnvironmentVariable("EVIDEN_EMAIL_TOKEN_SECRET") ?? "NEJSMECOOKED";
         }
-
-        const string USERSPASSWORD = "GGALKANE";
-        const string EMAILSPASSWORD = "NEJSMECOOKED";
 
         private AuctionHouseDatabase db;
         public string CreateUserToken(string userId, bool isAdmin)

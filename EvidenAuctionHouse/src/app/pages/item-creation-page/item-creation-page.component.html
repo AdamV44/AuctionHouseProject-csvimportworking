@@ -1,34 +1,74 @@
 <div class="page-container">
   <h1 class="page-title">Vytvořit předmět</h1>
 
-  <div *ngIf="this.loaded" class="form-container">
-    <input type="text" [(ngModel)]="this.itemName" placeholder="Název předmětu" class="form-control">
-    <input type="number" [(ngModel)]="this.startingPrice" placeholder="Vyvolávací cena" class="form-control">
-    
-    <select class="form-control" [(ngModel)]="selectedGroup" (change)="onSelectionChange($event)">
-        <option [ngValue]="null" disabled>Vyberte kategorii</option>
-        <option *ngFor="let group of groups" [ngValue]="group">{{ group.name }}</option>
-    </select>
+  <div *ngIf="this.loaded" class="form-wrapper">
+    <div class="form-container">
+      <!-- Name Section -->
+      <div class="form-section">
+        <h2>Název předmětu</h2>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="this.itemName" placeholder="Např. Starý porcelán" class="form-control">
+        </div>
+      </div>
 
-    <input 
-        type="text" 
-        *ngFor="let param of selectedGroup.additionalParamsKeys"
-        placeholder="{{ param }}" 
-        class="form-control"
-        [(ngModel)]="paramValues[param]">
+      <div class="form-section">
+        <h2>Dodatečné parametry</h2>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="this.additionalParameters" placeholder="Např. Barva: červená, Velikost: M" class="form-control">
+        </div>
+      </div>
 
-    <div 
-        class="drag-drop-area" 
-        (dragover)="onDragOver($event)" 
-        (dragleave)="onDragLeave($event)" 
-        (drop)="onDrop($event)">
-        <p>Přetáhněte obrázky sem</p>
+      <!-- Price Section -->
+      <div class="form-section">
+        <h2>Vyvolávací cena</h2>
+        <div class="form-group">
+          <input type="number" [(ngModel)]="this.startingPrice" placeholder="Např. 500" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>Stav předmětu</h2>
+        <div class="form-group">
+          <select class="form-control" [(ngModel)]="this.state">
+            <option value="new">Nové</option>
+            <option value="used">Použité</option>
+            <option value="working">Funkční</option>
+            <option value="notWorking">Nefunkční</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Images Section -->
+      <div class="form-section">
+        <h2>Obrázky</h2>
+        <div class="form-group">
+          <div 
+              class="drag-drop-area" 
+              (dragover)="onDragOver($event)" 
+              (dragleave)="onDragLeave($event)" 
+              (drop)="onDrop($event)">
+              <p>Přetáhněte obrázky sem</p>
+          </div>
+        </div>
+        
+        <div *ngIf="loadedFiles.length > 0" class="file-list">
+          <h3>Nahrané obrázky:</h3>
+          <div class="file-items">
+            <div *ngFor="let file of loadedFiles" class="file-item">
+              <i class="fas fa-check"></i>
+              <span>{{ file.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirmation Section -->
+      <app-confirmation (result)="onConfirmation($event)"></app-confirmation>
     </div>
-    
-    <div class="file-list">
-      <p *ngFor="let file of loadedFiles">{{ file.name }}</p>
-    </div>
+  </div>
 
-    <app-confirmation (result)="onConfirmation($event)"></app-confirmation>
+  <div *ngIf="!this.loaded" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Načítání...</p>
   </div>
 </div>

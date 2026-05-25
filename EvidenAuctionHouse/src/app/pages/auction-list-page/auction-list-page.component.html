@@ -4,11 +4,13 @@
   <div *ngIf="this.loaded">
     <app-auction-table [auctionPreviews]="auctionPreviewsOnPage"></app-auction-table>
 
-    <button 
-        *ngIf="this.authService.isAdmin()" 
-        class="fab" 
-        [routerLink]="['/create-auction']">
-        <i class="fas fa-plus"></i>
-    </button>
+  <button 
+    aria-label="Vytvořit novou aukci"
+    *ngIf="this.authService.isAdmin()" 
+    class="fixed-btn create-action fab-inline" 
+    [routerLink]="['/create-auction']">
+    <i class="fas fa-plus"></i>
+    Vytvořit aukci
+  </button>
   </div>
 </div>

@@ -1,11 +1,5 @@
-<div class="csv-import-container" *ngIf="this.loaded">
+<div class="csv-import-container" >
   <h1>CSV Import</h1>
-  <div class="type-row">
-    <label for="itemType" class="type-label">Typ položky:</label>
-    <select id="itemType" [(ngModel)]="this.selectedGroup" class="type-select">
-      <option *ngFor="let group of groups">{{ group.name }}</option>
-    </select>
-  </div>
   <div
     class="dropbox"
     (drop)="onDrop($event)"

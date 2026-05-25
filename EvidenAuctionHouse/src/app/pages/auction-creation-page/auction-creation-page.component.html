@@ -1,21 +1,56 @@
-<div class="form-container">
-  <p>Create auction</p>
-  <input type="text" [(ngModel)]="name" placeholder="Auction name" class="boxes">
-  <input type="datetime-local" [(ngModel)]="startDateString" placeholder="Start date" class="boxes">
-  <input type="datetime-local" [(ngModel)]="endDateString" placeholder="End date" class="boxes">
-  <button class="boxes" (click)="onAddItemsClick()">Přidat položky</button>
+<div class="page-container">
+  <h1 class="page-title">Vytvořit aukci</h1>
 
-  <app-auction-add-items
-  *ngIf="auctionItemspopupVisible"
-  (itemsSelected)="onAddedItems($event)"
-  [auctionId]="auctionId">
-</app-auction-add-items>
+  <div *ngIf="loaded" class="form-wrapper">
+    <div class="auction-creation-container">
+      <div class="form-section">
+        <h2>Název aukce</h2>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="name" placeholder="Název aukce" class="form-control">
+        </div>
+      </div>
 
-  <p *ngIf="selectedItemIds && selectedItemIds.length > 0">
-    Vybráno {{ selectedItemIds.length }} položek
-  </p>
+      <div class="form-section">
+        <h2>Termíny</h2>
+        <div class="form-group">
+          <input type="datetime-local" [(ngModel)]="startDateString" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="datetime-local" [(ngModel)]="endDateString" class="form-control">
+        </div>
+      </div>
 
-  <button class="boxes" (click)="promptCreateAuction()">Vytvořit aukci</button>
+      <div class="form-actions">
+        <button class="modern-btn" (click)="onAddItemsClick()">Přidat položky</button>
+        <button class="modern-btn" (click)="promptCreateAuction()">Vytvořit aukci</button>
+      </div>
 
-  <app-confirmation-dialog #confirmation (confirmed)="onConfirmation($event)"></app-confirmation-dialog>
+      <div *ngIf="dateError" class="date-error">
+        {{ dateError }}
+      </div>
+
+      <app-auction-add-items
+        *ngIf="auctionItemspopupVisible"
+        (itemsSelected)="onAddedItems($event)"
+        [auctionId]="auctionId">
+      </app-auction-add-items>
+
+      <div class="selected-items" *ngIf="selectedItemIds && selectedItemIds.length > 0">
+        <h3>Vybrané položky</h3>
+        <ul>
+          <li *ngFor="let id of selectedItemIds">
+            <span>{{ id }}</span>
+            <button (click)="removeSelectedItem(id)">&times;</button>
+          </li>
+        </ul>
+      </div>
+
+      <app-confirmation-dialog #confirmation (confirmed)="onConfirmation($event)"></app-confirmation-dialog>
+    </div>
+  </div>
+
+  <div *ngIf="!loaded" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Načítání...</p>
+  </div>
 </div>

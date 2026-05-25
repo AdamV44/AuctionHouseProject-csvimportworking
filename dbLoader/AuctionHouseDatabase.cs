@@ -22,6 +22,8 @@ namespace dbLoader
         public DataSet<Auction> Auctions { get; set; }
         public DataSet<Bid> Bids { get; set; }
         public DataSet<ItemGroup> ItemGroups { get; set; }
+        public DataSet<AuctionReport> Reports { get; set; }
+        public DataSet<SoldItem> SoldItems { get; set; }
         public string RegisterAttemptsFilePath { get; set; }
 
 
@@ -39,6 +41,10 @@ namespace dbLoader
             this.Bids = new DataSet<Bid>(this.dbFolderPath + this.configReader.GetAssetsForNode("Bids"));
 
             this.ItemGroups = new DataSet<ItemGroup>(this.dbFolderPath + this.configReader.GetAssetsForNode("ItemGroups"));
+
+            // New datasets for reports and sold items
+            this.Reports = new DataSet<AuctionReport>(this.dbFolderPath + this.configReader.GetAssetsForNode("Reports"));
+            this.SoldItems = new DataSet<SoldItem>(this.dbFolderPath + this.configReader.GetAssetsForNode("SoldItems"));
 
             this.RegisterAttemptsFilePath = this.dbFolderPath + this.configReader.GetAssetsForNode("RegisterAttempts");
 

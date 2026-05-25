@@ -3,13 +3,10 @@
     "Id": "ab8b8b6a-7341-45c7-98b8-989ef5b0ba0e",
     "Name": "nabytek",
     "PicturesPaths": [],
-    "ItemGroupId": "2",
     "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
     "StartingPrice": 2000,
-    "barva": "barva",
-    "styl": "styl",
-    "velikost": "velikost",
-    "typ": "typ"
+    "AdditionalParameters": null,
+    "State": "new"
   },
   {
     "Id": "5d475fc4-6e48-481e-aed6-9f7ad06d0113",
@@ -17,20 +14,326 @@
     "PicturesPaths": [
       "AuctionItemsPictures\\5d475fc4-6e48-481e-aed6-9f7ad06d0113\\novy_notas.jpg"
     ],
-    "ItemGroupId": "1",
-    "AuctionId": "",
+    "AuctionId": "2d097c0f-4c7b-459c-a244-3713a914310c",
     "StartingPrice": 100,
-    "cpu": "i5",
-    "ram": "5gb",
-    "disk": "300gb"
+    "AdditionalParameters": null,
+    "State": "new"
   },
   {
     "Id": "8defeef0-a3e0-49b3-8542-c40b356d5924",
     "Name": "Dell XPS 13 Plus",
     "PicturesPaths": [],
-    "ItemGroupId": "1",
-    "AuctionId": "",
+    "AuctionId": "2d097c0f-4c7b-459c-a244-3713a914310c",
     "StartingPrice": 38990,
-    "additionalParams": "{\"CPU\":\"Intel Core i7-1360P\",\"RAM\":\"16 GB\",\"Disk\":\"1 TB SSD\",\"GPU\":\"Intel Iris Xe\"}"
+    "AdditionalParameters": null,
+    "State": "new"
+  },
+  {
+    "Id": "4fd5ade0-5761-4776-8af5-a28653e41f65",
+    "Name": "TEST ITEM FROM DEBUG",
+    "PicturesPaths": [],
+    "AuctionId": "9b20b99b-cc9f-4a8b-a130-eceb961a6454",
+    "StartingPrice": 123,
+    "AdditionalParameters": "",
+    "State": "new"
+  },
+  {
+    "Id": "018e9258-ea0f-4094-a71d-830257fdfcf4",
+    "Name": "adds",
+    "PicturesPaths": [
+      "/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/Database/AuctionItemsPictures/018e9258-ea0f-4094-a71d-830257fdfcf4/surface-laptop-7-06-e1746774119939.jpg"
+    ],
+    "AuctionId": "",
+    "StartingPrice": 4553,
+    "AdditionalParameters": "salads",
+    "State": "new"
+  },
+  {
+    "Id": "482e1c4a-7ca3-48fc-9b73-17a2db21357e",
+    "Name": "asdas",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 494,
+    "AdditionalParameters": "asd",
+    "State": "new"
+  },
+  {
+    "Id": "542658bb-7705-4890-bde1-c8b140699f46",
+    "Name": "Ancient Vase A",
+    "PicturesPaths": [],
+    "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
+    "StartingPrice": 100,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Bronze;Period=Roman;Condition=Good\"}",
+    "State": "new"
+  },
+  {
+    "Id": "6c44b91c-0e1c-498a-abcb-991ea8fa664a",
+    "Name": "Ancient Vase B",
+    "PicturesPaths": [],
+    "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
+    "StartingPrice": 151,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Clay;Period=Greek;Condition=Fair\"}",
+    "State": "new"
+  },
+  {
+    "Id": "4eae81f2-ca84-47fb-bb89-1a85574f3b28",
+    "Name": "Renaissance Portrait",
+    "PicturesPaths": [],
+    "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
+    "StartingPrice": 1200,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=Unknown;Century=16th;Framed=Yes\"}",
+    "State": "new"
+  },
+  {
+    "Id": "9b7abcca-2e1a-4399-9c44-f30a81d19ddc",
+    "Name": "Medieval Sword",
+    "PicturesPaths": [],
+    "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
+    "StartingPrice": 350,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Steel;Origin=England;Length=95cm\"}",
+    "State": "new"
+  },
+  {
+    "Id": "0f10576d-4427-4a09-8885-1ad2d502a4e3",
+    "Name": "Vintage Watch",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 220,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Brand=Omega;Year=1954;Working=Yes\"}",
+    "State": "new"
+  },
+  {
+    "Id": "61dfc83d-ac48-4ad9-9774-7e5a032c4b29",
+    "Name": "Porcelain Plate Set",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 85,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Pieces=6;Origin=China;Pattern=Blue\"}",
+    "State": "new"
+  },
+  {
+    "Id": "ab0fd641-0a40-4742-b52a-420be89e234a",
+    "Name": "Oil Painting Landscape",
+    "PicturesPaths": [],
+    "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
+    "StartingPrice": 420,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=K.Adams;Size=60x40cm;Signed=No\"}",
+    "State": "new"
+  },
+  {
+    "Id": "2fd101f7-c335-450d-a9dd-c2ed48acb973",
+    "Name": "Crystal Chandelier",
+    "PicturesPaths": [],
+    "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
+    "StartingPrice": 980,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Crystal;Lights=12;Condition=Good\"}",
+    "State": "new"
+  },
+  {
+    "Id": "1e95c5f1-353f-42b1-86a6-15c1fe30bb9f",
+    "Name": "Silver Coin Lot",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 65,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Count=8;Era=19th;Grade=VF\"}",
+    "State": "new"
+  },
+  {
+    "Id": "51615042-b733-411f-99fc-b374d816220e",
+    "Name": "Antique Camera",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 140,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Brand=Leica;Year=1938;Lens=50mm\"}",
+    "State": "new"
+  },
+  {
+    "Id": "b7425491-3817-4d5d-9531-48dd72851a08",
+    "Name": "Handwoven Rug",
+    "PicturesPaths": [],
+    "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
+    "StartingPrice": 275,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Wool;Size=200x150cm;Origin=Persia\"}",
+    "State": "new"
+  },
+  {
+    "Id": "38acc58e-3def-4feb-b893-e0860ef320d1",
+    "Name": "Bronze Statue",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 490,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Height=35cm;Artist=Unknown;Patina=Original\"}",
+    "State": "new"
+  },
+  {
+    "Id": "e57784a8-0676-4eb4-94a1-7e2d4c24a4e5",
+    "Name": "Pocket Compass",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 40,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Brass;Century=18th;Working=Yes\"}",
+    "State": "new"
+  },
+  {
+    "Id": "9c21924e-186a-4471-b997-63d7865d81e3",
+    "Name": "Ceramic Figurine",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 56,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Ceramic;Maker=Mj;Condition=Excellent\"}",
+    "State": "new"
+  },
+  {
+    "Id": "6b545c68-e47c-4d3c-983e-2463b4360a9e",
+    "Name": "Signed Poster",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 30,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=Famous;Year=1990;Signed=Yes\"}",
+    "State": "new"
+  },
+  {
+    "Id": "9dab582d-423b-40b3-9fb4-944dd0238de8",
+    "Name": "Ancient Vase A",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 100,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Bronze;Period=Roman;Condition=Good\"}",
+    "State": "new"
+  },
+  {
+    "Id": "986be200-8593-40d2-8fa4-9862b73a6a1d",
+    "Name": "Ancient Vase B",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 151,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Clay;Period=Greek;Condition=Fair\"}",
+    "State": "new"
+  },
+  {
+    "Id": "79c85e5e-425b-4bf6-83ac-0ae6eaabd6b1",
+    "Name": "Renaissance Portrait",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 1200,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=Unknown;Century=16th;Framed=Yes\"}",
+    "State": "new"
+  },
+  {
+    "Id": "ed387253-d153-462f-a433-40b4fc15b396",
+    "Name": "Medieval Sword",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 350,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Steel;Origin=England;Length=95cm\"}",
+    "State": "new"
+  },
+  {
+    "Id": "268337ab-282a-4f8b-866a-eb71b4cd0976",
+    "Name": "Vintage Watch",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 220,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Brand=Omega;Year=1954;Working=Yes\"}",
+    "State": "new"
+  },
+  {
+    "Id": "e91ad116-db31-46e4-a244-038a5b6a2722",
+    "Name": "Porcelain Plate Set",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 85,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Pieces=6;Origin=China;Pattern=Blue\"}",
+    "State": "new"
+  },
+  {
+    "Id": "4a269515-daf2-4f69-8ae7-e7cf58755f78",
+    "Name": "Oil Painting Landscape",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 420,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=K.Adams;Size=60x40cm;Signed=No\"}",
+    "State": "new"
+  },
+  {
+    "Id": "865bb752-ebde-4613-a6da-d1ef6b1c0e6e",
+    "Name": "Crystal Chandelier",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 980,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Crystal;Lights=12;Condition=Good\"}",
+    "State": "new"
+  },
+  {
+    "Id": "a4887002-6cb2-43ad-a0a8-28b17c5126e4",
+    "Name": "Silver Coin Lot",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 65,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Count=8;Era=19th;Grade=VF\"}",
+    "State": "new"
+  },
+  {
+    "Id": "7a7f5eb7-aa38-4511-8d05-063acc0507ab",
+    "Name": "Antique Camera",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 140,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Brand=Leica;Year=1938;Lens=50mm\"}",
+    "State": "new"
+  },
+  {
+    "Id": "62c8ee3c-7f68-46f3-ab78-b06613cdc787",
+    "Name": "Handwoven Rug",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 275,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Wool;Size=200x150cm;Origin=Persia\"}",
+    "State": "new"
+  },
+  {
+    "Id": "7cc6c336-d754-4c7c-a7e6-a5c2f8629ed3",
+    "Name": "Bronze Statue",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 490,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Height=35cm;Artist=Unknown;Patina=Original\"}",
+    "State": "new"
+  },
+  {
+    "Id": "5426a398-0aa2-4fb2-8cf5-3402f1896f27",
+    "Name": "Pocket Compass",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 40,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Brass;Century=18th;Working=Yes\"}",
+    "State": "new"
+  },
+  {
+    "Id": "9a1280d8-477b-41b2-ae02-63ca95f5fd94",
+    "Name": "Ceramic Figurine",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 56,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Ceramic;Maker=Mj;Condition=Excellent\"}",
+    "State": "new"
+  },
+  {
+    "Id": "40de2fee-6d48-499c-833c-e4dcca25217d",
+    "Name": "Signed Poster",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 30,
+    "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=Famous;Year=1990;Signed=Yes\"}",
+    "State": "new"
+  },
+  {
+    "Id": "c2d0f0ea-a8d3-41b9-be75-46799fb108d9",
+    "Name": "Bulk Test Item",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 5,
+    "AdditionalParameters": "",
+    "State": "new"
   }
 ]

@@ -1,3 +1,3 @@
 export class settings {
-    public static apiRoute = 'http://localhost:5110/api'
+    public static apiRoute = 'http://localhost:5200/api'
 }

@@ -13,15 +13,8 @@ export class ItemsService {
   constructor(public bidsService: BidsService, private http: HttpClient) { }
 
   public createItem(item: AuctionItem): Observable<AuctionItem> {
-    const { additionalParams, ...cleanItem } = item;
-
-    const payload = {
-      ...cleanItem,
-      ...Object.fromEntries(item.additionalParams)
-    };
-    console.log(payload);
-    
-    return this.http.post<AuctionItem>(settings.apiRoute + '/AuctionItems/create', payload)
+  return this.http.post<AuctionItem>(settings.apiRoute + '/AuctionItems/create', item);
+  
   }
 
   public createMultipleItems(items: AuctionItem[]): Observable<AuctionItem[]> {
@@ -69,27 +62,29 @@ export class ItemsService {
       id,
       name,
       picturesPaths,
-      itemGroupId,
       auctionId,
       startingPrice,
-      ...rest // ostatní vlastnosti
+      ...rest // other properties collected as simple object
     } = obj;
 
-    const additionalParams = new Map<string, string>();
-    for (const key in rest) {
-      if (rest.hasOwnProperty(key)) {
-        additionalParams.set(key, String(rest[key]));
-      }
-    }
+    // Convert any remaining properties into a single JSON string
+    const additionalParamsString = Object.keys(rest).length ? JSON.stringify(rest) : '';
 
     const item = new AuctionItem(
       id,
       name,
-      itemGroupId,
       startingPrice,
-      additionalParams,
+      additionalParamsString,
       auctionId
     );
+
+    // preserve state if present
+    if ((rest as any).state) {
+      item.state = (rest as any).state;
+    }
+
+    // ensure picturesPaths is preserved if provided
+    item.picturesPaths = picturesPaths ?? [];
 
     return item;
   }

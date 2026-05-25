@@ -1,14 +1,70 @@
-<div class="login-container">
-  <h1>LOGIN</h1>
-  <input type="email" placeholder="Email" [(ngModel)]="email">
-  <input type="password" placeholder="Password" [(ngModel)]="password">
-  <button (click)="onLogin()">Login</button>
+<div class="login-wrapper">
 
-  <p *ngIf="loginError" class="error-message">{{ loginErrorMessage }}</p> 
+  <!-- Main Login Card -->
+  <div class="login-card">
+    <div class="card-header">
+      <h2>Přihlášení</h2>
+      <p>Přihlaste se ke svému účtu</p>
+    </div>
 
-  <p class="register">
-    Nejste ještě přihlášeni? <a [routerLink]="['/registration']">Registrovat se</a>
-  </p>
+    <form class="login-form" (ngSubmit)="onLogin()">
+      <!-- Email Input -->
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope input-icon"></i>
+          <input 
+            id="email"
+            type="email" 
+            class="form-control" 
+            placeholder="Zadejte váš email" 
+            [(ngModel)]="email"
+            name="email"
+            required>
+        </div>
+      </div>
+
+      <!-- Password Input -->
+      <div class="form-group">
+        <label for="password" class="form-label">Heslo</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock input-icon"></i>
+          <input 
+            id="password"
+            type="password" 
+            class="form-control" 
+            placeholder="Zadejte vaše heslo" 
+            [(ngModel)]="password"
+            name="password"
+            required>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div *ngIf="loginError" class="alert alert-error">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>{{ loginErrorMessage }}</span>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="btn btn-login">
+        <i class="fas fa-sign-in-alt"></i>
+        Přihlásit se
+      </button>
+    </form>
+
+    <!-- Registration Link -->
+    <div class="auth-links">
+      <p class="register-text">
+        Nemáte účet? <a [routerLink]="['/registration']" class="register-link">Registrovat se</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="login-footer">
+    <p>&copy; 2026 AuctionHouse. Veškerá práva vyhrazena.</p>
+  </div>
 </div>
 
 

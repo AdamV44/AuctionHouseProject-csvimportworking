@@ -1,74 +1,117 @@
 @use 'sass:color';
 @use '../../variables' as v;
 
-.auction-list-container {
-  .create-auction-btn {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: v.$border-radius;
-    background: linear-gradient(135deg, v.$primary-blue, color.adjust(v.$primary-blue, $lightness: -10%));
-    color: v.$white;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+/* Ensure the component host fills the viewport and has a white background */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: white;
+}
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: v.$box-shadow;
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  text-align: center; // center all text inside the container
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: v.$primary-blue;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+// ===== FLOATING ACTION BUTTON =====
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid v.$primary-blue;
+  background: linear-gradient(135deg, #0073E6, #001489);
+  color: v.$white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 20, 137, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 115, 230, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Inline FAB variant: floating but allows text label */
+.fab-inline {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0.75rem 1rem;
+  height: auto;
+  min-width: 48px;
+  border-radius: 999px;
+  border: 2px solid v.$primary-blue;
+  background: linear-gradient(135deg, #0073E6, #001489);
+  color: v.$white;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0, 20, 137, 0.28);
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+  }
+}
+
+// ===== RESPONSIVE DESIGN =====
+@media (max-width: 768px) {
+  .page-container {
+    padding: 1.5rem;
+
+    .page-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
     }
   }
 
-  .auction-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+  .fab {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
 
-    .auction-card {
-      background: v.$white;
-      border-radius: v.$border-radius-lg;
-      box-shadow: v.$box-shadow;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+@media (max-width: 480px) {
+  .page-container {
+    padding: 1rem;
 
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: v.$box-shadow-lg;
-      }
-
-      .card-header {
-        padding: 1rem 1.5rem;
-        background: linear-gradient(135deg, v.$primary-blue, v.$accent-teal);
-        color: v.$white;
-
-        h3 {
-          font-size: 1.5rem;
-          font-weight: 700;
-          margin: 0;
-        }
-      }
-
-      .card-body {
-        padding: 1.5rem;
-
-        .info-row {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 0.75rem;
-          font-size: 0.95rem;
-
-          .label {
-            color: v.$gray-600;
-            font-weight: 500;
-          }
-
-          .value {
-            color: v.$gray-800;
-            font-weight: 600;
-          }
-        }
-      }
+    .page-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
+  }
+
+  .fab {
+    bottom: 1rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
   }
 }

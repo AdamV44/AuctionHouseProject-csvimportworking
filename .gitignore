@@ -1,0 +1,55 @@
+# Root .gitignore for AuctionHouse project
+
+# Dotnet build artifacts
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.iml
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs and temp
+logs/
+*.log
+/tmp/
+/tmp/**
+/tmp/eah_api.log
+/*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+
+# Database / data assets (do NOT ignore Database folder if you want to keep assets under version control)
+# Ignore local runtime-only files that may appear under Database/ (e.g., editor temp files)
+Database/**/*.tmp
+
+# Angular build
+EvidenAuctionHouse/dist/
+EvidenAuctionHouse/.angular/cache/
+
+# Misc
+.vscode/
+

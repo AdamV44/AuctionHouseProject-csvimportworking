@@ -12,12 +12,14 @@ namespace EvidenAuctionHouseAPI.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        public AuthenticationController(AuctionHouseDatabase db)
+        private readonly AuctionHouseDatabase myDb;
+        private readonly TokensService _tokens;
+
+        public AuthenticationController(AuctionHouseDatabase db, TokensService tokens)
         {
             this.myDb = db;
+            this._tokens = tokens;
         }
-
-        private AuctionHouseDatabase myDb;
 
         [HttpPost("login")]
         public IActionResult Login(Credentials c)
@@ -32,9 +34,7 @@ namespace EvidenAuctionHouseAPI.Controllers
                 return StatusCode(403, "Incorrect password");
             }
 
-            TokensService t = new TokensService();
-
-            var token = t.CreateUserToken(user.Id, user.isAdmin);
+            var token = _tokens.CreateUserToken(user.Id, user.isAdmin);
 
             return Ok(new AuthenticationResult(token, new AuthenticatedUserInformation()
             {
