@@ -27,6 +27,13 @@
       </div>
 
       <div class="form-section">
+        <h2>Sériové číslo</h2>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="this.serialNumber" placeholder="Např. 102192" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-section">
         <h2>Stav předmětu</h2>
         <div class="form-group">
           <select class="form-control" [(ngModel)]="this.state">
@@ -62,8 +69,21 @@
         </div>
       </div>
 
-      <!-- Confirmation Section -->
-      <app-confirmation (result)="onConfirmation($event)"></app-confirmation>
+      <!-- Confirmation Section: page-level buttons -->
+      <div class="form-actions">
+        <button class="btn btn-primary" type="button" (click)="openConfirmation()">Potvrdit</button>
+        <button class="btn btn-secondary" type="button" (click)="cancelCreation()">Zrušit</button>
+      </div>
+
+      <!-- Embedded confirmation dialog appears after user clicks Potvrdit -->
+      <div *ngIf="showConfirmationDialog">
+        <app-confirmation
+          [title]="'Potvrdit vytvoření předmětu'"
+          [message]="'Odeslat předmět s názvem: ' + (itemName || '(bez názvu)') + '\nDodatečné parametry: ' + (additionalParameters || '(žádné)')"
+          [previewUrls]="previewUrls"
+          (result)="onConfirmation($event)">
+        </app-confirmation>
+      </div>
     </div>
   </div>
 

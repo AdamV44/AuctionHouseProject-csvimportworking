@@ -14,19 +14,18 @@ namespace EvidenAuctionHouseAPI.Controllers
 
         private readonly AuctionHouseDatabase myDb;
         private readonly EvidenAuctionHouseAPI.Services.RegistrationService _registrationService;
-
-        public RegistrationController(AuctionHouseDatabase db, EvidenAuctionHouseAPI.Services.RegistrationService registrationService)
+        private readonly EvidenAuctionHouseAPI.Services.IEmailService _emailService;
+        public RegistrationController(AuctionHouseDatabase db, EvidenAuctionHouseAPI.Services.RegistrationService registrationService, EvidenAuctionHouseAPI.Services.IEmailService emailService)
         {
             this.myDb = db;
             this._registrationService = registrationService;
+            this._emailService = emailService;
         }
 
         [HttpPost("register-submit")]
         public IActionResult SubmitRegisterForm(RegistrationInformation info)
         {
             var regService = _registrationService;
-            var smtpConfig = this.myDb.configReader.GetSMTPConfig();
-            EmailService emailService = new EmailService(smtpConfig.Server, smtpConfig.Port, smtpConfig.User, smtpConfig.Password);
             if (this.myDb.Users.Find(u => u.Email == info.Email) != null)
             {
                 return BadRequest("Email is already registered");
@@ -41,7 +40,7 @@ namespace EvidenAuctionHouseAPI.Controllers
             var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
             var confirmUrl = $"{baseUrl}/api/Registration/confirm-email/{token}";
 
-            emailService.SendEmailVerification(info.Email, confirmUrl);
+            _emailService.SendEmailVerification(info.Email, confirmUrl);
 
             return Ok(new { message = "Registration submitted, verification email sent" });
         }

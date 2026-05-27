@@ -1,0 +1,35 @@
+<div class="page-container admin-rules-page">
+  <h1 class="page-title">Pravidla aukce — úprava (admin)</h1>
+
+  <div class="meta">
+    <div class="meta-item">Verze: <strong>{{ current?.version || '-' }}</strong></div>
+    <div class="meta-item">Název: <strong>{{ current?.title || '-' }}</strong></div>
+  </div>
+
+  <div class="editor-grid">
+    <div class="editor">
+      <label class="visually-hidden" for="rules-raw">Pravidla (markdown)</label>
+      <textarea id="rules-raw" [(ngModel)]="raw" (ngModelChange)="onRawChange($event)" rows="20" placeholder="Vložte markdown pravidel..."></textarea>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="modern-btn primary" (click)="saveNewVersion()" [disabled]="saving">Uložit jako novou verzi</button>
+    <button class="modern-btn" (click)="load()" [disabled]="loading">Načíst z disku</button>
+  </div>
+
+  <!-- confirmation modal -->
+  <div *ngIf="showConfirm" class="confirm-backdrop">
+    <div class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <div class="confirm-header">
+        <h3 id="confirm-title">Potvrdit uložení verze {{ pendingVersion }}</h3>
+        <button class="close-btn" (click)="cancelConfirm()" aria-label="Zavřít dialog">✕</button>
+      </div>
+      <div class="confirm-preview" [innerHTML]="previewHtml"></div>
+      <div class="confirm-actions">
+        <button class="btn btn-primary" (click)="performSaveNewVersion()" [disabled]="saving">Potvrdit a uložit</button>
+        <button class="btn btn-secondary" (click)="cancelConfirm()" [disabled]="saving">Zrušit</button>
+      </div>
+    </div>
+  </div>
+</div>

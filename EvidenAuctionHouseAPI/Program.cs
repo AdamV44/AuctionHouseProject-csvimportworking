@@ -19,6 +19,11 @@ namespace EvidenAuctionHouseAPI
             builder.Services.AddSingleton<AuctionHouseDatabase>(db);
             // TokensService provides token creation/verification and reads secrets from env vars
             builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.TokensService>();
+            // refresh token persistence
+            builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.RefreshTokenService>(sp =>
+            {
+                return new EvidenAuctionHouseAPI.Services.RefreshTokenService(db.dbFolderPath);
+            });
             // RegistrationService depends on the path to pending users file and TokensService
             builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.RegistrationService>(sp =>
             {
@@ -28,6 +33,8 @@ namespace EvidenAuctionHouseAPI
             // Register finalization worker and hosted scheduler
             builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.AuctionFinalizationWorker>();
             builder.Services.AddHostedService<EvidenAuctionHouseAPI.Services.AuctionFinalizerScheduler>();
+            // Email service
+            builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.IEmailService, EvidenAuctionHouseAPI.Services.EmailService>();
 
             // SETUP CORS
             builder.Services.AddCors(options =>
@@ -35,9 +42,15 @@ namespace EvidenAuctionHouseAPI
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.AllowAnyOrigin()
+                        // allow credentials and use explicit origin(s) from env if provided
+                        var originEnv = Environment.GetEnvironmentVariable("EVIDEN_CLIENT_ORIGIN") ?? "http://127.0.0.1:4200";
+                        var origins = originEnv.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
+                        // always include common localhost host used by angular dev server
+                        if (!origins.Contains("http://localhost:4200")) origins.Add("http://localhost:4200");
+                        builder.WithOrigins(origins.ToArray())
                                .AllowAnyHeader()
-                               .AllowAnyMethod();
+                               .AllowAnyMethod()
+                               .AllowCredentials();
                     }
                 );
             });

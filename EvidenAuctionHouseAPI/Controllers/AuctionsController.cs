@@ -34,7 +34,9 @@ namespace EvidenAuctionHouseAPI.Controllers
         [HttpGet("get-active")]
         public ObjectResult GetActiveAuctions()
         {
-            return Ok(this.myDb.Auctions.Where(a => a.IsActive && a.StartDate <= DateTime.Now && a.EndDate >= DateTime.Now));
+            // Use UTC comparison because auction StartDate/EndDate are stored as UTC (ISO Z) and DateTime.Now is local.
+            var nowUtc = DateTime.UtcNow;
+            return Ok(this.myDb.Auctions.Where(a => a.IsActive && a.StartDate <= nowUtc && a.EndDate >= nowUtc));
         }
 
 
@@ -118,17 +120,10 @@ namespace EvidenAuctionHouseAPI.Controllers
 
         [SecuredAdmin]
         [HttpGet("report/{auctionId}")]
-        public IActionResult GetAuctionReport(string auctionId, [FromQuery] bool includeSensitive = false)
+        public IActionResult GetAuctionReport(string auctionId)
         {
             try
             {
-                // Check GDPR config: admin export of sensitive data may be disabled by config
-                bool allowAdminExport = true;
-                try { allowAdminExport = this.myDb.configReader.GetGDPRAllowAdminExport(); } catch { allowAdminExport = true; }
-                if (includeSensitive && !allowAdminExport)
-                {
-                    return StatusCode(403, new { message = "Admin exports of sensitive data are disabled by configuration" });
-                }
                 // If a report was previously generated and stored, return it
                 var stored = this.myDb.Reports.Find(r => r.AuctionId == auctionId);
                 if (stored != null)
@@ -145,27 +140,18 @@ namespace EvidenAuctionHouseAPI.Controllers
                         var sold = this.myDb.SoldItems.Find(s => s.Id == sid);
                         if (sold != null)
                         {
-                            // Mask or include sensitive fields depending on includeSensitive
-                            var winnerName = sold.WinnerFullName;
-                            var winnerEmail = sold.WinnerEmail;
-                            if (!includeSensitive)
-                            {
-                                // winner display: first initial only
-                                if (!string.IsNullOrEmpty(winnerName)) winnerName = winnerName.Substring(0, 1).ToUpper() + ".";
-                                winnerEmail = "";
-                            }
                             dto.SoldItems.Add(new EvidenAuctionHouseAPI.Models.SoldItemDTO
                             {
                                 Id = sold.AuctionItemId,
                                 Name = sold.Name,
                                 FinalPrice = (int)sold.FinalPrice,
-                                WinnerFullName = winnerName,
-                                WinnerEmail = winnerEmail
+                                WinnerFullName = sold.WinnerFullName,
+                                WinnerEmail = sold.WinnerEmail
                             });
                         }
                     }
-                    // include pseudonym map only when admin requested sensitive data
-                    if (includeSensitive && stored.PseudonymMap != null)
+                    // include pseudonym map when present
+                    if (stored.PseudonymMap != null)
                     {
                         dto.PseudonymMap = new Dictionary<string, string>(stored.PseudonymMap);
                     }
@@ -206,11 +192,7 @@ namespace EvidenAuctionHouseAPI.Controllers
                         var winner = this.myDb.Users.Find(u => u.Id == lastBid.UserId);
                         var winnerName = winner != null ? winner.Name : "";
                         var winnerEmail = winner != null ? winner.Email : "";
-                        if (!includeSensitive)
-                        {
-                            if (!string.IsNullOrEmpty(winnerName)) winnerName = winnerName.Substring(0,1).ToUpper() + ".";
-                            winnerEmail = "";
-                        }
+                        // admin-only endpoint: include full winner info
                         report.SoldItems.Add(new EvidenAuctionHouseAPI.Models.SoldItemDTO
                         {
                             Id = item.Id,
@@ -244,8 +226,8 @@ namespace EvidenAuctionHouseAPI.Controllers
                 }
 
                 generatedReport.TotalRevenue = report.TotalRevenue;
-                // if includeSensitive was requested and allowed, include pseudonym map in DTO and persisted report
-                if (includeSensitive && generatedReport.PseudonymMap != null)
+                // include pseudonym map when present
+                if (generatedReport.PseudonymMap != null)
                 {
                     report.PseudonymMap = new Dictionary<string, string>(generatedReport.PseudonymMap);
                 }

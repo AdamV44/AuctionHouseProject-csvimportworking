@@ -25,6 +25,17 @@ namespace EvidenAuctionHouseAPI.Attributes
             }
 
             string? header = controller.Request.Headers["Authorization"].FirstOrDefault();
+            // diagnostic logging to help debug missing/invalid tokens during development
+            try
+            {
+                Console.WriteLine($"[SecuredUser] Authorization header: {header}");
+                var possibleUserId = service?.GetUserId(header);
+                Console.WriteLine($"[SecuredUser] Decoded userId: {possibleUserId}");
+            }
+            catch
+            {
+                // swallow logging errors
+            }
             if (string.IsNullOrWhiteSpace(header))
             {
                 context.Result = controller.Unauthorized(new { message = "Unauthorized" });

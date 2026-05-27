@@ -14,6 +14,10 @@ namespace dbLoader.Models
         public string PasswordHash { get; set; }
         public string Email { get; set; }
         public bool isAdmin { get; set; }
+    // First-login rules acceptance
+    public bool AcceptedRules { get; set; } = false;
+    public DateTime? AcceptedRulesAt { get; set; }
+    public string? AcceptedRulesVersion { get; set; }
 
         public void PrintSelf()
         {

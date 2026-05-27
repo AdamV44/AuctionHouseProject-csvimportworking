@@ -36,6 +36,12 @@
           {{ currentImageIndex + 1 }} / {{ imgsUrls.length }}
         </div>
       </div>
+      <div class="serial-number" *ngIf="item.id">
+        <div class="serial-number-label">Seriové číslo</div>
+        <div class="serial-number-grid">
+          <span class="serial-number-value">{{ item.id }}</span>
+        </div>
+      </div>
     </div>
 
     <!-- Right Column: Item Name, Additional Parameters, Pricing, and Bidding -->
@@ -50,7 +56,7 @@
         <h2>Další parametry</h2>
         <div class="params-grid">
           <div class="param-item">
-            <span class="param-value">{{ item.additionalParameters }}</span>
+            <span class="param-value">{{ formatAdditionalParameters(item.additionalParameters) }}</span>
           </div>
         </div>
       </div>
@@ -95,6 +101,8 @@
     <div class="bid-history-container">
       <div class="bid-history-header">
         <div class="bid-bidder">Přihazovatel</div>
+        <div class="bid-date">Datum</div>
+        <div class="bid-time">Čas</div>
         <div class="bid-amount">Částka</div>
       </div>
       <div 
@@ -102,6 +110,8 @@
         class="bid-history-list">
         <div *ngFor="let bid of bids" class="bid-history-row">
           <div class="bid-bidder-initial">{{ bid.bidderInitial }}</div>
+          <div class="bid-date-value">{{ bid.createdAt ? (bid.createdAt | date:'shortDate') : '-' }}</div>
+          <div class="bid-time-value">{{ bid.createdAt ? (bid.createdAt | date:'shortTime') : '-' }}</div>
           <div class="bid-amount-value">{{ bid.amount | currency:'CZK':'symbol':'1.0-0' }}</div>
         </div>
       </div>

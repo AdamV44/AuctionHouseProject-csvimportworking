@@ -21,6 +21,21 @@ body {
   --success: #{v.$success};
   --danger: #{v.$danger};
   --warning: #{v.$warning};
+
+  /* App design tokens mapped to CSS custom properties so components can use var(...) */
+  --card-background: #{v.$white};
+  --surface: #{v.$white};
+  --background: #{v.$neutral-gray};
+  --text-primary: #{v.$gray-900};
+  --text-secondary: #{v.$gray-600};
+  --border-color: #{v.$gray-300};
+  --border-radius: #{v.$border-radius};
+  --radius-lg: #{v.$border-radius-lg};
+  --radius-xl: #{v.$border-radius-xl};
+  --shadow-sm: #{v.$box-shadow-sm};
+  --shadow: #{v.$box-shadow};
+  --accent: #{v.$accent};
+  --text-on-accent: #{v.$white};
 }
 
 // === GLOBAL RESET ===

@@ -17,6 +17,12 @@ export class UserService {
   public getUserById(userId: string): Observable<User> {
     return this.http.get<User>(settings.apiRoute + '/users/get/' + userId)
   }
+  public getMe(): Observable<User> {
+    return this.http.get<User>(settings.apiRoute + '/users/me')
+  }
+  public acceptRules(): Observable<any> {
+    return this.http.post<any>(settings.apiRoute + '/users/accept-rules', {})
+  }
   public login(credentials: Credentials): Observable<AuthenticationResult> {
     return this.http.post<AuthenticationResult>(settings.apiRoute + '/users/login', credentials)
   }

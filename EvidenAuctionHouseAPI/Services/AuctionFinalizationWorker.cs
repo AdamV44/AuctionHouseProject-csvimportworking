@@ -12,12 +12,14 @@ namespace EvidenAuctionHouseAPI.Services
     public class AuctionFinalizationWorker
     {
         private readonly AuctionHouseDatabase db;
+    private readonly IEmailService? emailService;
         // simple in-memory per-auction locks to avoid concurrent finalization of the same auction
         private static readonly ConcurrentDictionary<string, object> Locks = new ConcurrentDictionary<string, object>();
 
-        public AuctionFinalizationWorker(AuctionHouseDatabase db)
+        public AuctionFinalizationWorker(AuctionHouseDatabase db, IEmailService? emailService = null)
         {
             this.db = db;
+            this.emailService = emailService;
         }
 
         // Generate and optionally persist report for a single auction id. Returns true on success.
@@ -26,6 +28,10 @@ namespace EvidenAuctionHouseAPI.Services
         {
             dto = new AuctionReportDTO();
             error = null;
+            // collect notifications to send after releasing the lock to avoid holding lock during network IO
+            var notificationsToSend = new List<(string Email, string WinnerName, string ItemName, int FinalPrice)>();
+            string? adminEmailToNotify = null;
+            bool success = false;
 
             var myLock = Locks.GetOrAdd(auctionId, _ => new object());
             try
@@ -117,6 +123,12 @@ namespace EvidenAuctionHouseAPI.Services
                                 {
                                     this.db.SoldItems.Add(soldItem);
                                     generatedReport.SoldItemIds.Add(soldItem.Id);
+
+                                    // queue notification info (send outside lock)
+                                    if (!string.IsNullOrEmpty(soldItem.WinnerEmail))
+                                    {
+                                        notificationsToSend.Add((soldItem.WinnerEmail, soldItem.WinnerFullName ?? "", soldItem.Name ?? "", (int)soldItem.FinalPrice));
+                                    }
                                 }
 
                                 dto.TotalRevenue += (int)final;
@@ -141,9 +153,27 @@ namespace EvidenAuctionHouseAPI.Services
                             auction.IsActive = false;
                             this.db.Auctions.Update(auction, auction.Id);
                             this.db.Auctions.SaveChanges();
+
+                            // mark unsold items as no longer listed (clear AuctionId) so they become "nevystaveno"
+                            if (generatedReport.UnsoldItemIds != null && generatedReport.UnsoldItemIds.Count > 0)
+                            {
+                                foreach (var uid in generatedReport.UnsoldItemIds)
+                                {
+                                    var unsold = this.db.AuctionItems.Find(i => i.Id == uid);
+                                    if (unsold != null)
+                                    {
+                                        unsold.AuctionId = "";
+                                    }
+                                }
+                                this.db.AuctionItems.SaveChanges();
+                            }
+
+                            // capture admin email to notify (send outside lock)
+                            adminEmailToNotify = Environment.GetEnvironmentVariable("ADMIN_EMAIL");
                         }
 
-                        return true;
+                        // mark success; notifications will be sent after lock is released
+                        success = true;
                     }
                     catch (Exception ex)
                     {
@@ -157,6 +187,43 @@ namespace EvidenAuctionHouseAPI.Services
                 // release lock object to avoid memory growth
                 Locks.TryRemove(auctionId, out _);
             }
+
+            // -- send queued notifications outside lock (best-effort)
+            try
+            {
+                if (success && !dryRun && this.emailService != null)
+                {
+                    foreach (var n in notificationsToSend)
+                    {
+                        try
+                        {
+                            this.emailService.SendWinnerNotification(n.Email, n.WinnerName, n.ItemName, n.FinalPrice, dto.AuctionName);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"[AuctionFinalizationWorker] Failed sending winner email to {n.Email}: {ex.Message}");
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(adminEmailToNotify))
+                    {
+                        try
+                        {
+                            this.emailService.SendAdminNotification(adminEmailToNotify, dto);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"[AuctionFinalizationWorker] Failed sending admin notification to {adminEmailToNotify}: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[AuctionFinalizationWorker] Notification sending failed: {ex.Message}");
+            }
+
+            return success;
         }
     }
 }

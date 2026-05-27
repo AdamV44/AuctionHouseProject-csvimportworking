@@ -15,6 +15,30 @@ services:
       NODE_ENV: production
     ports:
       - 4200:4200
+  # API service (dotnet) - local development convenience
+  api:
+    build:
+      context: ./EvidenAuctionHouseAPI
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SMTP_HOST=mailhog
+      - SMTP_PORT=1025
+      - SMTP_FROM=no-reply@local.test
+      - ADMIN_EMAIL=admin@local.test
+    ports:
+      - 7054:7054
+      - 5200:5200
+    depends_on:
+      - mailhog
+
+  # MailHog - simple local SMTP server and web UI for development
+  mailhog:
+    image: mailhog/mailhog:latest
+    restart: unless-stopped
+    ports:
+      - 1025:1025 # SMTP
+      - 8025:8025 # Web UI
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
 # start the database before your application. The `db-data` volume persists the

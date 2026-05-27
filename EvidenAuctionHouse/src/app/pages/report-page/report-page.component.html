@@ -21,10 +21,7 @@
 			<div class="report-header">
 				<h2>{{ selectedAuction.name }}</h2>
 				<div class="actions">
-					<label *ngIf="auth.isAdmin() && allowAdminExport" class="sensitive-toggle">
-						<input type="checkbox" (change)="onToggleSensitive($event)" [checked]="includeSensitive" />
-						Zobrazit citlivé údaje (pouze admin)
-					</label>
+
 					<button class="btn" (click)="exportCsv()" [disabled]="loadingReport || !!errorMessage">Export CSV</button>
 					<button *ngIf="auth.isAdmin()" class="btn btn-warning" (click)="finalize()" [disabled]="loadingReport">Finalize</button>
 					<button class="btn" (click)="selectedAuction = null">Zpět</button>

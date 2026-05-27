@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgFor, NgIf, DatePipe, DecimalPipe } from '@angular/common';
 import { AuctionsService } from '../../services/auctions.service';
-import { AdminService } from '../../services/admin.service';
+// AdminService removed: page is accessible only to admins so admin-config toggle is unnecessary
 import { AuthenticationService } from '../../services/authentication.service';
 import { Auction } from '../../../models/auction';
 
@@ -23,20 +23,8 @@ export class ReportPageComponent {
 	loadingReport = false;
 	errorMessage: string | null = null;
 
-	allowAdminExport = false;
-	includeSensitive = false;
-
-	constructor(private auctionsService: AuctionsService, public auth: AuthenticationService, private adminService: AdminService) {
+	constructor(private auctionsService: AuctionsService, public auth: AuthenticationService) {
 		this.loadFinishedAuctions();
-		// fetch admin config (to know whether admin exports are allowed)
-		if (this.auth.isAdmin && this.auth.isAdmin()) {
-			this.adminService.getConfig().subscribe(cfg => {
-				this.allowAdminExport = !!cfg.allowAdminExport;
-			}, err => {
-				console.warn('Failed to load admin config, defaulting to allowAdminExport=true', err);
-				this.allowAdminExport = true;
-			});
-		}
 	}
 
 	private loadFinishedAuctions() {
@@ -69,10 +57,7 @@ export class ReportPageComponent {
 		this.loadingReport = true;
 		this.errorMessage = null;
 		let reportObs = this.auctionsService.getAuctionReport(auctionId);
-		// if admin requested sensitive view and config allows, use sensitive endpoint
-		if (this.auth.isAdmin && this.auth.isAdmin() && this.includeSensitive && this.allowAdminExport) {
-			reportObs = this.auctionsService.getAuctionReportWithSensitive(auctionId);
-		}
+	// reports page is admin-only; always use standard report endpoint
 		reportObs.subscribe((report: any) => {
 			this.soldItems = report?.soldItems || report?.SoldItems || [];
 			this.unsoldItems = report?.unsoldItems || report?.UnsoldItems || [];
@@ -85,13 +70,7 @@ export class ReportPageComponent {
 		});
 	}
 
-	onToggleSensitive(e: any) {
-		this.includeSensitive = !!e?.target?.checked;
-		// reload current report when toggled
-		if (this.selectedAuction) {
-			this.loadReport(this.selectedAuction.id);
-		}
-	}
+	// sensitive-toggle removed from template; no handler needed
 
 	exportCsv() {
 		if (!this.selectedAuction) return;

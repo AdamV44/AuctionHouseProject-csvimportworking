@@ -1,0 +1,219 @@
+.page-container.admin-rules-page {
+	padding: 1rem;
+	display: block;
+}
+
+.meta {
+	display: flex;
+	gap: 0.75rem;
+	align-items: center;
+	margin-bottom: 1rem;
+	color: var(--text-secondary);
+}
+
+/* make editor occupy most of the viewport height */
+.editor-grid {
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.12); /* stronger visible border */
+    border-radius: 8px;
+    background: var(--card-background);
+}
+
+.editor {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+}
+
+.editor textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Segoe UI Mono', monospace;
+    font-size: 0.98rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: var(--white);
+    resize: vertical;
+}
+
+/* stronger outline when focused to emphasize the border */
+.editor textarea:focus,
+.editor:focus-within {
+    border-color: rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+    outline: none;
+}
+
+
+.actions {
+	margin-top: 0.75rem;
+	display: flex;
+	gap: 0.5rem;
+}
+
+/* confirmation modal: larger, centered, readable */
+.confirm-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px) saturate(1.05);
+    z-index: 100000;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    opacity: 1;
+    transition: opacity 180ms ease;
+}
+
+.confirm-dialog {
+    width: min(900px, 98%);
+    max-width: 900px;
+    max-height: 90vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 0.75rem;
+    background: var(--card-background);
+    color: var(--text-primary);
+    padding: 1.25rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(4, 8, 20, 0.28), 0 2px 6px rgba(4, 8, 20, 0.12);
+    border: 1px solid var(--border-color);
+    transform: translateY(0) scale(1);
+    animation: popIn 140ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* header area: title + optional close button / metadata */
+.confirm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-right: 0.25rem;
+
+    h3 {
+        margin: 0;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+    }
+
+    .close-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-secondary);
+        padding: 0.25rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 120ms ease, color 120ms ease;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.04);
+            color: var(--text-primary);
+        }
+    }
+}
+
+/* preview: readable, scrollable, comfortable line length */
+.confirm-preview {
+    max-height: calc(70vh - 5.5rem);
+    overflow: auto;
+    padding: 1rem;
+    margin: 0.25rem 0;
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--text-primary);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border: 1px solid var(--border-color);
+    -webkit-font-smoothing: antialiased;
+
+    /* nicer scrollbar for modern browsers */
+    &::-webkit-scrollbar {
+        height: 8px;
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.12);
+        border-radius: 8px;
+    }
+    & code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Segoe UI Mono', monospace;
+        font-size: 0.95rem;
+        background: rgba(0,0,0,0.02);
+        padding: 0.15rem 0.4rem;
+        border-radius: 6px;
+    }
+}
+
+/* actions row and button variants */
+.confirm-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-top: 0.25rem;
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: transform 100ms ease, box-shadow 120ms ease, background 120ms ease;
+        user-select: none;
+    }
+
+    .btn-secondary {
+        @extend .btn;
+        background: transparent;
+        color: var(--text-primary);
+        border-color: var(--border-color);
+
+        &:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(4,8,20,0.06); }
+    }
+
+    .btn-primary {
+        @extend .btn;
+        background: var(--accent, #2563eb);
+        color: var(--text-on-accent, #fff);
+        border-color: transparent;
+
+        &:hover { filter: brightness(0.97); transform: translateY(-1px); }
+    }
+
+    .btn-danger {
+        @extend .btn;
+        background: var(--danger, #dc2626);
+        color: #fff;
+        border-color: transparent;
+
+        &:hover { filter: brightness(0.95); transform: translateY(-1px); }
+    }
+}
+
+/* responsiveness: stack actions on tiny screens */
+@media (max-width: 480px) {
+    .confirm-dialog {
+        padding: 0.75rem;
+        border-radius: 10px;
+    }
+
+    .confirm-actions {
+        flex-direction: column-reverse;
+        .btn { width: 100%; }
+    }
+}
+
+/* small entrance animation */
+@keyframes popIn {
+    from { opacity: 0; transform: translateY(8px) scale(.995); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}

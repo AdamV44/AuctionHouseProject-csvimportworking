@@ -1,0 +1,9 @@
+[
+  {
+    "Id": "rules-v1",
+    "Version": "v1.4",
+    "Title": "Pravidla aukce v1.0",
+    "Body": "Toto jsou kompletní pravidla aukce (verze 1.0).\n\n1. Účastník musí být registrovaný uživatel.\n2. Všechny nabídky jsou závazné a nelze je stornovat.\n3. Vítěz aukce se zavazuje převzít položku a uhradit cenu dle pokynů.\n4. Organizátor si vyhrazuje právo zrušit nebo upravit aukci.\n5. Zakaz zvirat a prace\n\nProsím kontaktujte support@example.com pro více informací.",
+    "CreatedAt": "0001-01-01T00:00:00"
+  }
+]

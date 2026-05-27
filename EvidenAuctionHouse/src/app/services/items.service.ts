@@ -40,6 +40,9 @@ export class ItemsService {
   public getItemPrice(itemId: string): Observable<number> {
     return this.http.get<number>(settings.apiRoute + '/AuctionItems/get/price/' + itemId)
   }
+  public getItemSerialNumber(itemId: string): Observable<string> {
+    return this.http.get<string>(settings.apiRoute + '/AuctionItems/get/serial-number/' + itemId)
+  }
   public removeItemById(itemId: string): Observable<string> {
     console.log('🌐 API CALL - removeItemById');
     console.log('🌐 itemId:', itemId);
@@ -64,19 +67,22 @@ export class ItemsService {
       picturesPaths,
       auctionId,
       startingPrice,
+      serialNumber,
       ...rest // other properties collected as simple object
     } = obj;
 
     // Convert any remaining properties into a single JSON string
     const additionalParamsString = Object.keys(rest).length ? JSON.stringify(rest) : '';
 
-    const item = new AuctionItem(
+    const item = new AuctionItem({
       id,
       name,
       startingPrice,
-      additionalParamsString,
-      auctionId
-    );
+      additionalParameters: additionalParamsString,
+      auctionId,
+      serialNumber,
+      picturesPaths
+    });
 
     // preserve state if present
     if ((rest as any).state) {

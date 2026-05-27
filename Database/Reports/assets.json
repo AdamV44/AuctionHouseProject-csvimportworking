@@ -7,31 +7,74 @@
       "c62e82c0-0e06-48c2-8f89-fe8f560fbbb4"
     ],
     "UnsoldItemIds": [],
+    "PseudonymMap": {},
     "TotalRevenue": 2900
+  },
+  {
+    "Id": "11111111-2222-3333-4444-555555555555",
+    "AuctionId": "2d097c0f-4c7b-459c-a244-3713a914310c",
+    "AuctionName": "aukce fotka test",
+    "SoldItemIds": [
+      "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+      "bbbbbbbb-cccc-dddd-eeee-ffffffffffff"
+    ],
+    "UnsoldItemIds": [
+      "item-unsold-1"
+    ],
+    "PseudonymMap": {},
+    "TotalRevenue": 12500
+  },
+  {
+    "Id": "22222222-3333-4444-5555-666666666666",
+    "AuctionId": "42869f47-6cfd-4940-901f-64cf9e951025",
+    "AuctionName": "xx",
+    "SoldItemIds": [],
+    "UnsoldItemIds": [
+      "item-unsold-2",
+      "item-unsold-3"
+    ],
+    "PseudonymMap": {},
+    "TotalRevenue": 0
+  },
+  {
+    "Id": "d5953f7f-843c-4e80-af9c-4cff25b1229d",
+    "AuctionId": "94c587d1-e31c-4773-88e2-0cd8e87d5bf3",
+    "AuctionName": "test report ",
+    "SoldItemIds": [],
+    "UnsoldItemIds": [
+      "1e95c5f1-353f-42b1-86a6-15c1fe30bb9f",
+      "51615042-b733-411f-99fc-b374d816220e",
+      "38acc58e-3def-4feb-b893-e0860ef320d1",
+      "e57784a8-0676-4eb4-94a1-7e2d4c24a4e5"
+    ],
+    "PseudonymMap": {},
+    "TotalRevenue": 0
+  },
+  {
+    "Id": "810d8689-9043-4237-8016-8c3c2b55ba4e",
+    "AuctionId": "db62e1b9-8a7c-4b2e-95de-27978db4eb86",
+    "AuctionName": "report test finalizace",
+    "SoldItemIds": [],
+    "UnsoldItemIds": [
+      "9c21924e-186a-4471-b997-63d7865d81e3",
+      "6b545c68-e47c-4d3c-983e-2463b4360a9e",
+      "ed387253-d153-462f-a433-40b4fc15b396"
+    ],
+    "PseudonymMap": {},
+    "TotalRevenue": 0
+  },
+  {
+    "Id": "b3639609-27bc-4a7d-891b-01c2ec23dca6",
+    "AuctionId": "8f71525c-f8a9-4630-99bf-bcc2e90d167d",
+    "AuctionName": "akce 2023",
+    "SoldItemIds": [],
+    "UnsoldItemIds": [
+      "9dab582d-423b-40b3-9fb4-944dd0238de8",
+      "986be200-8593-40d2-8fa4-9862b73a6a1d",
+      "79c85e5e-425b-4bf6-83ac-0ae6eaabd6b1",
+      "268337ab-282a-4f8b-866a-eb71b4cd0976"
+    ],
+    "PseudonymMap": {},
+    "TotalRevenue": 0
   }
-    ,
-    {
-      "Id": "11111111-2222-3333-4444-555555555555",
-      "AuctionId": "2d097c0f-4c7b-459c-a244-3713a914310c",
-      "AuctionName": "aukce fotka test",
-      "SoldItemIds": [
-        "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-        "bbbbbbbb-cccc-dddd-eeee-ffffffffffff"
-      ],
-      "UnsoldItemIds": [
-        "item-unsold-1"
-      ],
-      "TotalRevenue": 12500
-    },
-    {
-      "Id": "22222222-3333-4444-5555-666666666666",
-      "AuctionId": "42869f47-6cfd-4940-901f-64cf9e951025",
-      "AuctionName": "xx",
-      "SoldItemIds": [],
-      "UnsoldItemIds": [
-        "item-unsold-2",
-        "item-unsold-3"
-      ],
-      "TotalRevenue": 0
-    }
 ]

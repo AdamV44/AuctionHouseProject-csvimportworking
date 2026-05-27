@@ -11,6 +11,14 @@
   align-items: stretch;
 }
 
+/* Dim and disable interaction when modal overlay is active */
+.dimmed {
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+  filter: blur(0.5px);
+}
+
 // Responsive úpravy pro auction table
 @media (max-width: 1023px) {
   .table-container {

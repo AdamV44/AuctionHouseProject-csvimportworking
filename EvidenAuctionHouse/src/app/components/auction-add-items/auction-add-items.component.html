@@ -9,6 +9,7 @@
 
   <app-items-list [selectedItemsInput]="this.selectedItems" [items]="this.selectableItems" [allowSelection]="true" (selectedItemsEmitter)="getSelected($event)"></app-items-list>
     </div>
-    <app-confirmation (result)="onConfirmation($event)" style="align-self: center;"></app-confirmation>
+  <!-- render confirmation inline (no backdrop) so user can still interact with the items list -->
+  <app-confirmation [noBackdrop]="true" (result)="onConfirmation($event)" style="align-self: center;"></app-confirmation>
   </div>
 </div>

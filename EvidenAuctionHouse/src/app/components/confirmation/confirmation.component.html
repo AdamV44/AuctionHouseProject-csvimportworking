@@ -1,19 +1,56 @@
-<div class="confirmation" role="group" aria-label="Confirmation actions">
-    <button
-        class="buttons confirm"
-        type="button"
-        (click)="onConfirm()"
-        aria-label="Confirm"
-    >
-        ✓ Confirm
-    </button>
+<!-- Render as fixed overlay by default. When `noBackdrop` is true, render inline card without blocking backdrop -->
+<ng-container *ngIf="!noBackdrop; else inline">
+    <div class="confirmation-overlay" role="dialog" aria-modal="true" aria-label="Confirmation dialog">
+        <div class="confirmation-card">
+            <div *ngIf="title" class="confirmation-header">
+                <h3>{{ title }}</h3>
+            </div>
 
-    <button
-        class="buttons cancel"
-        type="button"
-        (click)="onCancel()"
-        aria-label="Cancel"
-    >
-        ✕ Cancel
-    </button>
-</div>
+            <div *ngIf="message" class="confirmation-message">
+                <p>{{ message }}</p>
+            </div>
+
+            <div *ngIf="previewUrls && previewUrls.length > 0" class="confirmation-previews">
+                <div *ngFor="let url of previewUrls" class="preview-item">
+                    <img [src]="url" alt="preview" />
+                </div>
+            </div>
+
+            <div *ngIf="errors && errors.length > 0" class="confirmation-errors" role="alert">
+                <div *ngFor="let e of errors">{{ e }}</div>
+            </div>
+
+            <div class="confirmation-actions" style="display:flex;gap:12px;justify-content:flex-end;">
+                <button class="buttons cancel" type="button" (click)="onCancel()">Zrušit</button>
+                <button class="buttons confirm" type="button" (click)="onConfirm()">Potvrdit</button>
+            </div>
+        </div>
+    </div>
+    </ng-container>
+
+    <ng-template #inline>
+        <div class="confirmation-card inline-card" role="dialog" aria-modal="false" aria-label="Confirmation panel">
+            <div *ngIf="title" class="confirmation-header">
+                <h3>{{ title }}</h3>
+            </div>
+
+            <div *ngIf="message" class="confirmation-message">
+                <p>{{ message }}</p>
+            </div>
+
+            <div *ngIf="previewUrls && previewUrls.length > 0" class="confirmation-previews">
+                <div *ngFor="let url of previewUrls" class="preview-item">
+                    <img [src]="url" alt="preview" />
+                </div>
+            </div>
+
+            <div *ngIf="errors && errors.length > 0" class="confirmation-errors" role="alert">
+                <div *ngFor="let e of errors">{{ e }}</div>
+            </div>
+
+            <div class="confirmation-actions" style="display:flex;gap:12px;justify-content:flex-end;">
+                <button class="buttons cancel" type="button" (click)="onCancel()">Zrušit</button>
+                <button class="buttons confirm" type="button" (click)="onConfirm()">Potvrdit</button>
+            </div>
+        </div>
+    </ng-template>

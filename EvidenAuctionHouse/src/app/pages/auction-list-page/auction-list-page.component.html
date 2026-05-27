@@ -1,7 +1,15 @@
 <div class="page-container">
   <h1 class="page-title">Aukce</h1>
 
-  <div *ngIf="this.loaded">
+  <app-first-login-rules-modal 
+  *ngIf="showRulesModal" 
+  [ruleTitle]="ruleTitle" 
+  [ruleBody]="ruleBody" 
+  (accepted)="onRulesAccepted()" 
+  (rejected)="onRulesRejected()">
+  </app-first-login-rules-modal>
+
+  <div *ngIf="this.loaded" [class.dimmed]="showRulesModal">
     <app-auction-table [auctionPreviews]="auctionPreviewsOnPage"></app-auction-table>
 
   <button 

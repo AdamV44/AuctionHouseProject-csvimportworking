@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
+import { UserService } from '../../services/user.service';
 import { Credentials } from '../../../models/credentials';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
@@ -18,7 +19,9 @@ export class LoginPageComponent {
   loginError: boolean = false; // Přidáno pro zobrazení chyby
   loginErrorMessage: string = '';
 
-  constructor(private router: Router, private authService: AuthenticationService) {}
+  // rules modal is shown on auctions page now
+
+  constructor(private router: Router, private authService: AuthenticationService, private userService: UserService) {}
 
   onLogin() {
     this.loginError = false;
@@ -37,7 +40,8 @@ export class LoginPageComponent {
     this.authService.login(c).subscribe({
       next: response => {
         this.loginError = false;
-        this.router.navigate(['/auctions']);
+  // proceed to auctions; auction page will show rules modal if needed
+  this.router.navigate(['/auctions']);
       },
       error: (err) => {
         this.loginError = true; 

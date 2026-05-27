@@ -5,6 +5,7 @@
     "PicturesPaths": [],
     "AuctionId": "bf84735a-b747-4bdd-84e6-d48f36307603",
     "StartingPrice": 2000,
+    "SerialNumber": "",
     "AdditionalParameters": null,
     "State": "new"
   },
@@ -16,6 +17,7 @@
     ],
     "AuctionId": "2d097c0f-4c7b-459c-a244-3713a914310c",
     "StartingPrice": 100,
+    "SerialNumber": "",
     "AdditionalParameters": null,
     "State": "new"
   },
@@ -25,6 +27,7 @@
     "PicturesPaths": [],
     "AuctionId": "2d097c0f-4c7b-459c-a244-3713a914310c",
     "StartingPrice": 38990,
+    "SerialNumber": "",
     "AdditionalParameters": null,
     "State": "new"
   },
@@ -34,6 +37,7 @@
     "PicturesPaths": [],
     "AuctionId": "9b20b99b-cc9f-4a8b-a130-eceb961a6454",
     "StartingPrice": 123,
+    "SerialNumber": "",
     "AdditionalParameters": "",
     "State": "new"
   },
@@ -45,6 +49,7 @@
     ],
     "AuctionId": "",
     "StartingPrice": 4553,
+    "SerialNumber": "",
     "AdditionalParameters": "salads",
     "State": "new"
   },
@@ -54,6 +59,7 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 494,
+    "SerialNumber": "",
     "AdditionalParameters": "asd",
     "State": "new"
   },
@@ -63,6 +69,7 @@
     "PicturesPaths": [],
     "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
     "StartingPrice": 100,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Bronze;Period=Roman;Condition=Good\"}",
     "State": "new"
   },
@@ -72,6 +79,7 @@
     "PicturesPaths": [],
     "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
     "StartingPrice": 151,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Clay;Period=Greek;Condition=Fair\"}",
     "State": "new"
   },
@@ -81,6 +89,7 @@
     "PicturesPaths": [],
     "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
     "StartingPrice": 1200,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=Unknown;Century=16th;Framed=Yes\"}",
     "State": "new"
   },
@@ -90,6 +99,7 @@
     "PicturesPaths": [],
     "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
     "StartingPrice": 350,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Steel;Origin=England;Length=95cm\"}",
     "State": "new"
   },
@@ -99,6 +109,7 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 220,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Brand=Omega;Year=1954;Working=Yes\"}",
     "State": "new"
   },
@@ -108,6 +119,7 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 85,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Pieces=6;Origin=China;Pattern=Blue\"}",
     "State": "new"
   },
@@ -117,6 +129,7 @@
     "PicturesPaths": [],
     "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
     "StartingPrice": 420,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=K.Adams;Size=60x40cm;Signed=No\"}",
     "State": "new"
   },
@@ -126,6 +139,7 @@
     "PicturesPaths": [],
     "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
     "StartingPrice": 980,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Crystal;Lights=12;Condition=Good\"}",
     "State": "new"
   },
@@ -133,8 +147,9 @@
     "Id": "1e95c5f1-353f-42b1-86a6-15c1fe30bb9f",
     "Name": "Silver Coin Lot",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "94c587d1-e31c-4773-88e2-0cd8e87d5bf3",
     "StartingPrice": 65,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Count=8;Era=19th;Grade=VF\"}",
     "State": "new"
   },
@@ -142,8 +157,9 @@
     "Id": "51615042-b733-411f-99fc-b374d816220e",
     "Name": "Antique Camera",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "94c587d1-e31c-4773-88e2-0cd8e87d5bf3",
     "StartingPrice": 140,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Brand=Leica;Year=1938;Lens=50mm\"}",
     "State": "new"
   },
@@ -153,6 +169,7 @@
     "PicturesPaths": [],
     "AuctionId": "bee38449-12ec-4a6f-ac83-3f7ad6723c89",
     "StartingPrice": 275,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Wool;Size=200x150cm;Origin=Persia\"}",
     "State": "new"
   },
@@ -160,8 +177,9 @@
     "Id": "38acc58e-3def-4feb-b893-e0860ef320d1",
     "Name": "Bronze Statue",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "94c587d1-e31c-4773-88e2-0cd8e87d5bf3",
     "StartingPrice": 490,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Height=35cm;Artist=Unknown;Patina=Original\"}",
     "State": "new"
   },
@@ -169,8 +187,9 @@
     "Id": "e57784a8-0676-4eb4-94a1-7e2d4c24a4e5",
     "Name": "Pocket Compass",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "94c587d1-e31c-4773-88e2-0cd8e87d5bf3",
     "StartingPrice": 40,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Brass;Century=18th;Working=Yes\"}",
     "State": "new"
   },
@@ -178,8 +197,9 @@
     "Id": "9c21924e-186a-4471-b997-63d7865d81e3",
     "Name": "Ceramic Figurine",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "db62e1b9-8a7c-4b2e-95de-27978db4eb86",
     "StartingPrice": 56,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Ceramic;Maker=Mj;Condition=Excellent\"}",
     "State": "new"
   },
@@ -187,8 +207,9 @@
     "Id": "6b545c68-e47c-4d3c-983e-2463b4360a9e",
     "Name": "Signed Poster",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "db62e1b9-8a7c-4b2e-95de-27978db4eb86",
     "StartingPrice": 30,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=Famous;Year=1990;Signed=Yes\"}",
     "State": "new"
   },
@@ -196,8 +217,9 @@
     "Id": "9dab582d-423b-40b3-9fb4-944dd0238de8",
     "Name": "Ancient Vase A",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "8f71525c-f8a9-4630-99bf-bcc2e90d167d",
     "StartingPrice": 100,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Bronze;Period=Roman;Condition=Good\"}",
     "State": "new"
   },
@@ -205,8 +227,9 @@
     "Id": "986be200-8593-40d2-8fa4-9862b73a6a1d",
     "Name": "Ancient Vase B",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "8f71525c-f8a9-4630-99bf-bcc2e90d167d",
     "StartingPrice": 151,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Clay;Period=Greek;Condition=Fair\"}",
     "State": "new"
   },
@@ -214,8 +237,9 @@
     "Id": "79c85e5e-425b-4bf6-83ac-0ae6eaabd6b1",
     "Name": "Renaissance Portrait",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "8f71525c-f8a9-4630-99bf-bcc2e90d167d",
     "StartingPrice": 1200,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=Unknown;Century=16th;Framed=Yes\"}",
     "State": "new"
   },
@@ -223,8 +247,9 @@
     "Id": "ed387253-d153-462f-a433-40b4fc15b396",
     "Name": "Medieval Sword",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "db62e1b9-8a7c-4b2e-95de-27978db4eb86",
     "StartingPrice": 350,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Steel;Origin=England;Length=95cm\"}",
     "State": "new"
   },
@@ -232,8 +257,9 @@
     "Id": "268337ab-282a-4f8b-866a-eb71b4cd0976",
     "Name": "Vintage Watch",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "8f71525c-f8a9-4630-99bf-bcc2e90d167d",
     "StartingPrice": 220,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Brand=Omega;Year=1954;Working=Yes\"}",
     "State": "new"
   },
@@ -243,6 +269,7 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 85,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Pieces=6;Origin=China;Pattern=Blue\"}",
     "State": "new"
   },
@@ -252,6 +279,7 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 420,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=K.Adams;Size=60x40cm;Signed=No\"}",
     "State": "new"
   },
@@ -259,8 +287,9 @@
     "Id": "865bb752-ebde-4613-a6da-d1ef6b1c0e6e",
     "Name": "Crystal Chandelier",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "5aef910f-a13e-4b6c-bb3d-b8d6fa913b56",
     "StartingPrice": 980,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Crystal;Lights=12;Condition=Good\"}",
     "State": "new"
   },
@@ -268,8 +297,9 @@
     "Id": "a4887002-6cb2-43ad-a0a8-28b17c5126e4",
     "Name": "Silver Coin Lot",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "5aef910f-a13e-4b6c-bb3d-b8d6fa913b56",
     "StartingPrice": 65,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Count=8;Era=19th;Grade=VF\"}",
     "State": "new"
   },
@@ -277,8 +307,9 @@
     "Id": "7a7f5eb7-aa38-4511-8d05-063acc0507ab",
     "Name": "Antique Camera",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "5aef910f-a13e-4b6c-bb3d-b8d6fa913b56",
     "StartingPrice": 140,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Brand=Leica;Year=1938;Lens=50mm\"}",
     "State": "new"
   },
@@ -286,8 +317,9 @@
     "Id": "62c8ee3c-7f68-46f3-ab78-b06613cdc787",
     "Name": "Handwoven Rug",
     "PicturesPaths": [],
-    "AuctionId": "",
+    "AuctionId": "5aef910f-a13e-4b6c-bb3d-b8d6fa913b56",
     "StartingPrice": 275,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Wool;Size=200x150cm;Origin=Persia\"}",
     "State": "new"
   },
@@ -297,6 +329,7 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 490,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Height=35cm;Artist=Unknown;Patina=Original\"}",
     "State": "new"
   },
@@ -306,6 +339,7 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 40,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Brass;Century=18th;Working=Yes\"}",
     "State": "new"
   },
@@ -315,6 +349,7 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 56,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Material=Ceramic;Maker=Mj;Condition=Excellent\"}",
     "State": "new"
   },
@@ -324,6 +359,7 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 30,
+    "SerialNumber": "",
     "AdditionalParameters": "{\"groupId\":\"1\",\"additionalParams\":\"Artist=Famous;Year=1990;Signed=Yes\"}",
     "State": "new"
   },
@@ -333,7 +369,38 @@
     "PicturesPaths": [],
     "AuctionId": "",
     "StartingPrice": 5,
+    "SerialNumber": "",
     "AdditionalParameters": "",
     "State": "new"
+  },
+  {
+    "Id": "9af44053-2b69-4c04-a767-29dc50208673",
+    "Name": "wedes",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 3443,
+    "SerialNumber": "",
+    "AdditionalParameters": "pdfs",
+    "State": "working"
+  },
+  {
+    "Id": "357889f0-48f2-4b30-933f-6c4182b99b32",
+    "Name": "novy laptop HTP",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 2500,
+    "SerialNumber": "",
+    "AdditionalParameters": "černá barva s býlími detaily ",
+    "State": "new"
+  },
+  {
+    "Id": "047ba783-dbf0-40e0-a4b9-16830a04f9ef",
+    "Name": "skoda octavia",
+    "PicturesPaths": [],
+    "AuctionId": "",
+    "StartingPrice": 500000,
+    "SerialNumber": "",
+    "AdditionalParameters": "cerna ",
+    "State": "used"
   }
 ]

@@ -39,9 +39,7 @@ export class AuctionsService {
       return this.http.get<any>(settings.apiRoute + '/Auctions/report/' + auctionId);
     }
 
-    public getAuctionReportWithSensitive(auctionId: string) {
-      return this.http.get<any>(settings.apiRoute + '/Auctions/report/' + auctionId + '?includeSensitive=true');
-    }
+  // sensitive report endpoint removed from client: server enforces admin checks; UI is admin-only
 
     public finalizeAuction(auctionId: string) {
       return this.http.post<any>(settings.apiRoute + '/Auctions/finalize/' + auctionId, {});

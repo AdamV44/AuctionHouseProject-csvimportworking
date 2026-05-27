@@ -1,54 +1,99 @@
-﻿using System.Net;
-using System.Net.Mail;
-using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Threading.Tasks;
+using EvidenAuctionHouseAPI.Models;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using MimeKit;
 
 namespace EvidenAuctionHouseAPI.Services
 {
-    public class EmailService
+    public class EmailService : IEmailService
     {
-        private readonly string smtpServer;
+        private readonly string smtpHost;
         private readonly int smtpPort;
         private readonly string smtpUser;
-        private readonly string smtpPassword;
+        private readonly string smtpPass;
+        private readonly string fromAddress;
 
-        private const string subject = "Potvrzení registrace aukce";
-        private const string body = "Kliknutím na odkaz potvrdíte registraci ";
-        public EmailService(string smtpServer, int smtpPort, string smtpUser, string smtpPass)
+        public EmailService()
         {
-            this.smtpServer = smtpServer;
-            this.smtpPort = smtpPort;
-            this.smtpUser = smtpUser;
-            this.smtpPassword = smtpPass;
+            smtpHost = Environment.GetEnvironmentVariable("SMTP_HOST") ?? "localhost";
+            smtpPort = int.TryParse(Environment.GetEnvironmentVariable("SMTP_PORT"), out var p) ? p : 25;
+            smtpUser = Environment.GetEnvironmentVariable("SMTP_USER") ?? string.Empty;
+            smtpPass = Environment.GetEnvironmentVariable("SMTP_PASS") ?? string.Empty;
+            fromAddress = Environment.GetEnvironmentVariable("SMTP_FROM") ?? "no-reply@example.com";
         }
-        public void SendEmailVerification(string reciever, string endpointUrl)
+
+        // keep synchronous contract but perform async send inside and wait - it's fine for small use
+        public bool SendEmail(string to, string subject, string body)
         {
+            try
+            {
+                var message = new MimeMessage();
+                message.From.Add(MailboxAddress.Parse(fromAddress));
+                message.To.Add(MailboxAddress.Parse(to));
+                message.Subject = subject;
 
-            var smtp = new SmtpClient
-            {
-                Host = this.smtpServer,       
-                Port = 587,                    
-                EnableSsl = true,              
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(this.smtpUser, this.smtpPassword)
-            };
+                var builder = new BodyBuilder { TextBody = body };
+                message.Body = builder.ToMessageBody();
 
-            using (var message = new MailMessage(this.smtpUser, reciever)
-            {
-                Subject = subject,
-                Body = body + endpointUrl
-            })
-            {
-                try
+                // run async client in a Task and wait - map exceptions to false
+                var task = Task.Run(async () =>
                 {
-                    smtp.Send(message);
-                    Console.WriteLine("E-mail byl úspěšně odeslán.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Chyba při odesílání e-mailu: " + ex.Message);
-                }
+                    using var client = new SmtpClient();
+                    try
+                    {
+                        // prefer STARTTLS when available
+                        await client.ConnectAsync(smtpHost, smtpPort, SecureSocketOptions.StartTlsWhenAvailable);
+
+                        if (!string.IsNullOrEmpty(smtpUser))
+                        {
+                            await client.AuthenticateAsync(smtpUser, smtpPass);
+                        }
+
+                        await client.SendAsync(message);
+                        await client.DisconnectAsync(true);
+                    }
+                    finally
+                    {
+                        client.Dispose();
+                    }
+                });
+
+                task.GetAwaiter().GetResult();
+                return true;
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[EmailService-MailKit] Failed to send email to {to}: {ex.Message}");
+                return false;
+            }
+        }
+
+        public bool SendWinnerNotification(string toEmail, string winnerName, string itemName, int finalPrice, string auctionName)
+        {
+            var subject = $"You won: {itemName} in {auctionName}";
+            var body = $"Hello {winnerName},\n\nCongratulations — you won {itemName} for {finalPrice} in auction {auctionName}.\n\nPlease follow up with the administrator to complete pickup and paperwork.\n\nThanks.";
+            return SendEmail(toEmail, subject, body);
+        }
+
+        public bool SendAdminNotification(string adminEmail, AuctionReportDTO report)
+        {
+            var subject = $"Auction {report.AuctionName} finalized: revenue {report.TotalRevenue}";
+            var body = $"Auction {report.AuctionName} ({report.AuctionId}) finalized. Total revenue: {report.TotalRevenue}.\nSold items:\n";
+            foreach (var s in report.SoldItems)
+            {
+                body += $"- {s.Name}: {s.FinalPrice} (winner: {s.WinnerFullName} {s.WinnerEmail})\n";
+            }
+            return SendEmail(adminEmail, subject, body);
+        }
+
+        public void SendEmailVerification(string receiver, string endpointUrl)
+        {
+            var subject = "Potvrzení registrace aukce";
+            var body = "Kliknutím na odkaz potvrdíte registraci: " + endpointUrl;
+            // best-effort send
+            SendEmail(receiver, subject, body);
         }
     }
 }

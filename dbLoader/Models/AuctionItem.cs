@@ -12,7 +12,8 @@ namespace dbLoader.Models
         public List<string> PicturesPaths { get; set; } = new List<string>();
         public string AuctionId { get; set; } = "";
         public int StartingPrice { get; set; }
-        
+        public string SerialNumber { get; set; } = "";
+
         // replaced dictionary with single string to match spec 4.1
         [JsonProperty("additionalParameters")]
         public string AdditionalParameters { get; set; }
@@ -31,6 +32,7 @@ namespace dbLoader.Models
             }
             Console.WriteLine($"Additional params: {this.AdditionalParameters}");
             Console.WriteLine($"State: {this.State}");
+            Console.WriteLine($"Serial Number: {this.SerialNumber}");
         }
     }
 }

@@ -32,27 +32,48 @@ export class ItemCreationPageComponent {
 
   // user entered information
   loadedFiles: File[] = [];
+  previewUrls: string[] = [];
   additionalParameters: string = '';
   state: string = 'new';
   itemName: string;
   startingPrice: number;
+  serialNumber: string;
   //
 
   public refresh() {
     this.loaded = true;
   }
 
+  private computePreviews() {
+    // revoke old urls
+    for (const url of this.previewUrls) {
+      try { URL.revokeObjectURL(url); } catch { }
+    }
+    this.previewUrls = this.loadedFiles.map(f => URL.createObjectURL(f));
+  }
+
   public onConfirmation(result: confirmationResult) {
-    if (result === confirmationResult.OK) {
+  // hide confirmation dialog when result is returned
+  this.showConfirmationDialog = false;
+
+  if (result === confirmationResult.OK) {
+
+      // před vytvořením položky - doporučená validace
+      if (!this.itemName || !this.serialNumber || !this.startingPrice) {
+        console.error('Chybí název, sériové číslo nebo cena');
+        return;
+      }
 
       // Build AuctionItem with freeform additionalParameters string
-      const item: AuctionItem = new AuctionItem(
-        "0",
-        this.itemName,
-        this.startingPrice,
-        this.additionalParameters,
-        "",
-      );
+      const item: AuctionItem = new AuctionItem({
+        id: "0",
+        name: this.itemName,
+        startingPrice: this.startingPrice,
+        additionalParameters: this.additionalParameters,
+        auctionId: "",
+        serialNumber: this.serialNumber,
+        picturesPaths: []
+      });
       // attach state separately to avoid changing many call sites
       item.state = this.state;
 
@@ -71,6 +92,20 @@ export class ItemCreationPageComponent {
     this.router.navigate(['/items']).then(() => {
       this.utility.reloadPage();
     });
+  }
+
+  // controls whether the embedded confirmation dialog is visible
+  showConfirmationDialog: boolean = false;
+
+  openConfirmation() {
+    // recompute previews before showing dialog
+    this.computePreviews();
+    this.showConfirmationDialog = true;
+  }
+
+  cancelCreation() {
+    // navigate back without creating
+    this.router.navigate(['/items']).then(() => this.utility.reloadPage());
   }
 
   onDragOver(event: DragEvent): void {
@@ -103,6 +138,17 @@ export class ItemCreationPageComponent {
         this.loadedFiles.push(file);
       }
       console.log('Dropped files:', files);
+  // compute previews for confirmation
+  this.computePreviews();
     }
+  }
+
+  validateInputs(): boolean {
+    if (!this.itemName || !this.serialNumber || !this.startingPrice) {
+      // ukázková chybová hláška nebo nastavení errors pro confirmation
+      console.error('Chybí název, sériové číslo nebo cena');
+      return false;
+    }
+    return true;
   }
 }

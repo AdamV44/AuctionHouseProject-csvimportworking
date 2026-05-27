@@ -1,0 +1,19 @@
+<div *ngIf="visible" class="rules-modal-backdrop" (click)="$event.stopPropagation()" aria-hidden="false">
+  <div class="rules-modal" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+    <h2>Pravidla aukce</h2>
+    <div class="rules-content" role="document">
+      <p class="lead">Prosím přečtěte si pravidla aukce. Přijetím souhlasíte s podmínkami účasti.</p>
+
+      <div *ngIf="previewHtml" class="rules-body" [innerHTML]="previewHtml"></div>
+      <div *ngIf="!previewHtml && ruleBody" class="rules-body">{{ ruleBody }}</div>
+    </div>
+    <label class="accept-line">
+      <input type="checkbox" [(ngModel)]="checked" aria-label="Souhlas s pravidly" />
+      <span>Rozumím a souhlasím s pravidly aukce</span>
+    </label>
+    <div class="actions">
+      <button (click)="onReject()" class="modern-btn">Odmítnout</button>
+      <button (click)="onAccept()" class="modern-btn primary">Přijmout</button>
+    </div>
+  </div>
+</div>

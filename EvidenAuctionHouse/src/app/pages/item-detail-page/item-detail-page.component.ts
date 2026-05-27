@@ -21,7 +21,7 @@ export class ItemDetailPageComponent {
   itemPrice: number
   highestBidderName: string
   imgsUrls: string[] = []
-  bids: Array<{ bidderInitial: string; amount: number }> = []
+  bids: Array<{ bidderInitial: string; amount: number; createdAt?: string }> = []
   constructor(
     public route: ActivatedRoute,
     public itemsService: ItemsService,
@@ -54,18 +54,102 @@ export class ItemDetailPageComponent {
       this.highestBidderName = result.highestBidder ? result.highestBidder.name : "Žádný příhoz";
       this.imgsUrls = result.pictures.map(img => `data:${img.contentType};base64,${img.base64Data}`)
       
-      // Process bids - get first letter of bidder name and amount
-      if (result.allBids && Array.isArray(result.allBids)) {
-        this.bids = result.allBids.map((bid: any) => ({
-          bidderInitial: bid.bidderName ? bid.bidderName.charAt(0).toUpperCase() : '?',
-          amount: bid.amount || 0
-        }));
+      // Process bids - resolve bidder names and use AmountAdded
+      if (result.allBids && Array.isArray(result.allBids) && result.allBids.length > 0) {
+        const userObservables = result.allBids.map((bid: any) => {
+          const userId = bid.userId || bid.UserId || bid.user || null;
+          if (!userId) return of(null);
+          return this.userService.getUserById(userId).pipe(
+            // map to user name or null
+            // keep observable signature
+          );
+        });
+
+        // forkJoin to resolve all user lookups (preserves order)
+        forkJoin(userObservables).subscribe((users: any[]) => {
+          this.bids = result.allBids.map((bid: any, idx: number) => {
+            const user = users[idx];
+            const name = user?.name || user?.Name || null;
+            const initial = name ? name.charAt(0).toUpperCase() : (bid.bidderName ? bid.bidderName.charAt(0).toUpperCase() : '?');
+            const amount = bid.amountAdded ?? bid.AmountAdded ?? bid.amount ?? 0;
+            const createdAt = bid.createdAt ?? bid.CreatedAt ?? bid.CreatedAtUtc ?? null;
+            return { bidderInitial: initial, amount, createdAt };
+          });
+        }, err => {
+          // if user lookups fail, fall back to local data
+          this.bids = result.allBids.map((bid: any) => ({
+            bidderInitial: bid.bidderName ? bid.bidderName.charAt(0).toUpperCase() : '?',
+            amount: bid.amountAdded ?? bid.AmountAdded ?? bid.amount ?? 0,
+            createdAt: bid.createdAt ?? bid.CreatedAt ?? null
+          }));
+        });
+      } else {
+        this.bids = [];
       }
       
       this.loaded = true;
 
     })
 }
+
+  // Format additionalParameters for display: remove surrounding { } and wrapping quotes
+  formatAdditionalParameters(raw: string | null | undefined): string {
+    if (!raw) return '';
+    let s = String(raw).trim();
+
+    // Unescape common escaped quotes
+    s = s.replace(/\\"/g, '"');
+
+    // Strip surrounding quotes/braces repeatedly
+    for (let i = 0; i < 3; i++) {
+      if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'"))) {
+        s = s.slice(1, -1).trim();
+        continue;
+      }
+      if (s.startsWith('{') && s.endsWith('}')) {
+        s = s.slice(1, -1).trim();
+        continue;
+      }
+      break;
+    }
+
+    // If it's JSON, try to parse and extract the useful part
+    try {
+      const obj: any = JSON.parse(s);
+      if (obj && typeof obj === 'object') {
+        // prioritize inner 'additionalParams' field
+        if (obj.additionalParams) {
+          s = String(obj.additionalParams);
+        } else {
+          // convert remaining object entries to key=value pairs, skip groupId
+          const parts = Object.entries(obj)
+            .filter(([k]) => k !== 'groupId')
+            .map(([k, v]) => `${k}=${v}`);
+          s = parts.join('; ');
+        }
+      }
+    } catch (e) {
+      // Not valid JSON - attempt to pull additionalParams via regex
+      const m = s.match(/additionalParams\s*[":=]\s*"([^"]*)"/i);
+      if (m && m[1]) {
+        s = m[1];
+      }
+    }
+
+    // Normalize key=value pairs: trim keys and values, preserve single-word values
+    const kvParts = s
+      .split(';')
+      .map(p => p.trim())
+      .filter(p => p.length > 0)
+      .map(p => {
+        const [k, ...rest] = p.split('=');
+        if (!rest.length) return p; // no '=' found
+        const v = rest.join('=').trim();
+        return `${k.trim()}=${v}`;
+      });
+
+    return kvParts.join('; ');
+  }
 
   currentImageIndex = 0;
 

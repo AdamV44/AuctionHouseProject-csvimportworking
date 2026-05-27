@@ -14,12 +14,69 @@
     }
 }
 
-.confirmation {
+.confirmation-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 23, 35, 0.6);
     display: flex;
-    gap: 0.75rem;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
+    z-index: 1200;
+}
+
+.confirmation-card {
+    background: white;
+    border-radius: 12px;
+    width: min(640px, calc(100% - 32px));
+    padding: 1.25rem;
+    box-shadow: 0 18px 40px rgba(3,6,23,0.36);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Inline variant used when noBackdrop=true */
+.confirmation-card.inline-card {
+    position: relative;
+    width: auto;
+    max-width: 720px;
+    box-shadow: 0 8px 24px rgba(3,6,23,0.16);
+    background: #ffffff;
+    margin: 8px 0;
+}
+
+.confirmation-header h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #0b1220;
+}
+
+.confirmation-message p {
+    margin: 0;
+    color: #333;
+    white-space: pre-line; /* allow \n in message */
+}
+
+.confirmation-previews {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.confirmation-previews .preview-item img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.confirmation-errors {
+    background: #fff5f6;
+    color: #8b0000;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
 }
 
 .buttons {

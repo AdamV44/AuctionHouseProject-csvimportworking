@@ -166,7 +166,7 @@ Projekt by měl obsahovat:
 
 ---
 
-## ✅ STATUS PROJEKTU vs. SPECIFIKACE
+## ✅ STATUS PROJEKTU vs. SPECIFIKACE (aktuální)
 
 ### ✅ Jasně implementováno (k dispozici v repo):
 1. ✅ Frontend (Angular) - Standalone komponenty, modulární struktura (ve `EvidenAuctionHouse/src`)
@@ -189,20 +189,27 @@ Projekt by měl obsahovat:
 18. ✅ In-memory per-auction lock in `AuctionFinalizationService` to avoid same-process races
 19. ✅ Unit tests for finalizer - `EvidenAuctionHouseAPI.Tests` contains winner-selection/idempotence tests (tests run locally)
 20. ✅ Utility scripts - `scripts/finalize-missing.js` (dry-run support) and backfill script for winner emails (noted in changelog)
+21. ✅ Email sending service - `IEmailService` / `EmailService` (MailKit) present and configured via env
+22. ✅ Finalizer -> email notifications wired: finalizer queues and sends winner/admin emails (best-effort, dev-tested with MailHog)
+23. ✅ Dev helpers: `DevController` token endpoint and impersonate helper exist for local testing
+24. ✅ Auth improvements: refresh-token persistence service added and `AuthenticationController` supports refresh/logout; CORS tightened and AllowCredentials enabled for SPA dev
 
 ### ✓ Částečně implementováno (funguje částečně / needs polish):
-1. ✓ GDPR protection — backend: per-report `PseudonymMap`, admin-only sensitive export flag and API gating implemented; frontend: report page admin toggle exists. UI-wide anonymization (history list anonymized in all views) still needs finishing.
-2. ✓ Email notifications — `EmailService` exists and can send emails but end-to-end flows (winner/admin notifications after finalization) are not fully wired/tested.
-3. ✓ Auction rules validation — basic bid validation exists (amounts), but full rule enforcement (min/max, anti-sniping, explicit consent save) may require further tests and UI work.
-4. ✓ Hosted finalizer — implemented and configurable, but disabled by default and needs integration testing and operational tuning.
+1. ✓ GDPR protection — backend: per-report `PseudonymMap`, admin-only sensitive export flag and API gating implemented; frontend: report page admin toggle exists. UI-wide anonymization (history list anonymized in all views) still needs finishing and consistent UI masking.
+2. ✓ Auction rules validation — basic bid validation exists (amount checks); full rule enforcement (min/max, anti-sniping, explicit consent + UI persistence) requires more tests and UI work.
+3. ✓ Hosted finalizer — implemented and configurable, but disabled by default and needs integration testing and operational tuning.
 
 ### ❌ Chybí / není kompletně implementováno (pozor):
 1. ❌ First-login rules acceptance modal + persistence (required by spec) — not implemented.
-2. ❌ Dry-run support in finalize endpoint (server-side) — the script can pass `?dryRun=true` but the controller currently does not treat it as a dry-run; implement server-side flag handling if needed.
+2. ❌ Dry-run flag on finalize controller (server-side) — finalizer supports dryRun internally, but controller endpoint should expose/obey `?dryRun=true` consistently (controller TODO).
 3. ❌ Contract/sales paperwork flows + digital signing — not implemented.
 4. ❌ Advanced filtering / search UI for items — missing.
 5. ❌ LDAP/OIDC integration (Keycloak/AD) — not implemented (only simple JWT tokens for local testing).
 6. ❌ Distributed locking (for multi-instance deployments) — only in-memory locks exist; consider Redis or DB locks for production.
+
+### Poznámky k nasazení a dev tooling
+- Mail dev: `docs/email-notifications.md` + `docker-compose.yml` contains a `mailhog` dev service and `api` service wiring for local testing.
+- Email sending is currently best-effort and synchronous; consider background queue + retry for production.
 
 
 ---

@@ -12,7 +12,7 @@ import { DeleteAuctionDialogComponent, DeleteAuctionResult } from '../delete-auc
   standalone: true,
   imports: [CommonModule, RouterLink, DeleteAuctionDialogComponent],
   templateUrl: './auction-preview.component.html',
-  styleUrl: './auction-preview.component.scss'
+  styleUrls: ['./auction-preview.component.scss']
 })
 export class AuctionPreviewComponent {
   @Input() auction: any;
@@ -40,19 +40,19 @@ export class AuctionPreviewComponent {
     this.showDeleteDialog = false;
     
     if (result.action === 'confirm') {
-      console.log('🔥 Mazání aukce potvrzeno:', this.auction.name);
+      console.log(' Mazání aukce potvrzeno:', this.auction.name);
       // Zde použijeme existující funkční mazání
       this.performActualDelete();
     } else {
-      console.log('🚫 Mazání aukce zrušeno');
+      console.log(' Mazání aukce zrušeno');
     }
   }
 
   // Existující funkční mazání přesunuto do separátní metody
   private performActualDelete(): void {
-    console.log('🔥 Mazání aukce:', this.auction.name);
+    console.log('Mazání aukce:', this.auction.name);
     this.auctionsService.removeAuction(this.auction.id).subscribe((result) => {
-      console.log('✅ Aukce smazána:', result);
+      console.log('Aukce smazána:', result);
       this.utility.reloadPage();
     });
   }

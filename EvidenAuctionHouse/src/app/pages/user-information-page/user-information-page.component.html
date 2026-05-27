@@ -3,19 +3,42 @@
 
   <div class="user-card" *ngIf="user">
     <div class="user-card-header">
-      <i class="fas fa-user-circle"></i>
-      <h2>{{ user.name }}</h2>
-      <p>{{ user.email }}</p>
+      <div class="avatar" aria-hidden="true">
+        <i class="fas fa-user-circle"></i>
+      </div>
+
+      <div class="user-meta">
+        <h2 class="user-name">{{ user.name }}</h2>
+        <p class="email">{{ user.email }}</p>
+  <p class="small muted" *ngIf="user.isAdmin">Role: administrátor</p>
+      </div>
+
+      <div class="user-actions">
+        <a routerLink="/user-password-change" class="modern-btn outline">
+          <i class="fas fa-key"></i>
+          Změnit heslo
+        </a>
+        <a routerLink="/rules" class="modern-btn">
+          <i class="fas fa-book"></i>
+          Zobrazit pravidla
+        </a>
+      </div>
     </div>
+
     <div class="user-card-body">
-      <a routerLink="/user-password-change" class="modern-btn">
-        <i class="fas fa-key"></i>
-        Změnit heslo
-      </a>
-      <button (click)="logout()" class="modern-btn danger">
-        <i class="fas fa-sign-out-alt"></i>
-        Odhlásit se
-      </button>
+      <div class="left-actions">
+  <a *ngIf="user.isAdmin" routerLink="/admin/rules" class="modern-btn">
+          <i class="fas fa-edit"></i>
+          Změnit pravidla
+        </a>
+      </div>
+
+      <div class="right-actions">
+        <button (click)="logout()" class="modern-btn danger">
+          <i class="fas fa-sign-out-alt"></i>
+          Odhlásit se
+        </button>
+      </div>
     </div>
   </div>
 </div>

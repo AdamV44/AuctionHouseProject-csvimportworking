@@ -5,9 +5,10 @@ import { Auction } from '../../../models/auction';
 
 @Component({
   selector: 'app-auction-table',
+  standalone: true,
   imports: [NgFor, AuctionPreviewComponent],
   templateUrl: './auction-table.component.html',
-  styleUrl: './auction-table.component.scss'
+  styleUrls: ['./auction-table.component.scss']
 })
 export class AuctionTableComponent {
   @Input()

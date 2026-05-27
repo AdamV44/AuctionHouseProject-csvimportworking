@@ -24,6 +24,7 @@ namespace dbLoader
         public DataSet<ItemGroup> ItemGroups { get; set; }
         public DataSet<AuctionReport> Reports { get; set; }
         public DataSet<SoldItem> SoldItems { get; set; }
+        public DataSet<Rule> Rules { get; set; }
         public string RegisterAttemptsFilePath { get; set; }
 
 
@@ -45,6 +46,9 @@ namespace dbLoader
             // New datasets for reports and sold items
             this.Reports = new DataSet<AuctionReport>(this.dbFolderPath + this.configReader.GetAssetsForNode("Reports"));
             this.SoldItems = new DataSet<SoldItem>(this.dbFolderPath + this.configReader.GetAssetsForNode("SoldItems"));
+
+            // Rules dataset
+            this.Rules = new DataSet<Rule>(this.dbFolderPath + this.configReader.GetAssetsForNode("Rules"));
 
             this.RegisterAttemptsFilePath = this.dbFolderPath + this.configReader.GetAssetsForNode("RegisterAttempts");
 
@@ -71,6 +75,7 @@ namespace dbLoader
             {
                 item.PrintSelf();
             }
+            
         }
         public void ReloadItemGroups()
         {

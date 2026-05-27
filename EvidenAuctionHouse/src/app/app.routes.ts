@@ -16,6 +16,8 @@ import { EmailConfirmationPageComponent } from './pages/email-confirmation-page/
 import { CsvImportPageComponent } from './pages/csv-import-page/csv-import-page.component';
 import { CsvPreviewPageComponent } from './pages/csv-preview-page/csv-preview-page.component';
 import { ReportPageComponent } from './pages/report-page/report-page.component';
+import { AdminRulesPageComponent } from './pages/admin-rules-page/admin-rules-page.component';
+import { ViewRulesPageComponent } from './pages/view-rules-page/view-rules-page.component';
 export const routes: Routes = [
     { path: '', component: LoginPageComponent},
     { path: 'registration', component: RegisterPageComponent },
@@ -34,5 +36,7 @@ export const routes: Routes = [
     { path: 'user', component: UserInformationPageComponent, canActivate: [AuthGuard] },
     { path: 'user-password-change', component: PasswordChangePageComponent, canActivate: [AuthGuard] },
     { path: 'reports', component: ReportPageComponent, canActivate: [AdminGuard] },
+    { path: 'admin/rules', component: AdminRulesPageComponent, canActivate: [AdminGuard] },
+    { path: 'rules', component: ViewRulesPageComponent, canActivate: [AuthGuard] },
 
 ];

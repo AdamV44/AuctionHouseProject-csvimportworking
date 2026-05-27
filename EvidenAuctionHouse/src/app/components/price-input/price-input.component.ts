@@ -139,6 +139,8 @@ export class PriceInputComponent {
         console.log('Bid successful:', response);
         alert('Příhoz byl úspěšně zaznamenán!');
         this.bidSuccess.emit(); // Emituje událost
+  // Force a full page reload so all components reflect updated bids/prices
+  this.utility.reloadPage();
       }
       // Reset hodnot
       this.selectedBidAmount = 0;

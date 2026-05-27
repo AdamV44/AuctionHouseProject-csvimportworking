@@ -1,91 +1,138 @@
 @use 'sass:color';
 @use '../../variables' as v;
 
-.user-info-container {
-  max-width: 880px;
-  margin: 2rem auto;
-  padding: 2.25rem;
-  background: v.$white;
-  border-radius: 27px;
-  border: 2px solid rgba(0,0,0,0.06);
-  box-shadow: 0 12px 36px rgba(2,6,23,0.08);
+// Page wrapper (aligns with our standard page container)
+.page-container {
+  max-width: 980px;
+  margin: 2.5rem auto;
+  padding: 2rem;
 
-  .change-password-btn {
-    width: 100%;
-    padding: 0.9rem;
-    border: none;
-    border-radius: v.$border-radius;
-    background: linear-gradient(135deg, v.$primary-blue, color.adjust(v.$primary-blue, $lightness: -10%));
-    color: v.$white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    margin-top: 1.5rem;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: v.$box-shadow;
-    }
+  .page-title {
+    margin: 0 0 1.25rem 0;
+    font-size: 1.9rem;
+    color: v.$gray-900;
+    font-weight: 700;
   }
 
-  .user-header {
-    display: flex;
+  // Card holding user info — polished look
+  .user-card {
+    background: var(--card-background, v.$white);
+    border-radius: var(--radius-xl, 22px);
+    border: 1px solid var(--border-color, rgba(10,12,20,0.06));
+    box-shadow: var(--shadow, 0 10px 30px rgba(2,6,23,0.06));
+    padding: 1rem;
+    display: block;
+    overflow: hidden;
+  }
+
+  .user-card-header {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 1rem;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-
-    .user-avatar {
-      font-size: 4rem;
-      color: v.$primary-blue;
-    }
-
-    .user-name {
-      h2 {
-        margin: 0;
-        font-size: 2rem;
-        font-weight: 700;
-        color: v.$gray-800;
-      }
-    }
-
-    .user-role {
-      background: v.$accent-teal;
-      color: v.$white;
-      padding: 0.25rem 0.75rem;
-      border-radius: v.$border-radius-lg;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
   }
 
+  .avatar {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(0,20,137,0.06), var(--card-background));
+    color: var(--primary-blue, v.$primary-blue);
+    font-size: 2.5rem;
+  }
+
+  .user-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .user-name {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--text-primary, v.$gray-900);
+    font-weight: 700;
+  }
+
+  .email {
+    margin: 0;
+    color: var(--text-secondary, v.$gray-600);
+    font-size: 0.95rem;
+  }
+
+  .user-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .user-card-body {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .left-actions { display: flex; gap: 0.5rem; }
+  .right-actions { display:flex; gap:0.5rem; }
+
+  .modern-btn {
+    min-width: 160px;
+    padding: 0.6rem 0.9rem;
+    font-weight: 600;
+    border-radius: var(--border-radius, v.$border-radius);
+    border: 1px solid transparent;
+    background: var(--primary-blue, v.$primary-blue);
+    color: var(--text-on-accent, v.$white);
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modern-btn.outline {
+    background: transparent;
+    color: var(--primary-blue, v.$primary-blue);
+    border-color: var(--border-color);
+  }
+
+  .modern-btn.danger,
+  .danger {
+    background: linear-gradient(135deg, #ff6b6b, color.adjust(#ff6b6b, $lightness: -8%));
+    color: var(--text-on-accent, v.$white);
+    border-color: transparent;
+  }
+
+  // small detail list (if needed later)
   .user-details {
-    margin-top: 2rem;
-    border-top: 1px solid v.$light-gray;
-    padding-top: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 
     .detail-item {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
+      gap: 0.75rem;
+      color: v.$gray-700;
+      font-size: 1rem;
 
-      .icon {
-        color: v.$primary-blue;
-        width: 20px;
-        text-align: center;
-      }
-
-      .value {
-        color: v.$gray-700;
-      }
+      .icon { color: v.$primary-blue; width: 20px; text-align: center; }
+      .value { color: v.$gray-700; }
     }
   }
 
-  .user-actions {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
+  @media (max-width: 640px) {
+    padding: 1rem;
+  .user-card { padding: 0.5rem; }
+  .user-card-header { grid-template-columns: 56px 1fr; grid-auto-rows: auto; gap: 0.5rem; }
+  .user-actions { grid-column: 1 / -1; justify-content: space-between; }
+  .user-card-body { flex-direction: column-reverse; align-items: stretch; }
+  .modern-btn { width: 100%; min-width: 0; }
   }
 }

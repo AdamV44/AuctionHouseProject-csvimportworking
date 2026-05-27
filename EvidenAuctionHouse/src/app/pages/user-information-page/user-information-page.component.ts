@@ -11,7 +11,7 @@ import { CommonModule, NgIf } from '@angular/common';
   styleUrl: './user-information-page.component.scss'
 })
 export class UserInformationPageComponent {
-  user: User;
+  user?: User;
 
   constructor(private authService: AuthenticationService, private router: Router) {}
 
