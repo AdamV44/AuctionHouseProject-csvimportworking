@@ -50,3 +50,8 @@
 /Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/obj/Debug/net8.0/EvidenAuctionHouseAPI.pdb
 /Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/obj/Debug/net8.0/EvidenAuctionHouseAPI.genruntimeconfig.cache
 /Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/obj/Debug/net8.0/ref/EvidenAuctionHouseAPI.dll
+/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/obj/Debug/net8.0/EvidenAuctionHouseAPI.RazorAssemblyInfo.cache
+/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/obj/Debug/net8.0/EvidenAuctionHouseAPI.RazorAssemblyInfo.cs
+/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll
+/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/bin/Debug/net8.0/PuppeteerSharp.dll
+/Users/adamvitek/Documents/GitHub/AuctionHouseProject-csvimportworking/EvidenAuctionHouseAPI/bin/Debug/net8.0/ICSharpCode.SharpZipLib.dll

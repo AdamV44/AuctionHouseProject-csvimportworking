@@ -43,6 +43,23 @@ Database:
     - WinnerUserId
     - WinnerFullName
     - Assets: \SoldItems\assets.json
+  Contracts:
+    - Id
+    - AuctionId
+    - ItemId
+    - WinnerUserId
+    - Price
+    - Currency
+    - PdfPath
+    - SignedPdfPath
+    - SignatureMethod
+    - SignatureMetadata
+    - Status
+    - GeneratedBy
+    - TemplateVersion
+    - CreatedAt
+    - Audit
+    - Assets: \Contracts\assets.json
   Bids:
     - Id
     - AuctionItemId

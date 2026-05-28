@@ -1,0 +1,12 @@
+<div class="contract-sign-page">
+  <h2>Sign contract</h2>
+  <p *ngIf="message" class="message">{{message}}</p>
+  <iframe *ngIf="previewUrl" [src]="previewUrl | safeUrl" width="100%" height="600px"></iframe>
+  <div style="margin-top:12px">
+    <label><input type="checkbox" #agreement /> I have read and accept the terms</label>
+  </div>
+  <div style="margin-top:12px">
+    <button class="btn btn-primary" (click)="confirmAndSign()" [disabled]="loading">Confirm & Sign</button>
+    <a [href]="previewUrl" target="_blank" class="btn btn-link">Open PDF</a>
+  </div>
+</div>

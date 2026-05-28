@@ -17,14 +17,7 @@
         vytvořit položku
       </button>
     </div>
-  </header>
-
-  <app-items-list 
-    [items]="this.itemsOnPage" 
-    (selectedItemsEmitter)="getSelected($event)">
-  </app-items-list>
-
-  <div class="admin-actions" *ngIf="this.authService.isAdmin()">
+      <div class="admin-actions" *ngIf="this.authService.isAdmin()">
     <button class="fixed-btn delete-action" (click)="onDelete()">
       <i class="fas fa-trash-alt"></i>
       Smazat položky
@@ -35,7 +28,15 @@
       CSV import
     </button>
   </div>
-</div>
+
+  </header>
+
+  <app-items-list 
+    [items]="this.itemsOnPage" 
+    (selectedItemsEmitter)="getSelected($event)">
+  </app-items-list>
+
+
 
 <!-- Loading state -->
 <div *ngIf="!this.loaded" class="loading-container">

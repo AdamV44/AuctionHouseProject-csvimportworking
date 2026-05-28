@@ -17,7 +17,10 @@ import { CsvImportPageComponent } from './pages/csv-import-page/csv-import-page.
 import { CsvPreviewPageComponent } from './pages/csv-preview-page/csv-preview-page.component';
 import { ReportPageComponent } from './pages/report-page/report-page.component';
 import { AdminRulesPageComponent } from './pages/admin-rules-page/admin-rules-page.component';
+import { AdminContractsListComponent } from './pages/admin-contracts-list/admin-contracts-list.component';
 import { ViewRulesPageComponent } from './pages/view-rules-page/view-rules-page.component';
+import { ContractPreviewComponent } from './pages/contract-preview/contract-preview.component';
+import { ContractSignPageComponent } from './pages/contract-sign-page/contract-sign-page.component';
 export const routes: Routes = [
     { path: '', component: LoginPageComponent},
     { path: 'registration', component: RegisterPageComponent },
@@ -37,6 +40,9 @@ export const routes: Routes = [
     { path: 'user-password-change', component: PasswordChangePageComponent, canActivate: [AuthGuard] },
     { path: 'reports', component: ReportPageComponent, canActivate: [AdminGuard] },
     { path: 'admin/rules', component: AdminRulesPageComponent, canActivate: [AdminGuard] },
+    { path: 'admin/contracts', component: AdminContractsListComponent, canActivate: [AdminGuard] },
     { path: 'rules', component: ViewRulesPageComponent, canActivate: [AuthGuard] },
+    { path: 'contracts/preview/:id', component: ContractPreviewComponent, canActivate: [AuthGuard] },
+    { path: 'contracts/sign/:id', component: ContractSignPageComponent },
 
 ];

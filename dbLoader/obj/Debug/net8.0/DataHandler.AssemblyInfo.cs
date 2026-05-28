@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataHandler")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fea42835b8a02bc7e3febb5678fe848f1fa48b1b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4264f2d708f60ef9e0ad58cc66687e82cbd93a40")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataHandler")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataHandler")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

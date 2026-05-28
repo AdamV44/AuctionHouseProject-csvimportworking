@@ -35,6 +35,11 @@ namespace EvidenAuctionHouseAPI
             builder.Services.AddHostedService<EvidenAuctionHouseAPI.Services.AuctionFinalizerScheduler>();
             // Email service
             builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.IEmailService, EvidenAuctionHouseAPI.Services.EmailService>();
+            // Contract token store (single-use token persistence)
+            builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.ContractTokenService>(sp =>
+            {
+                return new EvidenAuctionHouseAPI.Services.ContractTokenService(db.dbFolderPath);
+            });
 
             // SETUP CORS
             builder.Services.AddCors(options =>
@@ -57,7 +62,11 @@ namespace EvidenAuctionHouseAPI
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            // Enable controllers with views so we can render Razor views server-side
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddRazorPages();
+            // Register Razor PDF renderer
+            builder.Services.AddSingleton<EvidenAuctionHouseAPI.Services.RazorPdfRenderer>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -72,9 +81,33 @@ namespace EvidenAuctionHouseAPI
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            // Routing is required so CORS middleware can see endpoint metadata and
+            // correctly handle preflight requests. Place UseCors after UseRouting
+            // but before UseHttpsRedirection so OPTIONS requests are not redirected.
+            app.UseRouting();
 
             app.UseCors();
+
+            // Short-circuit OPTIONS preflight requests to prevent any later middleware
+            // (such as HTTPS redirection) from issuing a redirect which browsers will
+            // reject for preflight requests.
+            app.Use(async (context, next) =>
+            {
+                if (string.Equals(context.Request.Method, "OPTIONS", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    // Let the CORS middleware set the appropriate headers; just end the pipeline.
+                    context.Response.StatusCode = StatusCodes.Status204NoContent;
+                    await context.Response.CompleteAsync();
+                    return;
+                }
+                await next();
+            });
+
+            // Don't force HTTPS in Development: redirects can break dev tooling and CORS preflight.
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseHttpsRedirection();
+            }
 
             app.UseAuthorization();
 

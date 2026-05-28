@@ -57,3 +57,25 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Local dev & CORS
+
+When developing locally the backend (API) runs on a different origin (for example http://localhost:5005) than the Angular dev server (http://localhost:4200). The API enforces CORS via the `EVIDEN_CLIENT_ORIGIN` environment variable. By default the API allows `http://127.0.0.1:4200` and `http://localhost:4200`.
+
+If you want to avoid CORS entirely during development, run the Angular dev server with a proxy so API requests to `/api/*` are forwarded to the backend origin:
+
+```bash
+# from the EvidenAuctionHouse folder
+ng serve --proxy-config proxy.conf.json
+```
+
+The included `proxy.conf.json` forwards `/api` to `http://localhost:5005` (see file in the repo). This keeps the browser same-origin semantics and prevents preflight redirect issues.
+
+If you do not use a proxy, ensure the API process is started with the `EVIDEN_CLIENT_ORIGIN` environment variable set to include your dev origin, for example:
+
+```bash
+export EVIDEN_CLIENT_ORIGIN="http://localhost:4200"
+dotnet run --project ../EvidenAuctionHouseAPI/EvidenAuctionHouseAPI.csproj --urls "http://localhost:5005"
+```
+
+Note: for production, lock `EVIDEN_CLIENT_ORIGIN` to the exact origin(s) you use in production and avoid using wildcards.

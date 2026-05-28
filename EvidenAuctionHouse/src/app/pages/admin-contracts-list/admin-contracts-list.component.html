@@ -1,0 +1,23 @@
+<div class="page-container admin-contracts-list">
+  <h1>Contracts (admin)</h1>
+  <p *ngIf="message" class="alert alert-info">{{message}}</p>
+  <table class="table table-striped">
+    <thead>
+      <tr><th>Id</th><th>Auction</th><th>Item</th><th>Winner</th><th>Status</th><th>Pdf</th><th>Signed</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of contracts">
+        <td>{{c.id}}</td>
+        <td>{{c.auctionId}}</td>
+        <td>{{c.itemId}}</td>
+        <td>{{c.winnerUserId}}</td>
+        <td>{{c.status}}</td>
+        <td><a *ngIf="c.pdfPath" [href]="'/'+c.pdfPath" target="_blank">View</a></td>
+        <td><a *ngIf="c.signedPdfPath" [href]="'/'+c.signedPdfPath" target="_blank">View</a></td>
+        <td>
+          <input type="file" (change)="onFileChange($event, c.id)" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

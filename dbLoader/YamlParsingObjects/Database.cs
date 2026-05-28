@@ -18,6 +18,7 @@ namespace dbLoader.YamlParsingObjects
         public List<object> RegisterAttempts { get; set; }
         public List<object> Reports { get; set; }
         public List<object> SoldItems { get; set; }
+        public List<object> Contracts { get; set; }
         public List<object> Rules { get; set; }
 
     }

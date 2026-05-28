@@ -84,80 +84,30 @@
 // === FIXED BUTTONS STYLING ===
 .fixed-btn {
   width: min(100%, 12rem);
-  padding: 0.75rem 1.25rem;
+  padding: var(--btn-padding);
   border: none;
-  border-radius: var(--radius-lg);
-  font-weight: 600;
-  font-size: var(--font-size-sm);
+  border-radius: var(--btn-radius, 20px);
+  font-weight: 700;
+  font-size: var(--btn-font-size, 0.95rem);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-md);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 160ms ease;
+  box-shadow: var(--btn-shadow-md, 0 8px 20px rgba(0,0,0,0.08));
   text-decoration: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0.5rem;
   pointer-events: auto;
-  
-  &.create-action {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-    color: white;
-    background-color: #001489;
-    border-radius: 27px;
-    .fas.fa-plus {
-      font-size: 1rem;
-      margin-right: 0.25rem;
-    }
-    
-    &:hover {
-      background-color: darken(#001489, 5%);
-      transform: translateY(-2px) translateX(-5px);
-      box-shadow: var(--shadow-lg);
-      color: white;
+  color: var(--btn-color, #fff);
+  background: var(--btn-bg, #001489);
 
-    }
-  }
-  
-  &.delete-action {
-    background: linear-gradient(135deg, var(--error), #dc2626);
-    color: white;
-    background-color: #001489;
-    border-radius: 27px;
-    
-    .fas.fa-trash-alt {
-      font-size: 1rem;
-      margin-right: 0.25rem;
-    }
-    
-    &:hover {
-      background: linear-gradient(135deg, #dc2626, #b91c1c);
-      transform: translateY(-2px) translateX(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-  }
-  
-  &.csv-action {
-    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
-    color: white;
-    background-color: #001489;
-    border-radius: 27px;
+  &:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  &:active { transform: translateY(-1px); }
 
-    .fas.fa-file-csv {
-      font-size: 1rem;
-      margin-right: 0.25rem;
-    }
-    
-    &:hover {
-      color: white;
-      background-color: #001489;
-      transform: translateY(-2px) translateX(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-  }
-  
-  &:active {
-  transform: translateY(-1px) translateX(-2px);
-  }
+  /* per-action color overrides */
+  &.create-action { --btn-bg: #001489; }
+  &.delete-action { --btn-bg: #dc2626; }
+  &.csv-action { --btn-bg: var(--secondary-color, #6c757d); }
 }
 
 // === LOADING CONTAINER ===

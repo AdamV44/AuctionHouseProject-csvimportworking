@@ -25,7 +25,114 @@
 
 ---
 
-## 🗂️ Struktura projektu
+## � Developer Guide (kompletní přehled)
+
+Cíl: po přečtení této sekce by měl vývojář vědět, kde jsou hlavní části systému, jak spustit backend a frontend, kde hledat data a logy, jak přidat nový dataset (např. `Contracts`) a jak debugovat běžné chyby.
+
+### 1) Hlavní části kódu
+- `EvidenAuctionHouse/` — Angular frontend (standalone components). Hlavní konfigurace a styly v `src/`.
+- `EvidenAuctionHouseAPI/` — ASP.NET Core API (controllers, services). Spouští se `dotnet run`.
+- `dbLoader/` — projekt poskytující file-backed dataset loader (DataSet<T>), modely a YAML reader.
+- `Database/` — souborová data: každá dataset složka obsahuje `assets.json`.
+
+### 2) Závislosti
+(.NET / NuGet)
+- BCrypt.Net-Next 4.0.3
+- JWT 11.0.0
+- MailKit 4.16.0
+- Newtonsoft.Json 13.0.3
+- Swashbuckle.AspNetCore 6.6.2
+- YamlDotNet 16.3.0
+
+(Frontend / npm)
+- @angular/* 19.2.x
+- bootstrap 5.3.x
+- papaparse 5.5.x
+- rxjs ~7.8.0
+- zone.js ~0.15.0
+- dev: @angular/cli, typescript, karma, jasmine, tailwindcss/postcss
+
+Kde najít verze:
+- Backend: `EvidenAuctionHouseAPI/EvidenAuctionHouseAPI.csproj` (PackageReference)
+- Frontend: `EvidenAuctionHouse/package.json`
+
+### 3) Jak spustit lokálně (quickstart)
+Backend
+```bash
+cd EvidenAuctionHouseAPI
+dotnet run
+```
+Poznámky:
+- Pokud dostanete AddressInUse, najděte proces na portu (7054) a ukončete nebo změňte URL v `Properties/launchSettings.json`.
+
+Frontend
+```bash
+cd EvidenAuctionHouse
+npm ci
+npm start   # runs ng serve
+```
+Poznámky:
+- Pokud Angular hlásí "outside a workspace" nebo chybějící moduly, smažte `node_modules` a spusťte `npm ci` znovu.
+
+Docker
+- `docker-compose.yml` spouští API + frontend + mailhog; použij `docker compose up --build`.
+
+### 4) Data a konfigurace
+- Konfigurace datasetů v `Database/config.yml` (yamlReader čte cesty k `assets.json`).
+- Data jsou v `Database/<DatasetName>/assets.json` a načítají se přes `dbLoader/AuctionHouseDatabase.ReloadContext()`.
+- Statické soubory/pictures v `Database/AuctionItemsPictures/`.
+
+### 5) Logy a chyby
+- Backend logy: `EvidenAuctionHouseAPI/logs/smoke.log` a console output `dotnet run`.
+- Frontend: konzole prohlížeče a `ng serve` výstup.
+- E-mail: MailHog (pokud spuštěn) nebo SMTP provider. Credentials se nacházejí v `Database/config.yml` (migrace do env doporučena).
+
+### 6) Přidání nového datasetu (příklad: `Contracts`)
+1. Vytvořit model v `dbLoader/Models/Contract.cs` (dodržet `IIdentifyable` pattern). (Hotovo.)
+2. Přidat property `public DataSet<Contract> Contracts { get; set; }` do `dbLoader/AuctionHouseDatabase.cs` a inicializovat v `ReloadContext()` (Hotovo.)
+3. Vytvořit složku `Database/Contracts/` s `assets.json` (Hotovo - obsah `[]`).
+4. Upravit `Database/config.yml` přidáním cesty pro `Contracts` pokud ještě není.
+5. V API: přidat Controller `ContractsController` s endpointy: generate/send/get/pdf/light-sign/external-callback.
+
+### 7) Testy
+- Unit tests: `EvidenAuctionHouseAPI.Tests` (xUnit) — spustitelné přes `dotnet test`.
+- Doporučení: přidat integration test pro PDF generaci a pro callback endpoint od external provideru.
+
+### 8) Kde hledat chyby (mapa)
+- Dataset load errors: `dbLoader/IOHandler.cs` a `YamlReader.cs` — chyby s cestami nebo chybějícími soubory.
+- API errors: `EvidenAuctionHouseAPI/Controllers/*` — zkontrolujte konzolové logy a `logs/`.
+- Email issues: `EvidenAuctionHouseAPI/Services/EmailService.cs` + MailHog UI.
+- Frontend build/SASS errors: `EvidenAuctionHouse/src/styles.scss` and components using `@use 'sass:color'` — adjust variables or avoid color.adjust on CSS vars.
+- Concurrency/race: finalizer and datasets use in-memory lock in `AuctionFinalizationService` and `DataSet<T>` — problémy při multi-instance.
+
+### 9) Operational checklist
+- Move SMTP credentials to environment / docker secrets.
+- Normalize paths in `Database/config.yml` (use forward slashes) or ensure `YamlReader` normalizes slashes.
+- Add health endpoints for PDF generation and email send.
+- Backup `Database/AuctionDocuments/` and `Database/Contracts/`.
+
+### 10) Contracts-specific next steps (MVP)
+- Implement `ContractsController.Generate` to:
+  - Read `SoldItems` for auction, create `Contract` records, generate PDF via QuestPDF, store under `Database/AuctionDocuments/<auctionId>/contracts/`, update dataset and SaveChanges.
+- Send email using `EmailService` with one-time token.
+- Implement `POST /api/Contracts/{id}/light-sign/{token}` which validates token, marks contract Signed, appends audit log.
+
+### 11) Dependency management & security
+- Use Dependabot or GitHub Actions to scan NuGet/npm dependencies.
+- Keep secrets out of repo; use environment variables / Docker secrets.
+
+### 12) Quick debugging recipes
+- "Address already in use" for API: find process binding with `lsof -i :7054` and `kill <pid>`.
+- Angular "outside a workspace": run `npm ci` inside `EvidenAuctionHouse` and ensure `angular.json` exists in cwd.
+- SASS color errors: ensure `@use 'sass:color'` is present and do not call color.adjust on runtime CSS variables.
+
+---
+
+If you want, I can now implement the `ContractsController.Generate` endpoint and a simple QuestPDF template and show a working end-to-end: generate PDF, store it under `Database/AuctionDocuments/<auctionId>/contracts/`, and add a record to `Database/Contracts/assets.json`. Choose "Generate endpoint" to proceed and I'll code it.
+
+---
+
+## �🗂️ Struktura projektu
 
 
 AuctionHouseProject-csvimportworking/ 

@@ -28,9 +28,16 @@ export class AuthenticationService {
     // include credentials so server can set HttpOnly refresh cookie if implemented
     return this.http.post<AuthenticationResult>(settings.apiRoute + '/Authentication/login', credentials, { withCredentials: true }).pipe(
       tap(result => {
-        this.setToken(result.token);
-        this.setUser(result.user);
-        this.userSubject.next(result.user);
+        // server may return token under different property names (token/accessToken)
+        const anyRes: any = result as any;
+        const token = anyRes?.accessToken ?? anyRes?.token ?? anyRes?.Token ?? null;
+        if (token) {
+          this.setToken(token);
+        }
+        if (anyRes?.user) {
+          this.setUser(anyRes.user);
+          this.userSubject.next(anyRes.user);
+        }
         // fetch full profile (includes acceptedRules) and update stored user
         try {
           this.http.get<any>(settings.apiRoute + '/users/me').subscribe({
@@ -92,7 +99,9 @@ export class AuthenticationService {
   }
 
   private setToken(token: string): void {
-  localStorage.setItem('token', token);
+  if (!token) return;
+  const normalized = token.startsWith('Bearer ') ? token.substring(7) : token;
+  localStorage.setItem('token', normalized);
   }
 
   private setUser(user: AuthenticatedUserInformation): void {
@@ -113,12 +122,14 @@ export class AuthenticationService {
   public refresh(): Observable<boolean> {
     return this.http.post<{ accessToken?: string, user?: AuthenticatedUserInformation }>(settings.apiRoute + '/Authentication/refresh', {}, { withCredentials: true }).pipe(
       tap(resp => {
-        if (resp && resp.accessToken) {
-          this.setToken(resp.accessToken);
+        const anyResp: any = resp as any;
+        const token = anyResp?.accessToken ?? anyResp?.token ?? anyResp?.Token ?? null;
+        if (token) {
+          this.setToken(token);
         }
-        if (resp && resp.user) {
-          this.setUser(resp.user);
-          this.userSubject.next(resp.user);
+        if (anyResp?.user) {
+          this.setUser(anyResp.user);
+          this.userSubject.next(anyResp.user);
         }
       }),
       // map to boolean success

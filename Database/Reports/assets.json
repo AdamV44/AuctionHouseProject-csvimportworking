@@ -76,5 +76,20 @@
     ],
     "PseudonymMap": {},
     "TotalRevenue": 0
+  },
+  {
+    "Id": "9ed173a8-d477-4da1-98af-6be52576b815",
+    "AuctionId": "5aef910f-a13e-4b6c-bb3d-b8d6fa913b56",
+    "AuctionName": "akce 4",
+    "SoldItemIds": [
+      "02db949d-7b6b-4517-9035-9ae8d4f49b3a",
+      "4816fe3f-0e42-409f-bad8-d5899856760a"
+    ],
+    "UnsoldItemIds": [
+      "a4887002-6cb2-43ad-a0a8-28b17c5126e4",
+      "62c8ee3c-7f68-46f3-ab78-b06613cdc787"
+    ],
+    "PseudonymMap": {},
+    "TotalRevenue": 2400
   }
 ]
