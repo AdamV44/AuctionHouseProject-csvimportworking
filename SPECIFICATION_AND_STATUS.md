@@ -169,47 +169,49 @@ Projekt by měl obsahovat:
 ## ✅ STATUS PROJEKTU vs. SPECIFIKACE (aktuální)
 
 ### ✅ Jasně implementováno (k dispozici v repo):
-1. ✅ Frontend (Angular) - Standalone komponenty, modulární struktura (ve `EvidenAuctionHouse/src`)
-2. ✅ Backend (ASP.NET Core) - RESTful API s kontrolery (ve `EvidenAuctionHouseAPI/Controllers`)
-3. ✅ Databáze - JSON file-backed DataSet implementation (see `dbLoader/Collections/DataSet.cs` and `Database/` folder)
-4. ✅ Docker - `docker-compose.yml` and Dockerfiles present
-5. ✅ Authentication core - `TokensService`, `AuthenticationController` and frontend `AuthenticationService` (basic JWT flows)
-6. ✅ User management - `UsersController`, user models, admin flag/role handling
-7. ✅ Auction management - `AuctionsController` (create/edit/delete auctions)
-8. ✅ Auction items - `AuctionItemsController` and frontend item pages
-9. ✅ Bidding - `BidsController` + frontend bidding UI and `price-input` component
-10. ✅ Confirmation dialogs - confirmation-dialog components used across UI
-11. ✅ Item listing & detail pages - items list + item detail pages with images
-12. ✅ Image upload/serving - `AuctionItemsPicturesController` + images folder
-13. ✅ CSV import & preview - frontend CSV import page and upload handling
-14. ✅ Reports persistence - `Reports` + `SoldItems` datasets and on-disk assets
-15. ✅ Finalize endpoint - `POST /api/Auctions/finalize/{auctionId}` (admin-secured)
-16. ✅ Finalizer helper & hosted service - `AuctionFinalizationService` and `AuctionFinalizerService` (scheduler)
-17. ✅ Per-report pseudonym map persisted and exposed in DTOs (admin-sensitive pathway)
-18. ✅ In-memory per-auction lock in `AuctionFinalizationService` to avoid same-process races
-19. ✅ Unit tests for finalizer - `EvidenAuctionHouseAPI.Tests` contains winner-selection/idempotence tests (tests run locally)
-20. ✅ Utility scripts - `scripts/finalize-missing.js` (dry-run support) and backfill script for winner emails (noted in changelog)
-21. ✅ Email sending service - `IEmailService` / `EmailService` (MailKit) present and configured via env
-22. ✅ Finalizer -> email notifications wired: finalizer queues and sends winner/admin emails (best-effort, dev-tested with MailHog)
-23. ✅ Dev helpers: `DevController` token endpoint and impersonate helper exist for local testing
-24. ✅ Auth improvements: refresh-token persistence service added and `AuthenticationController` supports refresh/logout; CORS tightened and AllowCredentials enabled for SPA dev
+ - Frontend (Angular) - Standalone components, modular structure (in `EvidenAuctionHouse/src`).
+ - Backend (ASP.NET Core) - RESTful API with controllers (in `EvidenAuctionHouseAPI/Controllers`).
+ - JSON file-backed datasets and loader (`dbLoader/Collections/DataSet.cs`, `Database/`).
+ - Docker and docker-compose configuration present.
+ - Authentication core: `TokensService`, `AuthenticationController`, frontend `AuthenticationService` (JWT flows).
+ - User management: `UsersController`, user models, admin flag/role handling.
+ - Auction management: `AuctionsController` (create/edit/delete auctions).
+ - Auction items: `AuctionItemsController` and frontend item pages.
+ - Bidding basics: `BidsController` + frontend bidding UI and `price-input` component.
+ - Confirmation dialogs: re-usable confirmation-dialog components.
+ - Item listing & detail pages with images.
+ - Image upload/serving controller and storage.
+ - CSV import & preview UI.
+ - Reports persistence (`Reports` + `SoldItems` datasets persisted to disk).
+ - Finalize endpoint and finalizer helper + hosted scheduler service.
+ - Per-report pseudonym map persisted and exposed (admin-sensitive pathway).
+ - In-memory per-auction lock to avoid same-process race conditions.
+ - Unit tests for finalizer (`EvidenAuctionHouseAPI.Tests`) and utility scripts (`scripts/finalize-missing.js`, backfill scripts).
+ - Email sending service present (MailKit) and dev-tested with MailHog.
+ - Dev helpers: token endpoints and impersonation for local testing.
+ - Frontend styling tokens: global CSS variables and button tokens added (`src/styles.scss`).
+ - Admin rules editor and first-login rules modal exist as frontend components (wiring needs verification).
 
 ### ✓ Částečně implementováno (funguje částečně / needs polish):
-1. ✓ GDPR protection — backend: per-report `PseudonymMap`, admin-only sensitive export flag and API gating implemented; frontend: report page admin toggle exists. UI-wide anonymization (history list anonymized in all views) still needs finishing and consistent UI masking.
-2. ✓ Auction rules validation — basic bid validation exists (amount checks); full rule enforcement (min/max, anti-sniping, explicit consent + UI persistence) requires more tests and UI work.
-3. ✓ Hosted finalizer — implemented and configurable, but disabled by default and needs integration testing and operational tuning.
+ - GDPR protection: backend pseudonym map and API gating implemented; frontend anonymization across lists/history needs polish.
+ - Auction rules validation: server-side bid validation exists; frontend modal and editor are present but end-to-end persistence/enforcement (block bidding until accepted, record version/timestamp) needs final wiring and tests.
+ - Hosted finalizer: implemented and configurable; integration testing and operational tuning is recommended.
 
 ### ❌ Chybí / není kompletně implementováno (pozor):
-1. ❌ First-login rules acceptance modal + persistence (required by spec) — not implemented.
-2. ❌ Dry-run flag on finalize controller (server-side) — finalizer supports dryRun internally, but controller endpoint should expose/obey `?dryRun=true` consistently (controller TODO).
-3. ❌ Contract/sales paperwork flows + digital signing — not implemented.
-4. ❌ Advanced filtering / search UI for items — missing.
-5. ❌ LDAP/OIDC integration (Keycloak/AD) — not implemented (only simple JWT tokens for local testing).
-6. ❌ Distributed locking (for multi-instance deployments) — only in-memory locks exist; consider Redis or DB locks for production.
+ - First-login rules: backend persistence + enforcement wiring (record user acceptance with version/timestamp and block bidding until accepted).
+ - Dry-run flag on finalize controller endpoint (controller should honor `?dryRun=true` consistently).
+ - Contract / sales paperwork and digital signing flows.
+ - Advanced filtering / search UI for items.
+ - LDAP/OIDC enterprise login (Keycloak/AD) — not implemented.
+ - Distributed locking for multi-instance deployments (recommend Redis/DB locks for production).
+ - Operational housekeeping: YAML dataset asset path normalization and secrets handling (SMTP creds present in `Database/config.yml`) need addressing.
 
-### Poznámky k nasazení a dev tooling
-- Mail dev: `docs/email-notifications.md` + `docker-compose.yml` contains a `mailhog` dev service and `api` service wiring for local testing.
-- Email sending is currently best-effort and synchronous; consider background queue + retry for production.
+### Poznámky k nasazení a dev tooling (aktuální doplnění)
+ - Mail dev: `docs/email-notifications.md` + `docker-compose.yml` contains `mailhog` and `api` service wiring for local testing.
+ - SASS & styling: global CSS variables and button tokens were added; previous SASS compile issues were fixed (`@use 'sass:color'` added where needed) and color.adjust usage on CSS variables avoided.
+ - Frontend dev: run `npm ci` in `EvidenAuctionHouse` then `ng serve` to validate UI; reinstall node modules if you see "outside a workspace" or missing module errors.
+ - Backend dev: `dotnet run` starts the API but ensure configured port (default 7054) is free or change launch settings to avoid AddressInUse errors.
+ - Dataset paths: `Database/config.yml` contains Windows-style backslashes in asset paths; normalize paths in YAML loader or update config to use forward slashes for cross-platform robustness.
 
 
 ---

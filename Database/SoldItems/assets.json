@@ -27,6 +27,26 @@
     "FinalPrice": 4500,
     "WinnerUserId": "user-102",
     "WinnerFullName": "Petr Svoboda",
-    "WinnerEmail": "petr.svoboda@email.cz"  
+    "WinnerEmail": "petr.svoboda@email.cz"
+  },
+  {
+    "Id": "02db949d-7b6b-4517-9035-9ae8d4f49b3a",
+    "AuctionItemId": "865bb752-ebde-4613-a6da-d1ef6b1c0e6e",
+    "AuctionId": "5aef910f-a13e-4b6c-bb3d-b8d6fa913b56",
+    "Name": "Crystal Chandelier",
+    "FinalPrice": 1870,
+    "WinnerUserId": "3a4d9c96-f302-427e-b162-a0358acc8008",
+    "WinnerFullName": "Víťa",
+    "WinnerEmail": "xadamvitek@gmail.com"
+  },
+  {
+    "Id": "4816fe3f-0e42-409f-bad8-d5899856760a",
+    "AuctionItemId": "7a7f5eb7-aa38-4511-8d05-063acc0507ab",
+    "AuctionId": "5aef910f-a13e-4b6c-bb3d-b8d6fa913b56",
+    "Name": "Antique Camera",
+    "FinalPrice": 530,
+    "WinnerUserId": "ce8ba4ea-a6cd-44f3-8241-603a50768dcd",
+    "WinnerFullName": "Adam Vítek",
+    "WinnerEmail": "xadamvitek@email.cz"
   }
 ]

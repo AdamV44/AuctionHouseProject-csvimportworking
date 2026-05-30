@@ -1,0 +1,11 @@
+<div class="contract-preview-container" *ngIf="documentUrl">
+  <h2>Contract preview</h2>
+  <p *ngIf="!documentUrl">No contract selected.</p>
+  <iframe [src]="documentUrl | safeUrl" width="100%" height="800px"></iframe>
+  <div style="margin-top:12px">
+    <a [href]="documentUrl" target="_blank" class="btn btn-primary">Open in new tab / download</a>
+  </div>
+</div>
+<div *ngIf="!documentUrl">
+  <p>No contract id provided.</p>
+</div>

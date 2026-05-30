@@ -24,8 +24,8 @@ namespace EvidenAuctionHouseAPI.Services
             fromAddress = Environment.GetEnvironmentVariable("SMTP_FROM") ?? "no-reply@example.com";
         }
 
-        // keep synchronous contract but perform async send inside and wait - it's fine for small use
-        public bool SendEmail(string to, string subject, string body)
+    // keep synchronous contract but perform async send inside and wait - it's fine for small use
+    public bool SendEmail(string to, string subject, string body)
         {
             try
             {
@@ -68,6 +68,50 @@ namespace EvidenAuctionHouseAPI.Services
                 Console.WriteLine($"[EmailService-MailKit] Failed to send email to {to}: {ex.Message}");
                 return false;
             }
+        }
+
+        // HTML-capable send. Prefer HTML if htmlBody provided, otherwise falls back to text body.
+        public bool SendEmail(string to, string subject, string textBody, string htmlBody)
+        {
+            try
+            {
+                var message = new MimeMessage();
+                message.From.Add(MailboxAddress.Parse(fromAddress));
+                message.To.Add(MailboxAddress.Parse(to));
+                message.Subject = subject;
+
+                var builder = new BodyBuilder();
+                builder.TextBody = textBody ?? string.Empty;
+                if (!string.IsNullOrEmpty(htmlBody)) builder.HtmlBody = htmlBody;
+                message.Body = builder.ToMessageBody();
+
+                var task = Task.Run(async () =>
+                {
+                    using var client = new SmtpClient();
+                    try
+                    {
+                        await client.ConnectAsync(smtpHost, smtpPort, SecureSocketOptions.StartTlsWhenAvailable);
+                        if (!string.IsNullOrEmpty(smtpUser)) await client.AuthenticateAsync(smtpUser, smtpPass);
+                        await client.SendAsync(message);
+                        await client.DisconnectAsync(true);
+                    }
+                    finally { client.Dispose(); }
+                });
+
+                task.GetAwaiter().GetResult();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[EmailService-MailKit] Failed to send email to {to}: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Convenience helper for contract emails (HTML preferred)
+        public bool SendContractEmail(string to, string subject, string plainText, string htmlBody)
+        {
+            return SendEmail(to, subject, plainText, htmlBody);
         }
 
         public bool SendWinnerNotification(string toEmail, string winnerName, string itemName, int finalPrice, string auctionName)

@@ -156,5 +156,48 @@ namespace EvidenAuctionHouseAPI.Services
             }
         }
 
+        // Create a one-time token tied to a contract and user. Use EMAILSPASSWORD so tokens for email/one-time purposes
+        // are separate from user access tokens.
+        public string CreateContractToken(string contractId, string userId, TimeSpan lifetime)
+        {
+            return JwtBuilder.Create()
+                .WithAlgorithm(new HMACSHA256Algorithm())
+                .WithSecret(EMAILSPASSWORD)
+                .AddClaim("exp", DateTimeOffset.UtcNow.Add(lifetime).ToUnixTimeSeconds())
+                .AddClaim("contractId", contractId)
+                .AddClaim("userId", userId)
+                .Encode();
+        }
+
+        // Verify a contract token and extract contractId/userId if valid. Returns true when valid.
+        public bool VerifyContractToken(string token, out string contractId, out string userId)
+        {
+            contractId = null;
+            userId = null;
+            try
+            {
+                var payload = JwtBuilder.Create()
+                            .WithAlgorithm(new HMACSHA256Algorithm())
+                            .WithSecret(EMAILSPASSWORD)
+                            .MustVerifySignature()
+                            .Decode<IDictionary<string, object>>(token);
+
+                if (payload.ContainsKey("contractId"))
+                {
+                    contractId = payload["contractId"].ToString();
+                }
+                if (payload.ContainsKey("userId"))
+                {
+                    userId = payload["userId"].ToString();
+                }
+
+                return !string.IsNullOrEmpty(contractId) && !string.IsNullOrEmpty(userId);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

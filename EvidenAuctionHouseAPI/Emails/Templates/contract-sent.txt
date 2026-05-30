@@ -1,0 +1,12 @@
+Hi {{WinnerName}},
+
+Congratulations — you won {{ItemName}} in the auction {{AuctionName}} for {{Price}} {{Currency}}.
+
+Download and sign your contract here: {{Link}}
+
+This link expires on {{ExpiresAt}} and can be used only once.
+
+If you did not participate in this auction, please ignore this email.
+
+Thanks,
+Eviden Auction House team

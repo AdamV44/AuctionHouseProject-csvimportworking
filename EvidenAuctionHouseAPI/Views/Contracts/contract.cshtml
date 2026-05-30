@@ -1,0 +1,44 @@
+@model dynamic
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Smlouva o odkupu</title>
+    <style>
+        body { font-family: Arial, sans-serif; font-size: 12px; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .section { margin-bottom: 12px; }
+        .meta { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Smlouva o odkupu</h1>
+        <div>@Model.TemplateVersion</div>
+    </div>
+    <div class="section">
+        <div class="meta">Aukce:</div>
+        <div>@Model.AuctionName (@Model.AuctionId)</div>
+    </div>
+    <div class="section">
+        <div class="meta">Předmět:</div>
+        <div>@Model.ItemName (@Model.ItemId)</div>
+    </div>
+    <div class="section">
+        <div class="meta">Kupující:</div>
+        <div>@Model.WinnerName (@Model.WinnerUserId)</div>
+    </div>
+    <div class="section">
+        <div class="meta">Cena:</div>
+        <div>@Model.Price @Model.Currency</div>
+    </div>
+    <div class="section">
+        <hr/>
+        <p>Touto smlouvou kupující potvrzuje převzetí zařízení za uvedenou cenu.</p>
+    </div>
+    <div class="section" style="margin-top:30px">
+        <div>Podpis kupujícího: ___________________________</div>
+        <div style="margin-top:50px">Datum: _______________________</div>
+    </div>
+</body>
+</html>

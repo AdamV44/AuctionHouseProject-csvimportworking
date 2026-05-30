@@ -79,6 +79,7 @@ namespace dbLoader
                 "RegisterAttempts" => db.RegisterAttempts,
                 "Reports" => db.Reports,
                 "SoldItems" => db.SoldItems,
+                "Contracts" => db.Contracts,
                 "Rules" => db.Rules,
                 _ => null
             };

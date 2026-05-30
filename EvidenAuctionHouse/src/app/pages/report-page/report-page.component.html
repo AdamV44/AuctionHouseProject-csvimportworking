@@ -24,7 +24,7 @@
 
 					<button class="btn" (click)="exportCsv()" [disabled]="loadingReport || !!errorMessage">Export CSV</button>
 					<button *ngIf="auth.isAdmin()" class="btn btn-warning" (click)="finalize()" [disabled]="loadingReport">Finalize</button>
-					<button class="btn" (click)="selectedAuction = null">Zpět</button>
+					<a href="/admin/contracts" class="btn btn-secondary">Zobrazit smlouvy</a>
 				</div>
 			</div>
 

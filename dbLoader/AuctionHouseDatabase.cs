@@ -24,6 +24,7 @@ namespace dbLoader
         public DataSet<ItemGroup> ItemGroups { get; set; }
         public DataSet<AuctionReport> Reports { get; set; }
         public DataSet<SoldItem> SoldItems { get; set; }
+        public DataSet<Contract> Contracts { get; set; }
         public DataSet<Rule> Rules { get; set; }
         public string RegisterAttemptsFilePath { get; set; }
 
@@ -33,24 +34,33 @@ namespace dbLoader
         public void ReloadContext()
         {
 
-            this.AuctionItems = new DataSet<AuctionItem>(this.dbFolderPath + this.configReader.GetAssetsForNode("AuctionItems"));
+            string CombineAsset(string node)
+            {
+                var rel = (this.configReader.GetAssetsForNode(node) ?? string.Empty).TrimStart('\\', '/');
+                return Path.GetFullPath(Path.Combine(this.dbFolderPath, rel));
+            }
 
-            this.Users = new DataSet<User>(this.dbFolderPath + this.configReader.GetAssetsForNode("Users"));
+            this.AuctionItems = new DataSet<AuctionItem>(CombineAsset("AuctionItems"));
 
-            this.Auctions = new DataSet<Auction>(this.dbFolderPath + this.configReader.GetAssetsForNode("Auctions"));
+            this.Users = new DataSet<User>(CombineAsset("Users"));
 
-            this.Bids = new DataSet<Bid>(this.dbFolderPath + this.configReader.GetAssetsForNode("Bids"));
+            this.Auctions = new DataSet<Auction>(CombineAsset("Auctions"));
 
-            this.ItemGroups = new DataSet<ItemGroup>(this.dbFolderPath + this.configReader.GetAssetsForNode("ItemGroups"));
+            this.Bids = new DataSet<Bid>(CombineAsset("Bids"));
+
+            this.ItemGroups = new DataSet<ItemGroup>(CombineAsset("ItemGroups"));
 
             // New datasets for reports and sold items
-            this.Reports = new DataSet<AuctionReport>(this.dbFolderPath + this.configReader.GetAssetsForNode("Reports"));
-            this.SoldItems = new DataSet<SoldItem>(this.dbFolderPath + this.configReader.GetAssetsForNode("SoldItems"));
+            this.Reports = new DataSet<AuctionReport>(CombineAsset("Reports"));
+            this.SoldItems = new DataSet<SoldItem>(CombineAsset("SoldItems"));
+
+            // Contracts dataset (for generated contract PDFs and metadata)
+            this.Contracts = new DataSet<Contract>(CombineAsset("Contracts"));
 
             // Rules dataset
-            this.Rules = new DataSet<Rule>(this.dbFolderPath + this.configReader.GetAssetsForNode("Rules"));
+            this.Rules = new DataSet<Rule>(CombineAsset("Rules"));
 
-            this.RegisterAttemptsFilePath = this.dbFolderPath + this.configReader.GetAssetsForNode("RegisterAttempts");
+            this.RegisterAttemptsFilePath = CombineAsset("RegisterAttempts");
 
         }
         public void PrintDb()
